@@ -15,10 +15,10 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-3 col-xs-6">
-                                <p class="planner-year">SO NO <span class="planner-fright">:</span></p>
+                                <p for="pr-so" class="planner-year">SO NO <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text">SO678912</p>
+                                <input type="text" class="form-control" id="pr-so">
                             </div>
                         </div>
                         <div class="form-group">
@@ -50,7 +50,11 @@
                                 <p class="planner-year">Purchase Type <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text"></p>
+                                <select class="form-control">
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -60,7 +64,7 @@
                                 <p class="planner-year">PR NO <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text">123456</p>
+                                <p class="normal-text"><?= $last_pr ?></p>
                             </div>
                         </div>
                         <div class="form-group">

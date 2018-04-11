@@ -51,9 +51,10 @@ class PrController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function addAuto()
     {
         $this->loadModel('PrAuto');
+        $last_pr = $this->PrAuto->find('all')->last();
         $pr = $this->PrAuto->newEntity();
         if ($this->request->is('post')) {
             $pr = $this->PrAuto->patchEntity($pr, $this->request->getData());
@@ -65,6 +66,26 @@ class PrController extends AppController
             $this->Flash->error(__('The pr could not be saved. Please, try again.'));
         }
         $this->set(compact('pr'));
+        $this->set('last_pr', (isset($last_pr->id) ? ($last_pr->id + 1) : 1));
+    }
+
+    public function addManual()
+    {
+        $this->loadModel('PrManual');
+        $this->loadModel('PrManualItems');
+        $last_pr = $this->PrManual->find('all')->last();
+        $pr = $this->PrManual->newEntity();
+        if ($this->request->is('post')) {
+            $pr = $this->PrManual->patchEntity($pr, $this->request->getData());
+            if ($this->PrManual->save($pr)) {
+                $this->Flash->success(__('The pr has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The pr could not be saved. Please, try again.'));
+        }
+        $this->set(compact('pr'));
+        $this->set('last_pr', (isset($last_pr->id) ? ($last_pr->id + 1) : 1));
     }
 
     /**
