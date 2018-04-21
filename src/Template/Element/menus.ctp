@@ -12,22 +12,22 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li class="color-hsh"><a href="pr-request-list.html">PR Request List</a></li>
-                <li class="color-hsh"><a href="index.html">PR Form Manual</a></li>
-                <li class="color-hsh"><a href="pr-form.html">PR Form Auto</a></li>
-                <li class="color-hsh"><a href="pr-verify.html">PR Verification</a></li>
-                <li class="color-hsh"><a href="pr-approval.html">PR Approval</a></li>
+                <li class="color-hsh"><a href="index.html">PR Generate (manual)</a></li>
+                <li class="color-hsh"><a href="pr-form.html">PR Submit (manual)</a></li>
+                <li class="color-hsh"><a href="pr-verify.html">PR Verify (manual)</a></li>
+                <li class="color-hsh"><a href="pr-approval.html">PR Approve (manual)</a></li>
                 <li class="color-hsh"><a href="pr-r-list.html">PR Request List (auto)</a></li>
-                <li class="color-hsh2"><a href="pr-r-form.html">Purchase Req. Form</a></li>
-                <li class="color-hsh2"><a href="pr-r-select.html">Purchase Req. Form Submit</a></li>
-                <li class="color-hsh2"><a href="pr-r-verify.html">Purchase Req. Verify</a></li>
-                <li class="color-hsh2"><a href="pr-r-approval.html">Purchase Req. Form Approval</a></li>
+                <li class="color-hsh2"><a href="pr-r-form.html">PR 1 Generate (auto)</a></li>
+                <li class="color-hsh2"><a href="pr-r-select.html">PR 1 Submit (auto)</a></li>
+                <li class="color-hsh2"><a href="pr-r-verify.html">PR 1 Verify (auto)</a></li>
+                <li class="color-hsh2"><a href="pr-r-approval.html"> PR 1 Approve (auto)</a></li>
                 <li class="color-hsh"><a href="pr-customise.html">Customization Item</a></li>
-                <li class="color-hsh3"><a href="pr-f-form.html">PR Form Submit</a></li>
-                <li class="color-hsh3"><a href="pr-f-verify.html">PR Form Submit Verify</a></li>
-                <li class="color-hsh3"><a href="pr-f-approval.html">PR Form Submit Approval</a></li>
+                <li class="color-hsh3"><a href="pr-f-form.html">PR 2 Submit (auto)</a></li>
+                <li class="color-hsh3"><a href="pr-f-verify.html">PR 2 Verify (auto)</a></li>
+                <li class="color-hsh3"><a href="pr-f-approval.html">PR 2 Approve (auto)</a></li>
                 <li class="color-hsh3"><a href="pr-f-status.html">PR Approval Status</a></li>
                 <li class="color-hsh3"><a href="pr-f-report.html">PR Report</a></li>
-                <li class="color-hsh3"><a href="pr-s-report.html">PR Static Report</a></li>
+                <li class="color-hsh3"><a href="pr-s-report.html">PR Statistic Report</a></li>
             </ul>
         </div>
         <div class="btn-group-vertical" role="group" class="dropdown">
@@ -88,7 +88,16 @@
                 <li class="color-hsh"><a href="ipi-report.html">IPI Report</a></li>
             </ul>
         </div>
-        <li><a href="#">SUPPLIER</a></li>
+        <div class="btn-group-vertical" role="group" class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                SUPPLIER &nbsp;
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller' => 'Supplier', 'action' => 'add']); ?>">Supplier Create</a></li>
+                <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller' => 'Supplier', 'action' => 'index']); ?>">Supplier List</a></li>
+            </ul>
+        </div>
         <div class="btn-group-vertical" role="group" class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 PART INFO &nbsp;

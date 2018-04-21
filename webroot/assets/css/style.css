@@ -227,7 +227,7 @@
     padding-top: 15px;
     top:0px;
     transition:left 0.3s linear;
-    z-index: 1;
+    z-index:999;
   }
 
   #sidebar.visible{
@@ -488,6 +488,100 @@ h5.prepared-name{
     border-radius: 4px;
     margin: 6px 3px;
 }
+
+/*--==============
+supplier page
+====================--*/
+.information-title {
+    color: #ff6633;
+    font-size: 21px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #ff6633;
+    padding-bottom: 12px;
+    width: 96.5%;
+    margin-left: 14px;
+    overflow: hidden;
+    display: block;
+}
+.supplier-section-information{
+  margin-top: 20px;
+}
+.supplier-section-information label{
+  font-weight: 600;
+}
+.simple-table-supplier.table>thead>tr {
+    background: transparent;
+}
+.simple-table-supplier.table>thead>tr>th{
+  border-color: transparent;
+  text-align: center;
+}
+.view-text-popup.table>thead>tr>th{
+  text-align: center !important;
+}
+.simple-table-supplier.table>tbody>tr>td, .simple-table-supplier.table>tbody>tr>th,
+.simple-table-supplier.table>tfoot>tr>td, .simple-table-supplier.table>tfoot>tr>th, .simple-table-supplier.table>thead>tr>td, .table>thead>tr>th{
+  border-color: transparent;
+}
+
+.supplier-item-submit{
+  margin-bottom: 30px;
+}
+.supplier-modal-body .planner-fright {
+     float: none;
+}
+td .action-button{
+    width: 20px;
+    float: left;
+    display: block;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.supplier-button-sec{
+    margin-right: 5px;
+}
+.pagination li{
+  padding-right: 0px;
+}
+.name-popup{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.file.btn.btn-sm.btn-primary {
+    width: 146px;
+    height: 35px;
+    background: #5bc1de;
+    border: 1px solid #5bc1de;
+    font-size: 14px;
+    padding: 0px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.file.btn.btn-sm.btn-primary span {
+    padding:6px 10px;
+    display: block;
+}
+input.input-upload{
+  position: absolute;
+  font-size: 14px;
+  opacity: 0;
+  right: 0;
+  top: 0;
+}
+.upload-icon{
+    width: 42px;
+    float: left;
+    height: 44px;
+    text-align: center;
+    padding: 7px 2px;
+    background: #5bc1de;
+    border-radius: 8px 0px 0px 8px;
+}
+
+
 /*--=======================
 csn page
 =======================--*/
@@ -800,6 +894,8 @@ nbdo from print
     padding: 12px 0px;
     font-size: 16px;
   }
+
+
   /*--===============
   Responsive css
   ===================*/
@@ -814,6 +910,10 @@ nbdo from print
       float: right;
       display: block;
       margin: 0px;
+    }
+    .add-supplier-popup.modal-dialog {
+        width: 70%;
+        margin: 30px auto;
     }
   }
 
@@ -935,6 +1035,19 @@ nbdo from print
     .btn-generate{
       margin-top: 30px;
       float: right;
+    }
+    #item-add{
+      float: right;
+      margin:20px 0px;
+    }
+    .supplier-button-sec{
+      margin:5px auto;
+      display: inline-block;
+    }
+    td .action-button{
+      float: none;
+      margin:5px auto;
+      display: inline-block;
     }
 
   }

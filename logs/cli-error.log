@@ -20,3 +20,41 @@ Stack Trace:
 #10 {main}
 
 
+2018-04-19 08:23:06 Error: [RuntimeException] Unknown command `cake migration`. Run `cake --help` to get the list of valid commands. in C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\Console\CommandRunner.php on line 177
+Stack Trace:
+#0 C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\Console\CommandRunner.php(137): Cake\Console\CommandRunner->getShell(Object(Cake\Console\ConsoleIo), Object(Cake\Console\CommandCollection), 'migration')
+#1 C:\xampp\htdocs\CP21.0ProcurementModule\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#2 {main}
+
+
+2018-04-19 08:23:15 Error: [Symfony\Component\Console\Exception\CommandNotFoundException] Command "CreateSupplier" is not defined. in C:\xampp\htdocs\CP21.0ProcurementModule\vendor\symfony\console\Application.php on line 618
+Stack Trace:
+#0 C:\xampp\htdocs\CP21.0ProcurementModule\vendor\symfony\console\Application.php(229): Symfony\Component\Console\Application->find('CreateSupplier')
+#1 C:\xampp\htdocs\CP21.0ProcurementModule\vendor\symfony\console\Application.php(148): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\migrations\src\Shell\MigrationsShell.php(108): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\Console\Shell.php(507): Migrations\Shell\MigrationsShell->main('migrations', 'CreateSupplier')
+#4 C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\migrations\src\Shell\MigrationsShell.php(164): Cake\Console\Shell->runCommand(Array, true, Array)
+#5 C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\Console\CommandRunner.php(141): Migrations\Shell\MigrationsShell->runCommand(Array, true)
+#6 C:\xampp\htdocs\CP21.0ProcurementModule\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#7 {main}
+
+
+2018-04-19 09:43:22 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'procmod.suppliers' doesn't exist in C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\Database\Schema\Collection.php on line 131
+Stack Trace:
+#0 C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'suppliers', Array, Object(Cake\Database\Schema\TableSchema))
+#1 C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('suppliers', Array)
+#2 C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\ORM\Table.php(532): Cake\Database\Schema\CachedCollection->describe('suppliers')
+#3 C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\ORM\Table.php(653): Cake\ORM\Table->getSchema()
+#4 C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(220): Cake\ORM\Table->getPrimaryKey()
+#5 C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(130): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(113): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'suppliers', 'Suppliers')
+#7 C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(100): Bake\Shell\Task\ModelTask->bake('Suppliers')
+#8 C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\bake\src\Shell\BakeShell.php(272): Bake\Shell\Task\ModelTask->main('Suppliers')
+#9 C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\Collection\CollectionTrait.php(51): Bake\Shell\BakeShell->Bake\Shell\{closure}('Suppliers', 0)
+#10 C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\bake\src\Shell\BakeShell.php(273): Cake\Collection\Collection->each(Object(Closure))
+#11 C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\Console\Shell.php(493): Bake\Shell\BakeShell->all('suppliers')
+#12 C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\Console\CommandRunner.php(141): Cake\Console\Shell->runCommand(Array, true)
+#13 C:\xampp\htdocs\CP21.0ProcurementModule\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#14 {main}
+
+
