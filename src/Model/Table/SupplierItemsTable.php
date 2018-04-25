@@ -77,9 +77,7 @@ class SupplierItemsTable extends Table
             ->notEmpty('uom');
 
         $validator
-            ->scalar('unit_price')
-            ->maxLength('unit_price', 110)
-            ->requirePresence('unit_price', 'create')
+            ->integer('unit_price')
             ->notEmpty('unit_price');
 
         $validator

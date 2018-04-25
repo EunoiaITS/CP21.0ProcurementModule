@@ -9,7 +9,7 @@
   });
 
     $('.datepicker').datepicker({
-        format: 'mm/dd/yyyy',
+        format: 'yyyy-mm-dd',
         todayHighlight: true
     });
 

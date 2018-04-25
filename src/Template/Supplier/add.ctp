@@ -438,7 +438,7 @@
                 '<td><input type="text" name="partno'+count+'" class="form-control from-qr" id="pr-item-name"></td>'+
                 '<td><input type="text" name="partname'+count+'" class="form-control from-qr" id="pr-item-name"></td>'+
                 '<td><input type="text" name="uom'+count+'" class="form-control from-qr" id="pr-item-code"></td>'+
-                '<td><input type="text" name="unitprice'+count+'" class="form-control from-qr" id="pr-quantity"></td>'+
+                '<td><input type="number" name="unitprice'+count+'" class="form-control from-qr" id="pr-quantity"></td>'+
                 '<td><input type="text" name="capamonth'+count+'" class="form-control from-qr" id="pr-quantity"></td>'+
                 '<td><div class="file btn btn-sm btn-primary">'+
                 '<div class="upload-icon"><i class="fa fa-cloud-upload" aria-hidden="true"></i></div><span>Upload Picture</span>'+
