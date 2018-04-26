@@ -71,6 +71,8 @@ class PrController extends AppController
 
     public function addManual()
     {
+        $this->loadModel('Supplier');
+        $this->loadModel('SupplierItems');
         $urlToSales = 'http://salesmodule.acumenits.com/api/all-data';
 
         $optionsForSales = [
@@ -109,6 +111,24 @@ class PrController extends AppController
                     $dataFromEng = json_decode($resultFromEng);
                     $item->eng_data = $dataFromEng;
                     foreach($dataFromEng as $eng){
+                        $uom = $supplier1 = $supplier2 = $supplier3 = '';
+                        $price1 = $price2 = $price3 = 0;
+                        $items = $this->SupplierItems->find('all', [
+                            'order' => 'SupplierItems.unit_price'
+                        ])
+                            ->where(['part_no' => $eng->partNo])
+                            ->where(['part_name' => $eng->partName]);
+                        $count = 0;
+                        foreach($items as $ii){
+                            $supplier = $this->Supplier->get($ii->supplier_id, [
+                                'contain' => []
+                            ]);
+                            $ii->supplier = $supplier;
+                            $count++;
+                            ${'supplier'.$count} = $supplier->name;
+                            ${'price'.$count} = $ii->unit_price;
+                            $uom = $ii->uom;
+                        }
                         $stockAvailable = 0;
                         $urlToStore = 'http://storemodule.acumenits.com/in-stock-code/stock-available';
                         $sendToStore = [
@@ -130,7 +150,18 @@ class PrController extends AppController
                             $dataFromStore = json_decode($resultFromStore);
                             $stockAvailable = abs($dataFromStore->stock_available);
                         }
-                        $parts .= '{partNo:"'.$eng->partNo.'",partName:"'.$eng->partName.'",reqUantity:"'.$eng->quality.'",category:"'.$eng->category.'",stockAvailable:"'.$stockAvailable.'"},';
+                        $parts .= '{partNo:"'.$eng->partNo.
+                        '",partName:"'.$eng->partName.
+                        '",reqUantity:"'.$eng->quality.
+                        '",category:"'.$eng->category.
+                        '",stockAvailable:"'.$stockAvailable.
+                        '",supplier1:"'.$supplier1.
+                        '",supplier2:"'.$supplier2.
+                        '",supplier3:"'.$supplier3.
+                        '",price1:"'.$price1.
+                        '",price2:"'.$price2.
+                        '",price3:"'.$price3.
+                        '",uom:"'.$uom.'"},';
                     }
                 }
             }
@@ -158,7 +189,6 @@ class PrController extends AppController
         $this->set(compact('pr'));
         $this->set('last_pr', (isset($last_pr->id) ? ($last_pr->id + 1) : 1));
         $this->set('so_no', $so_no);
-        $this->set('sales', $dataFromSales);
     }
 
     /**
