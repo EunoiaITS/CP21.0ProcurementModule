@@ -27,7 +27,8 @@ class PrController extends AppController
     public function indexAuto()
     {
         $this->loadModel('PrAuto');
-        $pr = $this->paginate($this->PrAuto);
+        $pr = $this->PrAuto->find('all')
+        ->Where(['status'=>'requested']);
 
         $this->set(compact('pr'));
     }
