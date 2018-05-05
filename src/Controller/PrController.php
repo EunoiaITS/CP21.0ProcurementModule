@@ -125,8 +125,10 @@ class PrController extends AppController
                             ]);
                             $ii->supplier = $supplier;
                             $count++;
-                            ${'supplier'.$count} = $supplier->name;
-                            ${'price'.$count} = $ii->unit_price;
+                            if($count < 4){
+                                ${'supplier'.$count} = $supplier->name;
+                                ${'price'.$count} = $ii->unit_price;
+                            }
                             $uom = $ii->uom;
                         }
                         $stockAvailable = 0;
@@ -151,6 +153,7 @@ class PrController extends AppController
                             $stockAvailable = abs($dataFromStore->stock_available);
                         }
                         $parts .= '{partNo:"'.$eng->partNo.
+                        '",bomId:"'.$eng->id.
                         '",partName:"'.$eng->partName.
                         '",reqUantity:"'.$eng->quality.
                         '",category:"'.$eng->category.
@@ -173,6 +176,90 @@ class PrController extends AppController
             $so_no .= '{label:"'.$pm->salesorder_no.'",del_date:"'.date('Y-m-d', strtotime($pm->delivery_date)).'",cus_name:"'.$customer.'",parts:['.$parts.']},';
         }
         $so_no = rtrim($so_no, ',');
+
+        $part_nos = $part_names = '';
+        $urlToEngBom = 'http://engmodule.acumenits.com/api/all-bom-parts';
+
+
+        $optionsForEngBom = [
+            'http' => [
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'GET'
+            ]
+        ];
+        $contextForEngBom  = stream_context_create($optionsForEngBom);
+        $resultFromEngBom = file_get_contents($urlToEngBom, false, $contextForEngBom);
+        if ($resultFromEngBom !== FALSE) {
+            $dataFromEngBom = json_decode($resultFromEngBom);
+            foreach($dataFromEngBom as $engBom){
+                $bomUom = $bomSupplier1 = $bomSupplier2 = $bomSupplier3 = '';
+                $bomPrice1 = $bomPrice2 = $bomPrice3 = 0;
+                $bomItems = $this->SupplierItems->find('all', [
+                    'order' => 'SupplierItems.unit_price'
+                ])
+                    ->where(['part_no' => $engBom->partNo])
+                    ->where(['part_name' => $engBom->partName]);
+                $countBom = 0;
+                foreach($bomItems as $bi){
+                    $bomSupplier = $this->Supplier->get($bi->supplier_id, [
+                        'contain' => []
+                    ]);
+                    $countBom++;
+                    if($countBom < 4){
+                        ${'bomSupplier'.$count} = $bomSupplier->name;
+                        ${'bomPrice'.$count} = $bi->unit_price;
+                    }
+                    $bomUom = $bi->uom;
+                }
+                $bomStockAvailable = 0;
+                $urlToStoreBom = 'http://storemodule.acumenits.com/in-stock-code/stock-available';
+                $sendToStoreBom = [
+                    'part_no' => $engBom->partNo,
+                    'part_name' => $engBom->partName
+                ];
+
+
+                $optionsForStoreBom = [
+                    'http' => [
+                        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                        'method'  => 'POST',
+                        'content' => http_build_query($sendToStoreBom)
+                    ]
+                ];
+                $contextForStoreBom = stream_context_create($optionsForStoreBom);
+                $resultFromStoreBom = file_get_contents($urlToStoreBom, false, $contextForStoreBom);
+                if($resultFromStoreBom !== FALSE){
+                    $dataFromStoreBom = json_decode($resultFromStoreBom);
+                    $bomStockAvailable = abs($dataFromStoreBom->stock_available);
+                }
+                $part_nos .= '{label:"'.$engBom->partNo.
+                    '",bomId:"'.$engBom->id.
+                    '",partName:"'.$engBom->partName.
+                    '",reqUantity:"'.$engBom->quality.
+                    '",category:"'.$engBom->category.
+                    '",stockAvailable:"'.$bomStockAvailable.
+                    '",supplier1:"'.$bomSupplier1.
+                    '",supplier2:"'.$bomSupplier2.
+                    '",supplier3:"'.$bomSupplier3.
+                    '",price1:"'.$bomPrice1.
+                    '",price2:"'.$bomPrice2.
+                    '",price3:"'.$bomPrice3.
+                    '",uom:"'.$bomUom.'"},';
+                $part_names .= '{label:"'.$engBom->partName.
+                    '",bomId:"'.$engBom->id.
+                    '",partNo:"'.$engBom->partNo.
+                    '",reqUantity:"'.$engBom->quality.
+                    '",category:"'.$engBom->category.
+                    '",stockAvailable:"'.$bomStockAvailable.
+                    '",supplier1:"'.$bomSupplier1.
+                    '",supplier2:"'.$bomSupplier2.
+                    '",supplier3:"'.$bomSupplier3.
+                    '",price1:"'.$bomPrice1.
+                    '",price2:"'.$bomPrice2.
+                    '",price3:"'.$bomPrice3.
+                    '",uom:"'.$bomUom.'"},';
+            }
+        }
         $this->loadModel('PrManual');
         $this->loadModel('PrManualItems');
         $last_pr = $this->PrManual->find('all')->last();
@@ -186,9 +273,22 @@ class PrController extends AppController
             }
             $this->Flash->error(__('The pr could not be saved. Please, try again.'));
         }
+        $part_nos = rtrim($part_nos, ',');
+        $part_names = rtrim($part_names, ',');
         $this->set(compact('pr'));
         $this->set('last_pr', (isset($last_pr->id) ? ($last_pr->id + 1) : 1));
         $this->set('so_no', $so_no);
+        $this->set('part_nos', $part_nos);
+        $this->set('part_names', $part_names);
+    }
+
+    public function generateManual(){
+        $this->autoRender = false;
+        if($this->request->is('post')){
+            echo '<pre>';
+            print_r($this->request->getData());
+            echo '</pre>';
+        }
     }
 
     /**
