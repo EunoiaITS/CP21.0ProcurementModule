@@ -416,7 +416,7 @@ class PrController extends AppController
                 $part_nos .= '{label:"'.$engBom->partNo.
                     '",bomId:"'.$engBom->id.
                     '",partName:"'.$engBom->partName.
-                    '",reqUantity:"'.$engBom->quality.
+                    '",reqQuantity:"'.$engBom->quality.
                     '",category:"'.$engBom->category.
                     '",stockAvailable:"'.$bomStockAvailable.
                     '",supplier1:"'.$bomSupplier1.
@@ -429,7 +429,7 @@ class PrController extends AppController
                 $part_names .= '{label:"'.$engBom->partName.
                     '",bomId:"'.$engBom->id.
                     '",partNo:"'.$engBom->partNo.
-                    '",reqUantity:"'.$engBom->quality.
+                    '",reqQuantity:"'.$engBom->quality.
                     '",category:"'.$engBom->category.
                     '",stockAvailable:"'.$bomStockAvailable.
                     '",supplier1:"'.$bomSupplier1.

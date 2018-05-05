@@ -14,11 +14,7 @@
                                 <label for="pr-date" class="planner-year">Date <span class="planner-fright">:</span></label>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-<<<<<<< HEAD
                                 <input name="date" type="text" class="form-control datepicker" id="pr-date" value="<?php echo date('Y-m-d'); ?>">
-=======
-                                <input type="text" name="date" class="form-control datepicker" id="pr-date" value="<?php echo date('Y-m-d'); ?>">
->>>>>>> 4e514169ced8bfcc16d11707f6c597f94f12bfeb
                             </div>
                         </div>
                         <div class="form-group">
@@ -173,26 +169,6 @@
                 $.each(parts, function(i, e){
                     counter++;
                     html_table += '<tr>'+
-<<<<<<< HEAD
-                    '<td>'+counter+'</td>'+
-                    '<td>'+ e.partNo+'</td>'+
-                    '<td>'+ e.partName+'</td>'+
-                    '<td>'+ e.supplier1+'</td>'+
-                    '<td>$ <p class="text-right" id="price-1'+counter+'-'+(i+1)+'">'+ e.price1+'</p></td>'+
-                    '<td>'+ e.supplier2+'</td>'+
-                    '<td>$ <p class="text-right" id="price-2'+counter+'-'+(i+1)+'">'+ e.price2+'</p></td>'+
-                    '<td>'+ e.supplier3+'</td>'+
-                    '<td>'+ e.uom+'</td>'+
-                    '<td>$ <p class="text-right" id="price-3'+counter+'-'+(i+1)+'">'+ e.price3+'</p></td>'+
-                    '<td>'+ e.category+'</td>'+
-                    '<td>'+ e.reqQuantity+'</td>'+
-                    '<td>'+ e.stockAvailable+'</td>'+
-                    '<td><input type="number" class="form-control qty-order" id="qty'+counter+'-'+(i+1)+'" rel="'+counter+'-'+(i+1)+'" name="qty_order'+(i+1)+'" value="'+Math.abs(e.reqUantity - e.stockAvailable)+'"></td>'+
-                    '<td><select class="form-control all-supp" id="supp'+counter+'-'+(i+1)+'" rel="'+counter+'-'+(i+1)+'" name="supplier"><option value="'+ e.price1+'">Supplier 1</option><option value="'+ e.price2+'">Supplier 2</option><option value="'+ e.price3+'">Supplier 3</option></select></td>'+
-                    '<td id="subtotal'+counter+'-'+(i+1)+'">'+(Math.abs(e.reqUantity - e.stockAvailable) * e.price1)+'</td>'+
-                    '<td><input type="number" class="form-control gst" id="gst'+counter+'-'+(i+1)+'" rel="'+counter+'-'+(i+1)+'" name="gst'+(i+1)+'" value="6"></td>'+
-                    '<td id="total'+counter+'-'+(i+1)+'">'+(((Math.abs(e.reqUantity - e.stockAvailable) * e.price1) * 6)/100 + (Math.abs(e.reqUantity - e.stockAvailable) * e.price1))+'</td>'+
-=======
                     '<td>'+counter+'<input type="hidden" name="bom-id-'+counter+'" value="'+ e.bomId+'"></td>'+
                     '<td>'+ e.partNo+'<input type="hidden" name="part-no-'+counter+'" value="'+ e.partNo+'"></td>'+
                     '<td>'+ e.partName+'<input type="hidden" name="part-name-'+counter+'" value="'+ e.partName+'"></td>'+
@@ -204,14 +180,13 @@
                     '<td>'+ e.uom+'<input type="hidden" name="uom-'+counter+'" value="'+ e.uom+'"></td>'+
                     '<td>$ <p class="text-right" id="price-3'+counter+'">'+ e.price3+'</p><input type="hidden" name="price-3-'+counter+'" value="'+ e.price3+'"></td>'+
                     '<td>'+ e.category+'<input type="hidden" name="category-'+counter+'" value="'+ e.category+'"></td>'+
-                    '<td>'+ e.reqUantity+'<input type="hidden" name="req-quantity-'+counter+'" value="'+ e.reqUantity+'"></td>'+
+                    '<td>'+ e.reqQuantity+'<input type="hidden" name="req-quantity-'+counter+'" value="'+ e.reqQuantity+'"></td>'+
                     '<td>'+ e.stockAvailable+'<input type="hidden" name="stock-'+counter+'" value="'+ e.stockAvailable+'"></td>'+
                     '<td><input type="number" class="form-control qty-order" id="qty'+counter+'" rel="'+counter+'" name="qty_order'+counter+'" value="'+Math.abs(e.reqUantity - e.stockAvailable)+'"></td>'+
                     '<td><select class="form-control all-supp" id="supp'+counter+'" rel="'+counter+'" name="supplier'+counter+'"><option value="'+ e.price1+'">Supplier 1</option><option value="'+ e.price2+'">Supplier 2</option><option value="'+ e.price3+'">Supplier 3</option></select></td>'+
                     '<td><p id="sub-total-text'+counter+'">'+(Math.abs(e.reqUantity - e.stockAvailable) * e.price1)+'</p><input type="hidden" name="subtotal'+counter+'" id="subtotal'+counter+'" value="'+(Math.abs(e.reqUantity - e.stockAvailable) * e.price1)+'" disabled></td>'+
                     '<td><input type="number" class="form-control gst" id="gst'+counter+'" rel="'+counter+'" name="gst'+counter+'" value="6"></td>'+
                     '<td><p id="total-text'+counter+'">'+(((Math.abs(e.reqUantity - e.stockAvailable) * e.price1) * 6)/100 + (Math.abs(e.reqUantity - e.stockAvailable) * e.price1))+'</p><input type="hidden" name="total'+counter+'" id="total'+counter+'" value="'+(((Math.abs(e.reqUantity - e.stockAvailable) * e.price1) * 6)/100 + (Math.abs(e.reqUantity - e.stockAvailable) * e.price1))+'" disabled></td>'+
->>>>>>> 4e514169ced8bfcc16d11707f6c597f94f12bfeb
                     '<td><a href="#">View</a></td>'+
                     '<td></td>'+
                     '</tr>';

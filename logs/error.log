@@ -8804,3 +8804,28 @@ Stack Trace:
 #15 {main}
 
 
+2018-05-05 11:28:55 Error: [PDOException] SQLSTATE[HY000]: General error: 11 database disk image is malformed in E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php on line 174
+Request URL: /pr/add-manual
+Stack Trace:
+#0 E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(174): PDOStatement->execute(NULL)
+#1 E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(174): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#2 E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\Database\Statement\BufferedStatement.php(76): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\Database\Statement\SqliteStatement.php(41): Cake\Database\Statement\BufferedStatement->execute(NULL)
+#4 E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\Database\Connection.php(315): Cake\Database\Statement\SqliteStatement->execute()
+#5 E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\Database\Query.php(214): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#6 E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\ORM\Table.php(1929): Cake\Database\Query->execute()
+#7 E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\ORM\Table.php(1823): Cake\ORM\Table->_insert(Object(DebugKit\Model\Entity\Request), Array)
+#8 E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\ORM\Table.php(1736): Cake\ORM\Table->_processSave(Object(DebugKit\Model\Entity\Request), Object(ArrayObject))
+#9 E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\ORM\Table.php(1459): Cake\ORM\Table->Cake\ORM\{closure}()
+#10 E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\Database\Connection.php(682): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#11 E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\ORM\Table.php(1460): Cake\Database\Connection->transactional(Object(Closure))
+#12 E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\ORM\Table.php(1737): Cake\ORM\Table->_executeTransaction(Object(Closure), true)
+#13 E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\debug_kit\src\ToolbarService.php(206): Cake\ORM\Table->save(Object(DebugKit\Model\Entity\Request))
+#14 E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php(53): DebugKit\ToolbarService->saveData(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#15 E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\Http\Runner.php(65): DebugKit\Middleware\DebugKitMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#16 E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#17 E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\cakephp\src\Http\Server.php(81): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#18 E:\xampp\htdocs\CP21.0ProcurementModule\webroot\index.php(40): Cake\Http\Server->run()
+#19 {main}
+
+
