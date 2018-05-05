@@ -48,7 +48,7 @@
                                     <td id="qty-<?php echo $count; ?>"><?= $item->quantity ?></td>
                                     <td><?= (isset($s->production_sn->quantity) ? $s->production_sn->quantity : 0) ?></td>
                                     <td><?= (($item->quantity) - (isset($s->production_sn->quantity) ? $s->production_sn->quantity : 0)) ?></td>
-                                    <td><button rel="<?php echo $count; ?>" class="btn btn-info btn-submit btn-popup"  data-toggle="modal" data-target="#myModal">View</button></td>d
+                                    <td><button rel="<?php echo $count; ?>" class="btn btn-info btn-submit btn-popup"  data-toggle="modal" data-target="#myModal">View</button></td>
                                 </tr>
                                 <span id="item-id-<?php echo $count; ?>" class="hidden"><?= $item->id ?></span>
                                 <span id="action-<?php echo $count; ?>" class="hidden"><?= $item->action ?></span>

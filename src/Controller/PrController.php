@@ -40,11 +40,17 @@ class PrController extends AppController
      * @return \Cake\Http\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view($id = null)
+    public function viewAuto($id = null)
     {
-        $pr = $this->Pr->get($id, [
-            'contain' => []
-        ]);
+        $this->loadModel('PrAuto');
+        $this->loadModel('PrAutoItems');
+        $pr = $this->PrAuto->find('all')
+            ->Where(['id'=> $id]);
+        foreach ($pr as $p){
+            $pri = $this->PrAutoItems->find('all')
+                ->Where(['pr_auto_id'=>$p->id]);
+            $p->pri = $pri;
+        }
 
         $this->set('pr', $pr);
     }
