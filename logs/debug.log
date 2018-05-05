@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2018-04-09 09:23:18 Notice: Notice (1024): Please change the value of 'Security.salt' in ROOT/config/app.php to a salt value specific to your application. in [C:\xampp\htdocs\procmod\vendor\cakephp\cakephp\src\Error\Debugger.php, line 960]
 Request URL: /
 Trace:
@@ -27938,3 +27939,5 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+=======
+>>>>>>> 823b6360d2f4b6cfa5d6a069bf127ff053128387
