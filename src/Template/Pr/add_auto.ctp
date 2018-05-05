@@ -1,24 +1,28 @@
+<!--=========
+      Create serial number form page
+      ==============-->
+
 <div class="planner-from">
     <div class="container-fluid">
+        <form action="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'generateAuto'])?>" method="post" class="planner-relative">
         <div class="row">
             <div class="col-sm-12 col-sm-12">
-                <div class="part-title-planner text-uppercase text-center"><b>Purchase Requesition Form Manual</b></div>
-                <form action="#" class="planner-relative">
+                <div class="part-title-planner text-uppercase text-center"><b>PR 1 Generate (auto)</b></div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="col-sm-3 col-xs-6">
                                 <label for="pr-date" class="planner-year">Date <span class="planner-fright">:</span></label>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <input type="text" class="form-control datepicker" id="pr-date">
+                                <input name="date" type="text" class="form-control datepicker" id="pr-date" value="<?php echo date('Y-m-d'); ?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-3 col-xs-6">
-                                <p for="pr-so" class="planner-year">SO NO <span class="planner-fright">:</span></p>
+                                <p class="planner-year">SO NO <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <input type="text" class="form-control" id="pr-so">
+                                <input name="so_no" type="text" class="form-control" name="so_no" id="so-no">
                             </div>
                         </div>
                         <div class="form-group">
@@ -26,7 +30,8 @@
                                 <p class="planner-year">Delivery  Date <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text"></p>
+                                <p class="normal-text" id="del-date"></p>
+                                <input id="delivery-date" type="hidden" name="delivery_date" value="">
                             </div>
                         </div>
                         <div class="form-group">
@@ -34,7 +39,8 @@
                                 <p class="planner-year">Description<span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text"></p>
+                                <p class="normal-text text-uppercase" id="mod-ver"></p>
+                                <input id="description" type="hidden" name="description" value="">
                             </div>
                         </div>
                         <div class="form-group">
@@ -42,19 +48,8 @@
                                 <p class="planner-year">Customer Name<span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text"></p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-3 col-xs-6">
-                                <p class="planner-year">Purchase Type <span class="planner-fright">:</span></p>
-                            </div>
-                            <div class="col-sm-5 col-xs-6">
-                                <select class="form-control">
-                                    <option>1</option>
-                                    <option>1</option>
-                                    <option>1</option>
-                                </select>
+                                <p class="normal-text" id="cus-name"></p>
+                                <input id="customer" type="hidden" name="customer" value="">
                             </div>
                         </div>
                     </div>
@@ -64,7 +59,8 @@
                                 <p class="planner-year">PR NO <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text"><?= $last_pr ?></p>
+                                <p class="normal-text">PR <?= $pr_id?></p>
+                                <input id="pr-id" type="hidden" name="pr_id" value="PR <?= $pr_id?>">
                             </div>
                         </div>
                         <div class="form-group">
@@ -72,7 +68,8 @@
                                 <p class="planner-year">Create by <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text">Azlin</p>
+                                <p id="created-by" class="normal-text">Azlin</p>
+                                <input id="created-name" type="hidden" name="created_by" value="">
                             </div>
                         </div>
                         <div class="form-group">
@@ -91,11 +88,25 @@
                                 <p class="normal-text"></p>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 col-xs-6">
+                                <p class="planner-year">Verify<span class="planner-fright">:</span></p>
+                            </div>
+                            <div class="col-sm-5 col-xs-6">
+                                <p class="normal-text"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 col-xs-6">
+                                <p class="planner-year">Approve<span class="planner-fright">:</span></p>
+                            </div>
+                            <div class="col-sm-5 col-xs-6">
+                                <p class="normal-text"></p>
+                            </div>
+                        </div>
+                        <input type="hidden" name="check" id="check" value="">
                     </div>
-                </form>
             </div>
-
-            </form>
         </div>
 
         <div class="clearfix"></div>
@@ -106,6 +117,7 @@
                     <thead>
                     <tr>
                         <th>No</th>
+                        <th>Select</th>
                         <th>Part No</th>
                         <th>Description</th>
                         <th>Supplier 1</th>
@@ -113,12 +125,13 @@
                         <th>Supplier 2</th>
                         <th>Price (RM)</th>
                         <th>Supplier 3</th>
-                        <th>OUM</th>
+                        <th>UOM</th>
                         <th>Price (RM)</th>
                         <th>Category</th>
                         <th>QTY Request</th>
                         <th>Stock Available</th>
                         <th>QTY Order</th>
+                        <th>Select Supplier</th>
                         <th>Sub Total</th>
                         <th>GST%</th>
                         <th>Total</th>
@@ -126,33 +139,7 @@
                         <th>Remark</th>
                     </tr>
                     </thead>
-                    <tbody class="csn-text-up">
-                    <tr>
-                        <td>1</td>
-                        <td>3</td>
-                        <td>BOLT NUT MX8</td>
-                        <td>INDAH KABAR</td>
-                        <td>$ <p class="text-right">0.50</p></td>
-                        <td>PAN GLOBAL</td>
-                        <td>$ <p class="text-right">0.70</p></td>
-                        <td>CSC Malaysia</td>
-                        <td>PCS</td>
-                        <td>$ <p class="text-right">0.72</p></td>
-                        <td>AD-HDC</td>
-                        <td>1000</td>
-                        <td>500</td>
-                        <td>500</td>
-                        <td>250.00</td>
-                        <td>15.00</td>
-                        <td>265.00</td>
-                        <td><a href="#">View</a></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td colspan="16"></td>
-                        <td>265</td>
-                        <td colspan="2"></td>
-                    </tr>
+                    <tbody class="csn-text-up" id="parts-data">
                     </tbody>
                 </table>
             </div>
@@ -161,9 +148,101 @@
         <div class="clearfix"></div>
         <div class="col-sm-offset-8 col-sm-4 col-xs-12">
             <div class="prepareted-by-csn">
-                <button class="btn btn-info">Add Item</button>
-                <div class="button btn btn-info">Generate PR</div>
+                <button id="generate-auto" type="submit" class="button btn btn-info">Generate PR</button>
             </div>
         </div>
+        </form>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        //alert($('#created-name').attr('value',$('#created-by').text()));
+        var counter = 0;
+        var so_no = 'input#so-no';
+        var data = [<?php echo $so_no; ?>];
+        var options = {
+            source: data,
+            minLength: 0
+        };
+        $(document).on('keydown.autocomplete', so_no, function () {
+            $(this).autocomplete(options);
+        });
+        $(document).on('autocompleteselect', so_no, function (e, ui) {
+            $('#parts-data').empty();
+            $('#del-date').text(ui.item.del_date);
+            $('#delivery-date').val(ui.item.del_date);
+            $('#cus-name').text(ui.item.cus_name);
+            $('#customer').val(ui.item.cus_name);
+            $('#mod-ver').text(ui.item.model + ' (' + ui.item.version + ') ');
+            $('#description').val(ui.item.model + ' (' + ui.item.version + ') ');
+            var parts = ui.item.parts;
+            var html_table = '';
+            if(parts.length !== 0){
+                $.each(parts, function(i, e){
+                    counter++;
+                    html_table += '<tr>'+
+                        '<td>'+counter+'</td>'+
+                        '<td><input id="bom-id" type="hidden" name="bom_part_id'+(i+1)+'" value="'+e.id+'"><input name="checkbox'+(i+1)+'" type="checkbox" class="form-check-input" id="check" value="'+(i+1)+'"></td>'+
+                        '<td><input type=hidden name="part_no'+(i+1)+'" value="'+ e.partNo+'">'+ e.partNo+'</td>'+
+                        '<td><input type=hidden name="part_name'+(i+1)+'" value="'+ e.partName+'">'+ e.partName+'</td>'+
+                        '<td><input type=hidden name="supplier1'+(i+1)+'" value="'+ e.supplier1+'">'+ e.supplier1+'</td>'+
+                        '<td><input type=hidden name="price1'+(i+1)+'" value="'+ e.price1+'">$ <p class="text-right" id="price-1'+counter+'-'+(i+1)+'">'+ e.price1+'</p></td>'+
+                        '<td><input type=hidden name="supplier2'+(i+1)+'" value="'+ e.supplier2+'">'+ e.supplier2+'</td>'+
+                        '<td><input type=hidden name="price2'+(i+1)+'" value="'+ e.price2+'">$ <p class="text-right" id="price-2'+counter+'-'+(i+1)+'">'+ e.price2+'</p></td>'+
+                        '<td><input type=hidden name="supplier3'+(i+1)+'" value="'+ e.supplier3+'">'+ e.supplier3+'</td>'+
+                        '<td><input type=hidden name="uom'+(i+1)+'" value="'+ e.uom+'">'+ e.uom+'</td>'+
+                        '<td><input type=hidden name="price3'+(i+1)+'" value="'+ e.price3+'">$ <p class="text-right" id="price-3'+counter+'-'+(i+1)+'">'+ e.price3+'</p></td>'+
+                        '<td><input type=hidden name="category'+(i+1)+'" value="'+ e.category+'">'+ e.category+'</td>'+
+                        '<td><input type=hidden name="reqQuantity'+(i+1)+'" value="'+ e.reqQuantity+'">'+ e.reqQuantity+'</td>'+
+                        '<td><input type=hidden name="stockAvailable'+(i+1)+'" value="'+ e.stockAvailable+'">'+ e.stockAvailable+'</td>'+
+                        '<td><input type="number" class="form-control qty-order" id="qty'+counter+'-'+(i+1)+'" rel="'+counter+'-'+(i+1)+'" name="order_qty'+(i+1)+'" value="'+Math.abs(e.reqUantity - e.stockAvailable)+'"></td>'+
+                        '<td><select class="form-control all-supp" id="supp'+counter+'-'+(i+1)+'" rel="'+counter+'-'+(i+1)+'" name="supplier'+(i+1)+'"><option value="'+ e.price1+'">Supplier 1</option><option value="'+ e.price2+'">Supplier 2</option><option value="'+ e.price3+'">Supplier 3</option></select></td>'+
+                        '<td id="subtotal'+counter+'-'+(i+1)+'">'+(Math.abs(e.reqUantity - e.stockAvailable) * e.price1)+'<input type="hidden" name="sub_total'+(i+1)+'" value="'+(Math.abs(e.reqUantity - e.stockAvailable) * e.price1)+'"></td>'+
+                        '<td><input type="number" class="form-control gst" id="gst'+counter+'-'+(i+1)+'" rel="'+counter+'-'+(i+1)+'" name="gst'+(i+1)+'" value="6"></td>'+
+                        '<td id="total'+counter+'-'+(i+1)+'">'+(((Math.abs(e.reqUantity - e.stockAvailable) * e.price1) * 6)/100 + (Math.abs(e.reqUantity - e.stockAvailable) * e.price1))+'<input type="hidden" name="total'+(i+1)+'" value="'+(((Math.abs(e.reqUantity - e.stockAvailable) * e.price1) * 6)/100 + (Math.abs(e.reqUantity - e.stockAvailable) * e.price1))+'""></td>'+
+                        '<td><a href="#">View</a></td>'+
+                        '<td></td>'+
+                        '<input type="hidden" name="counter" value="'+counter+'">'+
+                        '</tr>';
+                });
+            }
+            if($('#append-here').length == 0){
+                html_table += '<tr id="append-here">'+
+                    '<td colspan="18"></td>'+
+                    '<td>265</td>'+
+                    '<td colspan="2"></td>'+
+                    '</tr>';
+                $('#parts-data').append(html_table);
+            }else{
+                $('#append-here').before(html_table);
+            }
+            $('.all-supp').on('change', function(e){
+                e.preventDefault();
+                var relate = $(this).attr('rel');
+                var price = $('#supp'+relate+' :selected').val();
+                var qty_order = $('#qty'+relate).val();
+                var gst = $('#gst'+relate).val();
+                $('#subtotal'+relate).text(price*qty_order);
+                $('#total'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
+            });
+            $('.qty-order').on('change', function(e){
+                e.preventDefault();
+                var relate = $(this).attr('rel');
+                var price = $('#supp'+relate+' :selected').val();
+                var qty_order = $('#qty'+relate).val();
+                var gst = $('#gst'+relate).val();
+                $('#subtotal'+relate).text(price*qty_order);
+                $('#total'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
+            });
+            $('.gst').on('change', function(e){
+                e.preventDefault();
+                var relate = $(this).attr('rel');
+                var price = $('#supp'+relate+' :selected').val();
+                var qty_order = $('#qty'+relate).val();
+                var gst = $('#gst'+relate).val();
+                $('#subtotal'+relate).text(price*qty_order);
+                $('#total'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
+            });
+        });
+    });
+</script>

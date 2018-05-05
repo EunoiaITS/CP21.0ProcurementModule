@@ -14,7 +14,7 @@
                                 <label for="pr-date" class="planner-year">Date <span class="planner-fright">:</span></label>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <input type="text" class="form-control datepicker" id="pr-date" value="<?php echo date('Y-m-d'); ?>">
+                                <input name="date" type="text" class="form-control datepicker" id="pr-date" value="<?php echo date('Y-m-d'); ?>">
                             </div>
                         </div>
                         <div class="form-group">
@@ -22,7 +22,7 @@
                                 <p class="planner-year">SO NO <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <input type="text" class="form-control" name="so_no" id="so-no">
+                                <input name="so_no" type="text" class="form-control" name="so_no" id="so-no">
                             </div>
                         </div>
                         <div class="form-group">
@@ -69,7 +69,8 @@
                                 <p class="planner-year">Create by <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text">Azlin</p>
+                                <p id="created-by" class="normal-text">Azlin</p>
+                                <input id="created-name" type="hidden" name="created_by" value="">
                             </div>
                         </div>
                         <div class="form-group">
@@ -110,7 +111,7 @@
                         <th>Supplier 2</th>
                         <th>Price (RM)</th>
                         <th>Supplier 3</th>
-                        <th>OUM</th>
+                        <th>UOM</th>
                         <th>Price (RM)</th>
                         <th>Category</th>
                         <th>QTY Request</th>
@@ -146,6 +147,7 @@
 
 <script>
     $(document).ready(function(){
+        $('#created-name').val($('#created-by').val());
         var counter = 0;
         var so_no = 'input#so-no';
         var data = [<?php echo $so_no; ?>];
@@ -177,7 +179,7 @@
                     '<td>'+ e.uom+'</td>'+
                     '<td>$ <p class="text-right" id="price-3'+counter+'-'+(i+1)+'">'+ e.price3+'</p></td>'+
                     '<td>'+ e.category+'</td>'+
-                    '<td>'+ e.reqUantity+'</td>'+
+                    '<td>'+ e.reqQuantity+'</td>'+
                     '<td>'+ e.stockAvailable+'</td>'+
                     '<td><input type="number" class="form-control qty-order" id="qty'+counter+'-'+(i+1)+'" rel="'+counter+'-'+(i+1)+'" name="qty_order'+(i+1)+'" value="'+Math.abs(e.reqUantity - e.stockAvailable)+'"></td>'+
                     '<td><select class="form-control all-supp" id="supp'+counter+'-'+(i+1)+'" rel="'+counter+'-'+(i+1)+'" name="supplier"><option value="'+ e.price1+'">Supplier 1</option><option value="'+ e.price2+'">Supplier 2</option><option value="'+ e.price3+'">Supplier 3</option></select></td>'+

@@ -41,7 +41,7 @@ class PrAutoItemsTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('PrAutos', [
+        $this->belongsTo('PrAuto', [
             'foreignKey' => 'pr_auto_id',
             'joinType' => 'INNER'
         ]);
@@ -61,13 +61,11 @@ class PrAutoItemsTable extends Table
 
         $validator
             ->integer('bom_part_id')
-            ->requirePresence('bom_part_id', 'create')
-            ->notEmpty('bom_part_id');
+            ->allowEmpty('bom_part_id');
 
         $validator
-            ->integer('order_qty')
-            ->requirePresence('order_qty', 'create')
-            ->notEmpty('order_qty');
+            ->scalar('order_qty')
+            ->allowEmpty('order_qty');
 
         $validator
             ->scalar('supplier')
@@ -75,18 +73,16 @@ class PrAutoItemsTable extends Table
             ->allowEmpty('supplier');
 
         $validator
-            ->integer('sub_total')
-            ->requirePresence('sub_total', 'create')
-            ->notEmpty('sub_total');
+            ->scalar('sub_total')
+            ->allowEmpty('sub_total');
 
         $validator
-            ->integer('gst')
+            ->scalar('gst')
             ->allowEmpty('gst');
 
         $validator
-            ->integer('total')
-            ->requirePresence('total', 'create')
-            ->notEmpty('total');
+            ->scalar('total')
+            ->allowEmpty('total');
 
         $validator
             ->scalar('docs')
@@ -110,7 +106,7 @@ class PrAutoItemsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['pr_auto_id'], 'PrAutos'));
+        $rules->add($rules->existsIn(['pr_auto_id'], 'PrAuto'));
 
         return $rules;
     }
