@@ -114,13 +114,9 @@
                         <th>No</th>
                         <th>Part No</th>
                         <th>Description</th>
-                        <th>Supplier 1</th>
+                        <th>Supplier</th>
                         <th>Price (RM)</th>
-                        <th>Supplier 2</th>
-                        <th>Price (RM)</th>
-                        <th>Supplier 3</th>
                         <th>UOM</th>
-                        <th>Price (RM)</th>
                         <th>Category</th>
                         <th>QTY Request</th>
                         <th>Stock Available</th>
@@ -137,16 +133,12 @@
                         <td><?= $count ?></td>
                         <td><?= $pr['part_no'] ?></td>
                         <td><?= $pr['part_name'] ?></td>
-                        <td><?= $pr['supplier1'] ?></td>
-                        <td>$<?= $pr['price1'] ?></td>
-                        <td><?= $pr['supplier2'] ?></td>
-                        <td>$<?= $pr['price2'] ?></td>
-                        <td><?= $pr['supplier3'] ?></td>
-                        <td><?= $pr['uom'] ?></td>
-                        <td>$<?= $pr['price3'] ?></td>
-                        <td><?= $pr['category'] ?></td>
-                        <td><?= $pr['req_quantity'] ?></td>
-                        <td><?= $pr['stock_available'] ?></td>
+                        <td><input type="hidden" name="supplier<?= $count ?>" value="<?= $pr['supplier'] ?>"><?= $pr['supplier'] ?></td>
+                        <td><input type="hidden" name="price<?= $count ?>" value="<?= $pr['price'] ?>">$<?= $pr['price'] ?></td>
+                        <td><input type="hidden" name="uom<?= $count ?>" value="<?= $pr['uom'] ?>"><?= $pr['uom'] ?></td>
+                        <td><input type="hidden" name="category<?= $count ?>" value="<?= $pr['category'] ?>"><?= $pr['category'] ?></td>
+                        <td><input type="hidden" name="req_quantity<?= $count ?>" value="<?= $pr['req_quantity'] ?>"><?= $pr['req_quantity'] ?></td>
+                        <td><input type="hidden" name="stock_available<?= $count ?>" value="<?= $pr['stock_available'] ?>"><?= $pr['stock_available'] ?></td>
                         <td><input type="hidden" name="order_qty<?= $count?>" value="<?= $pr['order_qty'] ?>"><?= $pr['order_qty'] ?></td>
                         <td><input type="hidden" name="sub_total<?= $count?>" value="<?= $pr['sub_total'] ?>"><?= $pr['sub_total'] ?></td>
                         <td><input type="hidden" name="gst<?= $count?>" value="<?= $pr['gst'] ?>"><?= $pr['gst'] ?></td>

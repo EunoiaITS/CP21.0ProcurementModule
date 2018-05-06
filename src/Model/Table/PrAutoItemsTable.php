@@ -68,6 +68,26 @@ class PrAutoItemsTable extends Table
             ->allowEmpty('order_qty');
 
         $validator
+            ->scalar('price')
+            ->allowEmpty('price');
+
+        $validator
+            ->scalar('req_quantity')
+            ->allowEmpty('req_quantity');
+
+        $validator
+            ->scalar('category')
+            ->allowEmpty('category');
+
+        $validator
+            ->scalar('uom')
+            ->allowEmpty('uom');
+
+        $validator
+            ->scalar('stock_available')
+            ->allowEmpty('stock_available');
+
+        $validator
             ->scalar('supplier')
             ->maxLength('supplier', 50)
             ->allowEmpty('supplier');
