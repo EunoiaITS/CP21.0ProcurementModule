@@ -251,7 +251,7 @@ class PrController extends AppController
                 }
                 $this->Flash->success(__('The pr has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'indexAuto']);
             }
             $this->Flash->error(__('The pr could not be saved. Please, try again.'));
             }
@@ -525,7 +525,7 @@ class PrController extends AppController
     }
 
     public function submitManual(){
-        $this->autoRender = false;
+       // $this->autoRender = false;
         $this->loadModel('PrManual');
         $this->loadModel('PrManualItems');
         $pr = $this->PrManual->newEntity();
@@ -552,7 +552,7 @@ class PrController extends AppController
                 }
                 $this->Flash->success(__('The pr has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'edit']);
             }
             $this->Flash->error(__('The pr could not be saved. Please, try again.'));
         }
