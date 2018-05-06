@@ -41,7 +41,7 @@ class PrManualItemsTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('PrManuals', [
+        $this->belongsTo('PrManual', [
             'foreignKey' => 'pr_manual_id',
             'joinType' => 'INNER'
         ]);
@@ -66,8 +66,7 @@ class PrManualItemsTable extends Table
 
         $validator
             ->integer('order_qty')
-            ->requirePresence('order_qty', 'create')
-            ->notEmpty('order_qty');
+            ->allowEmpty('order_qty');
 
         $validator
             ->scalar('supplier')
@@ -76,8 +75,7 @@ class PrManualItemsTable extends Table
 
         $validator
             ->integer('sub_total')
-            ->requirePresence('sub_total', 'create')
-            ->notEmpty('sub_total');
+            ->allowEmpty('sub_total');
 
         $validator
             ->integer('gst')
@@ -85,8 +83,7 @@ class PrManualItemsTable extends Table
 
         $validator
             ->integer('total')
-            ->requirePresence('total', 'create')
-            ->notEmpty('total');
+            ->allowEmpty('total');
 
         $validator
             ->scalar('docs')
@@ -110,7 +107,7 @@ class PrManualItemsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['pr_manual_id'], 'PrManuals'));
+        $rules->add($rules->existsIn(['pr_manual_id'], 'PrManual'));
 
         return $rules;
     }

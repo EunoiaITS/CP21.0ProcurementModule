@@ -33,6 +33,15 @@ class PrController extends AppController
         $this->set(compact('pr'));
     }
 
+    public function manualRequests()
+    {
+        $this->loadModel('PrManual');
+        $pr = $this->PrManual->find('all')
+            ->Where(['status'=>'requested']);
+
+        $this->set(compact('pr'));
+    }
+
     /**
      * View method
      *
@@ -254,8 +263,8 @@ class PrController extends AppController
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The pr could not be saved. Please, try again.'));
-            }
         }
+    }
 
     public function addManual()
     {
@@ -525,34 +534,37 @@ class PrController extends AppController
     }
 
     public function submitManual(){
-        $this->autoRender = false;
-        $this->loadModel('PrManual');
-        $this->loadModel('PrManualItems');
-        $pr = $this->PrManual->newEntity();
-        if ($this->request->is('post')) {
-            $pr = $this->PrManual->patchEntity($pr, $this->request->getData());
-            if ($this->PrManual->save($pr)) {
-                $pr_no = $this->PrManual->find('all', ['fields' => 'id'])->last();
+        if($this->request->is('post')){
+            $this->loadModel('PrManual');
+            $this->loadModel('PrManualItems');
+            $pr = $this->PrManual->newEntity();
+            $pr->date = $this->request->getData('date');
+            $pr->so_no = $this->request->getData('so_no');
+            $pr->purchase_type = $this->request->getData('purchase_type');
+            $pr->created_by = $this->request->getData('created_by');
+            $pr->status = 'requested';
+            $pr_itm = array();
+            $prChild = TableRegistry::get('PrManualItems');
+            if($this->PrManual->save($pr)){
+                $pr_id = $this->PrManual->find('all',['fields'=>'id'])->last();
                 if($this->request->getData('count') != null){
-                    $prItems = TableRegistry::get('PrManualItems');
-                    $items = array();
-                    for($i = 1; $i <= $this->request->getData('count'); $i++){
-                        $items[$i]['pr_manual_id'] = $pr_no['id'];
-                        $items[$i]['bom_part_id'] = $this->request->getData('bom-id'.$i);
-                        $items[$i]['supplier'] = $this->request->getData('supplier'.$i);
-                        $items[$i]['order_qty'] = $this->request->getData('order_qty'.$i);
-                        $items[$i]['sub_total'] = $this->request->getData('subtotal'.$i);
-                        $items[$i]['gst'] = $this->request->getData('gst'.$i);
-                        $items[$i]['total'] = $this->request->getData('total'.$i);
+                    for ($i=1;$i <= $this->request->getData('count');$i++){
+                        $pr_itm[$i]['pr_manual_id'] = $pr_id['id'];
+                        $pr_itm[$i]['bom_part_id'] = $this->request->getData('bom-id'.$i);
+                        $pr_itm[$i]['order_qty'] = $this->request->getData('order-qty'.$i);
+                        $pr_itm[$i]['supplier'] = $this->request->getData('supplier' . $i);
+                        $pr_itm[$i]['sub_total'] = $this->request->getData('subtotal' . $i);
+                        $pr_itm[$i]['gst'] = $this->request->getData('gst' . $i);
+                        $pr_itm[$i]['total'] = $this->request->getData('total' . $i);
                     }
-                    $allItems = $prItems->newEntities($items);
-                    foreach($allItems as $item){
-                        $prItems->save($item);
+                    $prs = $prChild->newEntities($pr_itm);
+                    foreach ($prs as $p){
+                        $prChild->save($p);
                     }
                 }
                 $this->Flash->success(__('The pr has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'manualRequests']);
             }
             $this->Flash->error(__('The pr could not be saved. Please, try again.'));
         }
