@@ -24,7 +24,7 @@ class PrController extends AppController
      *
      * @return \Cake\Http\Response|void
      */
-    public function indexAuto()
+    public function autoRequest()
     {
         $this->loadModel('PrAuto');
         $pr = $this->PrAuto->find('all')
@@ -193,12 +193,16 @@ class PrController extends AppController
                     $pr_items[$i]['bom_part_id'] = $this->request->getData('bom_part_id'.$i);
                     $pr_items[$i]['part_no'] = $this->request->getData('part_no' . $i);
                     $pr_items[$i]['part_name'] = $this->request->getData('part_name' . $i);
-                    $pr_items[$i]['supplier1'] = $this->request->getData('supplier1' . $i);
-                    $pr_items[$i]['supplier2'] = $this->request->getData('supplier2' . $i);
-                    $pr_items[$i]['supplier3'] = $this->request->getData('supplier3' . $i);
-                    $pr_items[$i]['price1'] = $this->request->getData('price1' . $i);
-                    $pr_items[$i]['price2'] = $this->request->getData('price2' . $i);
-                    $pr_items[$i]['price3'] = $this->request->getData('price3' . $i);
+                    if($this->request->getData('supplier'.$i) == 2){
+                        $pr_items[$i]['supplier'] = $this->request->getData('supplier2' . $i);
+                        $pr_items[$i]['price'] = $this->request->getData('price2' . $i);
+                    }elseif($this->request->getData('supplier'.$i) == 3){
+                        $pr_items[$i]['supplier'] = $this->request->getData('supplier3' . $i);
+                        $pr_items[$i]['price'] = $this->request->getData('price3' . $i);
+                    }else{
+                        $pr_items[$i]['supplier'] = $this->request->getData('supplier1' . $i);
+                        $pr_items[$i]['price'] = $this->request->getData('price1' . $i);
+                    }
                     $pr_items[$i]['uom'] = $this->request->getData('uom' . $i);
                     $pr_items[$i]['category'] = $this->request->getData('category' . $i);
                     $pr_items[$i]['req_quantity'] = $this->request->getData('reqQuantity' . $i);
@@ -221,6 +225,10 @@ class PrController extends AppController
     }
     public function submitAuto(){
         if($this->request->is('post')){
+//            $this->autoRender = 'false';
+//            echo "<pre>";
+//            print_r($this->request);
+//            echo "</pre>";
             $this->loadModel('PrAuto');
             $this->loadModel('PrAutoItems');
             $pr = $this->PrAuto->newEntity();
@@ -239,10 +247,15 @@ class PrController extends AppController
                         $pr_itm[$i]['pr_auto_id'] = $pr_id['id'];
                         $pr_itm[$i]['bom_part_id'] = $this->request->getData('bom_part_id'.$i);
                         $pr_itm[$i]['order_qty'] = $this->request->getData('order_qty'.$i);
-                        $pr_itm[$i]['order_qty'] = $this->request->getData('supplier' . $i);
-                        $pr_itm[$i]['sub_total'] = $this->request->getData('sub_total' . $i);
-                        $pr_itm[$i]['gst'] = $this->request->getData('gst' . $i);
-                        $pr_itm[$i]['total'] = $this->request->getData('total' . $i);
+                        $pr_itm[$i]['uom'] = $this->request->getData('uom'.$i);
+                        $pr_itm[$i]['req_quantity'] = $this->request->getData('req_quantity'.$i);
+                        $pr_itm[$i]['supplier'] = $this->request->getData('supplier'.$i);
+                        $pr_itm[$i]['price'] = $this->request->getData('price'.$i);
+                        $pr_itm[$i]['category'] = $this->request->getData('category'.$i);
+                        $pr_itm[$i]['stock_available'] = $this->request->getData('stock_available'.$i);
+                        $pr_itm[$i]['sub_total'] = $this->request->getData('sub_total'.$i);
+                        $pr_itm[$i]['gst'] = $this->request->getData('gst'.$i);
+                        $pr_itm[$i]['total'] = $this->request->getData('total'.$i);
                     }
                     $prs = $prChild->newEntities($pr_itm);
                     foreach ($prs as $p){
@@ -251,7 +264,7 @@ class PrController extends AppController
                 }
                 $this->Flash->success(__('The pr has been saved.'));
 
-                return $this->redirect(['action' => 'indexAuto']);
+                return $this->redirect(['action' => 'autoRequest']);
             }
             $this->Flash->error(__('The pr could not be saved. Please, try again.'));
             }

@@ -196,8 +196,8 @@
                         '<td><input type=hidden name="reqQuantity'+(i+1)+'" value="'+ e.reqQuantity+'">'+ e.reqQuantity+'</td>'+
                         '<td><input type=hidden name="stockAvailable'+(i+1)+'" value="'+ e.stockAvailable+'">'+ e.stockAvailable+'</td>'+
                         '<td><input type="number" class="form-control qty-order" id="qty'+counter+'-'+(i+1)+'" rel="'+counter+'-'+(i+1)+'" name="order_qty'+(i+1)+'" value="'+Math.abs(e.reqUantity - e.stockAvailable)+'"></td>'+
-                        '<td><select class="form-control all-supp" id="supp'+counter+'-'+(i+1)+'" rel="'+counter+'-'+(i+1)+'" name="supplier'+(i+1)+'"><option value="'+ e.price1+'">Supplier 1</option><option value="'+ e.price2+'">Supplier 2</option><option value="'+ e.price3+'">Supplier 3</option></select></td>'+
-                        '<td id="subtotal'+counter+'-'+(i+1)+'">'+(Math.abs(e.reqUantity - e.stockAvailable) * e.price1)+'<input type="hidden" name="sub_total'+(i+1)+'" value="'+(Math.abs(e.reqUantity - e.stockAvailable) * e.price1)+'"></td>'+
+                        '<td><select class="form-control all-supp" id="supp'+counter+'-'+(i+1)+'" rel="'+counter+'-'+(i+1)+'" name="supplier'+(i+1)+'"><option value="1">Supplier 1</option><option value="2">Supplier 2</option><option value="3">Supplier 3</option></select></td>'+
+                        '<td><p id="sub-total-text'+counter+'"></p><input type="hidden" name="sub_total'+(i+1)+'" id="subtotal'+counter+'"></td>'+
                         '<td><input type="number" class="form-control gst" id="gst'+counter+'-'+(i+1)+'" rel="'+counter+'-'+(i+1)+'" name="gst'+(i+1)+'" value="6"></td>'+
                         '<td id="total'+counter+'-'+(i+1)+'">'+(((Math.abs(e.reqUantity - e.stockAvailable) * e.price1) * 6)/100 + (Math.abs(e.reqUantity - e.stockAvailable) * e.price1))+'<input type="hidden" name="total'+(i+1)+'" value="'+(((Math.abs(e.reqUantity - e.stockAvailable) * e.price1) * 6)/100 + (Math.abs(e.reqUantity - e.stockAvailable) * e.price1))+'""></td>'+
                         '<td><a href="#">View</a></td>'+
@@ -219,29 +219,59 @@
             $('.all-supp').on('change', function(e){
                 e.preventDefault();
                 var relate = $(this).attr('rel');
-                var price = $('#supp'+relate+' :selected').val();
+                var price = 0;
+                var selectedSup = $('#supp'+relate+' :selected').val();
+                if(selectedSup === '2'){
+                    price = $('#price-2'+relate).text();
+                }else if(selectedSup === '3'){
+                    price = $('#price-3'+relate).text();
+                }else{
+                    price = $('#price-1'+relate).text();
+                }
                 var qty_order = $('#qty'+relate).val();
                 var gst = $('#gst'+relate).val();
-                $('#subtotal'+relate).text(price*qty_order);
-                $('#total'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
+                $('#subtotal'+relate).val(price*qty_order);
+                $('#total'+relate).val((price*qty_order)+(((price*qty_order)*gst)/100));
+                $('#sub-total-text'+relate).text(price*qty_order);
+                $('#total-text'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
             });
             $('.qty-order').on('change', function(e){
                 e.preventDefault();
                 var relate = $(this).attr('rel');
-                var price = $('#supp'+relate+' :selected').val();
+                var price = 0;
+                var selectedSup = $('#supp'+relate+' :selected').val();
+                if(selectedSup === '2'){
+                    price = $('#price-2'+relate).text();
+                }else if(selectedSup === '3'){
+                    price = $('#price-3'+relate).text();
+                }else{
+                    price = $('#price-1'+relate).text();
+                }
                 var qty_order = $('#qty'+relate).val();
                 var gst = $('#gst'+relate).val();
-                $('#subtotal'+relate).text(price*qty_order);
-                $('#total'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
+                $('#subtotal'+relate).val(price*qty_order);
+                $('#total'+relate).val((price*qty_order)+(((price*qty_order)*gst)/100));
+                $('#sub-total-text'+relate).text(price*qty_order);
+                $('#total-text'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
             });
             $('.gst').on('change', function(e){
                 e.preventDefault();
                 var relate = $(this).attr('rel');
-                var price = $('#supp'+relate+' :selected').val();
+                var price = 0;
+                var selectedSup = $('#supp'+relate+' :selected').val();
+                if(selectedSup === '2'){
+                    price = $('#price-2'+relate).text();
+                }else if(selectedSup === '3'){
+                    price = $('#price-3'+relate).text();
+                }else{
+                    price = $('#price-1'+relate).text();
+                }
                 var qty_order = $('#qty'+relate).val();
                 var gst = $('#gst'+relate).val();
-                $('#subtotal'+relate).text(price*qty_order);
-                $('#total'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
+                $('#subtotal'+relate).val(price*qty_order);
+                $('#total'+relate).val((price*qty_order)+(((price*qty_order)*gst)/100));
+                $('#sub-total-text'+relate).text(price*qty_order);
+                $('#total-text'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
             });
         });
     });
