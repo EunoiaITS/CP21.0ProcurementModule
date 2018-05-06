@@ -49,8 +49,8 @@
       <file leaf-file-name="PrController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/PrController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="21.442923" vertical-offset="648" max-vertical-offset="14928">
-              <caret line="614" column="5" selection-start-line="614" selection-start-column="5" selection-end-line="614" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.6712329" vertical-offset="12975" max-vertical-offset="15288">
+              <caret line="559" column="48" selection-start-line="559" selection-start-column="48" selection-end-line="559" selection-end-column="48" />
               <folding>
                 <element signature="e#33#66#0#PHP" expanded="true" />
               </folding>
@@ -143,54 +143,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true">
-    <include_path>
-      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
-      <path value="$PROJECT_DIR$/vendor/symfony/config" />
-      <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
-      <path value="$PROJECT_DIR$/vendor/psr/log" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
-      <path value="$PROJECT_DIR$/vendor/symfony/console" />
-      <path value="$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir" />
-      <path value="$PROJECT_DIR$/vendor/symfony/process" />
-      <path value="$PROJECT_DIR$/vendor/cakephp/debug_kit" />
-      <path value="$PROJECT_DIR$/vendor/cakephp/chronos" />
-      <path value="$PROJECT_DIR$/vendor/cakephp/bake" />
-      <path value="$PROJECT_DIR$/vendor/composer" />
-      <path value="$PROJECT_DIR$/vendor/cakephp/plugin-installer" />
-      <path value="$PROJECT_DIR$/vendor/cakephp/cakephp" />
-      <path value="$PROJECT_DIR$/vendor/cakephp/cakephp-codesniffer" />
-      <path value="$PROJECT_DIR$/vendor/aptoma/twig-markdown" />
-      <path value="$PROJECT_DIR$/vendor/cakephp/migrations" />
-      <path value="$PROJECT_DIR$/vendor/twig/twig" />
-      <path value="$PROJECT_DIR$/vendor/seld/cli-prompt" />
-      <path value="$PROJECT_DIR$/vendor/m1/env" />
-      <path value="$PROJECT_DIR$/vendor/seld/phar-utils" />
-      <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
-      <path value="$PROJECT_DIR$/vendor/seld/jsonlint" />
-      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
-      <path value="$PROJECT_DIR$/vendor/symfony/debug" />
-      <path value="$PROJECT_DIR$/vendor/psy/psysh" />
-      <path value="$PROJECT_DIR$/vendor/justinrainbow/json-schema" />
-      <path value="$PROJECT_DIR$/vendor/zendframework/zend-diactoros" />
-      <path value="$PROJECT_DIR$/vendor/josegonzalez/dotenv" />
-      <path value="$PROJECT_DIR$/vendor/mobiledetect/mobiledetectlib" />
-      <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-highlighter" />
-      <path value="$PROJECT_DIR$/vendor/aura/intl" />
-      <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-color" />
-      <path value="$PROJECT_DIR$/vendor/umpirsky/twig-php-function" />
-      <path value="$PROJECT_DIR$/vendor/jdorn/sql-formatter" />
-      <path value="$PROJECT_DIR$/vendor/robmorgan/phinx" />
-      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
-      <path value="$PROJECT_DIR$/vendor/squizlabs/php_codesniffer" />
-      <path value="$PROJECT_DIR$/vendor/asm89/twig-cache-extension" />
-      <path value="$PROJECT_DIR$/vendor/wyrihaximus/twig-view" />
-      <path value="$PROJECT_DIR$/vendor/jasny/twig-extensions" />
-      <path value="$PROJECT_DIR$/vendor/ajgl/breakpoint-twig-extension" />
-      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
-    </include_path>
-  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
@@ -421,7 +374,7 @@
     <option name="totallyTimeSpent" value="88074000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1552" height="840" extended-state="7" />
+    <frame x="-8" y="-8" width="1552" height="840" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -497,13 +450,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="273" column="34" selection-start-line="273" selection-start-column="34" selection-end-line="273" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/UsersController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
@@ -515,13 +461,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="273" column="34" selection-start-line="273" selection-start-column="34" selection-end-line="273" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -662,13 +601,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="432" column="63" selection-start-line="432" selection-start-column="63" selection-end-line="432" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="273" column="34" selection-start-line="273" selection-start-column="34" selection-end-line="273" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -832,8 +764,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/PrController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="21.442923" vertical-offset="648" max-vertical-offset="14928">
-          <caret line="614" column="5" selection-start-line="614" selection-start-column="5" selection-end-line="614" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.6712329" vertical-offset="12975" max-vertical-offset="15288">
+          <caret line="559" column="48" selection-start-line="559" selection-start-column="48" selection-end-line="559" selection-end-column="48" />
           <folding>
             <element signature="e#33#66#0#PHP" expanded="true" />
           </folding>
