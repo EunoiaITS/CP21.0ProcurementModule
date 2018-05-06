@@ -187,11 +187,11 @@
                     '<td>'+ e.category+'<input type="hidden" name="category-'+counter+'" value="'+ e.category+'"></td>'+
                     '<td>'+ e.reqQuantity+'<input type="hidden" name="req-quantity-'+counter+'" value="'+ e.reqQuantity+'"></td>'+
                     '<td>'+ e.stockAvailable+'<input type="hidden" name="stock-'+counter+'" value="'+ e.stockAvailable+'"></td>'+
-                    '<td><input type="number" class="form-control qty-order" id="qty'+counter+'" rel="'+counter+'" name="qty_order'+counter+'" value="'+Math.abs(e.reqUantity - e.stockAvailable)+'"></td>'+
+                    '<td><input type="number" class="form-control qty-order" id="qty'+counter+'" rel="'+counter+'" name="qty_order'+counter+'" value="'+Math.abs(e.reqQuantity - e.stockAvailable)+'"></td>'+
                     '<td><select class="form-control all-supp" id="supp'+counter+'" rel="'+counter+'" name="supplier'+counter+'"><option value="1">Supplier 1</option><option value="2">Supplier 2</option><option value="3">Supplier 3</option></select></td>'+
-                    '<td><p id="sub-total-text'+counter+'">'+(Math.abs(e.reqUantity - e.stockAvailable) * e.price1)+'</p><input type="hidden" name="subtotal'+counter+'" id="subtotal'+counter+'" value="'+(Math.abs(e.reqUantity - e.stockAvailable) * e.price1)+'"></td>'+
+                    '<td><p id="sub-total-text'+counter+'">'+(Math.abs(e.reqQuantity - e.stockAvailable) * e.price1)+'</p><input type="hidden" name="subtotal'+counter+'" id="subtotal'+counter+'" value="'+(Math.abs(e.reqQuantity - e.stockAvailable) * e.price1)+'"></td>'+
                     '<td><input type="number" class="form-control gst" id="gst'+counter+'" rel="'+counter+'" name="gst'+counter+'" value="6"></td>'+
-                    '<td><p id="total-text'+counter+'">'+(((Math.abs(e.reqUantity - e.stockAvailable) * e.price1) * 6)/100 + (Math.abs(e.reqUantity - e.stockAvailable) * e.price1))+'</p><input type="hidden" name="total'+counter+'" id="total'+counter+'" value="'+(((Math.abs(e.reqUantity - e.stockAvailable) * e.price1) * 6)/100 + (Math.abs(e.reqUantity - e.stockAvailable) * e.price1))+'"></td>'+
+                    '<td><p id="total-text'+counter+'">'+(((Math.abs(e.reqQuantity - e.stockAvailable) * e.price1) * 6)/100 + (Math.abs(e.reqQuantity - e.stockAvailable) * e.price1))+'</p><input type="hidden" name="total'+counter+'" id="total'+counter+'" value="'+(((Math.abs(e.reqQuantity - e.stockAvailable) * e.price1) * 6)/100 + (Math.abs(e.reqQuantity - e.stockAvailable) * e.price1))+'"></td>'+
                     '<td><a href="#">View</a></td>'+
                     '<td></td>'+
                     '</tr>';
@@ -410,16 +410,16 @@
             $('#cat-in-'+partRel).val(ui.item.category);
             $('#uom-in-'+partRel).val(ui.item.uom);
             $('#stock-in-'+partRel).val(ui.item.stockAvailable);
-            $('#qty-req-in-'+partRel).val(ui.item.reqUantity);
+            $('#qty-req-in-'+partRel).val(ui.item.reqQuantity);
             $('#cat-'+partRel).text(ui.item.category);
             $('#uom-'+partRel).text(ui.item.uom);
             $('#stock-'+partRel).text(ui.item.stockAvailable);
-            $('#qty-req-'+partRel).text(ui.item.reqUantity);
-            $('#qty'+partRel).val(Math.abs(ui.item.reqUantity-ui.item.stockAvailable));
-            $('#subtotal'+partRel).val(ui.item.price1*Math.abs(ui.item.reqUantity-ui.item.stockAvailable));
-            $('#total'+partRel).val((ui.item.price1*Math.abs(ui.item.reqUantity-ui.item.stockAvailable))+(((ui.item.price1*Math.abs(ui.item.reqUantity-ui.item.stockAvailable))*6)/100));
-            $('#sub-total-text'+partRel).text(ui.item.price1*Math.abs(ui.item.reqUantity-ui.item.stockAvailable));
-            $('#total-text'+partRel).text((ui.item.price1*Math.abs(ui.item.reqUantity-ui.item.stockAvailable))+(((ui.item.price1*Math.abs(ui.item.reqUantity-ui.item.stockAvailable))*6)/100));
+            $('#qty-req-'+partRel).text(ui.item.reqQuantity);
+            $('#qty'+partRel).val(Math.abs(ui.item.reqQuantity-ui.item.stockAvailable));
+            $('#subtotal'+partRel).val(ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable));
+            $('#total'+partRel).val((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))+(((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))*6)/100));
+            $('#sub-total-text'+partRel).text(ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable));
+            $('#total-text'+partRel).text((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))+(((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))*6)/100));
         });
         $(document).on('keydown.autocomplete', '.part-name', function(){
             //alert(1);
@@ -443,12 +443,12 @@
             $('#cat-'+partRel).text(ui.item.category);
             $('#uom-'+partRel).text(ui.item.uom);
             $('#stock-'+partRel).text(ui.item.stockAvailable);
-            $('#qty-req-'+partRel).text(ui.item.reqUantity);
-            $('#qty'+partRel).val(Math.abs(ui.item.reqUantity-ui.item.stockAvailable));
-            $('#subtotal'+partRel).val(ui.item.price1*Math.abs(ui.item.reqUantity-ui.item.stockAvailable));
-            $('#total'+partRel).val((ui.item.price1*Math.abs(ui.item.reqUantity-ui.item.stockAvailable))+(((ui.item.price1*Math.abs(ui.item.reqUantity-ui.item.stockAvailable))*6)/100));
+            $('#qty-req-'+partRel).text(ui.item.reqQuantity);
+            $('#qty'+partRel).val(Math.abs(ui.item.reqQuantity-ui.item.stockAvailable));
+            $('#subtotal'+partRel).val(ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable));
+            $('#total'+partRel).val((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))+(((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))*6)/100));
             $('#sub-total-text'+partRel).text(ui.item.price1*Math.abs(ui.item.reqUantity-ui.item.stockAvailable));
-            $('#total-text'+partRel).text((ui.item.price1*Math.abs(ui.item.reqUantity-ui.item.stockAvailable))+(((ui.item.price1*Math.abs(ui.item.reqUantity-ui.item.stockAvailable))*6)/100));
+            $('#total-text'+partRel).text((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))+(((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))*6)/100));
         });
     });
 </script>

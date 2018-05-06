@@ -10,8 +10,7 @@
                                 <p class="planner-year">Date <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p><?= $allData->date ?></p>
-                                <input type="hidden" name="date" value="<?= $allData->date ?>">
+                                <input class="form-control" type="datetime" name="date" value="<?= $allData->date ?>" readonly>
                             </div>
                         </div>
                         <div class="form-group">
