@@ -183,22 +183,23 @@
                     html_table += '<tr>'+
                         '<td>'+counter+'</td>'+
                         '<td><input id="bom-id" type="hidden" name="bom_part_id'+(i+1)+'" value="'+e.id+'"><input name="checkbox'+(i+1)+'" type="checkbox" class="form-check-input" id="check" value="'+(i+1)+'"></td>'+
-                        '<td><input type=hidden name="part_no'+(i+1)+'" value="'+ e.partNo+'">'+ e.partNo+'</td>'+
-                        '<td><input type=hidden name="part_name'+(i+1)+'" value="'+ e.partName+'">'+ e.partName+'</td>'+'<td><span id="supp-1-'+counter+'"></span><input type="hidden" name="supplier1-'+counter+'" id="supplier1-'+counter+'"></td>'+
-                        '<td>$ <p class="text-right" id="price-1'+counter+'"></p><input type="hidden" name="price1-'+counter+'" id="price1-'+counter+'"></td>'+
-                        '<td><span id="supp-2-'+counter+'"></span><input type="hidden" name="supplier2-'+counter+'" id="supplier2-'+counter+'"></td>'+
-                        '<td>$ <p class="text-right" id="price-2'+counter+'"></p><input type="hidden" name="price2-'+counter+'" id="price2-'+counter+'"></td>'+
-                        '<td><span id="supp-3-'+counter+'"></span><input type="hidden" name="supplier3-'+counter+'" id="supplier3-'+counter+'"></td>'+
-                        '<td><span id="uom-'+counter+'"></span><input type="hidden" name="uom'+counter+'" id="uom-in-'+counter+'"></td>'+
-                        '<td>$ <p class="text-right" id="price-3'+counter+'"></p><input type="hidden" name="price3'+counter+'" id="price-3-'+counter+'"></td>'+
-                        '<td><span id="cat-'+counter+'"></span><input type="hidden" name="category'+counter+'" id="cat-in-'+counter+'"></td>'+
-                        '<td><span id="qty-req-'+counter+'"></span><input type="hidden" name="reqQuantity'+counter+'" id="qty-req-in-'+counter+'"></td>'+
-                        '<td><span id="stock-'+counter+'"></span><input type="hidden" name="stock'+counter+'" id="stock-in-'+counter+'"></td>'+
-                        '<td><input type="number" class="form-control qty-order" id="qty'+counter+'" name="order_qty'+counter+'" rel="'+counter+'" value=""></td>'+
+                        '<td>'+ e.partNo+'<input type="hidden" name="part_no'+counter+'" value="'+ e.partNo+'"></td>'+
+                        '<td>'+ e.partName+'<input type="hidden" name="part_name'+counter+'" value="'+ e.partName+'"></td>'+
+                        '<td>'+ e.supplier1+'<input type="hidden" name="supplier1'+counter+'" value="'+ e.supplier1id+'"></td>'+
+                        '<td>$ <p class="text-right" id="price-1'+counter+'">'+ e.price1+'</p><input type="hidden" name="price1'+counter+'" value="'+ e.price1+'"></td>'+
+                        '<td>'+ e.supplier2+'<input type="hidden" name="supplier2'+counter+'" value="'+ e.supplier2id+'"></td>'+
+                        '<td>$ <p class="text-right" id="price-2'+counter+'">'+ e.price2+'</p><input type="hidden" name="price2'+counter+'" value="'+ e.price2+'"></td>'+
+                        '<td>'+ e.supplier3+'<input type="hidden" name="supplier-3-'+counter+'" value="'+ e.supplier3id+'"></td>'+
+                        '<td>'+ e.uom+'<input type="hidden" name="uom'+counter+'" value="'+ e.uom+'"></td>'+
+                        '<td>$ <p class="text-right" id="price-3'+counter+'">'+ e.price3+'</p><input type="hidden" name="price3'+counter+'" value="'+ e.price3+'"></td>'+
+                        '<td>'+ e.category+'<input type="hidden" name="category'+counter+'" value="'+ e.category+'"></td>'+
+                        '<td>'+ e.reqQuantity+'<input type="hidden" name="reqQuantity'+counter+'" value="'+ e.reqQuantity+'"></td>'+
+                        '<td>'+ e.stockAvailable+'<input type="hidden" name="stockAvailable'+counter+'" value="'+ e.stockAvailable+'"></td>'+
+                        '<td><input type="number" class="form-control qty-order" id="qty'+counter+'" rel="'+counter+'" name="order_qty'+counter+'" value="'+Math.abs(e.reqQuantity - e.stockAvailable)+'"></td>'+
                         '<td><select class="form-control all-supp" id="supp'+counter+'" rel="'+counter+'" name="supplier'+counter+'"><option value="1">Supplier 1</option><option value="2">Supplier 2</option><option value="3">Supplier 3</option></select></td>'+
-                        '<td><p id="sub-total-text'+counter+'"></p><input type="hidden" name="sub_total'+counter+'" id="subtotal'+counter+'"></td>'+
-                        '<td><input type="number" class="form-control gst" id="gst'+counter+'" name="gst'+counter+'" rel="'+counter+'" value="6"></td>'+
-                        '<td><p id="total-text'+counter+'"></p><input type="hidden" name="total'+counter+'" id="total'+counter+'"></td>'+
+                        '<td><p id="sub-total-text'+counter+'">'+(Math.abs(e.reqQuantity - e.stockAvailable) * e.price1)+'</p><input type="hidden" name="sub_total'+counter+'" id="subtotal'+counter+'" value="'+(Math.abs(e.reqQuantity - e.stockAvailable) * e.price1)+'"></td>'+
+                        '<td><input type="number" class="form-control gst" id="gst'+counter+'" rel="'+counter+'" name="gst'+counter+'" value="6"></td>'+
+                        '<td><p id="total-text'+counter+'">'+(((Math.abs(e.reqQuantity - e.stockAvailable) * e.price1) * 6)/100 + (Math.abs(e.reqQuantity - e.stockAvailable) * e.price1))+'</p><input type="hidden" name="total'+counter+'" id="total'+counter+'" value="'+(((Math.abs(e.reqQuantity - e.stockAvailable) * e.price1) * 6)/100 + (Math.abs(e.reqQuantity - e.stockAvailable) * e.price1))+'"></td>'+
                         '<td><a href="#">View</a></td>'+
                         '<td></td>'+
                         '<input type="hidden" name="counter" value="'+counter+'">'+

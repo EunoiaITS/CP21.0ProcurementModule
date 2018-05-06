@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ac50c76-9bb7-48f5-accc-67c28d2387ab" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Controller/PrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PrController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Table/PrAutoItemsTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Table/PrAutoItemsTable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Template/Pr/add_auto.ctp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Template/Pr/add_auto.ctp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/debug_kit.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/debug_kit.sqlite" afterDir="false" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,17 +28,26 @@
       <file leaf-file-name="add_manual.ctp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Template/Pr/add_manual.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11760">
-              <caret line="420" column="83" selection-start-line="420" selection-start-column="83" selection-end-line="420" selection-end-column="83" />
+            <state relative-caret-position="662">
+              <caret line="196" column="28" selection-start-line="176" selection-start-column="20" selection-end-line="196" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="add_auto.ctp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Template/Pr/add_auto.ctp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1110">
+              <caret line="184" column="216" selection-start-line="184" selection-start-column="216" selection-end-line="184" selection-end-column="216" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PrController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/PrController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="561" column="79" selection-start-line="561" selection-start-column="79" selection-end-line="561" selection-end-column="79" />
+            <state relative-caret-position="1558">
+              <caret line="584" selection-start-line="584" selection-end-line="584" />
               <folding>
                 <element signature="e#33#66#0#PHP" expanded="true" />
               </folding>
@@ -47,26 +58,17 @@
       <file leaf-file-name="generate_manual.ctp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Template/Pr/generate_manual.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
+            <state relative-caret-position="28">
               <caret line="12" column="58" selection-start-line="12" selection-start-column="58" selection-end-line="12" selection-end-column="58" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrManualItemsTable.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Table/PrManualItemsTable.php">
+      <file leaf-file-name="PrAutoItemsTable.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Model/Table/PrAutoItemsTable.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1120">
-              <caret line="43" column="34" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="manual_requests.ctp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Template/Pr/manual_requests.ctp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="30" column="65" selection-start-line="30" selection-start-column="65" selection-end-line="30" selection-end-column="65" />
+            <state relative-caret-position="336">
+              <caret line="67" column="38" selection-start-line="67" selection-start-column="38" selection-end-line="67" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -101,9 +103,7 @@
         <option value="$PROJECT_DIR$/logs/debug.log" />
         <option value="$PROJECT_DIR$/src/Template/Element/head.ctp" />
         <option value="$PROJECT_DIR$/src/Template/Element/footer.ctp" />
-        <option value="$PROJECT_DIR$/src/Model/Table/PrAutoItemsTable.php" />
         <option value="$PROJECT_DIR$/src/Template/Pr/submit_auto.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Pr/add_auto.ctp" />
         <option value="$PROJECT_DIR$/src/Template/Pr/generate_auto.ctp" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/Template/Pr/index_auto.ctp" />
@@ -115,6 +115,8 @@
         <option value="$PROJECT_DIR$/src/Template/Pr/manual_requests.ctp" />
         <option value="$PROJECT_DIR$/src/Model/Table/PrManualItemsTable.php" />
         <option value="$PROJECT_DIR$/src/Controller/PrController.php" />
+        <option value="$PROJECT_DIR$/src/Template/Pr/add_auto.ctp" />
+        <option value="$PROJECT_DIR$/src/Model/Table/PrAutoItemsTable.php" />
       </list>
     </option>
   </component>
@@ -187,7 +189,53 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="CP21.0ProcurementModule" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CP21.0ProcurementModule" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="CP21.0ProcurementModule" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CP21.0ProcurementModule" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="CP21.0ProcurementModule" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CP21.0ProcurementModule" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="CP21.0ProcurementModule" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CP21.0ProcurementModule" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Model" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="CP21.0ProcurementModule" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CP21.0ProcurementModule" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Model" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Table" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="CP21.0ProcurementModule" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CP21.0ProcurementModule" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Template" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="CP21.0ProcurementModule" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CP21.0ProcurementModule" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Template" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Pr" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -271,18 +319,17 @@
       <workItem from="1525325265184" duration="848000" />
       <workItem from="1525333246066" duration="13677000" />
       <workItem from="1525493222037" duration="21730000" />
-      <workItem from="1525600697487" duration="205000" />
+      <workItem from="1525600697487" duration="2206000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88279000" />
+    <option name="totallyTimeSpent" value="90280000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1386" height="788" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18853696" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18853696" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -525,24 +572,10 @@
     <entry file="file://$PROJECT_DIR$/src/Model/Table/PiTable.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Table/PrAutoItemsTable.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="67" column="38" selection-start-line="67" selection-start-column="38" selection-end-line="67" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Pr/add_auto.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="198" column="63" selection-start-line="198" selection-start-column="63" selection-end-line="198" selection-end-column="63" />
         </state>
       </provider>
     </entry>
@@ -588,22 +621,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Pr/add_manual.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11760">
-          <caret line="420" column="83" selection-start-line="420" selection-start-column="83" selection-end-line="420" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Table/PrManualTable.php">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Pr/generate_manual.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="12" column="58" selection-start-line="12" selection-start-column="58" selection-end-line="12" selection-end-column="58" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Template/Pr/index_auto.ctp" />
     <entry file="file://$PROJECT_DIR$/src/Template/Pr/manual_requests.ctp">
@@ -613,20 +632,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/PrController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1558">
+          <caret line="584" selection-start-line="584" selection-end-line="584" />
+          <folding>
+            <element signature="e#33#66#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Pr/add_manual.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="662">
+          <caret line="196" column="28" selection-start-line="176" selection-start-column="20" selection-end-line="196" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Pr/add_auto.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1110">
+          <caret line="184" column="216" selection-start-line="184" selection-start-column="216" selection-end-line="184" selection-end-column="216" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Table/PrManualItemsTable.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1120">
+        <state relative-caret-position="-896">
           <caret line="43" column="34" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/PrController.php">
+    <entry file="file://$PROJECT_DIR$/src/Template/Pr/generate_manual.ctp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="561" column="79" selection-start-line="561" selection-start-column="79" selection-end-line="561" selection-end-column="79" />
-          <folding>
-            <element signature="e#33#66#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="28">
+          <caret line="12" column="58" selection-start-line="12" selection-start-column="58" selection-end-line="12" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Table/PrAutoItemsTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="67" column="38" selection-start-line="67" selection-start-column="38" selection-end-line="67" selection-end-column="38" />
         </state>
       </provider>
     </entry>
