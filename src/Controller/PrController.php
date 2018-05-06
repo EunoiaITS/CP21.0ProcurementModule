@@ -111,6 +111,7 @@ class PrController extends AppController
                     $dataFromEng = json_decode($resultFromEng);
                     $item->eng_data = $dataFromEng;
                     foreach($dataFromEng as $eng){
+                        $supplierId1 = $supplierId2 = $supplierId3 = '';
                         $uom = $supplier1 = $supplier2 = $supplier3 = '';
                         $price1 = $price2 = $price3 = 0;
                         $items = $this->SupplierItems->find('all', [
@@ -126,6 +127,7 @@ class PrController extends AppController
                             $ii->supplier = $supplier;
                             $count++;
                             if($count < 4){
+                                ${'supplierId'.$count} = $supplier->id;
                                 ${'supplier'.$count} = $supplier->name;
                                 ${'price'.$count} = $ii->unit_price;
                             }
@@ -158,6 +160,9 @@ class PrController extends AppController
                         '",reqUantity:"'.$eng->quality.
                         '",category:"'.$eng->category.
                         '",stockAvailable:"'.$stockAvailable.
+                        '",supplier1id:"'.$supplierId1.
+                        '",supplier2id:"'.$supplierId2.
+                        '",supplier3id:"'.$supplierId3.
                         '",supplier1:"'.$supplier1.
                         '",supplier2:"'.$supplier2.
                         '",supplier3:"'.$supplier3.
@@ -192,6 +197,7 @@ class PrController extends AppController
         if ($resultFromEngBom !== FALSE) {
             $dataFromEngBom = json_decode($resultFromEngBom);
             foreach($dataFromEngBom as $engBom){
+                $bomSupplierId1 = $bomSupplierId2 = $bomSupplierId3 = '';
                 $bomUom = $bomSupplier1 = $bomSupplier2 = $bomSupplier3 = '';
                 $bomPrice1 = $bomPrice2 = $bomPrice3 = 0;
                 $bomItems = $this->SupplierItems->find('all', [
@@ -206,8 +212,9 @@ class PrController extends AppController
                     ]);
                     $countBom++;
                     if($countBom < 4){
-                        ${'bomSupplier'.$count} = $bomSupplier->name;
-                        ${'bomPrice'.$count} = $bi->unit_price;
+                        ${'bomSupplierId'.$countBom} = $bomSupplier->id;
+                        ${'bomSupplier'.$countBom} = $bomSupplier->name;
+                        ${'bomPrice'.$countBom} = $bi->unit_price;
                     }
                     $bomUom = $bi->uom;
                 }
@@ -238,6 +245,9 @@ class PrController extends AppController
                     '",reqUantity:"'.$engBom->quality.
                     '",category:"'.$engBom->category.
                     '",stockAvailable:"'.$bomStockAvailable.
+                    '",supplier1id:"'.$bomSupplierId1.
+                    '",supplier2id:"'.$bomSupplierId2.
+                    '",supplier3id:"'.$bomSupplierId3.
                     '",supplier1:"'.$bomSupplier1.
                     '",supplier2:"'.$bomSupplier2.
                     '",supplier3:"'.$bomSupplier3.
@@ -251,6 +261,9 @@ class PrController extends AppController
                     '",reqUantity:"'.$engBom->quality.
                     '",category:"'.$engBom->category.
                     '",stockAvailable:"'.$bomStockAvailable.
+                    '",supplier1id:"'.$bomSupplierId1.
+                    '",supplier2id:"'.$bomSupplierId2.
+                    '",supplier3id:"'.$bomSupplierId3.
                     '",supplier1:"'.$bomSupplier1.
                     '",supplier2:"'.$bomSupplier2.
                     '",supplier3:"'.$bomSupplier3.
@@ -283,11 +296,77 @@ class PrController extends AppController
     }
 
     public function generateManual(){
-        $this->autoRender = false;
+        $this->loadModel('PrManual');
+        $last_pr = $this->PrManual->find('all')->last();
+        $allData = [];
+        $showData = null;
         if($this->request->is('post')){
-            echo '<pre>';
-            print_r($this->request->getData());
-            echo '</pre>';
+            $allData['date'] = $this->request->getData('date');
+            $allData['so_no'] = $this->request->getData('so_no');
+            $allData['del_date'] = $this->request->getData('del-date');
+            $allData['cus_name'] = $this->request->getData('cus-name');
+            $allData['purchase_type'] = $this->request->getData('purchase_type');
+            $total_items = $this->request->getData('total-items');
+            for($i = 1; $i <= $total_items; $i++){
+                $allData['parts'][$i]['bom_id'] = $this->request->getData('bom-id-'.$i);
+                $allData['parts'][$i]['part_no'] = $this->request->getData('part-no-'.$i);
+                $allData['parts'][$i]['part_name'] = $this->request->getData('part-name-'.$i);
+                if($this->request->getData('supplier'.$i) == 2){
+                    $allData['parts'][$i]['supplier_id'] = $this->request->getData('supplier-2-'.$i);
+                    $allData['parts'][$i]['price'] = $this->request->getData('price-2-'.$i);
+                }elseif($this->request->getData('supplier'.$i) == 3){
+                    $allData['parts'][$i]['supplier_id'] = $this->request->getData('supplier-3-'.$i);
+                    $allData['parts'][$i]['price'] = $this->request->getData('price-3-'.$i);
+                }else{
+                    $allData['parts'][$i]['supplier_id'] = $this->request->getData('supplier-1-'.$i);
+                    $allData['parts'][$i]['price'] = $this->request->getData('price-1-'.$i);
+                }
+                $allData['parts'][$i]['uom'] = $this->request->getData('uom-'.$i);
+                $allData['parts'][$i]['category'] = $this->request->getData('category-'.$i);
+                $allData['parts'][$i]['req_quantity'] = $this->request->getData('req-quantity-'.$i);
+                $allData['parts'][$i]['stock'] = $this->request->getData('stock-'.$i);
+                $allData['parts'][$i]['qty_order'] = $this->request->getData('qty_order'.$i);
+                $allData['parts'][$i]['subtotal'] = $this->request->getData('subtotal'.$i);
+                $allData['parts'][$i]['gst'] = $this->request->getData('gst'.$i);
+                $allData['parts'][$i]['total'] = $this->request->getData('total'.$i);
+            }
+            $showData = (object) $allData;
+        }
+        $this->set('allData', $showData);
+        $this->set('last_pr', (isset($last_pr->id) ? ($last_pr->id + 1) : 1));
+    }
+
+    public function submitManual(){
+        $this->autoRender = false;
+        $this->loadModel('PrManual');
+        $this->loadModel('PrManualItems');
+        $pr = $this->PrManual->newEntity();
+        if ($this->request->is('post')) {
+            $pr = $this->PrManual->patchEntity($pr, $this->request->getData());
+            if ($this->PrManual->save($pr)) {
+                $pr_no = $this->PrManual->find('all', ['fields' => 'id'])->last();
+                if($this->request->getData('count') != null){
+                    $prItems = TableRegistry::get('PrManualItems');
+                    $items = array();
+                    for($i = 1; $i <= $this->request->getData('count'); $i++){
+                        $items[$i]['pr_manual_id'] = $pr_no['id'];
+                        $items[$i]['bom_part_id'] = $this->request->getData('bom-id'.$i);
+                        $items[$i]['supplier'] = $this->request->getData('supplier'.$i);
+                        $items[$i]['order_qty'] = $this->request->getData('order_qty'.$i);
+                        $items[$i]['sub_total'] = $this->request->getData('subtotal'.$i);
+                        $items[$i]['gst'] = $this->request->getData('gst'.$i);
+                        $items[$i]['total'] = $this->request->getData('total'.$i);
+                    }
+                    $allItems = $prItems->newEntities($items);
+                    foreach($allItems as $item){
+                        $prItems->save($item);
+                    }
+                }
+                $this->Flash->success(__('The pr has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The pr could not be saved. Please, try again.'));
         }
     }
 
