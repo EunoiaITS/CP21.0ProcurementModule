@@ -27941,12 +27941,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 =======
 >>>>>>> 823b6360d2f4b6cfa5d6a069bf127ff053128387
+<<<<<<< HEAD
 2018-05-06 02:57:11 Notice: Notice (8): Undefined property: stdClass::$purchase_type in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 46]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 46
+=======
+2018-05-05 12:59:48 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 10]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 10
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -27969,12 +27978,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:55 Notice: Notice (8): Trying to get property 'part_no' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 134]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 134
+=======
+2018-05-05 12:59:48 Notice: Notice (8): Trying to get property 'id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 10]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 10
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -27997,12 +28015,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:55 Notice: Notice (8): Trying to get property 'part_name' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 135]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 135
+=======
+2018-05-05 12:59:48 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 11]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 11
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28025,12 +28052,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:55 Notice: Notice (8): Trying to get property 'supplier_id' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 136]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 136
+=======
+2018-05-05 12:59:48 Notice: Notice (8): Trying to get property 'id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 11]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 11
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28053,12 +28089,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:55 Notice: Notice (8): Trying to get property 'oum' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 137]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 137
+=======
+2018-05-05 12:59:48 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 11]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 11
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28081,12 +28126,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:55 Notice: Notice (8): Trying to get property 'price' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 138]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 138
+=======
+2018-05-05 12:59:48 Notice: Notice (8): Trying to get property 'id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 11]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 11
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28109,12 +28163,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:55 Notice: Notice (8): Trying to get property 'category' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 139]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 139
+=======
+2018-05-05 12:59:48 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 17]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 17
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28137,12 +28200,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:55 Notice: Notice (8): Trying to get property 'req_quantity' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 140]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 140
+=======
+2018-05-05 12:59:48 Notice: Notice (8): Trying to get property 'id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 17]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 17
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28165,12 +28237,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'stock' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 141]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 141
+=======
+2018-05-05 12:59:48 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 21]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 21
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28193,12 +28274,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'qty_order' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 142]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 142
+=======
+2018-05-05 12:59:48 Notice: Notice (8): Trying to get property 'action_name' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 21]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 21
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28221,12 +28311,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'subtotal' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 143]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 143
+=======
+2018-05-05 12:59:48 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 25]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 25
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28249,12 +28348,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'gst' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 144]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 144
+=======
+2018-05-05 12:59:48 Notice: Notice (8): Trying to get property 'section_name' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 25]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 25
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28277,12 +28385,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'total' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 145]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 145
+=======
+2018-05-05 12:59:48 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 29]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 29
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28305,12 +28422,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'part_no' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 134]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 134
+=======
+2018-05-05 12:59:48 Notice: Notice (8): Trying to get property 'id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 29]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 29
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28333,12 +28459,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'part_name' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 135]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 135
+=======
+2018-05-05 12:59:48 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 33]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 33
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28361,12 +28496,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'supplier_id' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 136]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 136
+=======
+2018-05-05 12:59:48 Notice: Notice (8): Trying to get property 'user_id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 33]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 33
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28389,12 +28533,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'oum' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 137]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 137
+=======
+2018-05-05 12:59:48 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 37]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 37
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28417,12 +28570,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'price' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 138]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 138
+=======
+2018-05-05 12:59:48 Notice: Notice (8): Trying to get property 'created' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 37]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 37
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28445,12 +28607,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'category' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 139]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 139
+=======
+2018-05-05 12:59:48 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 41]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 41
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28473,12 +28644,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'req_quantity' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 140]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 140
+=======
+2018-05-05 12:59:48 Notice: Notice (8): Trying to get property 'modified' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 41]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 41
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28501,12 +28681,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'stock' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 141]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 141
+=======
+2018-05-05 12:59:48 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 46]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 46
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28529,12 +28718,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'qty_order' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 142]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 142
+=======
+2018-05-05 12:59:48 Notice: Notice (8): Trying to get property 'details' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 46]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 46
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28557,12 +28755,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'subtotal' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 143]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 143
+=======
+2018-05-05 13:03:19 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 10]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 10
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28585,12 +28792,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'gst' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 144]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 144
+=======
+2018-05-05 13:03:19 Notice: Notice (8): Trying to get property 'id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 10]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 10
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28613,12 +28829,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'total' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 145]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 145
+=======
+2018-05-05 13:03:19 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 11]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 11
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28641,12 +28866,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'part_no' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 134]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 134
+=======
+2018-05-05 13:03:19 Notice: Notice (8): Trying to get property 'id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 11]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 11
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28669,12 +28903,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'part_name' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 135]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 135
+=======
+2018-05-05 13:03:19 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 11]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 11
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28697,12 +28940,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'supplier_id' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 136]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 136
+=======
+2018-05-05 13:03:19 Notice: Notice (8): Trying to get property 'id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 11]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 11
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28725,12 +28977,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'oum' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 137]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 137
+=======
+2018-05-05 13:03:19 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 17]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 17
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28753,12 +29014,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'price' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 138]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 138
+=======
+2018-05-05 13:03:19 Notice: Notice (8): Trying to get property 'id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 17]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 17
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28781,12 +29051,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'category' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 139]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 139
+=======
+2018-05-05 13:03:19 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 21]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 21
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28809,12 +29088,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'req_quantity' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 140]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 140
+=======
+2018-05-05 13:03:19 Notice: Notice (8): Trying to get property 'action_name' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 21]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 21
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28837,12 +29125,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'stock' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 141]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 141
+=======
+2018-05-05 13:03:19 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 25]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 25
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28865,12 +29162,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'qty_order' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 142]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 142
+=======
+2018-05-05 13:03:19 Notice: Notice (8): Trying to get property 'section_name' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 25]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 25
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28893,12 +29199,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'subtotal' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 143]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 143
+=======
+2018-05-05 13:03:19 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 29]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 29
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28921,12 +29236,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'gst' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 144]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 144
+=======
+2018-05-05 13:03:19 Notice: Notice (8): Trying to get property 'id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 29]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 29
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28949,12 +29273,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'total' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 145]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 145
+=======
+2018-05-05 13:03:19 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 33]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 33
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -28977,12 +29310,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'part_no' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 134]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 134
+=======
+2018-05-05 13:03:19 Notice: Notice (8): Trying to get property 'user_id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 33]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 33
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29005,12 +29347,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'part_name' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 135]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 135
+=======
+2018-05-05 13:03:19 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 37]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 37
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29033,12 +29384,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'supplier_id' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 136]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 136
+=======
+2018-05-05 13:03:19 Notice: Notice (8): Trying to get property 'created' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 37]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 37
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29061,12 +29421,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'oum' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 137]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 137
+=======
+2018-05-05 13:03:19 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 41]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 41
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29089,12 +29458,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'price' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 138]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 138
+=======
+2018-05-05 13:03:19 Notice: Notice (8): Trying to get property 'modified' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 41]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 41
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29117,12 +29495,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'category' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 139]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 139
+=======
+2018-05-05 13:03:19 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 46]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 46
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29145,12 +29532,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'req_quantity' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 140]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 140
+=======
+2018-05-05 13:03:19 Notice: Notice (8): Trying to get property 'details' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 46]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 46
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29173,12 +29569,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'stock' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 141]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 141
+=======
+2018-05-05 13:04:25 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 10]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 10
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29201,12 +29606,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'qty_order' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 142]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 142
+=======
+2018-05-05 13:04:25 Notice: Notice (8): Trying to get property 'id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 10]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 10
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29229,12 +29643,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'subtotal' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 143]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 143
+=======
+2018-05-05 13:04:25 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 11]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 11
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29257,12 +29680,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'gst' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 144]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 144
+=======
+2018-05-05 13:04:25 Notice: Notice (8): Trying to get property 'id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 11]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 11
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29285,12 +29717,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:05:56 Notice: Notice (8): Trying to get property 'total' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 145]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 145
+=======
+2018-05-05 13:04:25 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 11]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 11
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29313,12 +29754,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:52 Notice: Notice (8): Trying to get property '1' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 134]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 134
+=======
+2018-05-05 13:04:25 Notice: Notice (8): Trying to get property 'id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 11]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 11
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29341,12 +29791,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:52 Notice: Notice (8): Trying to get property 'part_no' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 134]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 134
+=======
+2018-05-05 13:04:25 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 17]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 17
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29369,12 +29828,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:52 Notice: Notice (8): Trying to get property '1' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 135]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 135
+=======
+2018-05-05 13:04:25 Notice: Notice (8): Trying to get property 'id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 17]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 17
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29397,12 +29865,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:52 Notice: Notice (8): Trying to get property 'part_name' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 135]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 135
+=======
+2018-05-05 13:04:25 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 21]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 21
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29425,12 +29902,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:52 Notice: Notice (8): Trying to get property '1' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 136]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 136
+=======
+2018-05-05 13:04:25 Notice: Notice (8): Trying to get property 'action_name' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 21]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 21
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29453,12 +29939,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:52 Notice: Notice (8): Trying to get property 'supplier_id' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 136]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 136
+=======
+2018-05-05 13:04:25 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 25]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 25
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29481,12 +29976,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:52 Notice: Notice (8): Trying to get property 'oum' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 137]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 137
+=======
+2018-05-05 13:04:25 Notice: Notice (8): Trying to get property 'section_name' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 25]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 25
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29509,12 +30013,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:52 Notice: Notice (8): Trying to get property 'price' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 138]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 138
+=======
+2018-05-05 13:04:25 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 29]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 29
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29537,12 +30050,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:52 Notice: Notice (8): Trying to get property 'category' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 139]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 139
+=======
+2018-05-05 13:04:25 Notice: Notice (8): Trying to get property 'id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 29]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 29
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29565,12 +30087,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:52 Notice: Notice (8): Trying to get property 'req_quantity' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 140]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 140
+=======
+2018-05-05 13:04:25 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 33]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 33
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29593,12 +30124,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:52 Notice: Notice (8): Trying to get property 'stock' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 141]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 141
+=======
+2018-05-05 13:04:25 Notice: Notice (8): Trying to get property 'user_id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 33]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 33
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29621,12 +30161,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:52 Notice: Notice (8): Trying to get property 'qty_order' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 142]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 142
+=======
+2018-05-05 13:04:25 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 37]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 37
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29649,12 +30198,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:52 Notice: Notice (8): Trying to get property 'subtotal' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 143]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 143
+=======
+2018-05-05 13:04:25 Notice: Notice (8): Trying to get property 'created' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 37]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 37
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29677,12 +30235,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property 'gst' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 144]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 144
+=======
+2018-05-05 13:04:25 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 41]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 41
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29705,12 +30272,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property 'total' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 145]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 145
+=======
+2018-05-05 13:04:25 Notice: Notice (8): Trying to get property 'modified' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 41]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 41
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29733,12 +30309,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property '2' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 134]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 134
+=======
+2018-05-05 13:04:25 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 46]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 46
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29761,12 +30346,21 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property 'part_no' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 134]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 134
+=======
+2018-05-05 13:04:25 Notice: Notice (8): Trying to get property 'details' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view.ctp, line 46]
+Request URL: /pr/view/35
+Referer URL: http://www.localhost/CP21.0ProcurementModule/pr/index-auto
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view.ctp, line 46
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29789,12 +30383,20 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property '2' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 135]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 135
+=======
+2018-05-05 13:05:22 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view_auto.ctp, line 10]
+Request URL: /pr/view-auto/35
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view_auto.ctp, line 10
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29817,12 +30419,20 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property 'part_name' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 135]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 135
+=======
+2018-05-05 13:05:22 Notice: Notice (8): Trying to get property 'id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view_auto.ctp, line 10]
+Request URL: /pr/view-auto/35
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view_auto.ctp, line 10
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29845,12 +30455,20 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property '2' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 136]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 136
+=======
+2018-05-05 13:05:22 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view_auto.ctp, line 11]
+Request URL: /pr/view-auto/35
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view_auto.ctp, line 11
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29873,12 +30491,20 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property 'supplier_id' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 136]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 136
+=======
+2018-05-05 13:05:22 Notice: Notice (8): Trying to get property 'id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view_auto.ctp, line 11]
+Request URL: /pr/view-auto/35
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view_auto.ctp, line 11
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29901,12 +30527,20 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property 'oum' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 137]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 137
+=======
+2018-05-05 13:05:22 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view_auto.ctp, line 11]
+Request URL: /pr/view-auto/35
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view_auto.ctp, line 11
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29929,12 +30563,20 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property 'price' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 138]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 138
+=======
+2018-05-05 13:05:22 Notice: Notice (8): Trying to get property 'id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view_auto.ctp, line 11]
+Request URL: /pr/view-auto/35
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view_auto.ctp, line 11
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29957,12 +30599,20 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property 'category' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 139]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 139
+=======
+2018-05-05 13:05:22 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view_auto.ctp, line 17]
+Request URL: /pr/view-auto/35
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view_auto.ctp, line 17
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -29985,12 +30635,20 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property 'req_quantity' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 140]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 140
+=======
+2018-05-05 13:05:22 Notice: Notice (8): Trying to get property 'id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view_auto.ctp, line 17]
+Request URL: /pr/view-auto/35
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view_auto.ctp, line 17
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -30013,12 +30671,20 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property 'stock' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 141]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 141
+=======
+2018-05-05 13:05:22 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view_auto.ctp, line 21]
+Request URL: /pr/view-auto/35
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view_auto.ctp, line 21
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -30041,12 +30707,20 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property 'qty_order' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 142]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 142
+=======
+2018-05-05 13:05:22 Notice: Notice (8): Trying to get property 'action_name' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view_auto.ctp, line 21]
+Request URL: /pr/view-auto/35
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view_auto.ctp, line 21
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -30069,12 +30743,20 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property 'subtotal' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 143]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 143
+=======
+2018-05-05 13:05:22 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view_auto.ctp, line 25]
+Request URL: /pr/view-auto/35
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view_auto.ctp, line 25
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -30097,12 +30779,20 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property 'gst' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 144]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 144
+=======
+2018-05-05 13:05:22 Notice: Notice (8): Trying to get property 'section_name' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view_auto.ctp, line 25]
+Request URL: /pr/view-auto/35
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view_auto.ctp, line 25
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -30125,12 +30815,20 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property 'total' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 145]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 145
+=======
+2018-05-05 13:05:22 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view_auto.ctp, line 29]
+Request URL: /pr/view-auto/35
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view_auto.ctp, line 29
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -30153,12 +30851,20 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property '3' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 134]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 134
+=======
+2018-05-05 13:05:22 Notice: Notice (8): Trying to get property 'id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view_auto.ctp, line 29]
+Request URL: /pr/view-auto/35
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view_auto.ctp, line 29
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -30181,12 +30887,20 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property 'part_no' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 134]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 134
+=======
+2018-05-05 13:05:22 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view_auto.ctp, line 33]
+Request URL: /pr/view-auto/35
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view_auto.ctp, line 33
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -30209,12 +30923,20 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property '3' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 135]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 135
+=======
+2018-05-05 13:05:22 Notice: Notice (8): Trying to get property 'user_id' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view_auto.ctp, line 33]
+Request URL: /pr/view-auto/35
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view_auto.ctp, line 33
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -30237,12 +30959,20 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property 'part_name' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 135]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 135
+=======
+2018-05-05 13:05:22 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view_auto.ctp, line 37]
+Request URL: /pr/view-auto/35
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view_auto.ctp, line 37
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -30265,12 +30995,20 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property '3' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 136]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 136
+=======
+2018-05-05 13:05:22 Notice: Notice (8): Trying to get property 'created' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view_auto.ctp, line 37]
+Request URL: /pr/view-auto/35
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view_auto.ctp, line 37
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -30293,12 +31031,20 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property 'supplier_id' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 136]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 136
+=======
+2018-05-05 13:05:22 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view_auto.ctp, line 41]
+Request URL: /pr/view-auto/35
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view_auto.ctp, line 41
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -30321,12 +31067,20 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property 'oum' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 137]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 137
+=======
+2018-05-05 13:05:22 Notice: Notice (8): Trying to get property 'modified' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view_auto.ctp, line 41]
+Request URL: /pr/view-auto/35
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view_auto.ctp, line 41
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -30349,12 +31103,20 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property 'price' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 138]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 138
+=======
+2018-05-05 13:05:22 Notice: Notice (8): Undefined variable: log in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view_auto.ctp, line 46]
+Request URL: /pr/view-auto/35
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view_auto.ctp, line 46
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
@@ -30377,6 +31139,7 @@ Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
 
 
 
+<<<<<<< HEAD
 2018-05-06 03:06:53 Notice: Notice (8): Trying to get property 'category' of non-object in [C:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\generate_manual.ctp, line 139]
 Request URL: /pr/generate-manual
 Referer URL: http://localhost/CP21.0ProcurementModule/pr/add-manual
@@ -31681,6 +32444,13 @@ Request URL: /pr/generate-manual
 Trace:
 Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
 include - APP/Template\Pr\generate_manual.ctp, line 131
+=======
+2018-05-05 13:05:22 Notice: Notice (8): Trying to get property 'details' of non-object in [E:\xampp\htdocs\CP21.0ProcurementModule\src\Template\Pr\view_auto.ctp, line 46]
+Request URL: /pr/view-auto/35
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Pr\view_auto.ctp, line 46
+>>>>>>> 314ecda8f0c88c9b25d1159dde710407583edafc
 Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1203
 Cake\View\View::_render() - CORE\src\View\View.php, line 1164
 Cake\View\View::render() - CORE\src\View\View.php, line 772
