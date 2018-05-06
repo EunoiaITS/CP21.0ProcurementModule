@@ -547,7 +547,6 @@ class PrController extends AppController
     }
 
     public function submitManual(){
-<<<<<<< HEAD
         if($this->request->is('post')){
             $this->loadModel('PrManual');
             $this->loadModel('PrManualItems');
@@ -561,16 +560,6 @@ class PrController extends AppController
             $prChild = TableRegistry::get('PrManualItems');
             if($this->PrManual->save($pr)){
                 $pr_id = $this->PrManual->find('all',['fields'=>'id'])->last();
-=======
-       // $this->autoRender = false;
-        $this->loadModel('PrManual');
-        $this->loadModel('PrManualItems');
-        $pr = $this->PrManual->newEntity();
-        if ($this->request->is('post')) {
-            $pr = $this->PrManual->patchEntity($pr, $this->request->getData());
-            if ($this->PrManual->save($pr)) {
-                $pr_no = $this->PrManual->find('all', ['fields' => 'id'])->last();
->>>>>>> 3d52261ac730a0fc68e485dc4445be4551890f78
                 if($this->request->getData('count') != null){
                     for ($i=1;$i <= $this->request->getData('count');$i++){
                         $pr_itm[$i]['pr_manual_id'] = $pr_id['id'];
@@ -588,11 +577,7 @@ class PrController extends AppController
                 }
                 $this->Flash->success(__('The pr has been saved.'));
 
-<<<<<<< HEAD
                 return $this->redirect(['action' => 'manualRequests']);
-=======
-                return $this->redirect(['action' => 'edit']);
->>>>>>> 3d52261ac730a0fc68e485dc4445be4551890f78
             }
             $this->Flash->error(__('The pr could not be saved. Please, try again.'));
         }
