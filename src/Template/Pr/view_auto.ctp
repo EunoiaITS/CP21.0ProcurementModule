@@ -138,6 +138,7 @@
                     </tr>
                     </thead>
                     <tbody class="csn-text-up">
+                    <?php $count=0;foreach($pr as $p): $count++;?>
                     <tr>
                         <td>1</td>
                         <td>0001</td>
@@ -158,26 +159,7 @@
                         <td>3,286.00</td>
                         <td></td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>0002</td>
-                        <td>Drive Bar Assembly</td>
-                        <td>Gulf</td>
-                        <td>3,5</td>
-                        <td>ULAM RAJA</td>
-                        <td>3,7</td>
-                        <td>Alibaba</td>
-                        <td>PCS</td>
-                        <td>4</td>
-                        <td>Direct Item</td>
-                        <td>1000</td>
-                        <td>700</td>
-                        <td>300</td>
-                        <td>1,050.00</td>
-                        <td>63.00</td>
-                        <td>1,113.00</td>
-                        <td></td>
-                    </tr>
+                    <?php endforeach;?>
                     </tbody>
                 </table>
             </div>
