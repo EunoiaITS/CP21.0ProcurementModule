@@ -42,6 +42,82 @@ class PrController extends AppController
         $this->set(compact('pr'));
     }
 
+    public function viewManual($id = null){
+        $this->loadModel('PrManual');
+        $this->loadModel('PrManualItems');
+        $pr = $this->PrManual->get($id, [
+            'contain' => []
+        ]);
+
+        $urlToSales = 'http://salesmodule.acumenits.com/api/so-data?so='.rawurlencode($pr->so_no);
+
+        $optionsForSales = [
+            'http' => [
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'GET'
+            ]
+        ];
+        $contextForSales  = stream_context_create($optionsForSales);
+        $resultFromSales = file_get_contents($urlToSales, false, $contextForSales);
+        if ($resultFromSales !== FALSE) {
+            $dataFromSales = json_decode($resultFromSales);
+            foreach($dataFromSales as $s){
+                $pr->del_date = $s->delivery_date;
+                $pr->customer = $s->cus->name;
+            }
+        }
+
+        $items = $this->PrManualItems->find('all')
+            ->where(['pr_manual_id' => $id]);
+        foreach($items as $i){
+            $supplier = $this->Supplier->get($i->supplier, [
+                'contain' => []
+            ]);
+            $i->supplier_name = $supplier;
+
+            $urlToEng = 'http://engmodule.acumenits.com/api/bom-part/'.$i->bom_part_id;
+
+            $optionsForEng = [
+                'http' => [
+                    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method'  => 'GET'
+                ]
+            ];
+            $contextForEng  = stream_context_create($optionsForEng);
+            $resultFromEng = file_get_contents($urlToEng, false, $contextForEng);
+            if ($resultFromEng !== FALSE) {
+                $dataFromEng = json_decode($resultFromEng);
+                $i->eng = $dataFromEng;
+                $stockAvailable = 0;
+                $urlToStore = 'http://storemodule.acumenits.com/in-stock-code/stock-available';
+                $sendToStore = [
+                    'part_no' => $dataFromEng->partNo,
+                    'part_name' => $dataFromEng->partName
+                ];
+
+
+                $optionsForStore = [
+                    'http' => [
+                        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                        'method'  => 'POST',
+                        'content' => http_build_query($sendToStore)
+                    ]
+                ];
+                $contextForStore = stream_context_create($optionsForStore);
+                $resultFromStore = file_get_contents($urlToStore, false, $contextForStore);
+                if($resultFromStore != FALSE){
+                    $dataFromStore = json_decode($resultFromStore);
+                    $stockAvailable = abs($dataFromStore->stock_available);
+                }
+                $i->stock = $stockAvailable;
+            }
+
+        }
+        $pr->items = $items;
+
+        $this->set('pr', $pr);
+    }
+
     /**
      * View method
      *

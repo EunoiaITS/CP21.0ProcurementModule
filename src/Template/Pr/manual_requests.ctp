@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-sm-12">
-                <div class="part-title-planner text-uppercase text-center"><b>Purchase Requesition Request List</b></div>
+                <div class="part-title-planner text-uppercase text-center"><b>PR Request List</b></div>
             </div>
 
             <div class="clearfix"></div>
@@ -13,26 +13,24 @@
                         <thead>
                         <tr>
                             <th>No</th>
-                            <th>SO NO</th>
-                            <th>SO Date</th>
-                            <th>Delivery Date</th>
-                            <th>Customer Name</th>
-                            <th>Category</th>
-                            <th>Remark</th>
-                            <th></th>
+                            <th>PR NO</th>
+                            <th>Date</th>
+                            <th>Department</th>
+                            <th>Create By</th>
+                            <th>Status</th>
+                            <th>View</th>
                         </tr>
                         </thead>
                         <tbody class="csn-text-up">
                         <?php $count = 0;foreach ($pr as $p): $count++?>
                             <tr>
                                 <td><?= $count ?></td>
-                                <td><?= $p->so_no ?></td>
+                                <td>PR <?= $p->id ?></td>
                                 <td><?= date('Y-m-d',strtotime($p->date)) ?></td>
-                                <td><?= $p->delivery_date ?></td>
-                                <td><?= $p->customer ?></td>
-                                <td>Auto</td>
                                 <td></td>
-                                <td><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'viewAuto',$p->id])?>">Select</a></td>
+                                <td></td>
+                                <td><?= $p->status ?></td>
+                                <td><a href="<?php echo $this->Url->build(['controller'=>'Pr', 'action'=>'viewManual', $p->id])?>">Select</a></td>
                             </tr>
                         <?php endforeach;?>
                         </tbody>
