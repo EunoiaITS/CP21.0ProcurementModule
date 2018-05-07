@@ -24,11 +24,19 @@ class PrController extends AppController
      *
      * @return \Cake\Http\Response|void
      */
-    public function autoRequest()
+    public function autoRequests()
     {
         $this->loadModel('PrAuto');
         $pr = $this->PrAuto->find('all')
         ->Where(['status'=>'requested']);
+
+        $this->set(compact('pr'));
+    }
+    public function autoTwoRequests()
+    {
+        $this->loadModel('PrAuto');
+        $pr = $this->PrAuto->find('all')
+            ->Where(['status'=>'submitted']);
 
         $this->set(compact('pr'));
     }
@@ -125,18 +133,17 @@ class PrController extends AppController
      * @return \Cake\Http\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function viewAuto()
+    public function viewAuto($id = null)
     {
         $this->loadModel('PrAuto');
         $this->loadModel('PrAutoItems');
-        $pr = $this->PrAuto->find('all')
-            ->Where(['id'=> $this->request->getQuery('id')]);
-        foreach ($pr as $p){
-            $pri = $this->PrAutoItems->find('all')
-                ->Where(['pr_auto_id'=>$p->id]);
-            $p->pri = $pri;
-        }
-        $urlToSales = 'salesmodule.acumenits.com/api/so-data?so='.$this->request->getQuery('so');
+        $this->loadModel('Supplier');
+        $this->loadModel('SupplierItems');
+        $pr = $this->PrAuto->get($id, [
+            'contain' => []
+        ]);
+
+        $urlToSales = 'http://salesmodule.acumenits.com/api/so-data?so='.rawurlencode($pr->so_no);
 
         $optionsForSales = [
             'http' => [
@@ -146,11 +153,148 @@ class PrController extends AppController
         ];
         $contextForSales  = stream_context_create($optionsForSales);
         $resultFromSales = file_get_contents($urlToSales, false, $contextForSales);
-        if ($resultFromSales === FALSE) {
-            echo 'ERROR!!';
+        if ($resultFromSales !== FALSE) {
+            $dataFromSales = json_decode($resultFromSales);
+            foreach($dataFromSales as $s){
+                $pr->del_date = $s->delivery_date;
+                $pr->customer = $s->cus->name;
+                foreach ($s->soi as $smv){
+                    $pr->model = $smv->model;
+                    $pr->version = $smv->version;
+                }
+            }
         }
-        $dataFromSales = json_decode($resultFromSales);
 
+        $items = $this->PrAutoItems->find('all')
+            ->where(['pr_auto_id' => $id]);
+        foreach($items as $i){
+            $supplier = $this->Supplier->get($i->supplier, [
+                'contain' => []
+            ]);
+            $i->supplier_name = $supplier;
+
+            $urlToEng = 'http://engmodule.acumenits.com/api/bom-part/'.$i->bom_part_id;
+
+            $optionsForEng = [
+                'http' => [
+                    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method'  => 'GET'
+                ]
+            ];
+            $contextForEng  = stream_context_create($optionsForEng);
+            $resultFromEng = file_get_contents($urlToEng, false, $contextForEng);
+            if ($resultFromEng !== FALSE) {
+                $dataFromEng = json_decode($resultFromEng);
+                $i->eng = $dataFromEng;
+                $stockAvailable = 0;
+                $urlToStore = 'http://storemodule.acumenits.com/in-stock-code/stock-available';
+                $sendToStore = [
+                    'part_no' => $dataFromEng->partNo,
+                    'part_name' => $dataFromEng->partName
+                ];
+
+
+                $optionsForStore = [
+                    'http' => [
+                        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                        'method'  => 'POST',
+                        'content' => http_build_query($sendToStore)
+                    ]
+                ];
+                $contextForStore = stream_context_create($optionsForStore);
+                $resultFromStore = file_get_contents($urlToStore, false, $contextForStore);
+                if($resultFromStore != FALSE){
+                    $dataFromStore = json_decode($resultFromStore);
+                    $stockAvailable = abs($dataFromStore->stock_available);
+                }
+                $i->stock = $stockAvailable;
+            }
+
+        }
+        $pr->items = $items;
+
+        $this->set('pr', $pr);
+    }
+
+    public function viewTwoAuto($id = null)
+    {
+        $this->loadModel('PrAuto');
+        $this->loadModel('PrAutoItems');
+        $this->loadModel('Supplier');
+        $this->loadModel('SupplierItems');
+        $pr = $this->PrAuto->get($id, [
+            'contain' => []
+        ]);
+
+        $urlToSales = 'http://salesmodule.acumenits.com/api/so-data?so='.rawurlencode($pr->so_no);
+
+        $optionsForSales = [
+            'http' => [
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'GET'
+            ]
+        ];
+        $contextForSales  = stream_context_create($optionsForSales);
+        $resultFromSales = file_get_contents($urlToSales, false, $contextForSales);
+        if ($resultFromSales !== FALSE) {
+            $dataFromSales = json_decode($resultFromSales);
+            foreach($dataFromSales as $s){
+                $pr->del_date = $s->delivery_date;
+                $pr->customer = $s->cus->name;
+                foreach ($s->soi as $smv){
+                    $pr->model = $smv->model;
+                    $pr->version = $smv->version;
+                }
+            }
+        }
+
+        $items = $this->PrAutoItems->find('all')
+            ->where(['pr_auto_id' => $id]);
+        foreach($items as $i){
+            $supplier = $this->Supplier->get($i->supplier, [
+                'contain' => []
+            ]);
+            $i->supplier_name = $supplier;
+
+            $urlToEng = 'http://engmodule.acumenits.com/api/bom-part/'.$i->bom_part_id;
+
+            $optionsForEng = [
+                'http' => [
+                    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method'  => 'GET'
+                ]
+            ];
+            $contextForEng  = stream_context_create($optionsForEng);
+            $resultFromEng = file_get_contents($urlToEng, false, $contextForEng);
+            if ($resultFromEng !== FALSE) {
+                $dataFromEng = json_decode($resultFromEng);
+                $i->eng = $dataFromEng;
+                $stockAvailable = 0;
+                $urlToStore = 'http://storemodule.acumenits.com/in-stock-code/stock-available';
+                $sendToStore = [
+                    'part_no' => $dataFromEng->partNo,
+                    'part_name' => $dataFromEng->partName
+                ];
+
+
+                $optionsForStore = [
+                    'http' => [
+                        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                        'method'  => 'POST',
+                        'content' => http_build_query($sendToStore)
+                    ]
+                ];
+                $contextForStore = stream_context_create($optionsForStore);
+                $resultFromStore = file_get_contents($urlToStore, false, $contextForStore);
+                if($resultFromStore != FALSE){
+                    $dataFromStore = json_decode($resultFromStore);
+                    $stockAvailable = abs($dataFromStore->stock_available);
+                }
+                $i->stock = $stockAvailable;
+            }
+
+        }
+        $pr->items = $items;
 
         $this->set('pr', $pr);
     }
@@ -325,10 +469,6 @@ class PrController extends AppController
     }
     public function submitAuto(){
         if($this->request->is('post')){
-//            $this->autoRender = 'false';
-//            echo "<pre>";
-//            print_r($this->request);
-//            echo "</pre>";
             $this->loadModel('PrAuto');
             $this->loadModel('PrAutoItems');
             $pr = $this->PrAuto->newEntity();
@@ -347,11 +487,7 @@ class PrController extends AppController
                         $pr_itm[$i]['pr_auto_id'] = $pr_id['id'];
                         $pr_itm[$i]['bom_part_id'] = $this->request->getData('bom_part_id'.$i);
                         $pr_itm[$i]['order_qty'] = $this->request->getData('order_qty'.$i);
-                        $pr_itm[$i]['uom'] = $this->request->getData('uom'.$i);
-                        $pr_itm[$i]['req_quantity'] = $this->request->getData('req_quantity'.$i);
                         $pr_itm[$i]['supplier'] = $this->request->getData('supplier'.$i);
-                        $pr_itm[$i]['price'] = $this->request->getData('price'.$i);
-                        $pr_itm[$i]['category'] = $this->request->getData('category'.$i);
                         $pr_itm[$i]['stock_available'] = $this->request->getData('stock_available'.$i);
                         $pr_itm[$i]['sub_total'] = $this->request->getData('sub_total'.$i);
                         $pr_itm[$i]['gst'] = $this->request->getData('gst'.$i);
@@ -364,12 +500,161 @@ class PrController extends AppController
                 }
                 $this->Flash->success(__('The pr has been saved.'));
 
-                return $this->redirect(['action' => 'autoRequest']);
+                return $this->redirect(['action' => 'autoRequests']);
             }
             $this->Flash->error(__('The pr could not be saved. Please, try again.'));
         }
     }
+    public function addTwoAuto(){
+        $this->loadModel('Supplier');
+        $this->loadModel('SupplierItems');
+        $urlToSales = 'http://salesmodule.acumenits.com/api/all-data';
 
+        $optionsForSales = [
+            'http' => [
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'GET'
+            ]
+        ];
+        $contextForSales  = stream_context_create($optionsForSales);
+        $resultFromSales = file_get_contents($urlToSales, false, $contextForSales);
+        if ($resultFromSales === FALSE) {
+            echo 'ERROR!!';
+        }
+        $dataFromSales = json_decode($resultFromSales);
+
+        $so_no = $customer = $model = $version = null;
+        foreach ($dataFromSales as $d){
+            $parts = '';
+            foreach($d->soi as $item){
+                $urlToEng = 'http://engmodule.acumenits.com/api/bom-parts';
+                $sendToEng = [
+                    'model' => $item->model,
+                    'version' => $item->version
+                ];
+                $optionsForEng = [
+                    'http' => [
+                        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                        'method'  => 'POST',
+                        'content' => http_build_query($sendToEng)
+                    ]
+                ];
+                $contextForEng  = stream_context_create($optionsForEng);
+                $resultFromEng = file_get_contents($urlToEng, false, $contextForEng);
+                if ($resultFromEng !== FALSE) {
+                    $dataFromEng = json_decode($resultFromEng);
+                    $item->eng_data = $dataFromEng;
+                    foreach($dataFromEng as $eng){
+                        $uom = $supplier1 = $supplier2 = $supplier3 = '';
+                        $price1 = $price2 = $price3 = 0;
+                        $items = $this->SupplierItems->find('all', [
+                            'order' => 'SupplierItems.unit_price'
+                        ])
+                            ->where(['part_no' => $eng->partNo])
+                            ->where(['part_name' => $eng->partName]);
+                        $count = 0;
+                        foreach($items as $ii){
+                            $supplier = $this->Supplier->get($ii->supplier_id, [
+                                'contain' => []
+                            ]);
+                            $ii->supplier = $supplier;
+                            $count++;
+                            ${'supplier'.$count} = $supplier->name;
+                            ${'price'.$count} = $ii->unit_price;
+                            $uom = $ii->uom;
+                        }
+                        $stockAvailable = 0;
+                        $urlToStore = 'http://storemodule.acumenits.com/in-stock-code/stock-available';
+                        $sendToStore = [
+                            'part_no' => $eng->partNo,
+                            'part_name' => $eng->partName
+                        ];
+
+
+                        $optionsForStore = [
+                            'http' => [
+                                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                                'method'  => 'POST',
+                                'content' => http_build_query($sendToStore)
+                            ]
+                        ];
+                        $contextForStore = stream_context_create($optionsForStore);
+                        $resultFromStore = file_get_contents($urlToStore, false, $contextForStore);
+                        if($resultFromStore != FALSE){
+                            $dataFromStore = json_decode($resultFromStore);
+                            $stockAvailable = abs($dataFromStore->stock_available);
+                        }
+                        $parts .= '{
+                            id:"'.$eng->id.'",
+                            partNo:"'.$eng->partNo.'",
+                            partName:"'.$eng->partName.'",
+                            reqQuantity:"'.$eng->quality.'",
+                            category:"'.$eng->category.'",
+                            stockAvailable:"'.$stockAvailable.'",
+                            supplier1:"'.$supplier1.'",
+                            supplier2:"'.$supplier2.'",
+                            supplier3:"'.$supplier3.'",
+                            price1:"'.$price1.'",
+                            price2:"'.$price2.'",
+                            price3:"'.$price3.'",
+                            uom:"'.$uom.'"
+                            },';
+                    }
+                }
+            }
+            $parts = rtrim($parts, ',');
+            foreach ($d->soi as $s){
+                $model = $s->model;
+                $version = $s->version;
+            }
+            foreach($d->cus as $cus){
+                $customer = $cus->name;
+            }
+            $so_no .= '{label:"'.$d->salesorder_no.'",del_date:"'.date('Y-m-d', strtotime($d->delivery_date)).'",cus_name:"'.$customer.'",model:"'.$model.'",version:"'.$version.'",parts:['.$parts.']},';
+        }
+        $so_no = rtrim($so_no, ',');
+        $this->loadModel('PrAuto');
+        $this->loadModel('PrAutoItems');
+        $last_pr = $this->PrAuto->find('all',['order'=>'id']);
+
+        if($this->request->is('post')){
+            $pr = $this->PrAuto->newEntity();
+            $pr->date = $this->request->getData('date');
+            $pr->so_no = $this->request->getData('so_no');
+            $pr->delivery_date = $this->request->getData('delivery_date');
+            $pr->description = $this->request->getData('description');
+            $pr->customer = $this->request->getData('customer');
+            $pr->status = 'submitted';
+            $pr_itm = array();
+            $prChild = TableRegistry::get('prAutoItems');
+            if($this->PrAuto->save($pr)){
+                $pr_id = $this->PrAuto->find('all',['fields'=>'id'])->last();
+                if($this->request->getData('counter') != null){
+                    for ($i=1;$i <= $this->request->getData('counter');$i++){
+                        $pr_itm[$i]['pr_auto_id'] = $pr_id['id'];
+                        $pr_itm[$i]['bom_part_id'] = $this->request->getData('bom_part_id'.$i);
+                        $pr_itm[$i]['order_qty'] = $this->request->getData('order_qty'.$i);
+                        $pr_itm[$i]['supplier'] = $this->request->getData('supplier'.$i);
+                        $pr_itm[$i]['stock_available'] = $this->request->getData('stock_available'.$i);
+                        $pr_itm[$i]['sub_total'] = $this->request->getData('sub_total'.$i);
+                        $pr_itm[$i]['gst'] = $this->request->getData('gst'.$i);
+                        $pr_itm[$i]['total'] = $this->request->getData('total'.$i);
+                    }
+                    $prs = $prChild->newEntities($pr_itm);
+                    foreach ($prs as $p){
+                        $prChild->save($p);
+                    }
+                }
+                $this->Flash->success(__('The pr has been saved.'));
+
+                return $this->redirect(['action' => 'autoTwoRequests']);
+            }
+            $this->Flash->error(__('The pr could not be saved. Please, try again.'));
+        }
+
+        $this->set('so_no',$so_no);
+        $this->set('pr_id', (isset($last_pr->id) ? ($last_pr->id + 1) : 1));
+    }
     public function addManual()
     {
         $this->loadModel('Supplier');
