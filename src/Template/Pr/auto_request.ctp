@@ -34,7 +34,7 @@
                             <td><?= $p->customer ?></td>
                             <td>Auto</td>
                             <td></td>
-                            <td><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'viewAuto',$p->id])?>">Select</a></td>
+                            <td><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'viewAuto', '?' => ['id'=>$p->id,'so'=>$p->so_no]])?>">Select</a></td>
                         </tr>
                         <?php endforeach;?>
                         </tbody>

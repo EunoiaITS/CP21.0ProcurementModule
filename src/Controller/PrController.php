@@ -49,17 +49,32 @@ class PrController extends AppController
      * @return \Cake\Http\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function viewAuto($id = null)
+    public function viewAuto()
     {
         $this->loadModel('PrAuto');
         $this->loadModel('PrAutoItems');
         $pr = $this->PrAuto->find('all')
-            ->Where(['id'=> $id]);
+            ->Where(['id'=> $this->request->getQuery('id')]);
         foreach ($pr as $p){
             $pri = $this->PrAutoItems->find('all')
                 ->Where(['pr_auto_id'=>$p->id]);
             $p->pri = $pri;
         }
+        $urlToSales = 'salesmodule.acumenits.com/api/so-data?so='.$this->request->getQuery('so');
+
+        $optionsForSales = [
+            'http' => [
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'GET'
+            ]
+        ];
+        $contextForSales  = stream_context_create($optionsForSales);
+        $resultFromSales = file_get_contents($urlToSales, false, $contextForSales);
+        if ($resultFromSales === FALSE) {
+            echo 'ERROR!!';
+        }
+        $dataFromSales = json_decode($resultFromSales);
+
 
         $this->set('pr', $pr);
     }
