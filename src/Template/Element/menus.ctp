@@ -15,7 +15,7 @@
                 <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'addManual'])?>">PR Generate (manual)</a></li>
                 <li class="color-hsh"><a href="#">PR Verify (manual)</a></li>
                 <li class="color-hsh"><a href="#">PR Approve (manual)</a></li>
-                <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'autoRequest'])?>">PR Request List (auto)</a></li>
+                <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'autoRequests'])?>">PR Request List (auto)</a></li>
                 <li class="color-hsh2"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'addAuto'])?>">PR 1 Generate (auto)</a></li>
                 <li class="color-hsh"><a href="#">Customization Item</a></li>
                 <li class="color-hsh3"><a href="#">PR 2 Submit (auto)</a></li>
