@@ -111,40 +111,25 @@
                     </tr>
                     </thead>
                     <tbody class="csn-text-up">
+                    <?php $count = 0; foreach($pr->items as $item): $count++; ?>
                     <tr>
-                        <td>1</td>
-                        <td>0001</td>
-                        <td>Conduct Piece Assembly</td>
-                        <td>Gulf</td>
+                        <td><?= $count ?></td>
+                        <td><?= $item->eng->partNo ?></td>
+                        <td><?= $item->eng->partName ?></td>
+                        <td><?php if(isset($item->supplier_name->name)) echo $item->supplier_name->name; ?></td>
+                        <td><?= $item->eng->category ?></td>
                         <td></td>
-                        <td>PCS</td>
-                        <td>6,200</td>
-                        <td>1000</td>
-                        <td>500</td>
-                        <td>500</td>
-                        <td>3,100.00</td>
-                        <td>186.00</td>
-                        <td>3,286.00</td>
+                        <td><?php if($item->order_qty !== 0 && $item->sub_total !== 0){ echo $item->sub_total/$item->order_qty; }else{ echo 0; } ?></td>
+                        <td><?= $item->eng->quality ?></td>
+                        <td><?= $item->stock ?></td>
+                        <td><?= $item->order_qty ?></td>
+                        <td><?= $item->sub_total ?></td>
+                        <td><?= $item->gst ?></td>
+                        <td><?= $item->total ?></td>
                         <td><a href="#">View</a></td>
                         <td></td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>0001</td>
-                        <td>Drive Bar Assembly</td>
-                        <td>Gulf</td>
-                        <td></td>
-                        <td>PCS</td>
-                        <td>4</td>
-                        <td>1000</td>
-                        <td>700</td>
-                        <td>300</td>
-                        <td>1,200.00</td>
-                        <td>72.00</td>
-                        <td>1,272.00</td>
-                        <td><a href="#">View</a></td>
-                        <td></td>
-                    </tr>
+                    <?php endforeach; ?>
                     <tr>
                         <td colspan="12"></td>
                         <td>4,558.00</td>

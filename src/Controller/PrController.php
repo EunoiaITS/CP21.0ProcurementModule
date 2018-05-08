@@ -43,6 +43,7 @@ class PrController extends AppController
     }
 
     public function viewManual($id = null){
+        $this->loadModel('Supplier');
         $this->loadModel('PrManual');
         $this->loadModel('PrManualItems');
         $pr = $this->PrManual->get($id, [
@@ -70,9 +71,12 @@ class PrController extends AppController
         $items = $this->PrManualItems->find('all')
             ->where(['pr_manual_id' => $id]);
         foreach($items as $i){
-            $supplier = $this->Supplier->get($i->supplier, [
-                'contain' => []
-            ]);
+            $supplier = '';
+            if($i->supplier !== ''){
+                $supplier = $this->Supplier->get($i->supplier, [
+                    'contain' => []
+                ]);
+            }
             $i->supplier_name = $supplier;
 
             $urlToEng = 'http://engmodule.acumenits.com/api/bom-part/'.$i->bom_part_id;
