@@ -78,6 +78,9 @@ class PrAutoTable extends Table
             ->scalar('status')
             ->maxLength('status', 130)
             ->allowEmpty('status');
+        $validator
+            ->scalar('section')
+            ->allowEmpty('section');
 
         $validator
             ->integer('created_by')

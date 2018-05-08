@@ -131,11 +131,11 @@
                         <td><?= $count?></td>
                         <td><?= $p->eng->partNo ?></td>
                         <td><?= $p->eng->partName ?></td>
-                        <td><?= $p->supplier_name->name ?></td>
-                        <td>PCS</td>
+                        <td><?php if(isset($p->supplier_name->name)) echo $p->supplier_name->name; ?></td>
+                        <td><?= $p->eng->category ?></td>
                         <td></td>
-                        <td>1000</td>
-                        <td></td>
+                        <td><?php if($p->order_qty !== 0 && $p->sub_total !== 0){ echo $p->sub_total/$p->order_qty; }else{ echo 0; } ?></td>
+                        <td><?= $p->eng->quality ?></td>
                         <td><?= $p->stock?></td>
                         <td><?= $p->order_qty?></td>
                         <td><?= $p->sub_total?></td>

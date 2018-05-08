@@ -36,7 +36,7 @@ class PrController extends AppController
     {
         $this->loadModel('PrAuto');
         $pr = $this->PrAuto->find('all')
-            ->Where(['status'=>'submitted']);
+            ->Where(['status'=>'requested']);
 
         $this->set(compact('pr'));
     }
@@ -172,9 +172,12 @@ class PrController extends AppController
         $items = $this->PrAutoItems->find('all')
             ->where(['pr_auto_id' => $id]);
         foreach($items as $i){
-            $supplier = $this->Supplier->get($i->supplier, [
-                'contain' => []
-            ]);
+            $supplier = '';
+            if($i->supplier !== ''){
+                $supplier = $this->Supplier->get($i->supplier, [
+                    'contain' => []
+                ]);
+            }
             $i->supplier_name = $supplier;
 
             $urlToEng = 'http://engmodule.acumenits.com/api/bom-part/'.$i->bom_part_id;
@@ -482,6 +485,7 @@ class PrController extends AppController
             $pr->description = $this->request->getData('description');
             $pr->customer = $this->request->getData('customer');
             $pr->status = 'requested';
+            $pr->section = 'Auto-1';
             $pr_itm = array();
             $prChild = TableRegistry::get('prAutoItems');
             if($this->PrAuto->save($pr)){
@@ -628,7 +632,8 @@ class PrController extends AppController
             $pr->delivery_date = $this->request->getData('delivery_date');
             $pr->description = $this->request->getData('description');
             $pr->customer = $this->request->getData('customer');
-            $pr->status = 'submitted';
+            $pr->status = 'requested';
+            $pr->section = 'Auto-2';
             $pr_itm = array();
             $prChild = TableRegistry::get('prAutoItems');
             if($this->PrAuto->save($pr)){
