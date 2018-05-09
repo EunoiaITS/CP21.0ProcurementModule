@@ -73,7 +73,7 @@
                         </tr>
                         </thead>
                         <tbody class="csn-text-up">
-                        <?php $item_count =0;foreach ($p->items as $i): $item_count++;?>
+                        <?php $item_count = 0;foreach ($p->items as $i): $item_count++;?>
                         <tr>
                             <td><?= $item_count ?></td>
                             <td><input type="hidden" name="part_no-<?= $count?>-<?= $item_count ?>" value="<?= $i->eng->partNo ?>"><?= $i->eng->partNo ?></td>
@@ -88,10 +88,10 @@
                             <input type="hidden" name="req_quantity-<?= $count?>-<?= $item_count ?>" value="<?= $i->eng->quality ?>">
                             <input type="hidden" name="category-<?= $count?>-<?= $item_count ?>" value="<?= $i->eng->category ?>">
                         <?php endforeach;?>
-                        <input type="hidden" name="item_count-<?= $count?>" value="<?=$item_count ?>">
                         </tbody>
                     </table>
                 </div>
+                <input type="hidden" name="item_count-<?= $count?>" value="<?=$item_count ?>">
                 <div class="clearfix"></div>
             </div>
         </div>

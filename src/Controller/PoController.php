@@ -165,7 +165,7 @@ class PoController extends AppController
         $this->set('po',(isset($last_po->id) ? ($last_po->id + 1) : 1));
     }
     public function submit(){
-        $this->loadModel('Po');
+        $this->autoRender = false;
         if($this->request->is('post')){
             $po = $this->Po->newEntity();
             $po->pr_id = $this->request->getData('pr_id');
@@ -173,7 +173,6 @@ class PoController extends AppController
             $po->created_by = $this->request->getData('created_by');
             if($this->Po->save($po)){
                 $this->Flash->success(__('The Po has been saved.'));
-
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The Po could not be saved. Please, try again.'));

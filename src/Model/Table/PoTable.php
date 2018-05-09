@@ -39,11 +39,6 @@ class PoTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
-
-        $this->belongsTo('Pr', [
-            'foreignKey' => 'pr_id',
-            'joinType' => 'INNER'
-        ]);
     }
 
     /**
@@ -61,38 +56,32 @@ class PoTable extends Table
         $validator
             ->scalar('status')
             ->maxLength('status', 255)
-            ->requirePresence('status', 'create')
-            ->notEmpty('status');
+            ->allowEmpty('status');
 
         $validator
             ->scalar('created_by')
             ->maxLength('created_by', 255)
-            ->requirePresence('created_by', 'create')
-            ->notEmpty('created_by');
+            ->allowEmpty('created_by');
 
         $validator
             ->scalar('verified_by')
             ->maxLength('verified_by', 255)
-            ->requirePresence('verified_by', 'create')
-            ->notEmpty('verified_by');
+            ->allowEmpty('verified_by');
 
         $validator
             ->scalar('approve1_by')
             ->maxLength('approve1_by', 255)
-            ->requirePresence('approve1_by', 'create')
-            ->notEmpty('approve1_by');
+            ->allowEmpty('approve1_by');
 
         $validator
             ->scalar('approve2_by')
             ->maxLength('approve2_by', 255)
-            ->requirePresence('approve2_by', 'create')
-            ->notEmpty('approve2_by');
+            ->allowEmpty('approve2_by');
 
         $validator
             ->scalar('approve3_by')
             ->maxLength('approve3_by', 255)
-            ->requirePresence('approve3_by', 'create')
-            ->notEmpty('approve3_by');
+            ->allowEmpty('approve3_by');
 
         return $validator;
     }
@@ -104,10 +93,4 @@ class PoTable extends Table
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
-    public function buildRules(RulesChecker $rules)
-    {
-        $rules->add($rules->existsIn(['pr_id'], 'Pr'));
-
-        return $rules;
-    }
 }
