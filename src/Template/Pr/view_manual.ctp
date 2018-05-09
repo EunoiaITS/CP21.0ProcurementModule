@@ -111,7 +111,7 @@
                     </tr>
                     </thead>
                     <tbody class="csn-text-up">
-                    <?php $count = 0; foreach($pr->items as $item): $count++; ?>
+                    <?php $count = $total = 0; foreach($pr->items as $item): $count++; ?>
                     <tr>
                         <td><?= $count ?></td>
                         <td><?= $item->eng->partNo ?></td>
@@ -129,10 +129,11 @@
                         <td><a href="#">View</a></td>
                         <td></td>
                     </tr>
+                        <?php $total += $item->total; ?>
                     <?php endforeach; ?>
                     <tr>
                         <td colspan="12"></td>
-                        <td>4,558.00</td>
+                        <td><?= $total ?></td>
                         <td></td>
                         <td></td>
                     </tr>

@@ -97,7 +97,7 @@ class PrController extends AppController
         $items = $this->PrItems->find('all')
             ->where(['pr_id' => $id]);
         foreach($items as $i){
-            $supplier = '';
+            $supplier = $supplier_item = '';
             if($i->supplier_id !== null){
                 $supplier = $this->Supplier->get($i->supplier_id, [
                     'contain' => []
