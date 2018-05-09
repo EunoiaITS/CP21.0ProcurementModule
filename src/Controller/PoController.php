@@ -80,6 +80,28 @@ class PoController extends AppController
                 if ($resultFromEng !== FALSE) {
                     $dataFromEng = json_decode($resultFromEng);
                     $i->eng = $dataFromEng;
+                    $stockAvailable = 0;
+                    $urlToStore = 'http://storemodule.acumenits.com/in-stock-code/stock-available';
+                    $sendToStore = [
+                        'part_no' => $dataFromEng->partNo,
+                        'part_name' => $dataFromEng->partName
+                    ];
+
+
+                    $optionsForStore = [
+                        'http' => [
+                            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                            'method'  => 'POST',
+                            'content' => http_build_query($sendToStore)
+                        ]
+                    ];
+                    $contextForStore = stream_context_create($optionsForStore);
+                    $resultFromStore = file_get_contents($urlToStore, false, $contextForStore);
+                    if($resultFromStore != FALSE){
+                        $dataFromStore = json_decode($resultFromStore);
+                        $stockAvailable = abs($dataFromStore->stock_available);
+                    }
+                    $i->stock = $stockAvailable;
                 }
 
             }
@@ -87,7 +109,6 @@ class PoController extends AppController
             $pa->section = 'auto';
             $pr->$count = $pa;
         }
-
         $this->set('pr',$pr);
     }
 
@@ -112,20 +133,51 @@ class PoController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function generate()
     {
-        $po = $this->Po->newEntity();
-        if ($this->request->is('post')) {
-            $po = $this->Po->patchEntity($po, $this->request->getData());
-            if ($this->Po->save($po)) {
-                $this->Flash->success(__('The po has been saved.'));
+        $pr = new \stdClass();
+        $j = $this->request->getData('radio-btn');
+        $pr->so_no = $this->request->getData('so_no'.$j);
+        $pr->date = $this->request->getData('date'.$j);
+        $pr->del_date = $this->request->getData('delivery_date'.$j);
+        $pr->desc = $this->request->getData('description'.$j);
+        $pr->cus = $this->request->getData('customer'.$j);
+        $pr->pr_id = $this->request->getData('pr_id'.$j);
+        $last_po = $this->Po->find('all',['fields'=>'id'])->last();
+        $pr_items = array();
+        if($this->request->getData('item_count-'.$j) != null){
+            $item_count = $this->request->getData('item_count-'.$j);
+            for($i = 1; $i <= $item_count;$i++){
+                $pr_items[$i]['part_no'] = $this->request->getData('part_no-'.$j.'-'.$i);
+                $pr_items[$i]['part_name'] = $this->request->getData('part_name-'.$j.'-'.$i);
+                $pr_items[$i]['category'] = $this->request->getData('category-'.$j.'-'.$i);
+                $pr_items[$i]['req_quantity'] = $this->request->getData('req_quantity-'.$j.'-'.$i);
+                $pr_items[$i]['stock_available'] = $this->request->getData('stock_available-'.$j.'-'.$i);
+                $pr_items[$i]['order_qty'] = $this->request->getData('order_qty-'.$j.'-'.$i);
+                $pr_items[$i]['supplier'] = $this->request->getData('supplier-'.$j.'-'.$i);
+                $pr_items[$i]['sub_total'] = $this->request->getData('sub_total-'.$j.'-'.$i);
+                $pr_items[$i]['gst'] = $this->request->getData('gst-'.$j.'-'.$i);
+                $pr_items[$i]['total'] = $this->request->getData('total-'.$j.'-'.$i);
+            }
+        }
+        $this->set('pr_items',$pr_items);
+        $this->set('pr',$pr);
+        $this->set('po',(isset($last_po->id) ? ($last_po->id + 1) : 1));
+    }
+    public function submit(){
+        $this->loadModel('Po');
+        if($this->request->is('post')){
+            $po = $this->Po->newEntity();
+            $po->pr_id = $this->request->getData('pr_id');
+            $po->status = $this->request->getData('status');
+            $po->created_by = $this->request->getData('created_by');
+            if($this->Po->save($po)){
+                $this->Flash->success(__('The Po has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The po could not be saved. Please, try again.'));
+            $this->Flash->error(__('The Po could not be saved. Please, try again.'));
         }
-        $prs = $this->Po->Prs->find('list', ['limit' => 200]);
-        $this->set(compact('po', 'prs'));
     }
 
     /**

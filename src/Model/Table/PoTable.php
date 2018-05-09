@@ -40,7 +40,7 @@ class PoTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Prs', [
+        $this->belongsTo('Pr', [
             'foreignKey' => 'pr_id',
             'joinType' => 'INNER'
         ]);
@@ -106,7 +106,7 @@ class PoTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['pr_id'], 'Prs'));
+        $rules->add($rules->existsIn(['pr_id'], 'Pr'));
 
         return $rules;
     }
