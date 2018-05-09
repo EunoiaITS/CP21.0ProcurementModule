@@ -1,7 +1,7 @@
 <?php
 
-/* E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\bake\src\Template\Bake\tests\fixture.twig */
-class __TwigTemplate_641330a21183c76d49663cdc0c4c2dcebf0e0790bb33fcf919dd71cb55652b54 extends Twig_Template
+/* C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\bake\src\Template\Bake\tests\fixture.twig */
+class __TwigTemplate_a1c1ae6fdcc65c8d56040bfe54464a0a693ca7f7acbc6ca8e0a8087dac2205a2 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
     {
@@ -16,13 +16,13 @@ class __TwigTemplate_641330a21183c76d49663cdc0c4c2dcebf0e0790bb33fcf919dd71cb556
     protected function doDisplay(array $context, array $blocks = array())
     {
         $__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa = $this->env->getExtension("WyriHaximus\\TwigView\\Lib\\Twig\\Extension\\Profiler");
-        $__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa->enter($__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "E:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\tests\\fixture.twig"));
+        $__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa->enter($__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "C:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\tests\\fixture.twig"));
 
         // line 20
         echo "<?php
 namespace ";
         // line 21
-        echo twig_escape_filter($this->env, (isset($context["namespace"]) ? $context["namespace"] : null), "html", null, true);
+        echo twig_escape_filter($this->env, ($context["namespace"] ?? null), "html", null, true);
         echo "\\Test\\Fixture;
 
 use Cake\\TestSuite\\Fixture\\TestFixture;
@@ -30,18 +30,18 @@ use Cake\\TestSuite\\Fixture\\TestFixture;
 /**
  * ";
         // line 26
-        echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : null), "html", null, true);
+        echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
         echo "Fixture
  *
  */
 class ";
         // line 29
-        echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : null), "html", null, true);
+        echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
         echo "Fixture extends TestFixture
 {
 ";
         // line 31
-        if ((isset($context["table"]) ? $context["table"] : null)) {
+        if (($context["table"] ?? null)) {
             // line 32
             echo "
     /**
@@ -51,12 +51,12 @@ class ";
      */
     public \$table = '";
             // line 38
-            echo (isset($context["table"]) ? $context["table"] : null);
+            echo ($context["table"] ?? null);
             echo "';
 ";
         }
         // line 41
-        if ((isset($context["import"]) ? $context["import"] : null)) {
+        if (($context["import"] ?? null)) {
             // line 42
             echo "
     /**
@@ -66,12 +66,12 @@ class ";
      */
     public \$import = ";
             // line 48
-            echo (isset($context["import"]) ? $context["import"] : null);
+            echo ($context["import"] ?? null);
             echo ";
 ";
         }
         // line 51
-        if ((isset($context["schema"]) ? $context["schema"] : null)) {
+        if (($context["schema"] ?? null)) {
             // line 52
             echo "
     /**
@@ -82,13 +82,13 @@ class ";
     // @codingStandardsIgnoreStart
     public \$fields = ";
             // line 59
-            echo (isset($context["schema"]) ? $context["schema"] : null);
+            echo ($context["schema"] ?? null);
             echo ";
     // @codingStandardsIgnoreEnd
 ";
         }
         // line 63
-        if ((isset($context["records"]) ? $context["records"] : null)) {
+        if (($context["records"] ?? null)) {
             // line 64
             echo "
     /**
@@ -98,7 +98,7 @@ class ";
      */
     public \$records = ";
             // line 70
-            echo (isset($context["records"]) ? $context["records"] : null);
+            echo ($context["records"] ?? null);
             echo ";
 ";
         }
@@ -112,7 +112,7 @@ class ";
 
     public function getTemplateName()
     {
-        return "E:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\tests\\fixture.twig";
+        return "C:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\tests\\fixture.twig";
     }
 
     public function isTraitable()
@@ -207,6 +207,6 @@ class {{ name }}Fixture extends TestFixture
     public \$records = {{ records|raw }};
 {% endif %}
 }
-", "E:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\tests\\fixture.twig", "E:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\tests\\fixture.twig");
+", "C:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\tests\\fixture.twig", "C:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\tests\\fixture.twig");
     }
 }

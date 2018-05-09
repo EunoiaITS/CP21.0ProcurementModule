@@ -1,7 +1,7 @@
 <?php
 
-/* E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\bake\src\Template\Bake\Model\table.twig */
-class __TwigTemplate_79e6346ecee0f3fb1f0ab2a88f9b75ec46bd152510ca59ca1dc7827ebd8cbad8 extends Twig_Template
+/* C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\bake\src\Template\Bake\Model\table.twig */
+class __TwigTemplate_02c3f22d5e54799e348ce693de947e0b6314d4fa03a3a4759f19c0b5361106f0 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
     {
@@ -16,32 +16,32 @@ class __TwigTemplate_79e6346ecee0f3fb1f0ab2a88f9b75ec46bd152510ca59ca1dc7827ebd8
     protected function doDisplay(array $context, array $blocks = array())
     {
         $__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa = $this->env->getExtension("WyriHaximus\\TwigView\\Lib\\Twig\\Extension\\Profiler");
-        $__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa->enter($__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "E:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Model\\table.twig"));
+        $__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa->enter($__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "C:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Model\\table.twig"));
 
         // line 16
-        $context["annotations"] = $this->getAttribute((isset($context["DocBlock"]) ? $context["DocBlock"] : null), "buildTableAnnotations", array(0 => (isset($context["associations"]) ? $context["associations"] : null), 1 => (isset($context["associationInfo"]) ? $context["associationInfo"] : null), 2 => (isset($context["behaviors"]) ? $context["behaviors"] : null), 3 => (isset($context["entity"]) ? $context["entity"] : null), 4 => (isset($context["namespace"]) ? $context["namespace"] : null)), "method");
+        $context["annotations"] = $this->getAttribute(($context["DocBlock"] ?? null), "buildTableAnnotations", array(0 => ($context["associations"] ?? null), 1 => ($context["associationInfo"] ?? null), 2 => ($context["behaviors"] ?? null), 3 => ($context["entity"] ?? null), 4 => ($context["namespace"] ?? null)), "method");
         // line 17
         echo "<?php
 namespace ";
         // line 18
-        echo twig_escape_filter($this->env, (isset($context["namespace"]) ? $context["namespace"] : null), "html", null, true);
+        echo twig_escape_filter($this->env, ($context["namespace"] ?? null), "html", null, true);
         echo "\\Model\\Table;
 
 ";
         // line 20
         $context["uses"] = array(0 => "use Cake\\ORM\\Query;", 1 => "use Cake\\ORM\\RulesChecker;", 2 => "use Cake\\ORM\\Table;", 3 => "use Cake\\Validation\\Validator;");
         // line 21
-        echo twig_join_filter((isset($context["uses"]) ? $context["uses"] : null), "
+        echo twig_join_filter(($context["uses"] ?? null), "
 ");
         echo "
 
 ";
         // line 23
-        echo $this->getAttribute((isset($context["DocBlock"]) ? $context["DocBlock"] : null), "classDescription", array(0 => (isset($context["name"]) ? $context["name"] : null), 1 => "Model", 2 => (isset($context["annotations"]) ? $context["annotations"] : null)), "method");
+        echo $this->getAttribute(($context["DocBlock"] ?? null), "classDescription", array(0 => ($context["name"] ?? null), 1 => "Model", 2 => ($context["annotations"] ?? null)), "method");
         echo "
 class ";
         // line 24
-        echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : null), "html", null, true);
+        echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
         echo "Table extends Table
 {
 
@@ -57,28 +57,28 @@ class ";
 
 ";
         // line 37
-        if ((isset($context["table"]) ? $context["table"] : null)) {
+        if (($context["table"] ?? null)) {
             // line 38
             echo "        \$this->setTable('";
-            echo twig_escape_filter($this->env, (isset($context["table"]) ? $context["table"] : null), "html", null, true);
+            echo twig_escape_filter($this->env, ($context["table"] ?? null), "html", null, true);
             echo "');
 ";
         }
         // line 41
-        if ((isset($context["displayField"]) ? $context["displayField"] : null)) {
+        if (($context["displayField"] ?? null)) {
             // line 42
             echo "        \$this->setDisplayField('";
-            echo twig_escape_filter($this->env, (isset($context["displayField"]) ? $context["displayField"] : null), "html", null, true);
+            echo twig_escape_filter($this->env, ($context["displayField"] ?? null), "html", null, true);
             echo "');
 ";
         }
         // line 45
-        if ((isset($context["primaryKey"]) ? $context["primaryKey"] : null)) {
+        if (($context["primaryKey"] ?? null)) {
             // line 46
-            if ((twig_test_iterable((isset($context["primaryKey"]) ? $context["primaryKey"] : null)) && (twig_length_filter($this->env, (isset($context["primaryKey"]) ? $context["primaryKey"] : null)) > 1))) {
+            if ((twig_test_iterable(($context["primaryKey"] ?? null)) && (twig_length_filter($this->env, ($context["primaryKey"] ?? null)) > 1))) {
                 // line 47
                 echo "        \$this->setPrimaryKey([";
-                echo $this->getAttribute((isset($context["Bake"]) ? $context["Bake"] : null), "stringifyList", array(0 => (isset($context["primaryKey"]) ? $context["primaryKey"] : null), 1 => array("indent" => false)), "method");
+                echo $this->getAttribute(($context["Bake"] ?? null), "stringifyList", array(0 => ($context["primaryKey"] ?? null), 1 => array("indent" => false)), "method");
                 echo "]);";
                 // line 48
                 echo "
@@ -86,7 +86,7 @@ class ";
             } else {
                 // line 50
                 echo "        \$this->setPrimaryKey('";
-                echo twig_escape_filter($this->env, twig_first($this->env, $this->env->getExtension('Jasny\Twig\ArrayExtension')->asArray((isset($context["primaryKey"]) ? $context["primaryKey"] : null))), "html", null, true);
+                echo twig_escape_filter($this->env, twig_first($this->env, $this->env->getExtension('Jasny\Twig\ArrayExtension')->asArray(($context["primaryKey"] ?? null))), "html", null, true);
                 echo "');";
                 // line 51
                 echo "
@@ -94,20 +94,20 @@ class ";
             }
         }
         // line 55
-        if ((isset($context["behaviors"]) ? $context["behaviors"] : null)) {
+        if (($context["behaviors"] ?? null)) {
             // line 56
             echo "
 ";
         }
         // line 59
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["behaviors"]) ? $context["behaviors"] : null));
+        $context['_seq'] = twig_ensure_traversable(($context["behaviors"] ?? null));
         foreach ($context['_seq'] as $context["behavior"] => $context["behaviorData"]) {
             // line 60
             echo "        \$this->addBehavior('";
             echo twig_escape_filter($this->env, $context["behavior"], "html", null, true);
             echo "'";
-            echo (($context["behaviorData"]) ? (((", [" . $this->getAttribute((isset($context["Bake"]) ? $context["Bake"] : null), "stringifyList", array(0 => $context["behaviorData"], 1 => array("indent" => 3, "quotes" => false)), "method")) . "]")) : (""));
+            echo (($context["behaviorData"]) ? (((", [" . $this->getAttribute(($context["Bake"] ?? null), "stringifyList", array(0 => $context["behaviorData"], 1 => array("indent" => 3, "quotes" => false)), "method")) . "]")) : (""));
             echo ");
 ";
         }
@@ -115,14 +115,14 @@ class ";
         unset($context['_seq'], $context['_iterated'], $context['behavior'], $context['behaviorData'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 63
-        if ((($this->getAttribute((isset($context["associations"]) ? $context["associations"] : null), "belongsTo", array()) || $this->getAttribute((isset($context["associations"]) ? $context["associations"] : null), "hasMany", array())) || $this->getAttribute((isset($context["associations"]) ? $context["associations"] : null), "belongsToMany", array()))) {
+        if ((($this->getAttribute(($context["associations"] ?? null), "belongsTo", array()) || $this->getAttribute(($context["associations"] ?? null), "hasMany", array())) || $this->getAttribute(($context["associations"] ?? null), "belongsToMany", array()))) {
             // line 64
             echo "
 ";
         }
         // line 67
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["associations"]) ? $context["associations"] : null));
+        $context['_seq'] = twig_ensure_traversable(($context["associations"] ?? null));
         foreach ($context['_seq'] as $context["type"] => $context["assocs"]) {
             // line 68
             $context['_parent'] = $context;
@@ -136,7 +136,7 @@ class ";
                 foreach ($context['_seq'] as $context["key"] => $context["val"]) {
                     if ( !($context["key"] === "alias")) {
                         // line 71
-                        $context["assocData"] = twig_array_merge((isset($context["assocData"]) ? $context["assocData"] : null), array($context["key"] => $context["val"]));
+                        $context["assocData"] = twig_array_merge(($context["assocData"] ?? null), array($context["key"] => $context["val"]));
                     }
                 }
                 $_parent = $context['_parent'];
@@ -148,7 +148,7 @@ class ";
                 echo "('";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["assoc"], "alias", array()), "html", null, true);
                 echo "', [";
-                echo $this->getAttribute((isset($context["Bake"]) ? $context["Bake"] : null), "stringifyList", array(0 => (isset($context["assocData"]) ? $context["assocData"] : null), 1 => array("indent" => 3)), "method");
+                echo $this->getAttribute(($context["Bake"] ?? null), "stringifyList", array(0 => ($context["assocData"] ?? null), 1 => array("indent" => 3)), "method");
                 echo "]);";
                 // line 74
                 echo "
@@ -167,7 +167,7 @@ class ";
         echo "
 ";
         // line 80
-        if ((isset($context["validation"]) ? $context["validation"] : null)) {
+        if (($context["validation"] ?? null)) {
             // line 81
             echo "
     /**
@@ -181,18 +181,18 @@ class ";
 ";
             // line 90
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["validation"]) ? $context["validation"] : null));
+            $context['_seq'] = twig_ensure_traversable(($context["validation"] ?? null));
             foreach ($context['_seq'] as $context["field"] => $context["rules"]) {
                 // line 91
-                $context["validationMethods"] = $this->getAttribute((isset($context["Bake"]) ? $context["Bake"] : null), "getValidationMethods", array(0 => $context["field"], 1 => $context["rules"]), "method");
+                $context["validationMethods"] = $this->getAttribute(($context["Bake"] ?? null), "getValidationMethods", array(0 => $context["field"], 1 => $context["rules"]), "method");
                 // line 92
-                if ((isset($context["validationMethods"]) ? $context["validationMethods"] : null)) {
+                if (($context["validationMethods"] ?? null)) {
                     // line 93
                     echo "        \$validator
 ";
                     // line 94
                     $context['_parent'] = $context;
-                    $context['_seq'] = twig_ensure_traversable((isset($context["validationMethods"]) ? $context["validationMethods"] : null));
+                    $context['_seq'] = twig_ensure_traversable(($context["validationMethods"] ?? null));
                     $context['loop'] = array(
                       'parent' => $context['_parent'],
                       'index0' => 0,
@@ -243,7 +243,7 @@ class ";
 ";
         }
         // line 107
-        if ((isset($context["rulesChecker"]) ? $context["rulesChecker"] : null)) {
+        if (($context["rulesChecker"] ?? null)) {
             // line 108
             echo "
     /**
@@ -258,7 +258,7 @@ class ";
 ";
             // line 118
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["rulesChecker"]) ? $context["rulesChecker"] : null));
+            $context['_seq'] = twig_ensure_traversable(($context["rulesChecker"] ?? null));
             foreach ($context['_seq'] as $context["field"] => $context["rule"]) {
                 // line 119
                 echo "        \$rules->add(\$rules->";
@@ -280,7 +280,7 @@ class ";
 ";
         }
         // line 126
-        if ( !((isset($context["connection"]) ? $context["connection"] : null) === "default")) {
+        if ( !(($context["connection"] ?? null) === "default")) {
             // line 127
             echo "
     /**
@@ -292,7 +292,7 @@ class ";
     {
         return '";
             // line 135
-            echo twig_escape_filter($this->env, (isset($context["connection"]) ? $context["connection"] : null), "html", null, true);
+            echo twig_escape_filter($this->env, ($context["connection"] ?? null), "html", null, true);
             echo "';
     }
 ";
@@ -307,7 +307,7 @@ class ";
 
     public function getTemplateName()
     {
-        return "E:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Model\\table.twig";
+        return "C:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Model\\table.twig";
     }
 
     public function isTraitable()
@@ -468,6 +468,6 @@ class {{ name }}Table extends Table
     }
 {% endif %}
 }
-", "E:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Model\\table.twig", "E:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Model\\table.twig");
+", "C:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Model\\table.twig", "C:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Model\\table.twig");
     }
 }
