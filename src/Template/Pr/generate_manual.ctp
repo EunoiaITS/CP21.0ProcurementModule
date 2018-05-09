@@ -143,7 +143,7 @@
                         <td><?= $allData->parts[$i]['gst'] ?><input type="hidden" name="gst<?php echo $count; ?>" value="<?= $allData->parts[$i]['gst'] ?>"></td>
                         <td><?= $allData->parts[$i]['total'] ?><input type="hidden" name="total<?php echo $count; ?>" value="<?= $allData->parts[$i]['total'] ?>"></td>
                         <td><a href="#">View</a></td>
-                        <td></td>
+                        <td><input type="hidden" name="sup-item-id<?php echo $count; ?>" value="<?= $allData->parts[$i]['sup_item_id'] ?>"></td>
                     </tr>
                     <?php endfor; ?>
                     <tr>
