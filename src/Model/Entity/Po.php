@@ -32,15 +32,7 @@ class Po extends Entity
      * @var array
      */
     protected $_accessible = [
-        'pr_id' => true,
-        'status' => true,
-        'created_by' => true,
-        'verified_by' => true,
-        'approve1_by' => true,
-        'approve2_by' => true,
-        'approve3_by' => true,
-        'created' => true,
-        'modified' => true,
-        'pr' => true
+        '*' => true,
+        'id' =>false
     ];
 }
