@@ -54,9 +54,9 @@ class PrController extends AppController
      */
     public function manualRequests()
     {
-        $this->loadModel('PrManual');
-        $pr = $this->PrManual->find('all')
-            ->Where(['status'=>'requested']);
+        $pr = $this->Pr->find('all')
+            ->Where(['status'=>'requested'])
+            ->Where(['section' => 'manual']);
 
         $this->set(compact('pr'));
     }
@@ -70,9 +70,9 @@ class PrController extends AppController
      */
     public function viewManual($id = null){
         $this->loadModel('Supplier');
-        $this->loadModel('PrManual');
-        $this->loadModel('PrManualItems');
-        $pr = $this->PrManual->get($id, [
+        $this->loadModel('SupplierItems');
+        $this->loadModel('PrItems');
+        $pr = $this->Pr->get($id, [
             'contain' => []
         ]);
 
@@ -94,16 +94,23 @@ class PrController extends AppController
             }
         }
 
-        $items = $this->PrManualItems->find('all')
-            ->where(['pr_manual_id' => $id]);
+        $items = $this->PrItems->find('all')
+            ->where(['pr_id' => $id]);
         foreach($items as $i){
             $supplier = '';
-            if($i->supplier !== ''){
-                $supplier = $this->Supplier->get($i->supplier, [
+            if($i->supplier_id !== null){
+                $supplier = $this->Supplier->get($i->supplier_id, [
                     'contain' => []
                 ]);
             }
             $i->supplier_name = $supplier;
+
+            if($i->supplier_item_id !== null){
+                $supplier_item = $this->SupplierItems->get($i->supplier_item_id, [
+                    'contain' => []
+                ]);
+            }
+            $i->supplier_item = $supplier_item;
 
             $urlToEng = 'http://engmodule.acumenits.com/api/bom-part/'.$i->bom_part_id;
 
@@ -758,6 +765,7 @@ class PrController extends AppController
                         $supplierId1 = $supplierId2 = $supplierId3 = '';
                         $uom = $supplier1 = $supplier2 = $supplier3 = '';
                         $price1 = $price2 = $price3 = 0;
+                        $supItemId1 = $supItemId2 = $supItemId3 = '';
                         $items = $this->SupplierItems->find('all', [
                             'order' => 'SupplierItems.unit_price'
                         ])
@@ -774,6 +782,7 @@ class PrController extends AppController
                                 ${'supplierId'.$count} = $supplier->id;
                                 ${'supplier'.$count} = $supplier->name;
                                 ${'price'.$count} = $ii->unit_price;
+                                ${'supItemId'.$count} = $ii->id;
                             }
                             $uom = $ii->uom;
                         }
@@ -810,6 +819,9 @@ class PrController extends AppController
                         '",supplier1:"'.$supplier1.
                         '",supplier2:"'.$supplier2.
                         '",supplier3:"'.$supplier3.
+                        '",supItemId1:"'.$supItemId1.
+                        '",supItemId2:"'.$supItemId2.
+                        '",supItemId3:"'.$supItemId3.
                         '",price1:"'.$price1.
                         '",price2:"'.$price2.
                         '",price3:"'.$price3.
@@ -844,6 +856,7 @@ class PrController extends AppController
                 $bomSupplierId1 = $bomSupplierId2 = $bomSupplierId3 = '';
                 $bomUom = $bomSupplier1 = $bomSupplier2 = $bomSupplier3 = '';
                 $bomPrice1 = $bomPrice2 = $bomPrice3 = 0;
+                $bomSupItemId1 = $bomSupItemId2 = $bomSupItemId3 = '';
                 $bomItems = $this->SupplierItems->find('all', [
                     'order' => 'SupplierItems.unit_price'
                 ])
@@ -859,6 +872,7 @@ class PrController extends AppController
                         ${'bomSupplierId'.$countBom} = $bomSupplier->id;
                         ${'bomSupplier'.$countBom} = $bomSupplier->name;
                         ${'bomPrice'.$countBom} = $bi->unit_price;
+                        ${'bomSupItemId'.$countBom} = $bi->id;
                     }
                     $bomUom = $bi->uom;
                 }
@@ -895,6 +909,9 @@ class PrController extends AppController
                     '",supplier1:"'.$bomSupplier1.
                     '",supplier2:"'.$bomSupplier2.
                     '",supplier3:"'.$bomSupplier3.
+                    '",supItemId1:"'.$bomSupItemId1.
+                    '",supItemId2:"'.$bomSupItemId2.
+                    '",supItemId3:"'.$bomSupItemId3.
                     '",price1:"'.$bomPrice1.
                     '",price2:"'.$bomPrice2.
                     '",price3:"'.$bomPrice3.
@@ -911,6 +928,9 @@ class PrController extends AppController
                     '",supplier1:"'.$bomSupplier1.
                     '",supplier2:"'.$bomSupplier2.
                     '",supplier3:"'.$bomSupplier3.
+                    '",supItemId1:"'.$bomSupItemId1.
+                    '",supItemId2:"'.$bomSupItemId2.
+                    '",supItemId3:"'.$bomSupItemId3.
                     '",price1:"'.$bomPrice1.
                     '",price2:"'.$bomPrice2.
                     '",price3:"'.$bomPrice3.
@@ -933,6 +953,7 @@ class PrController extends AppController
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
     public function generateManual(){
+        $this->loadModel('Supplier');
         $last_pr = $this->Pr->find('all')->last();
         $allData = [];
         $showData = null;
@@ -948,14 +969,32 @@ class PrController extends AppController
                 $allData['parts'][$i]['part_no'] = $this->request->getData('part-no-'.$i);
                 $allData['parts'][$i]['part_name'] = $this->request->getData('part-name-'.$i);
                 if($this->request->getData('supplier'.$i) == 2){
+                    if($this->request->getData('supplier-2-'.$i) != null){
+                        $allData['parts'][$i]['supplier_det'] = $this->Supplier->get($this->request->getData('supplier-2-'.$i), [
+                            'contain' => []
+                        ]);
+                    }
                     $allData['parts'][$i]['supplier_id'] = $this->request->getData('supplier-2-'.$i);
                     $allData['parts'][$i]['price'] = $this->request->getData('price-2-'.$i);
+                    $allData['parts'][$i]['sup_item_id'] = $this->request->getData('sup-item-2-'.$i);
                 }elseif($this->request->getData('supplier'.$i) == 3){
+                    if($this->request->getData('supplier-3-'.$i) != ''){
+                        $allData['parts'][$i]['supplier_det'] = $this->Supplier->get($this->request->getData('supplier-3-'.$i), [
+                            'contain' => []
+                        ]);
+                    }
                     $allData['parts'][$i]['supplier_id'] = $this->request->getData('supplier-3-'.$i);
                     $allData['parts'][$i]['price'] = $this->request->getData('price-3-'.$i);
+                    $allData['parts'][$i]['sup_item_id'] = $this->request->getData('sup-item-3-'.$i);
                 }else{
+                    if($this->request->getData('supplier-1-'.$i) != null){
+                        $allData['parts'][$i]['supplier_det'] = $this->Supplier->get($this->request->getData('supplier-1-'.$i), [
+                            'contain' => []
+                        ]);
+                    }
                     $allData['parts'][$i]['supplier_id'] = $this->request->getData('supplier-1-'.$i);
                     $allData['parts'][$i]['price'] = $this->request->getData('price-1-'.$i);
+                    $allData['parts'][$i]['sup_item_id'] = $this->request->getData('sup-item-1-'.$i);
                 }
                 $allData['parts'][$i]['uom'] = $this->request->getData('uom-'.$i);
                 $allData['parts'][$i]['category'] = $this->request->getData('category-'.$i);
@@ -992,13 +1031,14 @@ class PrController extends AppController
                 $pr_id = $this->Pr->find('all',['fields'=>'id'])->last();
                 if($this->request->getData('count') != null){
                     for ($i=1;$i <= $this->request->getData('count');$i++){
-                        $pr_itm[$i]['pr_manual_id'] = $pr_id['id'];
+                        $pr_itm[$i]['pr_id'] = $pr_id['id'];
                         $pr_itm[$i]['bom_part_id'] = $this->request->getData('bom-id'.$i);
                         $pr_itm[$i]['order_qty'] = $this->request->getData('order-qty'.$i);
-                        $pr_itm[$i]['supplier'] = $this->request->getData('supplier' . $i);
+                        $pr_itm[$i]['supplier_id'] = $this->request->getData('supplier' . $i);
                         $pr_itm[$i]['sub_total'] = $this->request->getData('subtotal' . $i);
                         $pr_itm[$i]['gst'] = $this->request->getData('gst' . $i);
                         $pr_itm[$i]['total'] = $this->request->getData('total' . $i);
+                        $pr_itm[$i]['supplier_item_id'] = $this->request->getData('sup-item-id' . $i);
                     }
                     $prs = $prChild->newEntities($pr_itm);
                     foreach ($prs as $p){

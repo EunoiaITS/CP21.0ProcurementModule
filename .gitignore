@@ -2,6 +2,7 @@
 .idea/
 /vendor/*
 /config/app.php
+temp/*
 
 /tmp/cache/models/*
 !/tmp/cache/models/empty
