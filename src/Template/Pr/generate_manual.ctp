@@ -132,7 +132,7 @@
                         <td><?= $count ?><input type="hidden" name="bom-id<?php echo $count; ?>" value="<?= $allData->parts[$i]['bom_id'] ?>"></td>
                         <td><?= $allData->parts[$i]['part_no'] ?></td>
                         <td><?= $allData->parts[$i]['part_name'] ?></td>
-                        <td><?= $allData->parts[$i]['supplier_id'] ?><input type="hidden" name="supplier<?php echo $count; ?>" value="<?= $allData->parts[$i]['supplier_id'] ?>"></td>
+                        <td><?php if(isset($allData->parts[$i]['supplier_det']->name)) echo $allData->parts[$i]['supplier_det']->name; ?><input type="hidden" name="supplier<?php echo $count; ?>" value="<?= $allData->parts[$i]['supplier_id'] ?>"></td>
                         <td><?= $allData->parts[$i]['uom'] ?></td>
                         <td>$ <p class="text-right"><?= $allData->parts[$i]['price'] ?></p></td>
                         <td><?= $allData->parts[$i]['category'] ?></td>

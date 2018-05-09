@@ -953,6 +953,7 @@ class PrController extends AppController
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
     public function generateManual(){
+        $this->loadModel('Supplier');
         $last_pr = $this->Pr->find('all')->last();
         $allData = [];
         $showData = null;
@@ -968,14 +969,29 @@ class PrController extends AppController
                 $allData['parts'][$i]['part_no'] = $this->request->getData('part-no-'.$i);
                 $allData['parts'][$i]['part_name'] = $this->request->getData('part-name-'.$i);
                 if($this->request->getData('supplier'.$i) == 2){
+                    if($this->request->getData('supplier-2-'.$i) != null){
+                        $allData['parts'][$i]['supplier_det'] = $this->Supplier->get($this->request->getData('supplier-2-'.$i), [
+                            'contain' => []
+                        ]);
+                    }
                     $allData['parts'][$i]['supplier_id'] = $this->request->getData('supplier-2-'.$i);
                     $allData['parts'][$i]['price'] = $this->request->getData('price-2-'.$i);
                     $allData['parts'][$i]['sup_item_id'] = $this->request->getData('sup-item-2-'.$i);
                 }elseif($this->request->getData('supplier'.$i) == 3){
+                    if($this->request->getData('supplier-3-'.$i) != ''){
+                        $allData['parts'][$i]['supplier_det'] = $this->Supplier->get($this->request->getData('supplier-3-'.$i), [
+                            'contain' => []
+                        ]);
+                    }
                     $allData['parts'][$i]['supplier_id'] = $this->request->getData('supplier-3-'.$i);
                     $allData['parts'][$i]['price'] = $this->request->getData('price-3-'.$i);
                     $allData['parts'][$i]['sup_item_id'] = $this->request->getData('sup-item-3-'.$i);
                 }else{
+                    if($this->request->getData('supplier-1-'.$i) != null){
+                        $allData['parts'][$i]['supplier_det'] = $this->Supplier->get($this->request->getData('supplier-1-'.$i), [
+                            'contain' => []
+                        ]);
+                    }
                     $allData['parts'][$i]['supplier_id'] = $this->request->getData('supplier-1-'.$i);
                     $allData['parts'][$i]['price'] = $this->request->getData('price-1-'.$i);
                     $allData['parts'][$i]['sup_item_id'] = $this->request->getData('sup-item-1-'.$i);
