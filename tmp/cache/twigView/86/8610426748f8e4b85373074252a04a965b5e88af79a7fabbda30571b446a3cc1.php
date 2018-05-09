@@ -1,7 +1,7 @@
 <?php
 
-/* E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\bake\src\Template\Bake\Template\edit.twig */
-class __TwigTemplate_61cf0f80537b99ed0c5a0a521219738a6c8fd9922a770a55926cdfa83b02f21b extends Twig_Template
+/* C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\bake\src\Template\Bake\Layout\default.twig */
+class __TwigTemplate_e0f3afbe4b5113053c2a8b2cf30ae7fffa863116da07a776169bb5f757256fd1 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
     {
@@ -16,26 +16,10 @@ class __TwigTemplate_61cf0f80537b99ed0c5a0a521219738a6c8fd9922a770a55926cdfa83b0
     protected function doDisplay(array $context, array $blocks = array())
     {
         $__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa = $this->env->getExtension("WyriHaximus\\TwigView\\Lib\\Twig\\Extension\\Profiler");
-        $__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa->enter($__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "E:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Template\\edit.twig"));
+        $__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa->enter($__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "C:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Layout\\default.twig"));
 
         // line 16
-        echo "<?php
-/**
- * @var \\";
-        // line 18
-        echo twig_escape_filter($this->env, (isset($context["namespace"]) ? $context["namespace"] : null), "html", null, true);
-        echo "\\View\\AppView \$this
- * @var \\";
-        // line 19
-        echo twig_escape_filter($this->env, (isset($context["entityClass"]) ? $context["entityClass"] : null), "html", null, true);
-        echo " \$";
-        echo twig_escape_filter($this->env, (isset($context["singularVar"]) ? $context["singularVar"] : null), "html", null, true);
-        echo "
- */
-?>
-";
-        // line 22
-echo $context['_view']->element("form",array(),array());
+        echo $this->getAttribute(($context["_view"] ?? null), "fetch", array(0 => "content"), "method");
         
         $__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa->leave($__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa_prof);
 
@@ -43,7 +27,7 @@ echo $context['_view']->element("form",array(),array());
 
     public function getTemplateName()
     {
-        return "E:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Template\\edit.twig";
+        return "C:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Layout\\default.twig";
     }
 
     public function isTraitable()
@@ -53,7 +37,7 @@ echo $context['_view']->element("form",array(),array());
 
     public function getDebugInfo()
     {
-        return array (  38 => 22,  30 => 19,  26 => 18,  22 => 16,);
+        return array (  22 => 16,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -81,13 +65,6 @@ echo $context['_view']->element("form",array(),array());
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 #}
-<?php
-/**
- * @var \\{{ namespace }}\\View\\AppView \$this
- * @var \\{{ entityClass }} \${{ singularVar }}
- */
-?>
-{% element 'form' %}
-", "E:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Template\\edit.twig", "E:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Template\\edit.twig");
+{{ _view.fetch('content')|raw }}", "C:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Layout\\default.twig", "C:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Layout\\default.twig");
     }
 }

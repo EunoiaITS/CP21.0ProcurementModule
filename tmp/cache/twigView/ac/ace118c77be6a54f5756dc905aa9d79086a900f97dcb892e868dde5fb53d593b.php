@@ -1,7 +1,7 @@
 <?php
 
-/* E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\bake\src\Template\Bake\Model\entity.twig */
-class __TwigTemplate_11fdc4b085b34cfa374e770f6e91327ab56af1607200e26c87b0ebb163d61547 extends Twig_Template
+/* C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\bake\src\Template\Bake\Model\entity.twig */
+class __TwigTemplate_5710af0efe72f630fe3c350036e0f6aa6a933411c8cca5c8fda8be794bf39b15 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
     {
@@ -16,44 +16,44 @@ class __TwigTemplate_11fdc4b085b34cfa374e770f6e91327ab56af1607200e26c87b0ebb163d
     protected function doDisplay(array $context, array $blocks = array())
     {
         $__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa = $this->env->getExtension("WyriHaximus\\TwigView\\Lib\\Twig\\Extension\\Profiler");
-        $__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa->enter($__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "E:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Model\\entity.twig"));
+        $__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa->enter($__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "C:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Model\\entity.twig"));
 
         // line 16
-        $context["propertyHintMap"] = $this->getAttribute((isset($context["DocBlock"]) ? $context["DocBlock"] : null), "buildEntityPropertyHintTypeMap", array(0 => (((isset($context["propertySchema"]) ? $context["propertySchema"] : null)) ? ((isset($context["propertySchema"]) ? $context["propertySchema"] : null)) : (array()))), "method");
+        $context["propertyHintMap"] = $this->getAttribute(($context["DocBlock"] ?? null), "buildEntityPropertyHintTypeMap", array(0 => ((($context["propertySchema"] ?? null)) ? (($context["propertySchema"] ?? null)) : (array()))), "method");
         // line 17
-        $context["associationHintMap"] = $this->getAttribute((isset($context["DocBlock"]) ? $context["DocBlock"] : null), "buildEntityAssociationHintTypeMap", array(0 => (((isset($context["propertySchema"]) ? $context["propertySchema"] : null)) ? ((isset($context["propertySchema"]) ? $context["propertySchema"] : null)) : (array()))), "method");
+        $context["associationHintMap"] = $this->getAttribute(($context["DocBlock"] ?? null), "buildEntityAssociationHintTypeMap", array(0 => ((($context["propertySchema"] ?? null)) ? (($context["propertySchema"] ?? null)) : (array()))), "method");
         // line 18
-        $context["annotations"] = $this->getAttribute((isset($context["DocBlock"]) ? $context["DocBlock"] : null), "propertyHints", array(0 => (isset($context["propertyHintMap"]) ? $context["propertyHintMap"] : null)), "method");
+        $context["annotations"] = $this->getAttribute(($context["DocBlock"] ?? null), "propertyHints", array(0 => ($context["propertyHintMap"] ?? null)), "method");
         // line 20
-        if ((isset($context["associationHintMap"]) ? $context["associationHintMap"] : null)) {
+        if (($context["associationHintMap"] ?? null)) {
             // line 21
-            $context["annotations"] = twig_array_merge((isset($context["annotations"]) ? $context["annotations"] : null), array(0 => ""));
+            $context["annotations"] = twig_array_merge(($context["annotations"] ?? null), array(0 => ""));
             // line 22
-            $context["annotations"] = twig_array_merge((isset($context["annotations"]) ? $context["annotations"] : null), $this->getAttribute((isset($context["DocBlock"]) ? $context["DocBlock"] : null), "propertyHints", array(0 => (isset($context["associationHintMap"]) ? $context["associationHintMap"] : null)), "method"));
+            $context["annotations"] = twig_array_merge(($context["annotations"] ?? null), $this->getAttribute(($context["DocBlock"] ?? null), "propertyHints", array(0 => ($context["associationHintMap"] ?? null)), "method"));
         }
         // line 25
-        $context["accessible"] = $this->getAttribute((isset($context["Bake"]) ? $context["Bake"] : null), "getFieldAccessibility", array(0 => (isset($context["fields"]) ? $context["fields"] : null), 1 => (isset($context["primaryKey"]) ? $context["primaryKey"] : null)), "method");
+        $context["accessible"] = $this->getAttribute(($context["Bake"] ?? null), "getFieldAccessibility", array(0 => ($context["fields"] ?? null), 1 => ($context["primaryKey"] ?? null)), "method");
         // line 26
         echo "<?php
 namespace ";
         // line 27
-        echo twig_escape_filter($this->env, (isset($context["namespace"]) ? $context["namespace"] : null), "html", null, true);
+        echo twig_escape_filter($this->env, ($context["namespace"] ?? null), "html", null, true);
         echo "\\Model\\Entity;
 
 use Cake\\ORM\\Entity;
 
 ";
         // line 31
-        echo $this->getAttribute((isset($context["DocBlock"]) ? $context["DocBlock"] : null), "classDescription", array(0 => (isset($context["name"]) ? $context["name"] : null), 1 => "Entity", 2 => (isset($context["annotations"]) ? $context["annotations"] : null)), "method");
+        echo $this->getAttribute(($context["DocBlock"] ?? null), "classDescription", array(0 => ($context["name"] ?? null), 1 => "Entity", 2 => ($context["annotations"] ?? null)), "method");
         echo "
 class ";
         // line 32
-        echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : null), "html", null, true);
+        echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
         echo " extends Entity
 {
 ";
         // line 34
-        if ((isset($context["accessible"]) ? $context["accessible"] : null)) {
+        if (($context["accessible"] ?? null)) {
             // line 35
             echo "
     /**
@@ -67,12 +67,12 @@ class ";
      */
     protected \$_accessible = [";
             // line 45
-            echo $this->getAttribute((isset($context["Bake"]) ? $context["Bake"] : null), "stringifyList", array(0 => (isset($context["accessible"]) ? $context["accessible"] : null), 1 => array("quotes" => false)), "method");
+            echo $this->getAttribute(($context["Bake"] ?? null), "stringifyList", array(0 => ($context["accessible"] ?? null), 1 => array("quotes" => false)), "method");
             echo "];
 ";
         }
         // line 48
-        if ((isset($context["hidden"]) ? $context["hidden"] : null)) {
+        if (($context["hidden"] ?? null)) {
             // line 49
             echo "
     /**
@@ -82,12 +82,12 @@ class ";
      */
     protected \$_hidden = [";
             // line 55
-            echo $this->getAttribute((isset($context["Bake"]) ? $context["Bake"] : null), "stringifyList", array(0 => (isset($context["hidden"]) ? $context["hidden"] : null)), "method");
+            echo $this->getAttribute(($context["Bake"] ?? null), "stringifyList", array(0 => ($context["hidden"] ?? null)), "method");
             echo "];
 ";
         }
         // line 58
-        if (( !(isset($context["accessible"]) ? $context["accessible"] : null) &&  !(isset($context["hidden"]) ? $context["hidden"] : null))) {
+        if (( !($context["accessible"] ?? null) &&  !($context["hidden"] ?? null))) {
             // line 59
             echo "
 ";
@@ -102,7 +102,7 @@ class ";
 
     public function getTemplateName()
     {
-        return "E:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Model\\entity.twig";
+        return "C:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Model\\entity.twig";
     }
 
     public function isTraitable()
@@ -186,6 +186,6 @@ class {{ name }} extends Entity
 
 {% endif %}
 }
-", "E:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Model\\entity.twig", "E:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Model\\entity.twig");
+", "C:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Model\\entity.twig", "C:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\Model\\entity.twig");
     }
 }

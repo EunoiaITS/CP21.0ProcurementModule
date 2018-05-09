@@ -20,7 +20,7 @@ class PrController extends AppController
     }
 
     /**
-     * Index method
+     * AutoRequests method
      *
      * @return \Cake\Http\Response|void
      */
@@ -32,6 +32,12 @@ class PrController extends AppController
 
         $this->set(compact('pr'));
     }
+
+    /**
+     * AutoTwoRequests method
+     *
+     * @return \Cake\Http\Response|void
+     */
     public function autoTwoRequests()
     {
         $this->loadModel('PrAuto');
@@ -41,6 +47,11 @@ class PrController extends AppController
         $this->set(compact('pr'));
     }
 
+    /**
+     * ManualRequests method
+     *
+     * @return \Cake\Http\Response|void
+     */
     public function manualRequests()
     {
         $this->loadModel('PrManual');
@@ -50,6 +61,13 @@ class PrController extends AppController
         $this->set(compact('pr'));
     }
 
+    /**
+     * ViewManual method
+     *
+     * @param string|null $id Pr id.
+     * @return \Cake\Http\Response|void
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
     public function viewManual($id = null){
         $this->loadModel('Supplier');
         $this->loadModel('PrManual');
@@ -131,7 +149,7 @@ class PrController extends AppController
     }
 
     /**
-     * View method
+     * ViewAuto method
      *
      * @param string|null $id Pr id.
      * @return \Cake\Http\Response|void
@@ -223,6 +241,13 @@ class PrController extends AppController
         $this->set('pr', $pr);
     }
 
+    /**
+     * ViewTwoAuto method
+     *
+     * @param string|null $id Pr id.
+     * @return \Cake\Http\Response|void
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
     public function viewTwoAuto($id = null)
     {
         $this->loadModel('PrAuto');
@@ -307,7 +332,7 @@ class PrController extends AppController
     }
 
     /**
-     * Add method
+     * AddAuto method
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
@@ -430,6 +455,12 @@ class PrController extends AppController
         $this->set('so_no',$so_no);
         $this->set('pr_id', (isset($last_pr->id) ? ($last_pr->id + 1) : 1));
     }
+
+    /**
+     * GenerateAuto method
+     *
+     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
+     */
     public function generateAuto(){
         $so_no = $this->request->getData('so_no');
         $date = $this->request->getData('date');
@@ -474,6 +505,12 @@ class PrController extends AppController
         $this->set('pr_id',$pr_id);
         $this->set('cus',$customer);
     }
+
+    /**
+     * SubmitAuto method
+     *
+     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
+     */
     public function submitAuto(){
         if($this->request->is('post')){
             $this->loadModel('PrAuto');
@@ -513,6 +550,12 @@ class PrController extends AppController
             $this->Flash->error(__('The pr could not be saved. Please, try again.'));
         }
     }
+
+    /**
+     * AddTwoAuto method
+     *
+     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
+     */
     public function addTwoAuto(){
         $this->loadModel('Supplier');
         $this->loadModel('SupplierItems');
@@ -664,6 +707,12 @@ class PrController extends AppController
         $this->set('so_no',$so_no);
         $this->set('pr_id', (isset($last_pr->id) ? ($last_pr->id + 1) : 1));
     }
+
+    /**
+     * AddManual method
+     *
+     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
+     */
     public function addManual()
     {
         $this->loadModel('Supplier');
@@ -868,19 +917,7 @@ class PrController extends AppController
                     '",uom:"'.$bomUom.'"},';
             }
         }
-        $this->loadModel('PrManual');
-        $this->loadModel('PrManualItems');
-        $last_pr = $this->PrManual->find('all')->last();
-        $pr = $this->PrManual->newEntity();
-        if ($this->request->is('post')) {
-            $pr = $this->PrManual->patchEntity($pr, $this->request->getData());
-            if ($this->PrManual->save($pr)) {
-                $this->Flash->success(__('The pr has been saved.'));
-
-                return $this->redirect(['action' => 'indexAuto']);
-            }
-            $this->Flash->error(__('The pr could not be saved. Please, try again.'));
-        }
+        $last_pr = $this->Pr->find('all')->last();
         $part_nos = rtrim($part_nos, ',');
         $part_names = rtrim($part_names, ',');
         $this->set(compact('pr'));
@@ -890,9 +927,13 @@ class PrController extends AppController
         $this->set('part_names', $part_names);
     }
 
+    /**
+     * GenerateManual method
+     *
+     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
+     */
     public function generateManual(){
-        $this->loadModel('PrManual');
-        $last_pr = $this->PrManual->find('all')->last();
+        $last_pr = $this->Pr->find('all')->last();
         $allData = [];
         $showData = null;
         if($this->request->is('post')){
@@ -931,20 +972,24 @@ class PrController extends AppController
         $this->set('last_pr', (isset($last_pr->id) ? ($last_pr->id + 1) : 1));
     }
 
+    /**
+     * SubmitManual method
+     *
+     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
+     */
     public function submitManual(){
         if($this->request->is('post')){
-            $this->loadModel('PrManual');
-            $this->loadModel('PrManualItems');
-            $pr = $this->PrManual->newEntity();
+            $pr = $this->Pr->newEntity();
             $pr->date = $this->request->getData('date');
             $pr->so_no = $this->request->getData('so_no');
             $pr->purchase_type = $this->request->getData('purchase_type');
             $pr->created_by = $this->request->getData('created_by');
             $pr->status = 'requested';
+            $pr->section = 'manual';
             $pr_itm = array();
-            $prChild = TableRegistry::get('PrManualItems');
-            if($this->PrManual->save($pr)){
-                $pr_id = $this->PrManual->find('all',['fields'=>'id'])->last();
+            $prChild = TableRegistry::get('PrItems');
+            if($this->Pr->save($pr)){
+                $pr_id = $this->Pr->find('all',['fields'=>'id'])->last();
                 if($this->request->getData('count') != null){
                     for ($i=1;$i <= $this->request->getData('count');$i++){
                         $pr_itm[$i]['pr_manual_id'] = $pr_id['id'];

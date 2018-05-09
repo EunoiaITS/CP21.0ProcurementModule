@@ -1,7 +1,7 @@
 <?php
 
-/* E:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\bake\src\Template\Bake\tests\test_case.twig */
-class __TwigTemplate_c47566f0c396ee15396494cbafa6b6c4aaa54625c32ed19e8b1238e90f8aab1d extends Twig_Template
+/* C:\xampp\htdocs\CP21.0ProcurementModule\vendor\cakephp\bake\src\Template\Bake\tests\test_case.twig */
+class __TwigTemplate_184eff9c1a6821b3d74cf4a22218d130fa79dada2fb8b309c90d69d57cd20198 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
     {
@@ -16,18 +16,18 @@ class __TwigTemplate_c47566f0c396ee15396494cbafa6b6c4aaa54625c32ed19e8b1238e90f8
     protected function doDisplay(array $context, array $blocks = array())
     {
         $__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa = $this->env->getExtension("WyriHaximus\\TwigView\\Lib\\Twig\\Extension\\Profiler");
-        $__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa->enter($__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "E:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\tests\\test_case.twig"));
+        $__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa->enter($__internal_770edd655cdeb606afc443e4edb1f19b4248a91788cb82e88bf8b9495a7c5cfa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "C:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\tests\\test_case.twig"));
 
         // line 18
-        $context["isController"] = (twig_lower_filter($this->env, (isset($context["type"]) ? $context["type"] : null)) == "controller");
+        $context["isController"] = (twig_lower_filter($this->env, ($context["type"] ?? null)) == "controller");
         // line 19
-        $context["isShell"] = (twig_lower_filter($this->env, (isset($context["type"]) ? $context["type"] : null)) == "shell");
+        $context["isShell"] = (twig_lower_filter($this->env, ($context["type"] ?? null)) == "shell");
         // line 20
-        if ((isset($context["isController"]) ? $context["isController"] : null)) {
+        if (($context["isController"] ?? null)) {
             // line 21
             $context["superClassName"] = "IntegrationTestCase";
         } elseif (        // line 22
-(isset($context["isShell"]) ? $context["isShell"] : null)) {
+($context["isShell"] ?? null)) {
             // line 23
             $context["superClassName"] = "ConsoleIntegrationTestCase";
         } else {
@@ -35,22 +35,22 @@ class __TwigTemplate_c47566f0c396ee15396494cbafa6b6c4aaa54625c32ed19e8b1238e90f8
             $context["superClassName"] = "TestCase";
         }
         // line 27
-        $context["uses"] = twig_array_merge((isset($context["uses"]) ? $context["uses"] : null), array(0 => ("Cake\\TestSuite\\" . (isset($context["superClassName"]) ? $context["superClassName"] : null))));
+        $context["uses"] = twig_array_merge(($context["uses"] ?? null), array(0 => ("Cake\\TestSuite\\" . ($context["superClassName"] ?? null))));
         // line 29
-        $context["uses"] = twig_sort_filter((isset($context["uses"]) ? $context["uses"] : null));
+        $context["uses"] = twig_sort_filter(($context["uses"] ?? null));
         // line 30
         echo "<?php
 namespace ";
         // line 31
-        echo twig_escape_filter($this->env, (isset($context["baseNamespace"]) ? $context["baseNamespace"] : null), "html", null, true);
+        echo twig_escape_filter($this->env, ($context["baseNamespace"] ?? null), "html", null, true);
         echo "\\Test\\TestCase\\";
-        echo twig_escape_filter($this->env, (isset($context["subNamespace"]) ? $context["subNamespace"] : null), "html", null, true);
+        echo twig_escape_filter($this->env, ($context["subNamespace"] ?? null), "html", null, true);
         echo ";
 
 ";
         // line 33
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["uses"]) ? $context["uses"] : null));
+        $context['_seq'] = twig_ensure_traversable(($context["uses"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["dependency"]) {
             // line 34
             echo "use ";
@@ -66,22 +66,22 @@ namespace ";
 /**
  * ";
         // line 38
-        echo twig_escape_filter($this->env, (isset($context["fullClassName"]) ? $context["fullClassName"] : null), "html", null, true);
+        echo twig_escape_filter($this->env, ($context["fullClassName"] ?? null), "html", null, true);
         echo " Test Case
  */
 class ";
         // line 40
-        echo twig_escape_filter($this->env, (isset($context["className"]) ? $context["className"] : null), "html", null, true);
+        echo twig_escape_filter($this->env, ($context["className"] ?? null), "html", null, true);
         echo "Test extends ";
-        echo twig_escape_filter($this->env, (isset($context["superClassName"]) ? $context["superClassName"] : null), "html", null, true);
+        echo twig_escape_filter($this->env, ($context["superClassName"] ?? null), "html", null, true);
         echo "
 {
 ";
         // line 42
-        if ((isset($context["properties"]) ? $context["properties"] : null)) {
+        if (($context["properties"] ?? null)) {
             // line 43
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["properties"]) ? $context["properties"] : null));
+            $context['_seq'] = twig_ensure_traversable(($context["properties"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["propertyInfo"]) {
                 // line 44
                 echo "
@@ -111,7 +111,7 @@ class ";
             $context = array_intersect_key($context, $_parent) + $_parent;
         }
         // line 54
-        if ((isset($context["fixtures"]) ? $context["fixtures"] : null)) {
+        if (($context["fixtures"] ?? null)) {
             // line 55
             echo "
     /**
@@ -121,12 +121,12 @@ class ";
      */
     public \$fixtures = [";
             // line 61
-            echo $this->getAttribute((isset($context["Bake"]) ? $context["Bake"] : null), "stringifyList", array(0 => $this->env->getExtension('Jasny\Twig\ArrayExtension')->values((isset($context["fixtures"]) ? $context["fixtures"] : null))), "method");
+            echo $this->getAttribute(($context["Bake"] ?? null), "stringifyList", array(0 => $this->env->getExtension('Jasny\Twig\ArrayExtension')->values(($context["fixtures"] ?? null))), "method");
             echo "];
 ";
         }
         // line 64
-        if ((isset($context["construction"]) ? $context["construction"] : null)) {
+        if (($context["construction"] ?? null)) {
             // line 65
             echo "
     /**
@@ -139,23 +139,23 @@ class ";
         parent::setUp();
 ";
             // line 74
-            if ((isset($context["preConstruct"]) ? $context["preConstruct"] : null)) {
+            if (($context["preConstruct"] ?? null)) {
                 // line 75
                 echo "        ";
-                echo (isset($context["preConstruct"]) ? $context["preConstruct"] : null);
+                echo ($context["preConstruct"] ?? null);
                 echo "
 ";
             }
             // line 77
             echo "        \$this->";
-            echo (((isset($context["subject"]) ? $context["subject"] : null) . " = ") . (isset($context["construction"]) ? $context["construction"] : null));
+            echo ((($context["subject"] ?? null) . " = ") . ($context["construction"] ?? null));
             echo "
 ";
             // line 78
-            if ((isset($context["postConstruct"]) ? $context["postConstruct"] : null)) {
+            if (($context["postConstruct"] ?? null)) {
                 // line 79
                 echo "        ";
-                echo (isset($context["postConstruct"]) ? $context["postConstruct"] : null);
+                echo ($context["postConstruct"] ?? null);
                 echo "
 ";
             }
@@ -171,7 +171,7 @@ class ";
     {
         unset(\$this->";
             // line 90
-            echo twig_escape_filter($this->env, (isset($context["subject"]) ? $context["subject"] : null), "html", null, true);
+            echo twig_escape_filter($this->env, ($context["subject"] ?? null), "html", null, true);
             echo ");
 
         parent::tearDown();
@@ -180,7 +180,7 @@ class ";
         }
         // line 96
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["methods"]) ? $context["methods"] : null));
+        $context['_seq'] = twig_ensure_traversable(($context["methods"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["method"]) {
             // line 97
             echo "
@@ -205,7 +205,7 @@ class ";
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['method'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 109
-        if ( !(isset($context["methods"]) ? $context["methods"] : null)) {
+        if ( !($context["methods"] ?? null)) {
             // line 110
             echo "
     /**
@@ -229,7 +229,7 @@ class ";
 
     public function getTemplateName()
     {
-        return "E:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\tests\\test_case.twig";
+        return "C:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\tests\\test_case.twig";
     }
 
     public function isTraitable()
@@ -373,6 +373,6 @@ class {{ className }}Test extends {{ superClassName }}
     }
 {% endif %}
 }
-", "E:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\tests\\test_case.twig", "E:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\tests\\test_case.twig");
+", "C:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\tests\\test_case.twig", "C:\\xampp\\htdocs\\CP21.0ProcurementModule\\vendor\\cakephp\\bake\\src\\Template\\Bake\\tests\\test_case.twig");
     }
 }
