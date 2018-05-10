@@ -1,60 +1,180 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Po $po
- */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Po'), ['action' => 'edit', $po->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Po'), ['action' => 'delete', $po->id], ['confirm' => __('Are you sure you want to delete # {0}?', $po->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Po'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Po'), ['action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="po view large-9 medium-8 columns content">
-    <h3><?= h($po->id) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th scope="row"><?= __('Pr Id') ?></th>
-            <td><?= h($po->pr_id) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Status') ?></th>
-            <td><?= h($po->status) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Created By') ?></th>
-            <td><?= h($po->created_by) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Verified By') ?></th>
-            <td><?= h($po->verified_by) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Approve1 By') ?></th>
-            <td><?= h($po->approve1_by) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Approve2 By') ?></th>
-            <td><?= h($po->approve2_by) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Approve3 By') ?></th>
-            <td><?= h($po->approve3_by) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($po->id) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Created') ?></th>
-            <td><?= h($po->created) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Modified') ?></th>
-            <td><?= h($po->modified) ?></td>
-        </tr>
-    </table>
+<div class="planner-from">
+    <div class="container-fluid">
+        <form action="<?php echo $this->Url->build(['controller'=>'Po','action'=>'submit'])?>" method="post">
+            <div class="row">
+                <div class="col-sm-12 col-sm-12">
+                    <div class="part-title-planner text-uppercase text-center"><b>Purchase Order Details</b></div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <div class="col-sm-3 col-xs-6">
+                                <p class="planner-year">Date <span class="planner-fright">:</span></p>
+                            </div>
+                            <div class="col-sm-5 col-xs-6">
+                                <p><?= date('Y-m-d',strtotime($pr->date)) ?></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 col-xs-6">
+                                <p class="planner-year">SO NO <span class="planner-fright">:</span></p>
+                            </div>
+                            <div class="col-sm-5 col-xs-6">
+                                <p class="normal-text"><?= $pr->so_no ?></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 col-xs-6">
+                                <p class="planner-year">Delivery  Date <span class="planner-fright">:</span></p>
+                            </div>
+                            <div class="col-sm-5 col-xs-6">
+                                <p class="normal-text"><?= date('Y-m-d',strtotime($pr->del_date)) ?></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 col-xs-6">
+                                <p class="planner-year">Description<span class="planner-fright">:</span></p>
+                            </div>
+                            <div class="col-sm-5 col-xs-6">
+                                <p class="normal-text text-uppercase"><?= $pr->model . ' (' .$pr->version .') ' ?></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 col-xs-6">
+                                <p class="planner-year">Customer Name<span class="planner-fright">:</span></p>
+                            </div>
+                            <div class="col-sm-5 col-xs-6">
+                                <p class="normal-text"><?= $pr->customer ?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <div class="col-sm-3 col-xs-6">
+                                <p class="planner-year">PO NO <span class="planner-fright">:</span></p>
+                            </div>
+                            <div class="col-sm-5 col-xs-6">
+                                <p class="normal-text">PO <?= $pr->id ?></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 col-xs-6">
+                                <p class="planner-year">Create by <span class="planner-fright">:</span></p>
+                            </div>
+                            <div class="col-sm-5 col-xs-6">
+                                <p class="normal-text">Azlin</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 col-xs-6">
+                                <p class="planner-year">Department <span class="planner-fright">:</span></p>
+                            </div>
+                            <div class="col-sm-5 col-xs-6">
+                                <p class="normal-text">Procurement</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 col-xs-6">
+                                <p class="planner-year">Section<span class="planner-fright">:</span></p>
+                            </div>
+                            <div class="col-sm-5 col-xs-6">
+                                <p class="normal-text"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 col-xs-6">
+                                <p class="planner-year">Verify<span class="planner-fright">:</span></p>
+                            </div>
+                            <div class="col-sm-5 col-xs-6">
+                                <p class="normal-text"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+            <!--============== Add drawing table area ===================-->
+            <div class="planner-table table-responsive clearfix">
+                <div class="col-sm-12">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Part No</th>
+                            <th>Description</th>
+                            <th>Supplier</th>
+                            <th>Process Type</th>
+                            <th>UOM</th>
+                            <th>Price (RM)</th>
+                            <th>QTY Request</th>
+                            <th>Stock Available</th>
+                            <th>QTY Order</th>
+                            <th>Sub Total</th>
+                            <th>GST%</th>
+                            <th>Total</th>
+                            <th>Document</th>
+                            <th>Remark</th>
+                        </tr>
+                        </thead>
+                        <tbody class="csn-text-up">
+                        <?php $count = $total = 0; foreach ($pr->items as $i): $count++; ?>
+                            <tr>
+                                <td><?= $count ?></td>
+                                <td><?= $i->eng->partNo ?></td>
+                                <td><?= $i->eng->partName ?></td>
+                                <td><?php if(isset($i->supplier_name->name)) echo $i->supplier_name->name; ?></td>
+                                <td><?= $i->eng->category ?></td>
+                                <td>PCS</td>
+                                <td><?= $i->sub_total/ $i->order_qty ?></td>
+                                <td><?= $i->eng->quality ?></td>
+                                <td><?= $i->stock ?></td>
+                                <td><?= $i->order_qty ?></td>
+                                <td><?= $i->sub_total ?></td>
+                                <td><?= $i->gst ?></td>
+                                <td><?= $i->total ?></td>
+                                <td><a href="#">View</a></td>
+                                <td></td>
+                            </tr>
+                            <?php $total += $i->total; endforeach; ?>
+                        <tr>
+                            <td colspan="12"></td>
+                            <td><?= $total ?></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="col-sm-offset-8 col-sm-4 col-xs-12">
+                <div class="prepareted-by-csn">
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Reject</button>
+                    <button type="submit" class="button btn btn-info">Verify</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--======
+        Reject popup
+        ===============================-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title text-center" id="myModalLabel">Please Key In Remarks Here </h4>
+            </div>
+            <div class="modal-body">
+                <form action="#">
+                    <textarea name="" id="" class="popup-textarea" cols="20" rows="8"></textarea>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Okay</button>
+            </div>
+        </div>
+    </div>
 </div>
