@@ -9,8 +9,6 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
- * @property \App\Model\Table\LogsTable|\Cake\ORM\Association\HasMany $Logs
- *
  * @method \App\Model\Entity\User get($primaryKey, $options = [])
  * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\User[] newEntities(array $data, array $options = [])
@@ -39,10 +37,6 @@ class UsersTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
-
-        $this->hasMany('Logs', [
-            'foreignKey' => 'user_id'
-        ]);
     }
 
     /**
@@ -74,7 +68,11 @@ class UsersTable extends Table
             ->scalar('role')
             ->maxLength('role', 255)
             ->requirePresence('role', 'create')
-            ->notEmpty('role');
+            ->notEmpty('role')
+            ->add('role', 'inList', [
+                'rule' => ['inList', ['admin', 'requester', 'verifier', 'approver-1', 'approver-2', 'approver-3']],
+                'message' => 'Please provide a valid role!'
+            ]);
 
         $validator
             ->scalar('name')

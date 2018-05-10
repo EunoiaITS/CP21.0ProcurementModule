@@ -19,7 +19,16 @@
         <?php
             echo $this->Form->control('username');
             echo $this->Form->control('password');
-            echo $this->Form->control('role');
+            echo $this->Form->control('role', [
+                'options' => [
+                'admin' => 'Admin',
+                'requester' => 'Requester',
+                'verifier' => 'Verifier',
+                'approver-1' => 'Approver Level 1',
+                'approver-2' => 'Approver Level 2',
+                'approver-3' => 'Approver Level 3'
+            ]
+        ]);
             echo $this->Form->control('name');
             echo $this->Form->control('dept');
             echo $this->Form->control('section');
