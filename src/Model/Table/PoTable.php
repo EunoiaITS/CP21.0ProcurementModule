@@ -54,6 +54,11 @@ class PoTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->dateTime('date')
+            ->requirePresence('date', 'create')
+            ->notEmpty('date');
+
+        $validator
             ->scalar('status')
             ->maxLength('status', 255)
             ->allowEmpty('status');

@@ -1,5 +1,6 @@
 <div class="planner-from">
     <div class="container-fluid">
+        <form action="<?php echo $this->Url->build(['controller'=>'Po','action'=>'submit'])?>" method="post">
         <div class="row">
             <div class="col-sm-12 col-sm-12">
                 <div class="part-title-planner text-uppercase text-center"><b>Purchase Order Form</b></div>
@@ -9,7 +10,7 @@
                                 <p class="planner-year">Date <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p><?= date('Y-m-d',strtotime($pr->date)) ?></p>
+                                <input type="datetime" name="date" class="form-control datepicker" value="<?= date('Y-m-d') ?>">
                             </div>
                         </div>
                         <div class="form-group">
@@ -147,14 +148,13 @@
 
         <div class="clearfix"></div>
         <div class="col-sm-offset-8 col-sm-4 col-xs-12">
-            <form action="<?php echo $this->Url->build(['controller'=>'Po','action'=>'submit'])?>" method="post">
             <div class="prepareted-by-csn">
                 <button type="submit" class="button btn btn-info">Submit</button>
             </div>
             <input type="hidden" name="pr_id" value="<?= $pr_id ?>">
             <input type="hidden" name="status" value="requested">
             <input type="hidden" name="created_by" value="1">
-            </form>
         </div>
+        </form>
     </div>
 </div>
