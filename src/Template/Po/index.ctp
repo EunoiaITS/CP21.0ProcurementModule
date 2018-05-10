@@ -2,8 +2,8 @@
      Create serial number form page
      ==============-->
 <form action="<?php echo $this->Url->build(['controller'=>'Po','action'=>'generate'])?>" method="post">
-<div class="planner-from">
-    <div class="container-fluid">
+    <div class="planner-from">
+        <div class="container-fluid">
             <div class="col-sm-12 col-sm-12">
                 <div class="part-title-planner text-uppercase text-center"><b>Purchase Order Request List</b></div>
             </div>
@@ -27,18 +27,18 @@
                         </thead>
                         <tbody class="csn-text-up">
                         <?php $count=0;foreach ($pr as $p): $count++;?>
-                        <tr>
-                            <td><?= $count ?></td>
-                            <td><input type="hidden" name="so_no<?= $count?>" value="<?= $p->so_no ?>"><?= $p->so_no ?></td>
-                            <td><input type="hidden" name="delivery_date<?= $count?>" value="<?= date('Y-m-d',strtotime($p->del_date))?>"><?= date('Y-m-d',strtotime($p->del_date))?></td>
-                            <td><input type="hidden" name="date<?= $count?>" value="<?= date('Y-m-d',strtotime($p->date))?>"><?= date('Y-m-d',strtotime($p->date))?></td>
-                            <td id="popup"><input type="hidden" name="pr_id<?= $count?>" value="<?= $p->id ?>"><span class="click-button" data-toggle="modal" data-target="#myModal<?= $count?>">PR <?= $p->id?></span></td>
-                            <td></td>
-                            <td></td>
-                            <td><input type="radio" name="radio-btn" value="<?= $count?>"  class="form-check-input" id="exampleCheck1"></td>
-                        </tr>
-                        <input type="hidden" name="description<?= $count?>" value="<?= $p->model .' (' . $p->version .') '?>">
-                        <input type="hidden" name="customer<?= $count?>" value="<?= $p->customer ?>">
+                            <tr>
+                                <td><?= $count ?></td>
+                                <td><input type="hidden" name="so_no<?= $count?>" value="<?= $p->so_no ?>"><?= $p->so_no ?></td>
+                                <td><input type="hidden" name="delivery_date<?= $count?>" value="<?= date('Y-m-d',strtotime($p->del_date))?>"><?= date('Y-m-d',strtotime($p->del_date))?></td>
+                                <td><input type="hidden" name="date<?= $count?>" value="<?= date('Y-m-d',strtotime($p->date))?>"><?= date('Y-m-d',strtotime($p->date))?></td>
+                                <td id="popup"><input type="hidden" name="pr_no<?= $count?>" value="<?= $p->id ?>"><span class="click-button" data-toggle="modal" data-target="#myModal<?= $count?>">PR <?= $p->id?></span></td>
+                                <td></td>
+                                <td></td>
+                                <td><input type="radio" name="radio_btn" value="<?= $count?>"  class="form-check-input" id="exampleCheck1"></td>
+                            </tr>
+                            <input type="hidden" name="description<?= $count?>" value="<?= $p->model .' (' . $p->version .') '?>">
+                            <input type="hidden" name="customer<?= $count?>" value="<?= $p->customer ?>">
                         <?php endforeach;?>
                         </tbody>
                     </table>
@@ -74,14 +74,14 @@
                         </thead>
                         <tbody class="csn-text-up">
                         <?php $item_count = 0;foreach ($p->items as $i): $item_count++;?>
-                        <tr>
-                            <td><?= $item_count ?></td>
-                            <td><input type="hidden" name="part_no-<?= $count?>-<?= $item_count ?>" value="<?= $i->eng->partNo ?>"><?= $i->eng->partNo ?></td>
-                            <td><input type="hidden" name="part_name-<?= $count?>-<?= $item_count ?>" value="<?= $i->eng->partName ?>"><?= $i->eng->partName ?></td>
-                            <td><input type="hidden" name="supplier-<?= $count?>-<?= $item_count ?>" value="<?= $i->supplier_name->name ?>"><?= $i->supplier_name->name ?></td>
-                            <td><input type="hidden" name="order_qty-<?= $count?>-<?= $item_count ?>" value="<?= $i->order_qty ?>"><?= $i->order_qty ?></td>
-                            <td><input type="hidden" name="total-<?= $count?>-<?= $item_count ?>" value="<?= $i->total ?>">$ <?= $i->total ?></td>
-                        </tr>
+                            <tr>
+                                <td><?= $item_count ?></td>
+                                <td><input type="hidden" name="part_no-<?= $count?>-<?= $item_count ?>" value="<?= $i->eng->partNo ?>"><?= $i->eng->partNo ?></td>
+                                <td><input type="hidden" name="part_name-<?= $count?>-<?= $item_count ?>" value="<?= $i->eng->partName ?>"><?= $i->eng->partName ?></td>
+                                <td><input type="hidden" name="supplier-<?= $count?>-<?= $item_count ?>" value="<?= $i->supplier_name->name ?>"><?= $i->supplier_name->name ?></td>
+                                <td><input type="hidden" name="order_qty-<?= $count?>-<?= $item_count ?>" value="<?= $i->order_qty ?>"><?= $i->order_qty ?></td>
+                                <td><input type="hidden" name="total-<?= $count?>-<?= $item_count ?>" value="<?= $i->total ?>">$ <?= $i->total ?></td>
+                            </tr>
                             <input type="hidden" name="sub_total-<?= $count?>-<?= $item_count ?>" value="<?= $i->sub_total ?>">
                             <input type="hidden" name="gst-<?= $count?>-<?= $item_count ?>" value="<?= $i->gst ?>">
                             <input type="hidden" name="stock_available-<?= $count?>-<?= $item_count ?>" value="<?= $i->stock ?>">
