@@ -34,7 +34,7 @@
                             <td><?= $p->customer ?></td>
                             <td>Auto</td>
                             <td></td>
-                            <td><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'viewTwoAuto',$p->id])?>">Select</a></td>
+                            <td><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'viewTwoAuto',$p->id])?>"><?php if($role == 'requester'){echo 'pending';}elseif ($role == 'verifier'){echo 'verify';}elseif ($role == 'approver-1'){echo 'approve';}?></a></td>
                         </tr>
                         <?php endforeach;?>
                         </tbody>

@@ -69,10 +69,10 @@ class PsController extends AppController
 
         $this->set('p', $p);
     }
-
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
-     */
+    public function isAuthorized($user){
+        if ($this->request->getParam('action') === 'index') {
+            return true;
+        }
+        return parent::isAuthorized($user);
+    }
 }

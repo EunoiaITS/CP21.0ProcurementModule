@@ -148,10 +148,14 @@
 
             <div class="clearfix"></div>
             <div class="col-sm-offset-8 col-sm-4 col-xs-12">
-                <div class="prepareted-by-csn">
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Reject</button>
-                    <button type="submit" class="button btn btn-info">Verify</button>
-                </div>
+                <form action="<?php echo $this->Url->build(['controller'=>'Po','action'=>'edit',$pr->id])?>">
+                    <div class="prepareted-by-csn">
+                        <input type="hidden" name="status" value="verified">
+                        <input type="hidden" name="verified_by" value="<?= $pic ?>">
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Reject</button>
+                        <button type="submit" class="button btn btn-info">Verify</button>
+                    </div>
+                </form>
             </div>
         </form>
     </div>
@@ -167,14 +171,15 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                 <h4 class="modal-title text-center" id="myModalLabel">Please Key In Remarks Here </h4>
             </div>
-            <div class="modal-body">
-                <form action="#">
-                    <textarea name="" id="" class="popup-textarea" cols="20" rows="8"></textarea>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Okay</button>
-            </div>
+            <form action="<?php echo $this->Url->build(['controller'=>'Po','action'=>'edit',$pr->id])?>" method="post">
+                <div class="modal-body">
+                    <textarea name="remark" id="remark" class="popup-textarea" cols="20" rows="8"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="status" value="rejected">
+                    <button type="submit" class="btn btn-primary">Okay</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

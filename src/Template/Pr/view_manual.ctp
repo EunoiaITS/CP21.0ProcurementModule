@@ -3,7 +3,6 @@
         <div class="row">
             <div class="col-sm-12 col-sm-12">
                 <div class="part-title-planner text-uppercase text-center"><b>Purchase Order Form</b></div>
-                <form action="#" class="planner-relative">
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="col-sm-3 col-xs-6">
@@ -80,10 +79,7 @@
                             </div>
                         </div>
                     </div>
-                </form>
             </div>
-
-            </form>
         </div>
 
         <div class="clearfix"></div>
@@ -144,10 +140,16 @@
 
         <div class="clearfix"></div>
         <div class="col-sm-offset-8 col-sm-4 col-xs-12">
-            <div class="prepareted-by-csn">
-                <button class="btn btn-info" data-toggle="modal" data-target="#myModal">Reject</button>
-                <div class="button btn btn-info">Verify</div>
-            </div>
+            <form action="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'edit',$pr->id])?>" method="post">
+                <div class="prepareted-by-csn">
+                    <input type="hidden" name="status" value="<?php if($role == "verifier"){echo "verified";}elseif($role == "approver-1"){echo "approved";}?>">
+                    <input type="hidden" name="<?php if($role == "verifier"){echo "verified_by";}elseif($role == "approver-1"){echo "approved_by";}?>" value="<?= $pic ?>">
+                    <?php if($role != 'requester'): ?>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Reject</button>
+                        <button type="submit" class="button btn btn-info"><?php if($role == "verifier"){echo "Verify";}elseif($role == "approver-1"){echo "Approve";}?></button>
+                    <?php endif;?>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -162,14 +164,15 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                 <h4 class="modal-title text-center" id="myModalLabel">Please Key In Remarks Here </h4>
             </div>
+            <form action="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'edit',$pr->id])?>" method="post">
             <div class="modal-body">
-                <form action="#">
-                    <textarea name="" id="" class="popup-textarea" cols="20" rows="8"></textarea>
-                </form>
+                    <textarea name="remark" id="" class="popup-textarea" cols="20" rows="8"></textarea>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Okay</button>
-            </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="status" value="rejected">
+                    <button type="submit" class="btn btn-primary">Okay</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

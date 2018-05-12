@@ -182,16 +182,16 @@
                     counter++;
                     html_table += '<tr>'+
                         '<td>'+counter+'</td>'+
-                        '<td><input id="bom-id" type="hidden" name="bom_part_id'+(i+1)+'" value="'+e.id+'"><input name="checkbox'+(i+1)+'" type="checkbox" class="form-check-input" id="check" value="'+(i+1)+'"></td>'+
+                        '<td><input id="bom-id" type="hidden" name="bom_part_id'+counter+'" value="'+e.bomId+'"><input name="checkbox'+counter+'" type="checkbox" class="form-check-input" id="check" value="'+counter+'"></td>'+
                         '<td>'+ e.partNo+'<input type="hidden" name="part_no'+counter+'" value="'+ e.partNo+'"></td>'+
                         '<td>'+ e.partName+'<input type="hidden" name="part_name'+counter+'" value="'+ e.partName+'"></td>'+
-                        '<td>'+ e.supplier1+'<input type="hidden" name="supplier1'+counter+'" value="'+ e.supplier1id+'"></td>'+
-                        '<td>$ <p class="text-right" id="price-1'+counter+'">'+ e.price1+'</p><input type="hidden" name="price1'+counter+'" value="'+ e.price1+'"></td>'+
-                        '<td>'+ e.supplier2+'<input type="hidden" name="supplier2'+counter+'" value="'+ e.supplier2id+'"></td>'+
-                        '<td>$ <p class="text-right" id="price-2'+counter+'">'+ e.price2+'</p><input type="hidden" name="price2'+counter+'" value="'+ e.price2+'"></td>'+
-                        '<td>'+ e.supplier3+'<input type="hidden" name="supplier-3-'+counter+'" value="'+ e.supplier3id+'"></td>'+
+                        '<td>'+ e.supplier1+'<input type="hidden" name="supplier-1-'+counter+'" value="'+ e.supplier1id+'"><input type="hidden" name="sup-item-1-'+counter+'" value="'+ e.supItemId1+'"></td>'+
+                        '<td>$ <p class="text-right" id="price-1'+counter+'">'+ e.price1+'</p><input type="hidden" name="price-1-'+counter+'" value="'+ e.price1+'"></td>'+
+                        '<td>'+ e.supplier2+'<input type="hidden" name="supplier-2-'+counter+'" value="'+ e.supplier2id+'"><input type="hidden" name="sup-item-2-'+counter+'" value="'+ e.supItemId2+'"></td>'+
+                        '<td>$ <p class="text-right" id="price-2'+counter+'">'+ e.price2+'</p><input type="hidden" name="price-2-'+counter+'" value="'+ e.price2+'"></td>'+
+                        '<td>'+ e.supplier3+'<input type="hidden" name="supplier-3-'+counter+'" value="'+ e.supplier3id+'"><input type="hidden" name="sup-item-3-'+counter+'" value="'+ e.supItemId1+'"></td>'+
                         '<td>'+ e.uom+'<input type="hidden" name="uom'+counter+'" value="'+ e.uom+'"></td>'+
-                        '<td>$ <p class="text-right" id="price-3'+counter+'">'+ e.price3+'</p><input type="hidden" name="price3'+counter+'" value="'+ e.price3+'"></td>'+
+                        '<td>$ <p class="text-right" id="price-3'+counter+'">'+ e.price3+'</p><input type="hidden" name="price-3-'+counter+'" value="'+ e.price3+'"></td>'+
                         '<td>'+ e.category+'<input type="hidden" name="category'+counter+'" value="'+ e.category+'"></td>'+
                         '<td>'+ e.reqQuantity+'<input type="hidden" name="reqQuantity'+counter+'" value="'+ e.reqQuantity+'"></td>'+
                         '<td>'+ e.stockAvailable+'<input type="hidden" name="stockAvailable'+counter+'" value="'+ e.stockAvailable+'"></td>'+
