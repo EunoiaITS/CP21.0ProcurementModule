@@ -355,4 +355,25 @@ class PoController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+    public function isAuthorized($user){
+        if ($this->request->getParam('action') === 'requests' || $this->request->getParam('action') === 'index' || $this->request->getParam('view') === 'generate' || $this->request->getParam('action') === 'submit') {
+            return true;
+        }
+        if(isset($user['role']) && $user['role'] === 'requester'){
+            if(in_array($this->request->action, ['autoRequests','autoTwoRequests','manualRequests','autoView','autoTwoView','manualView','addAuto','addTwoAuto','addManual','generateAuto','generateTwoAuto','generateManual','submitAuto','submitTwoAuto','submitManual'])){
+                return true;
+            }
+        }
+        if(isset($user['role']) && $user['role'] === 'verifier'){
+            if(in_array($this->request->action, ['autoRequests','autoTwoRequests','manualRequests','autoView','autoTwoView','manualView'])){
+                return true;
+            }
+        }
+        if(isset($user['role']) && $user['role'] === 'approver-1'){
+            if(in_array($this->request->action, ['autoRequests','autoTwoRequests','manualRequests','autoView','autoTwoView','manualView'])){
+                return true;
+            }
+        }
+        return parent::isAuthorized($user);
+    }
 }
