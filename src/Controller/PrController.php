@@ -5,8 +5,9 @@ use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
 
 /**
- * Pr Controller
+ * Po Controller
  *
+ * @property \App\Model\Table\PoTable $Pr
  *
  * @method \App\Model\Entity\Pr[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
@@ -26,11 +27,23 @@ class PrController extends AppController
      */
     public function autoRequests()
     {
-        $pr = $this->Pr->find('all')
-            ->Where(['status'=>'requested'])
-            ->Where(['section' => 'auto-1']);
-
-        $this->set(compact('pr'));
+        if($this->Auth->user('role') == 'requester'){
+            $pr = $this->Pr->find('all')
+                ->Where(['status'=>'requested'])
+                ->where(['section' => 'auto-1'])
+                ->orWhere(['status' => 'rejected']);
+        }
+        if($this->Auth->user('role') == 'verifier'){
+            $pr = $this->Pr->find('all')
+                ->Where(['status'=>'requested'])
+                ->where(['section' => 'auto-1']);
+        }
+        if($this->Auth->user('role') == 'approver-1'){
+            $pr = $this->Pr->find('all')
+                ->where(['status' => 'verified'])
+                ->where(['section' => 'auto-1']);
+        }
+        $this->set('pr', $this->paginate($pr));
     }
 
     /**
@@ -40,11 +53,23 @@ class PrController extends AppController
      */
     public function autoTwoRequests()
     {
-        $pr = $this->Pr->find('all')
-            ->Where(['status'=>'requested'])
-            ->Where(['section' => 'auto-2']);
-
-        $this->set(compact('pr'));
+        if($this->Auth->user('role') == 'requester'){
+            $pr = $this->Pr->find('all')
+                ->Where(['status'=>'requested'])
+                ->where(['section' => 'auto-2'])
+                ->orWhere(['status' => 'rejected']);
+        }
+        if($this->Auth->user('role') == 'verifier'){
+            $pr = $this->Pr->find('all')
+                ->Where(['status'=>'requested'])
+                ->where(['section' => 'auto-2']);
+        }
+        if($this->Auth->user('role') == 'approver-1'){
+            $pr = $this->Pr->find('all')
+                ->where(['status' => 'verified'])
+                ->where(['section' => 'auto-2']);
+        }
+        $this->set('pr', $this->paginate($pr));
     }
 
     /**
@@ -54,11 +79,23 @@ class PrController extends AppController
      */
     public function manualRequests()
     {
-        $pr = $this->Pr->find('all')
-            ->Where(['status'=>'requested'])
-            ->Where(['section' => 'manual']);
-
-        $this->set(compact('pr'));
+        if($this->Auth->user('role') == 'requester'){
+            $pr = $this->Pr->find('all')
+                ->Where(['status'=>'requested'])
+                ->where(['section' => 'manual'])
+                ->orWhere(['status' => 'rejected']);
+        }
+        if($this->Auth->user('role') == 'verifier'){
+            $pr = $this->Pr->find('all')
+                ->Where(['status'=>'requested'])
+                ->where(['section' => 'manual']);
+        }
+        if($this->Auth->user('role') == 'approver-1'){
+            $pr = $this->Pr->find('all')
+                ->where(['status' => 'verified'])
+                ->where(['section' => 'manual']);
+        }
+        $this->set('pr', $this->paginate($pr));
     }
 
     /**
@@ -152,6 +189,7 @@ class PrController extends AppController
         }
         $pr->items = $items;
 
+        $this->set('pic',$this->Auth->user('id'));
         $this->set('pr', $pr);
     }
 
@@ -196,13 +234,20 @@ class PrController extends AppController
         $items = $this->PrItems->find('all')
             ->where(['pr_id' => $id]);
         foreach($items as $i){
-            $supplier = '';
-            if($i->supplier !== ''){
-                $supplier = $this->Supplier->get($i->supplier, [
+            $supplier = $supplier_item = '';
+            if($i->supplier_id !== null){
+                $supplier = $this->Supplier->get($i->supplier_id, [
                     'contain' => []
                 ]);
             }
             $i->supplier_name = $supplier;
+
+            if($i->supplier_item_id !== null){
+                $supplier_item = $this->SupplierItems->get($i->supplier_item_id, [
+                    'contain' => []
+                ]);
+            }
+            $i->supplier_item = $supplier_item;
 
             $urlToEng = 'http://engmodule.acumenits.com/api/bom-part/'.$i->bom_part_id;
 
@@ -243,7 +288,7 @@ class PrController extends AppController
 
         }
         $pr->items = $items;
-
+        $this->set('pic',$this->Auth->user('id'));
         $this->set('pr', $pr);
     }
 
@@ -288,10 +333,20 @@ class PrController extends AppController
         $items = $this->PrItems->find('all')
             ->where(['pr_id' => $id]);
         foreach($items as $i){
-            $supplier = $this->Supplier->get($i->supplier, [
-                'contain' => []
-            ]);
+            $supplier = $supplier_item = '';
+            if($i->supplier_id !== null){
+                $supplier = $this->Supplier->get($i->supplier_id, [
+                    'contain' => []
+                ]);
+            }
             $i->supplier_name = $supplier;
+
+            if($i->supplier_item_id !== null){
+                $supplier_item = $this->SupplierItems->get($i->supplier_item_id, [
+                    'contain' => []
+                ]);
+            }
+            $i->supplier_item = $supplier_item;
 
             $urlToEng = 'http://engmodule.acumenits.com/api/bom-part/'.$i->bom_part_id;
 
@@ -332,7 +387,7 @@ class PrController extends AppController
 
         }
         $pr->items = $items;
-
+        $this->set('pic',$this->Auth->user('id'));
         $this->set('pr', $pr);
     }
 
@@ -1090,6 +1145,9 @@ class PrController extends AppController
             $this->Flash->error(__('The pr could not be saved. Please, try again.'));
         }
     }
+    public function report(){
+
+    }
 
     /**
      * Edit method
@@ -1108,7 +1166,7 @@ class PrController extends AppController
             if ($this->Pr->save($pr)) {
                 $this->Flash->success(__('The pr has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'report']);
             }
             $this->Flash->error(__('The pr could not be saved. Please, try again.'));
         }
@@ -1135,21 +1193,21 @@ class PrController extends AppController
         return $this->redirect(['action' => 'index']);
     }
     public function isAuthorized($user){
-        if ($this->request->getParam('action') === 'autoRequests' || $this->request->getParam('action') === 'autoTwoRequests' || $this->request->getParam('action') === 'manualRequests' || $this->request->getParam('action') === 'addAuto' || $this->request->getParam('action') === 'addTwoAuto' || $this->request->getParam('action') === 'addManual' || $this->request->getParam('action') === 'generateAuto' || $this->request->getParam('action') === 'generateTwoAuto' || $this->request->getParam('action') === 'generateManual' || $this->request->getParam('action') === 'submitAuto' || $this->request->getParam('action') === 'submitTwoAuto' || $this->request->getParam('action') === 'submitManual' || $this->request->getParam('action') === 'edit' || $this->request->getParam('action') === 'delete' || $this->request->getParam('action') === 'viewAuto' || $this->request->getParam('action') === 'viewTwoAuto' || $this->request->getParam('action') === 'viewManual') {
+        if ($this->request->getParam('action') === 'autoRequests' || $this->request->getParam('action') === 'autoTwoRequests' || $this->request->getParam('action') === 'manualRequests' || $this->request->getParam('action') === 'addAuto' || $this->request->getParam('action') === 'addTwoAuto' || $this->request->getParam('action') === 'addManual' || $this->request->getParam('action') === 'generateAuto' || $this->request->getParam('action') === 'generateTwoAuto' || $this->request->getParam('action') === 'generateManual' || $this->request->getParam('action') === 'submitAuto' || $this->request->getParam('action') === 'submitTwoAuto' || $this->request->getParam('action') === 'submitManual' || $this->request->getParam('action') === 'edit' || $this->request->getParam('action') === 'delete' || $this->request->getParam('action') === 'viewAuto' || $this->request->getParam('action') === 'viewTwoAuto' || $this->request->getParam('action') === 'viewManual' || $this->request->getParam('action') === 'report') {
             return true;
         }
         if(isset($user['role']) && $user['role'] === 'requester'){
-            if(in_array($this->request->action, ['autoRequests','autoTwoRequests','manualRequests','autoView','autoTwoView','manualView','addAuto','addTwoAuto','addManual','generateAuto','generateTwoAuto','generateManual','submitAuto','submitTwoAuto','submitManual'])){
+            if(in_array($this->request->action, ['autoRequests','autoTwoRequests','manualRequests','autoView','autoTwoView','manualView','addAuto','addTwoAuto','addManual','generateAuto','generateTwoAuto','generateManual','submitAuto','submitTwoAuto','submitManual','report'])){
                 return true;
             }
         }
         if(isset($user['role']) && $user['role'] === 'verifier'){
-            if(in_array($this->request->action, ['autoRequests','autoTwoRequests','manualRequests','autoView','autoTwoView','manualView'])){
+            if(in_array($this->request->action, ['autoRequests','autoTwoRequests','manualRequests','autoView','autoTwoView','manualView','report'])){
                 return true;
             }
         }
         if(isset($user['role']) && $user['role'] === 'approver-1'){
-            if(in_array($this->request->action, ['autoRequests','autoTwoRequests','manualRequests','autoView','autoTwoView','manualView'])){
+            if(in_array($this->request->action, ['autoRequests','autoTwoRequests','manualRequests','autoView','autoTwoView','manualView','report'])){
                 return true;
             }
         }

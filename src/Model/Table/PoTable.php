@@ -87,6 +87,9 @@ class PoTable extends Table
             ->scalar('approve3_by')
             ->maxLength('approve3_by', 255)
             ->allowEmpty('approve3_by');
+        $validator
+            ->scalar('remark')
+            ->allowEmpty('remark');
 
         return $validator;
     }

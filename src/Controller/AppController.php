@@ -68,6 +68,7 @@ class AppController extends Controller
         }
         $this->set('role', $this->Auth->user('role'));
         $this->set('user_pic', $this->Auth->user('username'));
+        $this->set('user_id', $this->Auth->user('id'));
     }
     public function beforeFilter(Event $event)
     {

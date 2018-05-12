@@ -29,17 +29,18 @@
             </div>
         </li>
         <li><a href="#" class="active">Home (Login)</a></li>
+        <?php if($role != 'approver-2' || $role != 'approver-3'): ?>
         <div class="btn-group-vertical" role="group" class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 PURCHASE REQUESITION &nbsp;
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li class="color-hsh"><a href="#">PR Request List (manual)</a></li>
-                <?php if($role == 'requester'): ?><li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'addManual'])?>">PR Generate (manual)</a></li><?php endif;?>
+                <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'manualRequests'])?>">PR Request List (manual)</a></li>
+                <?php if($role == 'requester'): ?><li class="color-hsh2"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'addManual'])?>">PR Generate (manual)</a></li><?php endif;?>
                 <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'autoRequests'])?>">PR Request List (auto)</a></li>
                 <?php if($role == 'requester'): ?><li class="color-hsh2"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'addAuto'])?>">PR 1 Generate (auto)</a></li><?php endif;?>
-                <li class="color-hsh"><a href="#">Customization Item</a></li>
+<!--                <li class="color-hsh"><a href="#">Customization Item</a></li>-->
                 <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'autoTwoRequests'])?>">PR 2 Request List (auto)</a></li>
                 <?php if($role == 'requester'): ?><li class="color-hsh2"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'addTwoAuto'])?>">PR 2 Generate (auto)</a></li><?php endif;?>
                 <li class="color-hsh3"><a href="#">PR Approval Status</a></li>
@@ -47,60 +48,61 @@
                 <li class="color-hsh3"><a href="#">PR Statistic Report</a></li>
             </ul>
         </div>
+        <?php endif;?>
         <div class="btn-group-vertical" role="group" class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 PURCHASE ORDER &nbsp;
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li class="color-hsh"><a href="#">PO Request List</a></li>
-                <?php if($role == 'requester'): ?><li class="color-hsh"><a href="#">PO Form Create</a></li><?php endif;?>
+                <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Po','action'=>'requests'])?>">PO Request List</a></li>
+                <?php if($role == 'requester'): ?><li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Po','action'=>'index'])?>">PO Form Create</a></li><?php endif;?>
                 <li class="color-hsh2"><a href="#">PO Approval Status</a></li>
                 <li class="color-hsh2"><a href="#">PO Report</a></li>
                 <li class="color-hsh2"><a href="#">PO Statistic Report</a></li>
             </ul>
         </div>
-        <div class="btn-group-vertical" role="group" class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                PURCHASE ORDER LIST &nbsp;
-                <span class="caret"></span>
-            </button>
-            <ul  class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li class="color-hsh2"><a href="#">PO List</a></li>
-                <li class="color-hsh3"><a href="#">Material Delivery Scheduler</a></li>
-                <li class="color-hsh2"><a href="#">PO list Report</a></li>
-                <li class="color-hsh2"><a href="#">PO list Search list</a></li>
-                <li class="color-hsh2"><a href="#">PO list Part Details</a></li>
-            </ul>
-        </div>
-        <div class="btn-group-vertical" role="group" class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                RTVN &nbsp;
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li class="color-hsh"><a href="#">RTVN Descrepency List</a></li>
-                <li class="color-hsh"><a href="#">RTVN Create</a></li>
-                <li class="color-hsh"><a href="#">RTVN Verification</a></li>
-                <li class="color-hsh"><a href="#">RTVN Approval</a></li>
-                <li class="color-hsh2"><a href="#">RTVN Approval Status</a></li>
-                <li class="color-hsh2"><a href="#">RTVN Report</a></li>
-            </ul>
-        </div>
+<!--        <div class="btn-group-vertical" role="group" class="dropdown">-->
+<!--            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">-->
+<!--                PURCHASE ORDER LIST &nbsp;-->
+<!--                <span class="caret"></span>-->
+<!--            </button>-->
+<!--            <ul  class="dropdown-menu" aria-labelledby="dropdownMenu1">-->
+<!--                <li class="color-hsh2"><a href="#">PO List</a></li>-->
+<!--                <li class="color-hsh3"><a href="#">Material Delivery Scheduler</a></li>-->
+<!--                <li class="color-hsh2"><a href="#">PO list Report</a></li>-->
+<!--                <li class="color-hsh2"><a href="#">PO list Search list</a></li>-->
+<!--                <li class="color-hsh2"><a href="#">PO list Part Details</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="btn-group-vertical" role="group" class="dropdown">-->
+<!--            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">-->
+<!--                RTVN &nbsp;-->
+<!--                <span class="caret"></span>-->
+<!--            </button>-->
+<!--            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">-->
+<!--                <li class="color-hsh"><a href="#">RTVN Descrepency List</a></li>-->
+<!--                <li class="color-hsh"><a href="#">RTVN Create</a></li>-->
+<!--                <li class="color-hsh"><a href="#">RTVN Verification</a></li>-->
+<!--                <li class="color-hsh"><a href="#">RTVN Approval</a></li>-->
+<!--                <li class="color-hsh2"><a href="#">RTVN Approval Status</a></li>-->
+<!--                <li class="color-hsh2"><a href="#">RTVN Report</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
         <li><a href="<?php echo $this->Url->build(['controller'=>'Ps','action'=>'index'])?>">PRODUCTION SCHEDULER</a></li>
-        <div class="btn-group-vertical" role="group" class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                INCOMING PARTS INSPECTION &nbsp;
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li class="color-hsh"><a href="#">IPI Create</a></li>
-                <li class="color-hsh"><a href="#">IPI Verification</a></li>
-                <li class="color-hsh"><a href="#">IPI Approval</a></li>
-                <li class="color-hsh"><a href="#">IPI Approval Status</a></li>
-                <li class="color-hsh"><a href="#">IPI Report</a></li>
-            </ul>
-        </div>
+<!--        <div class="btn-group-vertical" role="group" class="dropdown">-->
+<!--            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">-->
+<!--                INCOMING PARTS INSPECTION &nbsp;-->
+<!--                <span class="caret"></span>-->
+<!--            </button>-->
+<!--            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">-->
+<!--                <li class="color-hsh"><a href="#">IPI Create</a></li>-->
+<!--                <li class="color-hsh"><a href="#">IPI Verification</a></li>-->
+<!--                <li class="color-hsh"><a href="#">IPI Approval</a></li>-->
+<!--                <li class="color-hsh"><a href="#">IPI Approval Status</a></li>-->
+<!--                <li class="color-hsh"><a href="#">IPI Report</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
         <div class="btn-group-vertical" role="group" class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 SUPPLIER &nbsp;

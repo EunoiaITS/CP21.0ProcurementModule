@@ -28,7 +28,7 @@
                             <td><?= date('Y-m-d', strtotime($p->date)) ?></td>
                             <td>Procurement</td>
                             <td><?= $p->created_by ?></td>
-                            <td><a href="<?php echo $this->Url->build(['controller' => 'Po', 'action' => 'view', $p->id]); ?>">pending</a></td>
+                            <td><a href="<?php echo $this->Url->build(['controller' => 'Po', 'action' => 'requestsView', $p->id]); ?>"><?php if($role == 'requester'){echo 'pending';}elseif ($role == 'verifier'){echo 'verify';}elseif ($role == 'approver-1'){echo 'approve';}elseif ($role == 'approver-2'){echo 'approve';}elseif ($role == 'approver-3'){echo 'approve';}?></a></td>
                         </tr>
                         <?php endforeach; ?>
                         </tbody>
