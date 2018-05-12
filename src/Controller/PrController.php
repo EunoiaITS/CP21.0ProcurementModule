@@ -1134,4 +1134,25 @@ class PrController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+    public function isAuthorized($user){
+        if ($this->request->getParam('action') === 'autoRequests' || $this->request->getParam('action') === 'autoTwoRequests' || $this->request->getParam('action') === 'manualRequests' || $this->request->getParam('action') === 'addAuto' || $this->request->getParam('action') === 'addTwoAuto' || $this->request->getParam('action') === 'addManual' || $this->request->getParam('action') === 'generateAuto' || $this->request->getParam('action') === 'generateTwoAuto' || $this->request->getParam('action') === 'generateManual' || $this->request->getParam('action') === 'submitAuto' || $this->request->getParam('action') === 'submitTwoAuto' || $this->request->getParam('action') === 'submitManual' || $this->request->getParam('action') === 'edit' || $this->request->getParam('action') === 'delete' || $this->request->getParam('action') === 'viewAuto' || $this->request->getParam('action') === 'viewTwoAuto' || $this->request->getParam('action') === 'viewManual') {
+            return true;
+        }
+        if(isset($user['role']) && $user['role'] === 'requester'){
+            if(in_array($this->request->action, ['autoRequests','autoTwoRequests','manualRequests','autoView','autoTwoView','manualView','addAuto','addTwoAuto','addManual','generateAuto','generateTwoAuto','generateManual','submitAuto','submitTwoAuto','submitManual'])){
+                return true;
+            }
+        }
+        if(isset($user['role']) && $user['role'] === 'verifier'){
+            if(in_array($this->request->action, ['autoRequests','autoTwoRequests','manualRequests','autoView','autoTwoView','manualView'])){
+                return true;
+            }
+        }
+        if(isset($user['role']) && $user['role'] === 'approver-1'){
+            if(in_array($this->request->action, ['autoRequests','autoTwoRequests','manualRequests','autoView','autoTwoView','manualView'])){
+                return true;
+            }
+        }
+        return parent::isAuthorized($user);
+    }
 }

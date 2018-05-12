@@ -245,5 +245,10 @@ class SupplierController extends AppController
         }
         return $randomString;
     }
-
+    public function isAuthorized($user){
+        if ($this->request->getParam('action') === 'index' || $this->request->getParam('action') === 'add' || $this->request->getParam('action') === 'view' || $this->request->getParam('action') === 'edit' || $this->request->getParam('action') === 'delete' || $this->request->getParam('action') === 'generateRandomString' || $this->request->getParam('action') === 'testReq'){
+            return true;
+        }
+        return parent::isAuthorized($user);
+    }
 }

@@ -172,4 +172,10 @@ class PiController extends AppController
         $this->set('part_no', $part_no);
         $this->set('part_name', $part_name);
     }
+    public function isAuthorized($user){
+        if ($this->request->getParam('action') === 'index' || $this->request->getParam('action') === 'view' || $this->request->getParam('action') === 'search') {
+            return true;
+        }
+        return parent::isAuthorized($user);
+    }
 }

@@ -53,7 +53,7 @@ class AppController extends Controller
                 'action' => 'login'
             ],
             'unauthorizedRedirect' => [
-                'controller' => 'Ps',
+                'controller' => 'Po',
                 'prefix' => false
             ]
         ]);
