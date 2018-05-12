@@ -31,68 +31,33 @@
                         </tr>
                         </thead>
                         <tbody class="csn-text-up">
+                        <?php foreach($pol as $po): foreach($po->pr_items as $item): ?>
                         <tr>
-                            <td>PR12345</td>
-                            <td>3/10/20167</td>
-                            <td>PO12345</td>
-                            <td>0001</td>
-                            <td>Conduct Piece Assembly</td>
-                            <td>Gulf</td>
-                            <td>1000</td>
-                            <td>100</td>
-                            <td>$ 4,558.00</td>
-                            <td>Azlin</td>
+                            <td>PR<?= $po->pr->id ?></td>
+                            <td><?= date('Y-m-d', strtotime($po->date)) ?></td>
+                            <td>PO<?= $po->id ?></td>
+                            <td><?= $item->eng->partNo ?></td>
+                            <td><?= $item->eng->partName ?></td>
+                            <td><?php if(isset($item->supplier_name->name)) echo $item->supplier_name->name; ?></td>
+                            <td><?= $item->eng->quality ?></td>
+                            <td><?= $item->eng->quality+(($item->eng->quality*10)/100) ?></td>
+                            <td><?= $item->total ?></td>
+                            <td><?= $po->created_by ?></td>
                             <td>Procurement</td>
-                            <td>Approve</td>
+                            <td><?= $po->status ?></td>
                             <td>Yes</td>
                             <td>
-                                <select class="form-control" name="del-type" id="del-type">
+                                <select class="form-control del-type" name="del-type" rel="<?= $item->id ?>" id="del-type<?= $item->id ?>">
                                     <option>Please select...</option>
-                                    <option value="Plan"><a href="#">Plan</a></option>
-                                    <option value="Complete">Complete</option>
+                                    <option value="Plan" <?php if(isset($item->mds)){if($item->mds->del_type == 'Plan'){echo 'selected';}} ?>>Plan</option>
+                                    <option value="Complete" <?php if(isset($item->mds)){if($item->mds->del_type == 'Complete'){echo 'selected disabled';}} ?>>Complete</option>
                                 </select>
-                                <div class="clearfix" id="mds"></div>
+                                <div class="clearfix" id="mds<?= $item->id ?>"></div>
                             </td>
                             <td><a href="#">View</a></td>
                             <td></td>
                         </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>0002</td>
-                            <td>Drive bar Assembly</td>
-                            <td>Gulf</td>
-                            <td>800</td>
-                            <td>80</td>
-                            <td>$ 7,800.00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>Complete</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>PR123458</td>
-                            <td>15/10/2017</td>
-                            <td>P0123456</td>
-                            <td></td>
-                            <td>Desktop For Production</td>
-                            <td>Vsc</td>
-                            <td>1</td>
-                            <td></td>
-                            <td>$ 2,870.00</td>
-                            <td>Amira</td>
-                            <td>Procurement</td>
-                            <td>Approve</td>
-                            <td>Pending</td>
-                            <td>Complete</td>
-                            <td><a href="#">View</a></td>
-                            <td></td>
-                        </tr>
-
+                        <?php endforeach; endforeach; ?>
                         </tbody>
                     </table>
                 </div>
@@ -103,13 +68,17 @@
 
 <script>
     $(document).ready(function(){
-        $('#del-type').on('change', function(e){
+        var url = "<?php echo $this->Url->build(['controller' => 'PoList', 'action' => 'mds']).'?id='; ?>";
+        $('.del-type').on('change', function(e){
             e.preventDefault();
-            var sel = $('#del-type :selected').val();
+            var id = $(this).attr('rel');
+            var sel = $('#del-type'+id+' :selected').val();
             if(sel === 'Plan'){
-                $('#mds').html('<a href="#">Plan</a>');
+                $('#mds'+id).html('<a href="'+url+id+'&type=plan">Plan</a>');
+            }else if(sel === 'Complete'){
+                $('#mds'+id).html('<a href="'+url+id+'&type=complete">Complete</a>');
             }else{
-                $('#mds').html('');
+                $('#mds'+id).html('');
             }
         });
     });
