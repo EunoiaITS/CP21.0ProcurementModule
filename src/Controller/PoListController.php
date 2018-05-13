@@ -317,6 +317,12 @@ class PoListController extends AppController
     public function partDetails(){
         //
     }
+    public function isAuthorized($user){
+        if ($this->request->getParam('action') === 'index' || $this->request->getParam('action') === 'mds') {
+            return true;
+        }
+        return parent::isAuthorized($user);
+    }
 
     public function isAuthorized($user){
         if(in_array($this->request->action, ['index', 'mds', 'report', 'search', 'partDetails'])){
