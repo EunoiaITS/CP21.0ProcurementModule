@@ -10,7 +10,7 @@
                                 <p class="planner-year">Part No <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text">0001</p>
+                                <p class="normal-text"><?= $result->part_no ?></p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -18,7 +18,7 @@
                                 <p class="planner-year">Part Name <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text">Conduct Piece Assembly</p>
+                                <p class="normal-text"><?= $result->part_name ?></p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -100,34 +100,22 @@
                     </tr>
                     </thead>
                     <tbody class="csn-text-up">
+                    <?php $count = 0; foreach($result->so as $r): $count++; ?>
                     <tr>
-                        <td>1</td>
-                        <td>SO12345</td>
+                        <td><?= $count ?></td>
+                        <td><?= $r->pr->so_no ?></td>
                         <td>12-11-17</td>
-                        <td>28/09/2017</td>
-                        <td>PR123458</td>
-                        <td>10-03-17</td>
-                        <td>PO12345</td>
-                        <td>1000</td>
+                        <td><?= date('Y-m-d', strtotime($r->pr->date)) ?></td>
+                        <td>PR<?= $r->pr->id ?></td>
+                        <td><?= date('Y-m-d', strtotime($r->po->date)) ?></td>
+                        <td>PO<?= $r->po->id ?></td>
+                        <td><?= $result->qty_req ?></td>
                         <td>100</td>
-                        <td>4,558.00</td>
+                        <td><?= $result->total ?></td>
                         <td>Azlin</td>
                         <td>Procurement</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>SO001234</td>
-                        <td>09-09-17</td>
-                        <td>21/6/2017</td>
-                        <td>PR122911</td>
-                        <td>01-05-17</td>
-                        <td>PO2223222</td>
-                        <td>800</td>
-                        <td>80</td>
-                        <td>3,550.00</td>
-                        <td>Azlin</td>
-                        <td>Procurement</td>
-                    </tr>
+                    <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
