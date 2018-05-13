@@ -10,7 +10,7 @@
                                 <p class="planner-year">Part No <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p>0001</p>
+                                <input class="form-control" type="text" name="part-no">
                             </div>
                         </div>
                         <div class="form-group">
@@ -18,7 +18,7 @@
                                 <p class="planner-year">Part Name<span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p>Conduct Piece Assembly</p>
+                                <input class="form-control" type="text" name="part-name">
                             </div>
                         </div>
                         <div class="form-group">
@@ -26,7 +26,7 @@
                                 <p class="planner-year">Supplier Name<span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text">Gulf</p>
+                                <input class="form-control" type="text" name="supplier">
                             </div>
                         </div>
                     </div>

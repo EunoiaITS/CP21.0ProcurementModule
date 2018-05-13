@@ -51,7 +51,7 @@
                             <td><input name="del-date-<?= $dels->id ?>" class="form-control datepicker" type="datetime" value="<?= date('Y-m-d', strtotime($dels->del_date)) ?>"></td>
                             <td><input name="del-qty-<?= $dels->id ?>" class="form-control" type="number" value="<?= $dels->del_qty ?>"></td>
                         </tr>
-                    <?php endforeach; echo '<input type="hidden" name="action" value="edit"><input type="hidden" name="total" value="'.$count.'">'; endif; ?>
+                    <?php endforeach; echo '<input type="hidden" name="action" value="edit"><input type="hidden" name="total-edit" value="'.$count.'">'; endif; ?>
                     </tbody>
                 </table>
             </div>
