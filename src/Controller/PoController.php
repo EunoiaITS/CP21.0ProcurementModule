@@ -53,9 +53,14 @@ class PoController extends AppController
         $this->loadModel('PrItems');
         $this->loadModel('Supplier');
         $pr = $this->Pr->find('all')
-            ->Where(['status' => 'requested']);
+            ->Where(['status' => 'approved']);
         $count = 0;
         foreach ($pr as $pa){
+            $po = $this->Po->find('all')
+                ->Where(['pr_id'=>$pa->id]);
+            if(!$po->isEmpty()){
+                $pa->po_exists = 'yes';
+            }
             $count++;
             $urlToSales = 'http://salesmodule.acumenits.com/api/so-data?so='.rawurlencode($pa->so_no);
 

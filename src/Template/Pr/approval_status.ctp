@@ -1,0 +1,95 @@
+<div class="planner-from">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-sm-12">
+                <div class="part-title-planner text-uppercase text-center"><b>Purchase Requisition Approval Status</b></div>
+            </div>
+
+            <div class="clearfix"></div>
+            <!--============== Add drawing table area ===================-->
+            <div class="planner-table table-responsive clearfix">
+                <div class="col-sm-12">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Serial</th>
+                            <th>SO NO</th>
+                            <th>Delivery Date</th>
+                            <th>PR Date</th>
+                            <th>PR No</th>
+                            <th>Items View</th>
+                            <th>Create By</th>
+                            <th>Department</th>
+                            <th>Status</th>
+                            <th>Verify By</th>
+                            <th>Status</th>
+                            <th>Approve By</th>
+                            <th>Document</th>
+                            <th>Remark</th>
+                        </tr>
+                        </thead>
+                        <tbody class="csn-text-up">
+                        <?php $count = 0; foreach ($pr as $p): $count++;?>
+                            <tr>
+                                <td><?= $count?></td>
+                                <td><?= $p->so_no ?></td>
+                                <td><?= date('Y-m-d',strtotime($p->del_date)) ?></td>
+                                <td><?= date('Y-m-d',strtotime($p->date))?></td>
+                                <td>PR <?= $p->id ?></td>
+                                <td id="popup"><span class="click-button" data-toggle="modal" data-target="#myModal<?= $count?>">PR <?= $p->id?></span></td>
+                                <td><?php if(isset($p->created_by->name)){echo $p->created_by->name;} ?></td>
+                                <td>Procurement</td>
+                                <td class="<?php if(isset($p->status)){if($p->status == 'requested' || $p->status == 'rejected'){echo "colored-red";}elseif(($p->status == 'verified' || $p->status == 'approved')){echo "colored-csn";}}?>"><?php if(isset($p->status)){if($p->status == 'requested'){echo "Pending";}elseif($p->status == 'rejected'){echo "Reject";}elseif(($p->status == 'verified' || $p->status == 'approved')){echo "Verify";}}?></td>
+                                <td><?php if(isset($p->verified_by->name)){echo $p->verified_by->name;}?></td>
+                                <td class="<?php if(isset($p->status)){if($p->status == 'verified'){echo "colored-red";}elseif(($p->status == 'approved')){echo "colored-csn";}}?>"><?php if(isset($p->status)){if($p->status == 'verified'){echo "Pending";}elseif(($p->status == 'approved')){echo "Approve";}}?></td>
+                                <td><?php if(isset($p->approved_by->name)){echo $p->approved_by->name;}?></td>
+                                <td><a href="#">View</a></td>
+                                <td></td>
+                            </tr>
+                        <?php endforeach;?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php $count = 0;foreach ($pr as $p): $count++;?>
+        <div class="modal fade" id="myModal<?= $count ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title text-center" id="myModalLabel">Purchase Order Popup</h4>
+                    </div>
+                    <div class="modal-body supplier-modal-body table-responsive">
+                        <table class="table table-bordered ">
+                            <thead>
+                            <tr>
+                                <th><?=$count?></th>
+                                <th>Part No</th>
+                                <th>Description</th>
+                                <th>Supplier</th>
+                                <th>QTY Request</th>
+                                <th>Total</th>
+                            </tr>
+                            </thead>
+                            <tbody class="csn-text-up">
+                            <?php $item_count = 0;foreach ($p->items as $i): $item_count++;?>
+                                <tr>
+                                    <td><?= $item_count ?></td>
+                                    <td><?= $i->eng->partNo ?></td>
+                                    <td><?= $i->eng->partName ?></td>
+                                    <td><?php if(isset($i->supplier_name->name)) echo $i->supplier_name->name; ?></td>
+                                    <td><?= $i->eng->quality ?></td>
+                                    <td>$<?= $i->total ?></td>
+                                </tr>
+                            <?php endforeach;?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach;?>

@@ -43,9 +43,9 @@
 <!--                <li class="color-hsh"><a href="#">Customization Item</a></li>-->
                 <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'autoTwoRequests'])?>">PR 2 Request List (auto)</a></li>
                 <?php if($role == 'requester'): ?><li class="color-hsh2"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'addTwoAuto'])?>">PR 2 Generate (auto)</a></li><?php endif;?>
-                <li class="color-hsh3"><a href="#">PR Approval Status</a></li>
+                <li class="color-hsh3"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'approvalStatus'])?>">PR Approval Status</a></li>
                 <li class="color-hsh3"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'report'])?>">PR Report</a></li>
-                <li class="color-hsh3"><a href="#">PR Statistic Report</a></li>
+                <li class="color-hsh3"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'statReport'])?>">PR Statistic Report</a></li>
             </ul>
         </div>
         <?php endif;?>

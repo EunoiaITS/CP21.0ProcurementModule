@@ -26,7 +26,8 @@
                         </tr>
                         </thead>
                         <tbody class="csn-text-up">
-                        <?php $count=0;foreach ($pr as $p): $count++;?>
+                        <?php $count=0;foreach ($pr as $p): ?>
+                        <?php if(!isset($p->po_exists)): $count++;?>
                             <tr>
                                 <td><?= $count ?></td>
                                 <td><input type="hidden" name="so_no<?= $count?>" value="<?= $p->so_no ?>"><?= $p->so_no ?></td>
@@ -39,7 +40,7 @@
                             </tr>
                             <input type="hidden" name="description<?= $count?>" value="<?= $p->model .' (' . $p->version .') '?>">
                             <input type="hidden" name="customer<?= $count?>" value="<?= $p->customer ?>">
-                        <?php endforeach;?>
+                        <?php endif;endforeach;?>
                         </tbody>
                     </table>
                 </div>
@@ -52,7 +53,8 @@
         </div>
     </div>
 
-    <?php $count = 0;foreach ($pr as $p): $count++;?>
+    <?php $count = 0;foreach ($pr as $p): ?>
+    <?php if(!isset($p->po_exists)): $count++;?>
     <div class="modal fade" id="myModal<?= $count ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -97,4 +99,4 @@
         </div>
     </div>
 </form>
-<?php endforeach;?>
+<?php endif;endforeach;?>

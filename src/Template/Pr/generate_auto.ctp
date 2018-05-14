@@ -65,7 +65,7 @@
                                 <p class="planner-year">Create by <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text">Azlin</p>
+                                <p class="normal-text"><?= $pic ?></p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -158,7 +158,7 @@
         <div class="clearfix"></div>
         <div class="col-sm-offset-8 col-sm-4 col-xs-12">
             <div class="prepareted-by-csn">
-                <input type="hidden" name="created_by" value="1">
+                <input type="hidden" name="created_by" value="<?= $user_id ?>">
                 <input type="hidden" name="total" value="<?= $allData->counter ?>">
                 <button type="submit" class="button btn btn-info">Submit</button>
             </div>
