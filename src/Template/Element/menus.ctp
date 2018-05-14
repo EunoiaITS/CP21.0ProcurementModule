@@ -44,7 +44,7 @@
                 <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'autoTwoRequests'])?>">PR 2 Request List (auto)</a></li>
                 <?php if($role == 'requester'): ?><li class="color-hsh2"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'addTwoAuto'])?>">PR 2 Generate (auto)</a></li><?php endif;?>
                 <li class="color-hsh3"><a href="#">PR Approval Status</a></li>
-                <li class="color-hsh3"><a href="#">PR Report</a></li>
+                <li class="color-hsh3"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'report'])?>">PR Report</a></li>
                 <li class="color-hsh3"><a href="#">PR Statistic Report</a></li>
             </ul>
         </div>
@@ -57,9 +57,9 @@
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Po','action'=>'requests'])?>">PO Request List</a></li>
                 <?php if($role == 'requester'): ?><li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Po','action'=>'index'])?>">PO Form Create</a></li><?php endif;?>
-                <li class="color-hsh2"><a href="#">PO Approval Status</a></li>
-                <li class="color-hsh2"><a href="#">PO Report</a></li>
-                <li class="color-hsh2"><a href="#">PO Statistic Report</a></li>
+                <li class="color-hsh2"><a href="<?php echo $this->Url->build(['controller'=>'Po','action'=>'approvalStatus'])?>">PO Approval Status</a></li>
+                <li class="color-hsh2"><a href="<?php echo $this->Url->build(['controller'=>'Po','action'=>'report'])?>">PO Report</a></li>
+                <li class="color-hsh2"><a href="<?php echo $this->Url->build(['controller'=>'Po','action'=>'statReport'])?>">PO Statistic Report</a></li>
             </ul>
         </div>
         <div class="btn-group-vertical" role="group" class="dropdown">

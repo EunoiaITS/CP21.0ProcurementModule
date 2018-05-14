@@ -437,7 +437,7 @@ class PoController extends AppController
             $this->Flash->error(__('The po could not be saved. Please, try again.'));
         }
         $prs = $this->Po->Prs->find('list', ['limit' => 200]);
-        $this->set(compact('po', 'prs'));
+        $this->set(compact('po'));
     }
 
     /**
@@ -459,32 +459,255 @@ class PoController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+    public function report(){
+        $this->loadModel('Pr');
+        $this->loadModel('PrItems');
+        $this->loadModel('Supplier');
+        $po = $this->Po->find('all');
+        foreach ($po as $p){
+            $pr = $this->Pr->get($p->pr_id, [
+                'contain' => []
+            ]);
+            $urlToSales = 'http://salesmodule.acumenits.com/api/so-data?so='.rawurlencode($pr->so_no);
+
+            $optionsForSales = [
+                'http' => [
+                    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method'  => 'GET'
+                ]
+            ];
+            $contextForSales  = stream_context_create($optionsForSales);
+            $resultFromSales = file_get_contents($urlToSales, false, $contextForSales);
+            if ($resultFromSales !== FALSE) {
+                $dataFromSales = json_decode($resultFromSales);
+                foreach($dataFromSales as $s){
+                    $p->del_date = $s->delivery_date;
+                    $p->customer = $s->cus->name;
+                    foreach ($s->soi as $smv){
+                        $p->model = $smv->model;
+                        $p->version = $smv->version;
+                    }
+                }
+            }
+            $items = $this->PrItems->find('all')
+                ->Where(['pr_id' => $p->pr_id]);
+            foreach($items as $i){
+                $supplier = '';
+                if($i->supplier_id !== null){
+                    $supplier = $this->Supplier->get($i->supplier_id, [
+                        'contain' => []
+                    ]);
+                }
+                $i->supplier_name = $supplier;
+
+                $urlToEng = 'http://engmodule.acumenits.com/api/bom-part/'.$i->bom_part_id;
+
+                $optionsForEng = [
+                    'http' => [
+                        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                        'method'  => 'GET'
+                    ]
+                ];
+                $contextForEng  = stream_context_create($optionsForEng);
+                $resultFromEng = file_get_contents($urlToEng, false, $contextForEng);
+                if ($resultFromEng !== FALSE) {
+                    $dataFromEng = json_decode($resultFromEng);
+                    $i->eng = $dataFromEng;
+                    $stockAvailable = 0;
+                    $urlToStore = 'http://storemodule.acumenits.com/in-stock-code/stock-available';
+                    $sendToStore = [
+                        'part_no' => $dataFromEng->partNo,
+                        'part_name' => $dataFromEng->partName
+                    ];
+
+
+                    $optionsForStore = [
+                        'http' => [
+                            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                            'method'  => 'POST',
+                            'content' => http_build_query($sendToStore)
+                        ]
+                    ];
+                    $contextForStore = stream_context_create($optionsForStore);
+                    $resultFromStore = file_get_contents($urlToStore, false, $contextForStore);
+                    if($resultFromStore != FALSE){
+                        $dataFromStore = json_decode($resultFromStore);
+                        $stockAvailable = abs($dataFromStore->stock_available);
+                    }
+                    $i->stock = $stockAvailable;
+                }
+            }
+            $p->items = $items;
+        }
+        $this->set('po',$po);
+
+    }
+
+    public function approvalStatus(){
+        $this->loadModel('Pr');
+        $this->loadModel('PrItems');
+        $this->loadModel('Supplier');
+        $this->loadModel('Users');
+        $po = $this->Po->find('all');
+        foreach ($po as $p){
+            $pr = $this->Pr->get($p->pr_id, [
+                'contain' => []
+            ]);
+            $created_by = $this->Users->get($p->created_by);
+            if(isset($p->verified_by)){
+                $verified_by = $this->Users->get($p->verified_by);
+                $p->verified_by = $verified_by;
+            }
+            if(isset($p->approve1_by)){
+                $approve1_by = $this->Users->get($p->approve1_by);
+                $p->approve1_by = $approve1_by;
+            }
+            if(isset($p->approve2_by)){
+                $approve2_by = $this->Users->get($p->approve2_by);
+                $p->approve2_by = $approve2_by;
+            }
+            if(isset($p->approve3_by)){
+                $approve3_by = $this->Users->get($p->approve3_by);
+                $p->approve3_by = $approve3_by;
+            }
+            $p->created_by = $created_by;
+            $urlToSales = 'http://salesmodule.acumenits.com/api/so-data?so='.rawurlencode($pr->so_no);
+
+            $optionsForSales = [
+                'http' => [
+                    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method'  => 'GET'
+                ]
+            ];
+            $contextForSales  = stream_context_create($optionsForSales);
+            $resultFromSales = file_get_contents($urlToSales, false, $contextForSales);
+            if ($resultFromSales !== FALSE) {
+                $dataFromSales = json_decode($resultFromSales);
+                foreach($dataFromSales as $s){
+                    $p->del_date = $s->delivery_date;
+                    $p->customer = $s->cus->name;
+                    foreach ($s->soi as $smv){
+                        $p->model = $smv->model;
+                        $p->version = $smv->version;
+                    }
+                }
+            }
+            $items = $this->PrItems->find('all')
+                ->Where(['pr_id' => $p->pr_id]);
+            foreach($items as $i){
+                $supplier = '';
+                if($i->supplier_id !== null){
+                    $supplier = $this->Supplier->get($i->supplier_id, [
+                        'contain' => []
+                    ]);
+                }
+                $i->supplier_name = $supplier;
+
+                $urlToEng = 'http://engmodule.acumenits.com/api/bom-part/'.$i->bom_part_id;
+
+                $optionsForEng = [
+                    'http' => [
+                        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                        'method'  => 'GET'
+                    ]
+                ];
+                $contextForEng  = stream_context_create($optionsForEng);
+                $resultFromEng = file_get_contents($urlToEng, false, $contextForEng);
+                if ($resultFromEng !== FALSE) {
+                    $dataFromEng = json_decode($resultFromEng);
+                    $i->eng = $dataFromEng;
+                    $stockAvailable = 0;
+                    $urlToStore = 'http://storemodule.acumenits.com/in-stock-code/stock-available';
+                    $sendToStore = [
+                        'part_no' => $dataFromEng->partNo,
+                        'part_name' => $dataFromEng->partName
+                    ];
+
+
+                    $optionsForStore = [
+                        'http' => [
+                            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                            'method'  => 'POST',
+                            'content' => http_build_query($sendToStore)
+                        ]
+                    ];
+                    $contextForStore = stream_context_create($optionsForStore);
+                    $resultFromStore = file_get_contents($urlToStore, false, $contextForStore);
+                    if($resultFromStore != FALSE){
+                        $dataFromStore = json_decode($resultFromStore);
+                        $stockAvailable = abs($dataFromStore->stock_available);
+                    }
+                    $i->stock = $stockAvailable;
+                }
+            }
+            $p->items = $items;
+        }
+        $this->set('po',$po);
+    }
+
+
+    public function statReport(){
+        $this->loadModel('Pr');
+        $this->loadModel('PrItems');
+        $po_total = $this->Po->find('all');
+        $po_approve = $this->Po->find('all')
+            ->Where(['status'=>'approved3']);
+        $po_reject = $this->Po->find('all')
+            ->Where(['status'=>'rejected']);
+        $po_request = $this->Po->find('all')
+            ->Where(['status'=>'requested'])
+            ->orWhere(['status'=>'verified'])
+            ->orWhere(['status'=>'approved1'])
+            ->orWhere(['status'=>'approved2']);
+
+        $po = $this->Po->find('all');
+        $total = 0;
+        foreach ($po as $p){
+            $pr = $this->Pr->get($p->pr_id,[
+                'contatin' => []
+            ]);
+            $pri = $this->PrItems->find('all')
+                ->Where(['pr_id'=> $pr->id]);
+            foreach ($pri as $i){
+                $total += $i->total;
+            }
+        }
+        $po->total = $total;
+
+        $this->set('po',$po);
+        $this->set('total',$po_total->count());
+        $this->set('approve',$po_approve->count());
+        $this->set('reject',$po_reject->count());
+        $this->set('request',$po_request->count());
+    }
+
+
     public function isAuthorized($user){
-        if ($this->request->getParam('action') === 'requests' || $this->request->getParam('action') === 'index' || $this->request->getParam('action') === 'view' || $this->request->getParam('action') === 'submit' || $this->request->getParam('action') === 'generate' || $this->request->getParam('action') === 'edit' || $this->request->getParam('action') === 'delete' || $this->request->getParam('action') === 'requestsView') {
+        if ($this->request->getParam('action') === 'requests' || $this->request->getParam('action') === 'index' || $this->request->getParam('action') === 'view' || $this->request->getParam('action') === 'submit' || $this->request->getParam('action') === 'generate' || $this->request->getParam('action') === 'edit' || $this->request->getParam('action') === 'delete' || $this->request->getParam('action') === 'requestsView' || $this->request->getParam('action') === 'report' || $this->request->getParam('action') === 'approvalStatus' || $this->request->getParam('action') === 'statReport') {
             return true;
         }
         if(isset($user['role']) && $user['role'] === 'requester'){
-            if(in_array($this->request->action, ['requests','requestsView','view','generate','submit'])){
+            if(in_array($this->request->action, ['requests','requestsView','view','generate','submit','report','approvalStatus','statReport'])){
                 return true;
             }
         }
         if(isset($user['role']) && $user['role'] === 'verifier'){
-            if(in_array($this->request->action, ['requests','requestsView','edit','delete'])){
+            if(in_array($this->request->action, ['requests','requestsView','edit','delete','report','approvalStatus','statReport'])){
                 return true;
             }
         }
         if(isset($user['role']) && $user['role'] === 'approver-1'){
-            if(in_array($this->request->action, ['requests','requestsView','edit','delete'])){
+            if(in_array($this->request->action, ['requests','requestsView','edit','delete','report','approvalStatus','statReport'])){
                 return true;
             }
         }
         if(isset($user['role']) && $user['role'] === 'approver-2'){
-            if(in_array($this->request->action, ['requests','requestsView','edit','delete'])){
+            if(in_array($this->request->action, ['requests','requestsView','edit','delete','report','approvalStatus','statReport'])){
                 return true;
             }
         }
         if(isset($user['role']) && $user['role'] === 'approver-3'){
-            if(in_array($this->request->action, ['requests','requestsView','edit','delete'])){
+            if(in_array($this->request->action, ['requests','requestsView','edit','delete','report','approvalStatus','statReport'])){
                 return true;
             }
         }

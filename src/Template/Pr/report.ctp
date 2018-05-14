@@ -12,6 +12,7 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr>
+                            <th>Serial</th>
                             <th>SO NO</th>
                             <th>Delivery Date</th>
                             <th>PR Date</th>
@@ -31,7 +32,9 @@
                         </tr>
                         </thead>
                         <tbody class="csn-text-up">
+                        <?php $count = 0; foreach ($pr as $p): foreach ($p->items as $i): $count++;?>
                         <tr>
+                            <td><?= $count?></td>
                             <td>SO12345</td>
                             <td>11/12/2017</td>
                             <td>3/10/2017</td>
@@ -49,43 +52,7 @@
                             <td class="colored-csn">Create</td>
                             <td></td>
                         </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>0002</td>
-                            <td>Drive bar Assembly</td>
-                            <td>Gulf</td>
-                            <td>800</td>
-                            <td>$ 7,800.00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>2/10/2017</td>
-                            <td>PR123458</td>
-                            <td></td>
-                            <td>Desktop For Production</td>
-                            <td>Vsc</td>
-                            <td>1</td>
-                            <td>$ 2,870.00</td>
-                            <td>Wan</td>
-                            <td>It</td>
-                            <td>Pending</td>
-                            <td><a href="#">View</a></td>
-                            <td></td>
-                            <td class="colored-red">Pending</td>
-                            <td></td>
-                        </tr>
-
+                        <?php endforeach;endforeach;?>
                         </tbody>
                     </table>
                 </div>

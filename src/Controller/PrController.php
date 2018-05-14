@@ -1145,9 +1145,6 @@ class PrController extends AppController
             $this->Flash->error(__('The pr could not be saved. Please, try again.'));
         }
     }
-    public function report(){
-
-    }
 
     /**
      * Edit method
@@ -1192,6 +1189,107 @@ class PrController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+
+    public function report(){
+        $this->loadModel('PrItems');
+        $this->loadModel('Supplier');
+        $this->loadModel('Users');
+        $pr = $this->Pr->find('all');
+        foreach ($pr as $p){
+            $created_by = $this->Users->get($p->created_by);
+            if(isset($p->verified_by)){
+                $verified_by = $this->Users->get($p->verified_by);
+                $p->verified_by = $verified_by;
+            }
+            if(isset($p->approve1_by)){
+                $approve1_by = $this->Users->get($p->approve1_by);
+                $p->approve1_by = $approve1_by;
+            }
+            if(isset($p->approve2_by)){
+                $approve2_by = $this->Users->get($p->approve2_by);
+                $p->approve2_by = $approve2_by;
+            }
+            if(isset($p->approve3_by)){
+                $approve3_by = $this->Users->get($p->approve3_by);
+                $p->approve3_by = $approve3_by;
+            }
+            $p->created_by = $created_by;
+            $urlToSales = 'http://salesmodule.acumenits.com/api/so-data?so='.rawurlencode($p->so_no);
+
+            $optionsForSales = [
+                'http' => [
+                    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method'  => 'GET'
+                ]
+            ];
+            $contextForSales  = stream_context_create($optionsForSales);
+            $resultFromSales = file_get_contents($urlToSales, false, $contextForSales);
+            if ($resultFromSales !== FALSE) {
+                $dataFromSales = json_decode($resultFromSales);
+                foreach($dataFromSales as $s){
+                    $p->del_date = $s->delivery_date;
+                    $p->customer = $s->cus->name;
+                    foreach ($s->soi as $smv){
+                        $p->model = $smv->model;
+                        $p->version = $smv->version;
+                    }
+                }
+            }
+            $items = $this->PrItems->find('all')
+                ->Where(['pr_id' => $p->pr_id]);
+            foreach($items as $i){
+                $supplier = '';
+                if($i->supplier_id !== null){
+                    $supplier = $this->Supplier->get($i->supplier_id, [
+                        'contain' => []
+                    ]);
+                }
+                $i->supplier_name = $supplier;
+
+                $urlToEng = 'http://engmodule.acumenits.com/api/bom-part/'.$i->bom_part_id;
+
+                $optionsForEng = [
+                    'http' => [
+                        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                        'method'  => 'GET'
+                    ]
+                ];
+                $contextForEng  = stream_context_create($optionsForEng);
+                $resultFromEng = file_get_contents($urlToEng, false, $contextForEng);
+                if ($resultFromEng !== FALSE) {
+                    $dataFromEng = json_decode($resultFromEng);
+                    $i->eng = $dataFromEng;
+                    $stockAvailable = 0;
+                    $urlToStore = 'http://storemodule.acumenits.com/in-stock-code/stock-available';
+                    $sendToStore = [
+                        'part_no' => $dataFromEng->partNo,
+                        'part_name' => $dataFromEng->partName
+                    ];
+
+
+                    $optionsForStore = [
+                        'http' => [
+                            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                            'method'  => 'POST',
+                            'content' => http_build_query($sendToStore)
+                        ]
+                    ];
+                    $contextForStore = stream_context_create($optionsForStore);
+                    $resultFromStore = file_get_contents($urlToStore, false, $contextForStore);
+                    if($resultFromStore != FALSE){
+                        $dataFromStore = json_decode($resultFromStore);
+                        $stockAvailable = abs($dataFromStore->stock_available);
+                    }
+                    $i->stock = $stockAvailable;
+                }
+            }
+            $p->items = $items;
+        }
+        $this->set('pr',$pr);
+    }
+
+
     public function isAuthorized($user){
         if ($this->request->getParam('action') === 'autoRequests' || $this->request->getParam('action') === 'autoTwoRequests' || $this->request->getParam('action') === 'manualRequests' || $this->request->getParam('action') === 'addAuto' || $this->request->getParam('action') === 'addTwoAuto' || $this->request->getParam('action') === 'addManual' || $this->request->getParam('action') === 'generateAuto' || $this->request->getParam('action') === 'generateTwoAuto' || $this->request->getParam('action') === 'generateManual' || $this->request->getParam('action') === 'submitAuto' || $this->request->getParam('action') === 'submitTwoAuto' || $this->request->getParam('action') === 'submitManual' || $this->request->getParam('action') === 'edit' || $this->request->getParam('action') === 'delete' || $this->request->getParam('action') === 'viewAuto' || $this->request->getParam('action') === 'viewTwoAuto' || $this->request->getParam('action') === 'viewManual' || $this->request->getParam('action') === 'report') {
             return true;
