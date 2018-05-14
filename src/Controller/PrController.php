@@ -1195,24 +1195,23 @@ class PrController extends AppController
         $this->loadModel('PrItems');
         $this->loadModel('Supplier');
         $this->loadModel('Users');
-        $pr = $this->Pr->find('all');
+        $this->loadModel('Po');
+        $pr = $this->Pr->find('all')
+            ->Where(['status'=>'approved']);
         foreach ($pr as $p){
+            $po = $this->Po->find('all')
+                ->Where(['pr_id'=>$p->id]);
+            if(!$po->isEmpty()){
+                $p->po_exists = 'Yes';
+            }
             $created_by = $this->Users->get($p->created_by);
             if(isset($p->verified_by)){
                 $verified_by = $this->Users->get($p->verified_by);
                 $p->verified_by = $verified_by;
             }
-            if(isset($p->approve1_by)){
-                $approve1_by = $this->Users->get($p->approve1_by);
-                $p->approve1_by = $approve1_by;
-            }
-            if(isset($p->approve2_by)){
-                $approve2_by = $this->Users->get($p->approve2_by);
-                $p->approve2_by = $approve2_by;
-            }
-            if(isset($p->approve3_by)){
-                $approve3_by = $this->Users->get($p->approve3_by);
-                $p->approve3_by = $approve3_by;
+            if(isset($p->approved_by)){
+                $approved_by = $this->Users->get($p->approved_by);
+                $p->approved_by = $approved_by;
             }
             $p->created_by = $created_by;
             $urlToSales = 'http://salesmodule.acumenits.com/api/so-data?so='.rawurlencode($p->so_no);
@@ -1237,7 +1236,7 @@ class PrController extends AppController
                 }
             }
             $items = $this->PrItems->find('all')
-                ->Where(['pr_id' => $p->pr_id]);
+                ->Where(['pr_id' => $p->id]);
             foreach($items as $i){
                 $supplier = '';
                 if($i->supplier_id !== null){
@@ -1289,23 +1288,140 @@ class PrController extends AppController
         $this->set('pr',$pr);
     }
 
+    public function approvalStatus(){
+        $this->loadModel('PrItems');
+        $this->loadModel('Supplier');
+        $this->loadModel('Users');
+        $this->loadModel('Po');
+        $pr = $this->Pr->find('all');
+        foreach ($pr as $p){
+            $created_by = $this->Users->get($p->created_by);
+            if(isset($p->verified_by)){
+                $verified_by = $this->Users->get($p->verified_by);
+                $p->verified_by = $verified_by;
+            }
+            if(isset($p->approved_by)){
+                $approved_by = $this->Users->get($p->approved_by);
+                $p->approved_by = $approved_by;
+            }
+            $p->created_by = $created_by;
+            $urlToSales = 'http://salesmodule.acumenits.com/api/so-data?so='.rawurlencode($p->so_no);
+
+            $optionsForSales = [
+                'http' => [
+                    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method'  => 'GET'
+                ]
+            ];
+            $contextForSales  = stream_context_create($optionsForSales);
+            $resultFromSales = file_get_contents($urlToSales, false, $contextForSales);
+            if ($resultFromSales !== FALSE) {
+                $dataFromSales = json_decode($resultFromSales);
+                foreach($dataFromSales as $s){
+                    $p->del_date = $s->delivery_date;
+                    $p->customer = $s->cus->name;
+                    foreach ($s->soi as $smv){
+                        $p->model = $smv->model;
+                        $p->version = $smv->version;
+                    }
+                }
+            }
+            $items = $this->PrItems->find('all')
+                ->Where(['pr_id' => $p->id]);
+            foreach($items as $i){
+                $supplier = '';
+                if($i->supplier_id !== null){
+                    $supplier = $this->Supplier->get($i->supplier_id, [
+                        'contain' => []
+                    ]);
+                }
+                $i->supplier_name = $supplier;
+
+                $urlToEng = 'http://engmodule.acumenits.com/api/bom-part/'.$i->bom_part_id;
+
+                $optionsForEng = [
+                    'http' => [
+                        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                        'method'  => 'GET'
+                    ]
+                ];
+                $contextForEng  = stream_context_create($optionsForEng);
+                $resultFromEng = file_get_contents($urlToEng, false, $contextForEng);
+                if ($resultFromEng !== FALSE) {
+                    $dataFromEng = json_decode($resultFromEng);
+                    $i->eng = $dataFromEng;
+                    $stockAvailable = 0;
+                    $urlToStore = 'http://storemodule.acumenits.com/in-stock-code/stock-available';
+                    $sendToStore = [
+                        'part_no' => $dataFromEng->partNo,
+                        'part_name' => $dataFromEng->partName
+                    ];
+
+
+                    $optionsForStore = [
+                        'http' => [
+                            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                            'method'  => 'POST',
+                            'content' => http_build_query($sendToStore)
+                        ]
+                    ];
+                    $contextForStore = stream_context_create($optionsForStore);
+                    $resultFromStore = file_get_contents($urlToStore, false, $contextForStore);
+                    if($resultFromStore != FALSE){
+                        $dataFromStore = json_decode($resultFromStore);
+                        $stockAvailable = abs($dataFromStore->stock_available);
+                    }
+                    $i->stock = $stockAvailable;
+                }
+            }
+            $p->items = $items;
+        }
+        $this->set('pr',$pr);
+    }
+    public function statReport(){
+        $this->loadModel('PrItems');
+        $total = $this->Pr->find('all');
+        $approve = $this->Pr->find('all')
+            ->Where(['status'=>'approved']);
+        $request = $this->Pr->find('all')
+            ->Where(['status'=>'requested']);
+        $reject = $this->Pr->find('all')
+            ->Where(['status'=>'rejected']);
+        $am = $this->Pr->find('all');
+        $amount = 0;
+        foreach ($am as $a){
+            $items = $this->PrItems->find('all')
+                ->Where(['pr_id',$a->id]);
+            foreach ($items as $i){
+                $amount += $i->total;
+            }
+        }
+        $am->amount = $amount;
+
+
+        $this->set('total',$total->count());
+        $this->set('approve',$approve->count());
+        $this->set('request',$request->count());
+        $this->set('reject',$reject->count());
+        $this->set('am',$am);
+    }
 
     public function isAuthorized($user){
-        if ($this->request->getParam('action') === 'autoRequests' || $this->request->getParam('action') === 'autoTwoRequests' || $this->request->getParam('action') === 'manualRequests' || $this->request->getParam('action') === 'addAuto' || $this->request->getParam('action') === 'addTwoAuto' || $this->request->getParam('action') === 'addManual' || $this->request->getParam('action') === 'generateAuto' || $this->request->getParam('action') === 'generateTwoAuto' || $this->request->getParam('action') === 'generateManual' || $this->request->getParam('action') === 'submitAuto' || $this->request->getParam('action') === 'submitTwoAuto' || $this->request->getParam('action') === 'submitManual' || $this->request->getParam('action') === 'edit' || $this->request->getParam('action') === 'delete' || $this->request->getParam('action') === 'viewAuto' || $this->request->getParam('action') === 'viewTwoAuto' || $this->request->getParam('action') === 'viewManual' || $this->request->getParam('action') === 'report') {
+        if ($this->request->getParam('action') === 'autoRequests' || $this->request->getParam('action') === 'autoTwoRequests' || $this->request->getParam('action') === 'manualRequests' || $this->request->getParam('action') === 'addAuto' || $this->request->getParam('action') === 'addTwoAuto' || $this->request->getParam('action') === 'addManual' || $this->request->getParam('action') === 'generateAuto' || $this->request->getParam('action') === 'generateTwoAuto' || $this->request->getParam('action') === 'generateManual' || $this->request->getParam('action') === 'submitAuto' || $this->request->getParam('action') === 'submitTwoAuto' || $this->request->getParam('action') === 'submitManual' || $this->request->getParam('action') === 'edit' || $this->request->getParam('action') === 'delete' || $this->request->getParam('action') === 'viewAuto' || $this->request->getParam('action') === 'viewTwoAuto' || $this->request->getParam('action') === 'viewManual' || $this->request->getParam('action') === 'report' || $this->request->getParam('action') === 'approvalStatus' || $this->request->getParam('action') === 'statReport') {
             return true;
         }
         if(isset($user['role']) && $user['role'] === 'requester'){
-            if(in_array($this->request->action, ['autoRequests','autoTwoRequests','manualRequests','autoView','autoTwoView','manualView','addAuto','addTwoAuto','addManual','generateAuto','generateTwoAuto','generateManual','submitAuto','submitTwoAuto','submitManual','report'])){
+            if(in_array($this->request->action, ['autoRequests','autoTwoRequests','manualRequests','autoView','autoTwoView','manualView','addAuto','addTwoAuto','addManual','generateAuto','generateTwoAuto','generateManual','submitAuto','submitTwoAuto','submitManual','report','approvalStatus','statReport'])){
                 return true;
             }
         }
         if(isset($user['role']) && $user['role'] === 'verifier'){
-            if(in_array($this->request->action, ['autoRequests','autoTwoRequests','manualRequests','autoView','autoTwoView','manualView','report'])){
+            if(in_array($this->request->action, ['autoRequests','autoTwoRequests','manualRequests','autoView','autoTwoView','manualView','report','approvalStatus','statReport'])){
                 return true;
             }
         }
         if(isset($user['role']) && $user['role'] === 'approver-1'){
-            if(in_array($this->request->action, ['autoRequests','autoTwoRequests','manualRequests','autoView','autoTwoView','manualView','report'])){
+            if(in_array($this->request->action, ['autoRequests','autoTwoRequests','manualRequests','autoView','autoTwoView','manualView','report','approvalStatus','statReport'])){
                 return true;
             }
         }

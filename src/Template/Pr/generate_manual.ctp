@@ -62,8 +62,8 @@
                                 <p class="planner-year">Create by <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text">Azlin</p>
-                                <input type="hidden" name="created_by" value="1">
+                                <p class="normal-text"><?= $user_id ?></p>
+                                <input type="hidden" name="created_by" value="<?= $user_id ?>">
                             </div>
                         </div>
                         <div class="form-group">

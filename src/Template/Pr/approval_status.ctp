@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-sm-12">
-                <div class="part-title-planner text-uppercase text-center"><b>Purchase Requisition Report</b></div>
+                <div class="part-title-planner text-uppercase text-center"><b>Purchase Requisition Approval Status</b></div>
             </div>
 
             <div class="clearfix"></div>
@@ -21,27 +21,31 @@
                             <th>Create By</th>
                             <th>Department</th>
                             <th>Status</th>
+                            <th>Verify By</th>
+                            <th>Status</th>
+                            <th>Approve By</th>
                             <th>Document</th>
-                            <th>PO Status</th>
                             <th>Remark</th>
                         </tr>
                         </thead>
                         <tbody class="csn-text-up">
                         <?php $count = 0; foreach ($pr as $p): $count++;?>
-                        <tr>
-                            <td><?= $count?></td>
-                            <td><?= $p->so_no ?></td>
-                            <td><?= date('Y-m-d',strtotime($p->del_date)) ?></td>
-                            <td><?= date('Y-m-d',strtotime($p->date))?></td>
-                            <td>PR <?= $p->id ?></td>
-                            <td id="popup"><span class="click-button" data-toggle="modal" data-target="#myModal<?= $count?>">PR <?= $p->id?></span></td>
-                            <td><?php if(isset($p->created_by->name)){echo $p->created_by->name;} ?></td>
-                            <td>Procurement</td>
-                            <td class="<?php if(isset($p->status)){if($p->status == 'approved'){echo "colored-csn";}else{echo "colored-red";}}?>"><?php if(isset($p->status)){if($p->status == 'approved'){echo "Approve";}else{echo "Pending";}}?></td>
-                            <td><a href="#">View</a></td>
-                            <td class="<?php if(isset($p->po_exists)){echo "colored-csn";}else{echo "colored-red";}?>"><?php if(isset($p->po_exists)){echo "Created";}else{echo "Pending";}?></td>
-                            <td></td>
-                        </tr>
+                            <tr>
+                                <td><?= $count?></td>
+                                <td><?= $p->so_no ?></td>
+                                <td><?= date('Y-m-d',strtotime($p->del_date)) ?></td>
+                                <td><?= date('Y-m-d',strtotime($p->date))?></td>
+                                <td>PR <?= $p->id ?></td>
+                                <td id="popup"><span class="click-button" data-toggle="modal" data-target="#myModal<?= $count?>">PR <?= $p->id?></span></td>
+                                <td><?php if(isset($p->created_by->name)){echo $p->created_by->name;} ?></td>
+                                <td>Procurement</td>
+                                <td class="<?php if(isset($p->status)){if($p->status == 'requested' || $p->status == 'rejected'){echo "colored-red";}elseif(($p->status == 'verified' || $p->status == 'approved')){echo "colored-csn";}}?>"><?php if(isset($p->status)){if($p->status == 'requested'){echo "Pending";}elseif($p->status == 'rejected'){echo "Reject";}elseif(($p->status == 'verified' || $p->status == 'approved')){echo "Verify";}}?></td>
+                                <td><?php if(isset($p->verified_by->name)){echo $p->verified_by->name;}?></td>
+                                <td class="<?php if(isset($p->status)){if($p->status == 'verified'){echo "colored-red";}elseif(($p->status == 'approved')){echo "colored-csn";}}?>"><?php if(isset($p->status)){if($p->status == 'verified'){echo "Pending";}elseif(($p->status == 'approved')){echo "Approve";}}?></td>
+                                <td><?php if(isset($p->approved_by->name)){echo $p->approved_by->name;}?></td>
+                                <td><a href="#">View</a></td>
+                                <td></td>
+                            </tr>
                         <?php endforeach;?>
                         </tbody>
                     </table>
