@@ -559,19 +559,19 @@ class PoController extends AppController
                 'contain' => []
             ]);
             $created_by = $this->Users->get($p->created_by);
-            if(isset($p->verified_by)){
+            if($p->verified_by != null){
                 $verified_by = $this->Users->get($p->verified_by);
                 $p->verified_by = $verified_by;
             }
-            if(isset($p->approve1_by)){
+            if($p->approve1_by != null){
                 $approve1_by = $this->Users->get($p->approve1_by);
                 $p->approve1_by = $approve1_by;
             }
-            if(isset($p->approve2_by)){
+            if($p->approve2_by != null){
                 $approve2_by = $this->Users->get($p->approve2_by);
                 $p->approve2_by = $approve2_by;
             }
-            if(isset($p->approve3_by)){
+            if($p->approve3_by != null){
                 $approve3_by = $this->Users->get($p->approve3_by);
                 $p->approve3_by = $approve3_by;
             }

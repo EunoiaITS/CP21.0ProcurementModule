@@ -40,7 +40,7 @@
                             <td>PO <?= $p->id ?></td>
                             <td><?= $i->eng->partNo ?></td>
                             <td><?= $i->eng->partName ?></td>
-                            <td><?= $i->supplier_name->name ?></td>
+                            <td><?php if(isset($i->supplier_name->name)) echo $i->supplier_name->name; ?></td>
                             <td><?= $i->eng->quality?></td>
                             <td>$<?= $i->total ?></td>
                             <td><?= $p->created_by ?></td>
