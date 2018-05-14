@@ -134,6 +134,7 @@ class PoListController extends AppController
             $mds->pr_item_id = $this->request->getQuery('id');
             $mds->no_del = 1;
             $mds->del_type = 'Complete';
+            $mds->created_by = $this->Auth->user('id');
             if($this->Mds->save($mds)){
                 $this->Flash->success(__('The mds has been saved.'));
 
@@ -219,6 +220,7 @@ class PoListController extends AppController
                 $mds->pr_item_id = $this->request->getQuery('id');
                 $mds->no_del = $this->request->getData('total');
                 $mds->del_type = 'Plan';
+                $mds->created_by = $this->Auth->user('id');
                 $mdsDetails = TableRegistry::get('MdsDetails');
                 $mds_itm = array();
                 if($this->Mds->save($mds)){
@@ -418,50 +420,63 @@ class PoListController extends AppController
 
     public function partDetails(){
         if($this->request->is('post')){
-            //$this->autoRender = false;
             $this->loadModel('Mds');
             $this->loadModel('MdsDetails');
             $this->loadModel('Po');
             $this->loadModel('Pr');
             $this->loadModel('PrItems');
             $this->loadModel('Supplier');
-            $result = new \stdClass();
-            $count = 0;
+            $this->loadModel('SupplierItems');
+            $result = new \stdClass;
             $result->part_no = $this->request->getData('part-no');
             $result->part_name = $this->request->getData('part-name');
             $items = $this->PrItems->find('all')
                 ->where(['bom_part_id' => $this->request->getData('bom-part-id')]);
-            $prs = [];
             foreach($items as $item){
                 $match = $this->Mds->find('all')
                     ->where(['pr_item_id' => $item->id]);
                 if(!$match->isEmpty()){
-                    $result->total = $item->total;
-                    $result->qty_req = $item->sub_total/$item->order_qty;
-                    $prs[] = $item->pr_id;
-//                    $supplier = '';
-//                    if($item->supplier_id !== null){
-//                        $supplier = $this->Supplier->get($item->supplier_id, [
-//                            'contain' => []
-//                        ]);
-//                    }
-//                    $result->$count->supplier = $supplier;
+                    $pr = $this->Pr->get($item->pr_id);
+                    $item->pr = $pr;
+                    $po = $this->Po->find('all')
+                        ->where(['pr_id' => $item->pr_id]);
+                    foreach($po as $p){
+                        $item->po = $p;
+                    }
+                    $supplier = '';
+                    if($item->supplier_id !== null){
+                        $supplier = $this->Supplier->get($item->supplier_id, [
+                            'contain' => []
+                        ]);
+                    }
+                    $supplier_item = '';
+                    if($item->supplier_item_id !== null){
+                        $supplier_item = $this->SupplierItems->get($item->supplier_item_id, [
+                            'contain' => []
+                        ]);
+                    }
+                    $result->supplier_item = $supplier_item;
+                    $result->supplier = $supplier;
+                    $urlToSales = 'http://salesmodule.acumenits.com/api/so-data?so='.rawurlencode($pr->so_no);
+
+                    $optionsForSales = [
+                        'http' => [
+                            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                            'method'  => 'GET'
+                        ]
+                    ];
+                    $contextForSales  = stream_context_create($optionsForSales);
+                    $resultFromSales = file_get_contents($urlToSales, false, $contextForSales);
+                    if ($resultFromSales !== FALSE) {
+                        $dataFromSales = json_decode($resultFromSales);
+                        foreach($dataFromSales as $s){
+                            $pr->del_date = $s->delivery_date;
+                            $pr->customer = $s->cus->name;
+                        }
+                    }
                 }
             }
-            $prs = array_unique($prs);
-            foreach($prs as $dd){
-                $count++;
-                $pr = $this->Pr->get($dd);
-                $result->so->$count->pr = $pr;
-                $po = $this->Po->find('all')
-                    ->where(['pr_id' => $dd]);
-                foreach($po as $p){
-                    $result->so->$count->po = $p;
-                }
-            }
-//            echo '<pre>';
-//            print_r($prs);
-//            echo '</pre>';
+            $this->set('items', $items);
             $this->set('result', $result);
         }else{
             $this->Flash->error(__('Wrong method. Please provide the right data.'));

@@ -69,8 +69,8 @@
             </button>
             <ul  class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li class="color-hsh2"><a href="<?php echo $this->Url->build(['controller'=>'PoList','action'=>'index'])?>">PO List</a></li>
-                <li class="color-hsh2"><a href="#">PO list Report</a></li>
-                <li class="color-hsh2"><a href="#">PO list Search list</a></li>
+                <li class="color-hsh2"><a href="<?php echo $this->Url->build(['controller'=>'PoList','action'=>'report'])?>">PO list Report</a></li>
+                <li class="color-hsh2"><a href="<?php echo $this->Url->build(['controller'=>'PoList','action'=>'search'])?>">PO list Search list</a></li>
             </ul>
         </div>
 <!--        <div class="btn-group-vertical" role="group" class="dropdown">-->

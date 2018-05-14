@@ -26,7 +26,7 @@
                                 <p class="planner-year">UOM <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text">PCS</p>
+                                <p class="normal-text"><?= $result->supplier_item->uom ?></p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -34,7 +34,7 @@
                                 <p class="planner-year">Price<span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text">0.5</p>
+                                <p class="normal-text"><?= $result->supplier_item->unit_price ?></p>
                             </div>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                                 <p class="planner-year">Supplier <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text">Gulf</p>
+                                <p class="normal-text"><?= $result->supplier->name ?></p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -52,7 +52,7 @@
                                 <p class="planner-year">Supplier Address <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text">Seksyen 16 Shah Alam</p>
+                                <p class="normal-text"><?= $result->supplier->address ?></p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -60,7 +60,7 @@
                                 <p class="planner-year">Contact Name <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text">En Rafiee</p>
+                                <p class="normal-text"><?= $result->supplier->contact_name ?></p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -68,7 +68,7 @@
                                 <p class="planner-year">Contact No<span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text">55432388</p>
+                                <p class="normal-text"><?= $result->supplier->contact_phone ?></p>
                             </div>
                         </div>
                     </div>
@@ -100,22 +100,22 @@
                     </tr>
                     </thead>
                     <tbody class="csn-text-up">
-                    <?php $count = 0; foreach($result->so as $r): $count++; ?>
+                    <?php $count = 0; foreach($items as $s): if(isset($s->pr)): $count++; ?>
                     <tr>
                         <td><?= $count ?></td>
-                        <td><?= $r->pr->so_no ?></td>
-                        <td>12-11-17</td>
-                        <td><?= date('Y-m-d', strtotime($r->pr->date)) ?></td>
-                        <td>PR<?= $r->pr->id ?></td>
-                        <td><?= date('Y-m-d', strtotime($r->po->date)) ?></td>
-                        <td>PO<?= $r->po->id ?></td>
-                        <td><?= $result->qty_req ?></td>
-                        <td>100</td>
-                        <td><?= $result->total ?></td>
+                        <td><?= $s->pr->so_no ?></td>
+                        <td><?= date('Y-m-d', strtotime($s->pr->del_date)) ?></td>
+                        <td><?= date('Y-m-d', strtotime($s->pr->date)) ?></td>
+                        <td>PR<?= $s->pr->id ?></td>
+                        <td><?= date('Y-m-d', strtotime($s->po->date)) ?></td>
+                        <td>PO<?= $s->po->id ?></td>
+                        <td><?php if($s->order_qty !== 0 && $s->sub_total !== 0){ echo $s->sub_total/$s->order_qty; }else{ echo 0; } ?></td>
+                        <td></td>
+                        <td><?= $s->total ?></td>
                         <td>Azlin</td>
                         <td>Procurement</td>
                     </tr>
-                    <?php endforeach; ?>
+                    <?php endif; endforeach; ?>
                     </tbody>
                 </table>
             </div>
