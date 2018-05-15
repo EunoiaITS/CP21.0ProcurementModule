@@ -55,10 +55,9 @@ class PrController extends AppController
                 $approved_by = $this->Users->get($p->approved_by);
                 $p->approved_by = $approved_by;
             }
-            $p->requested_by = $created_by;
+            $p->created_by = $created_by;
         }
-
-        $this->set('pr', $this->paginate($pr));
+        $this->set('pr', $pr);
     }
 
     /**
@@ -68,6 +67,7 @@ class PrController extends AppController
      */
     public function autoTwoRequests()
     {
+        $pr = null;
         if($this->Auth->user('role') == 'requester'){
             $pr = $this->Pr->find('all')
                 ->Where(['status'=>'requested'])
@@ -84,7 +84,20 @@ class PrController extends AppController
                 ->where(['status' => 'verified'])
                 ->where(['section' => 'auto-2']);
         }
-        $this->set('pr', $this->paginate($pr));
+        $this->loadModel('Users');
+        foreach ($pr as $p){
+            $created_by = $this->Users->get($p->created_by);
+            if($p->verified_by != null ){
+                $verified_by = $this->Users->get($p->verified_by);
+                $p->verified_by = $verified_by;
+            }
+            if($p->approved_by != null ){
+                $approved_by = $this->Users->get($p->approved_by);
+                $p->approved_by = $approved_by;
+            }
+            $p->created_by = $created_by;
+        }
+        $this->set('pr', $pr);
     }
 
     /**
@@ -124,7 +137,7 @@ class PrController extends AppController
             }
             $p->created_by = $created_by;
         }
-        $this->set('pr', $this->paginate($pr));
+        $this->set('pr', $pr);
     }
 
     /**

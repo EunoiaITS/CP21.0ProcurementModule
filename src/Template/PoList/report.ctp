@@ -52,7 +52,7 @@
                             <td><?= $p->pr_item->eng->quality ?></td>
                             <td></td>
                             <td><?= $p->pr_item->total ?></td>
-                            <td>Azlin</td>
+                            <td><?= $p->requester->name ?></td>
                             <td>*Procurement</td>
                             <td><?php if($p->del_type == 'Plan'): ?><a href="#" data-toggle="modal" data-target="#myModal<?= $count ?>"><?= $p->del_type ?><?php else: echo 'Complete'; endif; ?></a></td>
                             <td></td>
