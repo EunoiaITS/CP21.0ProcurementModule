@@ -259,6 +259,7 @@ class PoListController extends AppController
         $this->loadModel('Pr');
         $this->loadModel('PrItems');
         $this->loadModel('Supplier');
+        $this->loadModel('Users');
         $pol = $this->paginate($this->Mds);
         foreach($pol as $p){
             $mds_dels = $this->MdsDetails->find('all')
@@ -273,6 +274,7 @@ class PoListController extends AppController
             foreach($po as $xx){
                 $p->po = $xx;
             }
+            $p->requester = $this->Users->get($p->created_by);
             $urlToSales = 'http://salesmodule.acumenits.com/api/so-data?so='.rawurlencode($pr->so_no);
 
             $optionsForSales = [
