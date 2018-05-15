@@ -18,6 +18,7 @@ class PoController extends AppController
         set_time_limit(0);
     }
     public function requests(){
+        $po = null;
         if($this->Auth->user('role') == 'requester'){
             $po = $this->Po->find('all')
                 ->Where(['status'=>'requested'])
@@ -39,7 +40,20 @@ class PoController extends AppController
             $po = $this->Po->find('all')
                 ->where(['status' => 'approved2']);
         }
-        $this->set('po', $this->paginate($po));
+        $this->loadModel('Users');
+        foreach ($po as $p){
+            $created_by = $this->Users->get($p->created_by);
+            if($p->verified_by != null ){
+                $verified_by = $this->Users->get($p->verified_by);
+                $p->verified_by = $verified_by;
+            }
+            if($p->approved_by != null ){
+                $approved_by = $this->Users->get($p->approved_by);
+                $p->approved_by = $approved_by;
+            }
+            $p->created_by = $created_by;
+        }
+        $this->set('po', $po);
     }
 
     /**
@@ -144,94 +158,8 @@ class PoController extends AppController
      * @return \Cake\Http\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
+
     public function view($id = null)
-    {
-        $this->loadModel('Pr');
-        $this->loadModel('PrItems');
-        $this->loadModel('Supplier');
-        $po = $this->Po->get($id, [
-            'contain' => []
-        ]);
-        $pr = $this->Pr->get($po->pr_id, [
-            'contain' => []
-        ]);
-        $po->so_no = $pr->so_no;
-
-        $urlToSales = 'http://salesmodule.acumenits.com/api/so-data?so='.rawurlencode($pr->so_no);
-
-        $optionsForSales = [
-            'http' => [
-                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-                'method'  => 'GET'
-            ]
-        ];
-        $contextForSales  = stream_context_create($optionsForSales);
-        $resultFromSales = file_get_contents($urlToSales, false, $contextForSales);
-        if ($resultFromSales !== FALSE) {
-            $dataFromSales = json_decode($resultFromSales);
-            foreach($dataFromSales as $s){
-                $po->del_date = $s->delivery_date;
-                $po->customer = $s->cus->name;
-                foreach ($s->soi as $smv){
-                    $po->model = $smv->model;
-                    $po->version = $smv->version;
-                }
-            }
-        }
-        $auto_items = $this->PrItems->find('all')
-            ->Where(['pr_id' => $pr->id]);
-        foreach($auto_items as $i){
-            $supplier = '';
-            if($i->supplier_id !== null){
-                $supplier = $this->Supplier->get($i->supplier_id, [
-                    'contain' => []
-                ]);
-            }
-            $i->supplier_name = $supplier;
-
-            $urlToEng = 'http://engmodule.acumenits.com/api/bom-part/'.$i->bom_part_id;
-
-            $optionsForEng = [
-                'http' => [
-                    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-                    'method'  => 'GET'
-                ]
-            ];
-            $contextForEng  = stream_context_create($optionsForEng);
-            $resultFromEng = file_get_contents($urlToEng, false, $contextForEng);
-            if ($resultFromEng !== FALSE) {
-                $dataFromEng = json_decode($resultFromEng);
-                $i->eng = $dataFromEng;
-                $stockAvailable = 0;
-                $urlToStore = 'http://storemodule.acumenits.com/in-stock-code/stock-available';
-                $sendToStore = [
-                    'part_no' => $dataFromEng->partNo,
-                    'part_name' => $dataFromEng->partName
-                ];
-
-
-                $optionsForStore = [
-                    'http' => [
-                        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-                        'method'  => 'POST',
-                        'content' => http_build_query($sendToStore)
-                    ]
-                ];
-                $contextForStore = stream_context_create($optionsForStore);
-                $resultFromStore = file_get_contents($urlToStore, false, $contextForStore);
-                if($resultFromStore != FALSE){
-                    $dataFromStore = json_decode($resultFromStore);
-                    $stockAvailable = abs($dataFromStore->stock_available);
-                }
-                $i->stock = $stockAvailable;
-            }
-
-        }
-        $po->items = $auto_items;
-        $this->set('pic',$this->Auth->user('id'));
-        $this->set('pr', $po);
-    }
-    public function requestsView($id = null)
     {
         $this->loadModel('Pr');
         $this->loadModel('PrItems');
@@ -441,7 +369,7 @@ class PoController extends AppController
             $po->created_by = $this->request->getData('created_by');
             if($this->Po->save($po)){
                 $this->Flash->success(__('The Po has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'requests']);
             }
             $this->Flash->error(__('The Po could not be saved. Please, try again.'));
         }
