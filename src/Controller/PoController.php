@@ -236,9 +236,30 @@ class PoController extends AppController
         $this->loadModel('Pr');
         $this->loadModel('PrItems');
         $this->loadModel('Supplier');
+        $this->loadModel('Users');
         $po = $this->Po->get($id, [
             'contain' => []
         ]);
+        $created_by = $this->Users->get($po->created_by);
+        if($po->verified_by != null ){
+            $verified_by = $this->Users->get($po->verified_by);
+            $po->verified_by = $verified_by;
+        }
+        if($po->approve1_by != null ){
+            $approve1_by = $this->Users->get($po->approve1_by);
+            $po->approve1_by = $approve1_by;
+        }
+        if($po->approve2_by != null ){
+            $approve2_by = $this->Users->get($po->approve2_by);
+            $po->approve2_by = $approve2_by;
+        }
+        if($po->approve3_by != null ){
+            $approve3_by = $this->Users->get($po->approve3_by);
+            $po->approve3_by = $approve3_by;
+        }
+
+        $po->created_by = $created_by;
+
         $pr = $this->Pr->get($po->pr_id, [
             'contain' => []
         ]);
