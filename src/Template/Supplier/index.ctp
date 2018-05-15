@@ -24,6 +24,7 @@
                             <th>Payment Terms</th>
                             <th>Tax Code</th>
                             <th>Tax ID</th>
+                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody class="csn-text-up">
@@ -44,6 +45,10 @@
                             <td><?= $s->payment_term ?></td>
                             <td><?= $s->tax_code ?></td>
                             <td><?= $s->tax_id ?></td>
+                            <td>
+                                <a href="#"><i class="fa fa-pencil-square-o fa-2x"></i></a>
+                                <a href="#" data-toggle="modal" data-target="#myModal4"><i class="fa fa-trash fa-2x"></i></a>
+                            </td>
                         </tr>
                         <?php endforeach; ?>
                         </tbody>
@@ -394,6 +399,25 @@
         </div>
     </div>
 <?php endforeach; ?>
+
+<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title text-center" id="myModalLabel">Delete Confirmation</h4>
+            </div>
+            <div class="modal-body supplier-modal-body">
+                <p class="text-center">Are you sure you want to delete <span>ABC</span> ?</p>
+            </div>
+            <div class="clearfix"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Yes</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">No</button>
+            </div>
+        </div>
+    </div>
+</div>
 
     <!--================
         add item popup

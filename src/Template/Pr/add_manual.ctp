@@ -121,6 +121,7 @@
                         <th>Select Supplier</th>
                         <th>Sub Total</th>
                         <th>GST%</th>
+                        <th>GST amount</th>
                         <th>Total</th>
                         <th>Document</th>
                         <th>Remark</th>
@@ -191,6 +192,7 @@
                     '<td><select class="form-control all-supp" id="supp'+counter+'" rel="'+counter+'" name="supplier'+counter+'"><option value="1">Supplier 1</option><option value="2">Supplier 2</option><option value="3">Supplier 3</option></select></td>'+
                     '<td><p id="sub-total-text'+counter+'">'+(Math.abs(e.reqQuantity - e.stockAvailable) * e.price1)+'</p><input type="hidden" name="subtotal'+counter+'" id="subtotal'+counter+'" value="'+(Math.abs(e.reqQuantity - e.stockAvailable) * e.price1)+'"></td>'+
                     '<td><input type="number" class="form-control gst" id="gst'+counter+'" rel="'+counter+'" name="gst'+counter+'" value="6"></td>'+
+                    '<td><p id="gst-amount'+counter+'">'+((Math.abs(e.reqQuantity - e.stockAvailable) * e.price1) * 6)/100 +'</p></td>'+
                     '<td><p id="total-text'+counter+'">'+(((Math.abs(e.reqQuantity - e.stockAvailable) * e.price1) * 6)/100 + (Math.abs(e.reqQuantity - e.stockAvailable) * e.price1))+'</p><input type="hidden" name="total'+counter+'" id="total'+counter+'" value="'+(((Math.abs(e.reqQuantity - e.stockAvailable) * e.price1) * 6)/100 + (Math.abs(e.reqQuantity - e.stockAvailable) * e.price1))+'"></td>'+
                     '<td><a href="#">View</a></td>'+
                     '<td></td>'+
@@ -199,13 +201,23 @@
             }
             if($('#append-here').length == 0){
                 html_table += '<tr id="append-here">'+
-                '<td colspan="17"></td>'+
-                '<td>265</td>'+
+                '<td colspan="18"></td>'+
+                '<td><p id="final-total"></p></td>'+
                 '<td colspan="2"></td>'+
                 '</tr>';
                 $('#parts-data').append(html_table);
+                var finalTotal = 0;
+                for(k = 1; k <= counter; k++){
+                    finalTotal += parseInt($('#total-text'+k).text());
+                }
+                $('#final-total').text(finalTotal);
             }else{
                 $('#append-here').before(html_table);
+                var finalTotal = 0;
+                for(k = 1; k <= counter; k++){
+                    finalTotal += parseInt($('#total-text'+k).text());
+                }
+                $('#final-total').text(finalTotal);
             }
             $('.all-supp').on('change', function(e){
                 e.preventDefault();
@@ -225,6 +237,11 @@
                 $('#total'+relate).val((price*qty_order)+(((price*qty_order)*gst)/100));
                 $('#sub-total-text'+relate).text(price*qty_order);
                 $('#total-text'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
+                var finalTotal = 0;
+                for(k = 1; k <= counter; k++){
+                    finalTotal += parseInt($('#total-text'+k).text());
+                }
+                $('#final-total').text(finalTotal);
             });
             $('.qty-order').on('change', function(e){
                 e.preventDefault();
@@ -244,6 +261,11 @@
                 $('#total'+relate).val((price*qty_order)+(((price*qty_order)*gst)/100));
                 $('#sub-total-text'+relate).text(price*qty_order);
                 $('#total-text'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
+                var finalTotal = 0;
+                for(k = 1; k <= counter; k++){
+                    finalTotal += parseInt($('#total-text'+k).text());
+                }
+                $('#final-total').text(finalTotal);
             });
             $('.gst').on('change', function(e){
                 e.preventDefault();
@@ -262,7 +284,13 @@
                 $('#subtotal'+relate).val(price*qty_order);
                 $('#total'+relate).val((price*qty_order)+(((price*qty_order)*gst)/100));
                 $('#sub-total-text'+relate).text(price*qty_order);
+                $('#gst-amount'+relate).text(((price*qty_order)*gst)/100);
                 $('#total-text'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
+                var finalTotal = 0;
+                for(k = 1; k <= counter; k++){
+                    finalTotal += parseInt($('#total-text'+k).text());
+                }
+                $('#final-total').text(finalTotal);
             });
             $('#total-items').val(counter);
         });
@@ -299,13 +327,14 @@
                 '<td><select class="form-control all-supp" id="supp'+counter+'" rel="'+counter+'" name="supplier'+counter+'"><option value="1">Supplier 1</option><option value="2">Supplier 2</option><option value="3">Supplier 3</option></select></td>'+
                 '<td><p id="sub-total-text'+counter+'"></p><input type="hidden" name="subtotal'+counter+'" id="subtotal'+counter+'"></td>'+
                 '<td><input type="number" class="form-control gst" id="gst'+counter+'" name="gst'+counter+'" rel="'+counter+'" value="6"></td>'+
+                '<td><p id="gst-amount'+counter+'"></p></td>'+
                 '<td><p id="total-text'+counter+'"></p><input type="hidden" name="total'+counter+'" id="total'+counter+'"></td>'+
                 '<td><a href="#">View</a></td>'+
                 '<td></td>'+
                 '</tr>';
             if($('#append-here').length == 0){
                 add_table += '<tr id="append-here">'+
-                '<td colspan="17"></td>'+
+                '<td colspan="18"></td>'+
                 '<td>265</td>'+
                 '<td colspan="2"></td>'+
                 '</tr>';
@@ -348,6 +377,11 @@
                 $('#total'+relate).val((price*qty_order)+(((price*qty_order)*gst)/100));
                 $('#sub-total-text'+relate).text(price*qty_order);
                 $('#total-text'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
+                var finalTotal = 0;
+                for(k = 1; k <= counter; k++){
+                    finalTotal += parseInt($('#total-text'+k).text());
+                }
+                $('#final-total').text(finalTotal);
             });
             $('.qty-order').on('change', function(e){
                 e.preventDefault();
@@ -367,6 +401,11 @@
                 $('#total'+relate).val((price*qty_order)+(((price*qty_order)*gst)/100));
                 $('#sub-total-text'+relate).text(price*qty_order);
                 $('#total-text'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
+                var finalTotal = 0;
+                for(k = 1; k <= counter; k++){
+                    finalTotal += parseInt($('#total-text'+k).text());
+                }
+                $('#final-total').text(finalTotal);
             });
             $('.gst').on('change', function(e){
                 e.preventDefault();
@@ -385,7 +424,13 @@
                 $('#subtotal'+relate).val(price*qty_order);
                 $('#total'+relate).val((price*qty_order)+(((price*qty_order)*gst)/100));
                 $('#sub-total-text'+relate).text(price*qty_order);
+                $('#gst-amount'+relate).text(((price*qty_order)*gst)/100);
                 $('#total-text'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
+                var finalTotal = 0;
+                for(k = 1; k <= counter; k++){
+                    finalTotal += parseInt($('#total-text'+k).text());
+                }
+                $('#final-total').text(finalTotal);
             });
         });
         $(document).on('keydown.autocomplete', '.part-no', function(){
@@ -422,7 +467,13 @@
             $('#subtotal'+partRel).val(ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable));
             $('#total'+partRel).val((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))+(((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))*6)/100));
             $('#sub-total-text'+partRel).text(ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable));
+            $('#gst-amount'+partRel).text((((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))*6)/100));
             $('#total-text'+partRel).text((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))+(((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))*6)/100));
+            var finalTotal = 0;
+            for(k = 1; k <= counter; k++){
+                finalTotal += parseInt($('#total-text'+k).text());
+            }
+            $('#final-total').text(finalTotal);
         });
         $(document).on('keydown.autocomplete', '.part-name', function(){
             //alert(1);
@@ -454,7 +505,13 @@
             $('#subtotal'+partRel).val(ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable));
             $('#total'+partRel).val((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))+(((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))*6)/100));
             $('#sub-total-text'+partRel).text(ui.item.price1*Math.abs(ui.item.reqUantity-ui.item.stockAvailable));
+            $('#gst-amount'+partRel).text((((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))*6)/100));
             $('#total-text'+partRel).text((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))+(((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))*6)/100));
+            var finalTotal = 0;
+            for(k = 1; k <= counter; k++){
+                finalTotal += parseInt($('#total-text'+k).text());
+            }
+            $('#final-total').text(finalTotal);
         });
     });
 </script>
