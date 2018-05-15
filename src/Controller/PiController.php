@@ -39,11 +39,10 @@ class PiController extends AppController
                 ];
                 $contextForStore  = stream_context_create($optionsForStore);
                 $resultFromStore = file_get_contents($urlToStore, false, $contextForStore);
-                if ($resultFromStore === FALSE) {
-                    echo 'ERROR!!';
+                if ($resultFromStore !== FALSE) {
+                    $dataFromStore = json_decode($resultFromStore);
+                    $sd->stock = $dataFromStore->stock_available;
                 }
-                $dataFromStore = json_decode($resultFromStore);
-                $sup->stock = $dataFromStore->stock_available;
 
                 $urlToPm = 'http://storemodule.acumenits.com/api/pm/';
 
@@ -58,11 +57,12 @@ class PiController extends AppController
                 ];
                 $contextForPm  = stream_context_create($optionsForPm);
                 $resultFromPm = file_get_contents($urlToPm, false, $contextForPm);
-                if ($resultFromPm === FALSE) {
-                    echo 'ERROR!!';
+                if ($resultFromPm !== FALSE) {
+                    $dataFromPm = json_decode($resultFromPm);
+                    if(isset($dataFromPm->min_stock)){
+                        $sd->min_stock = $dataFromPm->min_stock;
+                    }
                 }
-                $dataFromPm = json_decode($resultFromPm);
-                $sup->min_stock = $dataFromPm->min_stock;
             }
             $sup->items = $sup_items;
         }

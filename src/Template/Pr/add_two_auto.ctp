@@ -68,7 +68,7 @@
                                 <p class="planner-year">Create by <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p id="created-by" class="normal-text"><?= $user_id ?></p>
+                                <p id="created-by" class="normal-text"><?= $user_pic ?></p>
                                 <input id="created-name" type="hidden" name="created_by" value="<?= $user_id ?>">
                             </div>
                         </div>
@@ -88,23 +88,6 @@
                                 <p class="normal-text"></p>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-sm-3 col-xs-6">
-                                <p class="planner-year">Verify<span class="planner-fright">:</span></p>
-                            </div>
-                            <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text"></p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-3 col-xs-6">
-                                <p class="planner-year">Approve<span class="planner-fright">:</span></p>
-                            </div>
-                            <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text"></p>
-                            </div>
-                        </div>
-                        <input type="hidden" name="check" id="check" value="">
                     </div>
                 </div>
             </div>
@@ -180,7 +163,7 @@
                     counter++;
                     html_table += '<tr>'+
                         '<td>'+counter+'</td>'+
-                        '<input id="bom-id" type="hidden" name="bom_part_id'+counter+'" value="'+e.id+'">'+
+                        '<input id="bom-id" type="hidden" name="bom_part_id'+counter+'" value="'+e.bomId+'">'+
                         '<td>'+ e.partNo+'<input type="hidden" name="part_no'+counter+'" value="'+ e.partNo+'"></td>'+
                         '<td>'+ e.partName+'<input type="hidden" name="part_name'+counter+'" value="'+ e.partName+'"></td>'+
                         '<td>'+ e.supplier1+'<input type="hidden" name="supplier1'+counter+'" value="'+ e.supplier1id+'"></td>'+

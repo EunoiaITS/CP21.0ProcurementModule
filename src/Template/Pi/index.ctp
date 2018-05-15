@@ -28,16 +28,16 @@ Create serial number form page
                         </tr>
                         </thead>
                         <tbody class="csn-text-up">
-                        <?php $count =0;foreach ($sup as $s): $count++?>
-                        <?php foreach ($s->items as $i):?>
+                        <?php $count =0;foreach ($sup as $s): ?>
+                        <?php foreach ($s->items as $i):$count++?>
                         <tr>
                             <td><?= $count ?></td>
                             <td><?= $i->part_no ?></td>
                             <td><?= $i->part_name ?></td>
                             <td><?= $s->name ?></td>
                             <td><?= $i->unit_price ?></td>
-                            <td><?= $s->stock ?></td>
-                            <td><?= $s->min_stock ?></td>
+                            <td><?php if(isset($i->stock)){echo $i->stock;} ?></td>
+                            <td><?php if(isset($i->min_stock)){echo $i->min_stock;} ?></td>
                             <td><a href="<?= $i->doc_file ?>"><?php if(isset($i->doc_file)){echo "View";}else{echo '';}?></a></td>
                             <td></td>
                         </tr>

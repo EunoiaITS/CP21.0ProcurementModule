@@ -51,7 +51,7 @@
                                 <p class="planner-year">Create by <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text">Azlin</p>
+                                <p class="normal-text"><?php if(isset($pr->created_by->name)){echo $pr->created_by->name;}?></p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -72,10 +72,18 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-3 col-xs-6">
-                                <p class="planner-year">Verify<span class="planner-fright">:</span></p>
+                                <p class="planner-year">Verify By<span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text">Norbaizura</p>
+                                <p class="normal-text"><?php if($role == 'verifier'){echo $user_pic;}else{if(isset($pr->verified_by->name)){echo $pr->verified_by->name;}}?></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 col-xs-6">
+                                <p class="planner-year">Approve By<span class="planner-fright">:</span></p>
+                            </div>
+                            <div class="col-sm-5 col-xs-6">
+                                <p class="normal-text"><?php if($role == 'approver-1'){echo $user_pic;}else{if(isset($pr->approved_by->name)){echo $pr->approved_by->name;}}?></p>
                             </div>
                         </div>
                     </div>
