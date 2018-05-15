@@ -27,6 +27,8 @@ class PrController extends AppController
      */
     public function autoRequests()
     {
+        $this->loadModel('Users');
+        $pr = null;
         if($this->Auth->user('role') == 'requester'){
             $pr = $this->Pr->find('all')
                 ->Where(['status'=>'requested'])
@@ -43,7 +45,10 @@ class PrController extends AppController
                 ->where(['status' => 'verified'])
                 ->where(['section' => 'auto-1']);
         }
-        $this->set('pr', $this->paginate($pr));
+        foreach($pr as $p){
+            $p->requester = $this->Users->get($p->created_by);
+        }
+        $this->set('pr', $pr);
     }
 
     /**
@@ -53,6 +58,8 @@ class PrController extends AppController
      */
     public function autoTwoRequests()
     {
+        $this->loadModel('Users');
+        $pr = null;
         if($this->Auth->user('role') == 'requester'){
             $pr = $this->Pr->find('all')
                 ->Where(['status'=>'requested'])
@@ -69,7 +76,10 @@ class PrController extends AppController
                 ->where(['status' => 'verified'])
                 ->where(['section' => 'auto-2']);
         }
-        $this->set('pr', $this->paginate($pr));
+        foreach($pr as $p){
+            $p->requester = $this->Users->get($p->created_by);
+        }
+        $this->set('pr', $pr);
     }
 
     /**
@@ -79,6 +89,8 @@ class PrController extends AppController
      */
     public function manualRequests()
     {
+        $this->loadModel('Users');
+        $pr = null;
         if($this->Auth->user('role') == 'requester'){
             $pr = $this->Pr->find('all')
                 ->Where(['status'=>'requested'])
@@ -95,7 +107,10 @@ class PrController extends AppController
                 ->where(['status' => 'verified'])
                 ->where(['section' => 'manual']);
         }
-        $this->set('pr', $this->paginate($pr));
+        foreach($pr as $p){
+            $p->requester = $this->Users->get($p->created_by);
+        }
+        $this->set('pr', $pr);
     }
 
     /**
