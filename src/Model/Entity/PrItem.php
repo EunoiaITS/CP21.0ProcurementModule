@@ -38,21 +38,7 @@ class PrItem extends Entity
      * @var array
      */
     protected $_accessible = [
-        'pr_id' => true,
-        'bom_part_id' => true,
-        'order_qty' => true,
-        'supplier_id' => true,
-        'supplier_item_id' => true,
-        'sub_total' => true,
-        'gst' => true,
-        'total' => true,
-        'docs' => true,
-        'remark' => true,
-        'created' => true,
-        'modified' => true,
-        'pr' => true,
-        'bom_part' => true,
-        'supplier' => true,
-        'supplier_item' => true
+        '*' => true,
+        'id' => false
     ];
 }
