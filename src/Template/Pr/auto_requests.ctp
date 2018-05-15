@@ -13,29 +13,25 @@
                         <thead>
                         <tr>
                             <th>No</th>
-                            <th>SO NO</th>
-                            <th>SO Date</th>
-                            <th>Delivery Date</th>
-                            <th>Description</th>
-                            <th>Customer Name</th>
-                            <th>Category</th>
-                            <th>Remark</th>
-                            <th></th>
+                            <th>PR NO</th>
+                            <th>Date</th>
+                            <th>Department</th>
+                            <th>Create By</th>
+                            <th>Status</th>
+                            <th>View</th>
                         </tr>
                         </thead>
                         <tbody class="csn-text-up">
                         <?php $count = 0;foreach ($pr as $p): $count++?>
-                        <tr>
-                            <td><?= $count ?></td>
-                            <td><?= $p->so_no ?></td>
-                            <td><?= date('Y-m-d',strtotime($p->date)) ?></td>
-                            <td><?= $p->delivery_date ?></td>
-                            <td><?= $p->description ?></td>
-                            <td><?= $p->customer ?></td>
-                            <td>Auto</td>
-                            <td></td>
-                            <td><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'viewAuto',$p->id])?>"><?php if($role == 'requester'){echo 'pending';}elseif ($role == 'verifier'){echo 'verify';}elseif ($role == 'approver-1'){echo 'approve';}?></a></td>
-                        </tr>
+                            <tr>
+                                <td><?= $count ?></td>
+                                <td>PR <?= $p->id ?></td>
+                                <td><?= date('Y-m-d',strtotime($p->date)) ?></td>
+                                <td></td>
+                                <td></td>
+                                <td><?= $p->status ?></td>
+                                <td><a href="<?php echo $this->Url->build(['controller'=>'Pr', 'action'=>'viewAuto', $p->id])?>"><?php if($role == 'requester'){echo 'pending';}elseif ($role == 'verifier'){echo 'verify';}elseif ($role == 'approver-1'){echo 'approve';}?></a></td>
+                            </tr>
                         <?php endforeach;?>
                         </tbody>
                     </table>

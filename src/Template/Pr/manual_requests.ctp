@@ -29,6 +29,8 @@
                                 <td><?= date('Y-m-d',strtotime($p->date)) ?></td>
                                 <td>Procurement</td>
                                 <td><?= $p->requester->name ?></td>
+                                <td></td>
+                                <td><?= $p->created_by->name ?></td>
                                 <td><?= $p->status ?></td>
                                 <td><a href="<?php echo $this->Url->build(['controller'=>'Pr', 'action'=>'viewManual', $p->id])?>"><?php if($role == 'requester'){echo 'pending';}elseif ($role == 'verifier'){echo 'verify';}elseif ($role == 'approver-1'){echo 'approve';}?></a></td>
                             </tr>

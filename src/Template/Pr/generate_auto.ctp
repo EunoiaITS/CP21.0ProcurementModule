@@ -65,7 +65,7 @@
                                 <p class="planner-year">Create by <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text"><?= $pic ?></p>
+                                <p class="normal-text"><?= $user_pic ?></p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -79,22 +79,6 @@
                         <div class="form-group">
                             <div class="col-sm-3 col-xs-6">
                                 <p class="planner-year">Section<span class="planner-fright">:</span></p>
-                            </div>
-                            <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text"></p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-3 col-xs-6">
-                                <p class="planner-year">Verify<span class="planner-fright">:</span></p>
-                            </div>
-                            <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text"></p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-3 col-xs-6">
-                                <p class="planner-year">Approve<span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
                                 <p class="normal-text"></p>

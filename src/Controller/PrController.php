@@ -92,10 +92,23 @@ class PrController extends AppController
         $this->loadModel('Users');
         $pr = null;
         if($this->Auth->user('role') == 'requester'){
+            $this->loadModel('Users');
             $pr = $this->Pr->find('all')
                 ->Where(['status'=>'requested'])
                 ->where(['section' => 'manual'])
                 ->orWhere(['status' => 'rejected']);
+            foreach ($pr as $p){
+                $created_by = $this->Users->get($p->created_by);
+                if($p->verified_by != null ){
+                    $verified_by = $this->Users->get($p->verified_by);
+                    $p->verified_by = $verified_by;
+                }
+                if($p->approved_by != null ){
+                    $approved_by = $this->Users->get($p->approved_by);
+                    $p->approved_by = $approved_by;
+                }
+                $p->created_by = $created_by;
+            }
         }
         if($this->Auth->user('role') == 'verifier'){
             $pr = $this->Pr->find('all')
@@ -220,9 +233,20 @@ class PrController extends AppController
         $this->loadModel('PrItems');
         $this->loadModel('Supplier');
         $this->loadModel('SupplierItems');
+        $this->loadModel('Users');
         $pr = $this->Pr->get($id, [
             'contain' => []
         ]);
+            $created_by = $this->Users->get($pr->created_by);
+            if($pr->verified_by != null ){
+                $verified_by = $this->Users->get($pr->verified_by);
+                $pr->verified_by = $verified_by;
+            }
+            if($pr->approved_by != null ){
+                $approved_by = $this->Users->get($pr->approved_by);
+                $pr->approved_by = $approved_by;
+            }
+            $pr->created_by = $created_by;
 
         $urlToSales = 'http://salesmodule.acumenits.com/api/so-data?so='.rawurlencode($pr->so_no);
 
@@ -1198,11 +1222,11 @@ class PrController extends AppController
                 $p->po_exists = 'Yes';
             }
             $created_by = $this->Users->get($p->created_by);
-            if(isset($p->verified_by)){
+            if($p->verified_by != null ){
                 $verified_by = $this->Users->get($p->verified_by);
                 $p->verified_by = $verified_by;
             }
-            if(isset($p->approved_by)){
+            if($p->approved_by != null ){
                 $approved_by = $this->Users->get($p->approved_by);
                 $p->approved_by = $approved_by;
             }
