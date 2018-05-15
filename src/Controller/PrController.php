@@ -588,28 +588,6 @@ class PrController extends AppController
      */
     public function submitAuto(){
         if($this->request->is('post')){
-//            $this->autoRender = false;
-//            $count = 0;
-//            $pr_itm = array();
-//            if($this->request->getData('total') != ''){
-//                for ($i = 1 ;$i <= $this->request->getData('total');$i++){
-//                    if($this->request->getData('selected'.$i) != ''){
-//                        $count++;
-//                        $pr_itm[$count]['pr_id'] = 1;
-//                        $pr_itm[$count]['bom_part_id'] = $this->request->getData('bom_part_id'.$i);
-//                        $pr_itm[$count]['order_qty'] = $this->request->getData('order_qty'.$i);
-//                        $pr_itm[$count]['supplier_id'] = $this->request->getData('supplier'.$i);
-//                        $pr_itm[$count]['supplier_item_id'] = $this->request->getData('supplier'.$i);
-//                        $pr_itm[$count]['sub_total'] = $this->request->getData('sub_total'.$i);
-//                        $pr_itm[$count]['gst'] = $this->request->getData('gst'.$i);
-//                        $pr_itm[$count]['total'] = $this->request->getData('total'.$i);
-//                    }
-//                }
-//            }
-//            echo "<pre>";
-//            print_r($this->request->getData());
-//            echo "</pre>";
-//            die();
             $this->loadModel('PrItems');
             $pr = $this->Pr->newEntity();
             $pr->date = $this->request->getData('date');
