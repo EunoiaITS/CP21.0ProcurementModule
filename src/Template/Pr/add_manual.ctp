@@ -240,6 +240,7 @@
                 $('#subtotal'+relate).val(price*qty_order);
                 $('#total'+relate).val((price*qty_order)+(((price*qty_order)*gst)/100));
                 $('#sub-total-text'+relate).text(price*qty_order);
+                $('#gst-amount'+relate).text(((price*qty_order)*gst)/100);
                 $('#total-text'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
                 var finalTotal = 0;
                 for(k = 1; k <= counter; k++){
@@ -264,6 +265,7 @@
                 $('#subtotal'+relate).val(price*qty_order);
                 $('#total'+relate).val((price*qty_order)+(((price*qty_order)*gst)/100));
                 $('#sub-total-text'+relate).text(price*qty_order);
+                $('#gst-amount'+relate).text(((price*qty_order)*gst)/100);
                 $('#total-text'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
                 var finalTotal = 0;
                 for(k = 1; k <= counter; k++){
@@ -380,6 +382,7 @@
                 $('#subtotal'+relate).val(price*qty_order);
                 $('#total'+relate).val((price*qty_order)+(((price*qty_order)*gst)/100));
                 $('#sub-total-text'+relate).text(price*qty_order);
+                $('#gst-amount'+relate).text(((price*qty_order)*gst)/100);
                 $('#total-text'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
                 var finalTotal = 0;
                 for(k = 1; k <= counter; k++){
@@ -404,6 +407,7 @@
                 $('#subtotal'+relate).val(price*qty_order);
                 $('#total'+relate).val((price*qty_order)+(((price*qty_order)*gst)/100));
                 $('#sub-total-text'+relate).text(price*qty_order);
+                $('#gst-amount'+relate).text(((price*qty_order)*gst)/100);
                 $('#total-text'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
                 var finalTotal = 0;
                 for(k = 1; k <= counter; k++){

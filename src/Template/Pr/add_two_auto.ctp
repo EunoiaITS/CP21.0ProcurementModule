@@ -162,6 +162,10 @@
             if(parts.length !== 0){
                 $.each(parts, function(i, e){
                     counter++;
+                    var order_qty = e.reqQuantity - e.stockAvailable;
+                    if(order_qty < 0){
+                        order_qty = 0;
+                    }
                     html_table += '<tr>'+
                         '<td>'+counter+'</td>'+
                         '<input id="bom-id" type="hidden" name="bom_part_id'+counter+'" value="'+e.bomId+'">'+
@@ -177,12 +181,12 @@
                         '<td>'+ e.category+'<input type="hidden" name="category'+counter+'" value="'+ e.category+'"></td>'+
                         '<td>'+ e.reqQuantity+'<input type="hidden" name="reqQuantity'+counter+'" value="'+ e.reqQuantity+'"></td>'+
                         '<td>'+ e.stockAvailable+'<input type="hidden" name="stockAvailable'+counter+'" value="'+ e.stockAvailable+'"></td>'+
-                        '<td><input type="number" class="form-control qty-order" id="qty'+counter+'" rel="'+counter+'" name="order_qty'+counter+'" value="'+Math.abs(e.reqQuantity - e.stockAvailable)+'"></td>'+
+                        '<td><input type="number" class="form-control qty-order" id="qty'+counter+'" rel="'+counter+'" name="order_qty'+counter+'" value="'+order_qty+'"></td>'+
                         '<td><select class="form-control all-supp" id="supp'+counter+'" rel="'+counter+'" name="supplier'+counter+'"><option value="1">Supplier 1</option><option value="2">Supplier 2</option><option value="3">Supplier 3</option></select></td>'+
-                        '<td><p id="sub-total-text'+counter+'">'+(Math.abs(e.reqQuantity - e.stockAvailable) * e.price1)+'</p><input type="hidden" name="sub_total'+counter+'" id="subtotal'+counter+'" value="'+(Math.abs(e.reqQuantity - e.stockAvailable) * e.price1)+'"></td>'+
+                        '<td><p id="sub-total-text'+counter+'">'+(order_qty * e.price1)+'</p><input type="hidden" name="sub_total'+counter+'" id="subtotal'+counter+'" value="'+(order_qty * e.price1)+'"></td>'+
                         '<td><input type="number" class="form-control gst" id="gst'+counter+'" rel="'+counter+'" name="gst'+counter+'" value="6"></td>'+
-                        '<td><p id="gst-amount'+counter+'">'+((Math.abs(e.reqQuantity - e.stockAvailable) * e.price1) * 6)/100 +'</p></td>'+
-                        '<td><p id="total-text'+counter+'">'+(((Math.abs(e.reqQuantity - e.stockAvailable) * e.price1) * 6)/100 + (Math.abs(e.reqQuantity - e.stockAvailable) * e.price1))+'</p><input type="hidden" name="total'+counter+'" id="total'+counter+'" value="'+(((Math.abs(e.reqQuantity - e.stockAvailable) * e.price1) * 6)/100 + (Math.abs(e.reqQuantity - e.stockAvailable) * e.price1))+'"></td>'+
+                        '<td><p id="gst-amount'+counter+'">'+((order_qty * e.price1) * 6)/100 +'</p></td>'+
+                        '<td><p id="total-text'+counter+'">'+(((order_qty * e.price1) * 6)/100 + (order_qty * e.price1))+'</p><input type="hidden" name="total'+counter+'" id="total'+counter+'" value="'+(((order_qty * e.price1) * 6)/100 + (order_qty * e.price1))+'"></td>'+
                         '<td><a href="#">View</a></td>'+
                         '<td></td>'+
                         '<input type="hidden" name="counter" value="'+counter+'">'+
@@ -226,6 +230,7 @@
                 $('#subtotal'+relate).val(price*qty_order);
                 $('#total'+relate).val((price*qty_order)+(((price*qty_order)*gst)/100));
                 $('#sub-total-text'+relate).text(price*qty_order);
+                $('#gst-amount'+relate).text(((price*qty_order)*gst)/100);
                 $('#total-text'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
                 var finalTotal = 0;
                 for(k = 1; k <= counter; k++){
@@ -250,6 +255,7 @@
                 $('#subtotal'+relate).val(price*qty_order);
                 $('#total'+relate).val((price*qty_order)+(((price*qty_order)*gst)/100));
                 $('#sub-total-text'+relate).text(price*qty_order);
+                $('#gst-amount'+relate).text(((price*qty_order)*gst)/100);
                 $('#total-text'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
                 var finalTotal = 0;
                 for(k = 1; k <= counter; k++){
@@ -274,6 +280,7 @@
                 $('#subtotal'+relate).val(price*qty_order);
                 $('#total'+relate).val((price*qty_order)+(((price*qty_order)*gst)/100));
                 $('#sub-total-text'+relate).text(price*qty_order);
+                $('#gst-amount'+relate).text(((price*qty_order)*gst)/100);
                 $('#total-text'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
                 var finalTotal = 0;
                 for(k = 1; k <= counter; k++){
