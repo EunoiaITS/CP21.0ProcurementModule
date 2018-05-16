@@ -47,7 +47,7 @@
                             <td><?= $s->tax_id ?></td>
                             <td>
                                 <a href="#"><i class="fa fa-pencil-square-o fa-2x"></i></a>
-                                <a href="#" data-toggle="modal" data-target="#myModal4"><i class="fa fa-trash fa-2x"></i></a>
+                                <a href="#" data-toggle="modal" data-target="#myModalDel<?= $s->id ?>"><i class="fa fa-trash fa-2x"></i></a>
                             </td>
                         </tr>
                         <?php endforeach; ?>
@@ -309,8 +309,8 @@
                             </thead>
                             <tbody id="add-item-supplier<?= $s->id ?>">
                             <tr>
-                                <td><input type="text" class="form-control from-qr" id="pr-item-name" name="partno1"></td>
-                                <td><input type="text" class="form-control from-qr" id="pr-item-name" name="partname1"></td>
+                                <td><input type="text" class="form-control from-qr part-no" rel="1" id="part-no-1" name="partno1"></td>
+                                <td><input type="text" class="form-control from-qr part-name" rel="1" id="part-name-1" name="partname1"></td>
                                 <td><input type="text" class="form-control from-qr" id="pr-item-code" name="uom1"></td>
                                 <td><input type="number" class="form-control from-qr" id="pr-quantity" name="unitprice1"></td>
                                 <td><input type="text" class="form-control from-qr" id="pr-quantity" name="capamonth1"></td>
@@ -398,26 +398,27 @@
             </div>
         </div>
     </div>
-<?php endforeach; ?>
-
-<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title text-center" id="myModalLabel">Delete Confirmation</h4>
-            </div>
-            <div class="modal-body supplier-modal-body">
-                <p class="text-center">Are you sure you want to delete <span>ABC</span> ?</p>
-            </div>
-            <div class="clearfix"></div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Yes</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">No</button>
+    <div class="modal fade" id="myModalDel<?= $s->id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title text-center" id="myModalLabel">Delete Confirmation</h4>
+                </div>
+                <div class="modal-body supplier-modal-body">
+                    <p class="text-center">Are you sure you want to delete <span><?= $s->name ?></span> ?</p>
+                </div>
+                <div class="clearfix"></div>
+                <div class="modal-footer">
+                    <form action="<?php echo $this->Url->build(['controller' => 'Supplier', 'action' => 'delete', $s->id]); ?>" method="post">
+                        <button type="submit" class="btn btn-primary">Yes</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">No</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+<?php endforeach; ?>
 
     <!--================
         add item popup
@@ -430,8 +431,8 @@
                 var id = $(this).attr('rel');
                 count++;
                 var html_create ='<tr>'+
-                    '<td><input type="text" name="partno'+count+'" class="form-control from-qr" id="pr-item-name"></td>'+
-                    '<td><input type="text" name="partname'+count+'" class="form-control from-qr" id="pr-item-name"></td>'+
+                    '<td><input type="text" name="partno'+count+'" class="form-control from-qr part-no" rel="'+count+'" id="part-no-'+count+'"></td>'+
+                    '<td><input type="text" name="partname'+count+'" class="form-control from-qr part-name" rel="'+count+'" id="part-name-'+count+'"></td>'+
                     '<td><input type="text" name="uom'+count+'" class="form-control from-qr" id="pr-item-code"></td>'+
                     '<td><input type="number" name="unitprice'+count+'" class="form-control from-qr" id="pr-quantity"></td>'+
                     '<td><input type="text" name="capamonth'+count+'" class="form-control from-qr" id="pr-quantity"></td>'+
@@ -455,6 +456,31 @@
                     '<tr>'+
                     '<input type="hidden" name="total" value="'+count+'">';
                 $('#add-item-supplier'+id).append(html_create);
+            });
+            var part_nos = [<?php echo $part_nos; ?>];
+            var part_names = [<?php echo $part_names; ?>];
+            var part_no_options = {
+                source: part_nos,
+                minLength: 0
+            };
+            var part_name_options = {
+                source: part_names,
+                minLength: 0
+            };
+            var partRel = '';
+            $(document).on('keydown.autocomplete', '.part-no', function(){
+                $(this).autocomplete(part_no_options);
+            });
+            $(document).on('autocompleteselect', '.part-no', function(e, ui){
+                partRel = $(this).attr('rel');
+                $('#part-name-'+partRel).val(ui.item.partName);
+            });
+            $(document).on('keydown.autocomplete', '.part-name', function(){
+                $(this).autocomplete(part_name_options);
+            });
+            $(document).on('autocompleteselect', '.part-name', function(e, ui){
+                partRel = $(this).attr('rel');
+                $('#part-no-'+partRel).val(ui.item.partNo);
             });
         });
     </script>

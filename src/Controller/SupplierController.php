@@ -33,7 +33,30 @@ class SupplierController extends AppController
                 ->where(['supplier_id' => $s->id]);
             $s->items = $items;
         }
+        $partNo = $partName = '';
+        $urlToEng = 'http://engmodule.acumenits.com/api/all-bom-parts';
 
+        $optionsForEng = [
+            'http' => [
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'GET'
+            ]
+        ];
+        $contextForEng  = stream_context_create($optionsForEng);
+        $resultFromEng = file_get_contents($urlToEng, false, $contextForEng);
+        if($resultFromEng !== FALSE){
+            $dataFromEng = json_decode($resultFromEng);
+            foreach($dataFromEng as $eng){
+                $partNo .= '{label:"'.$eng->partNo.
+                    '",bomId:"'.$eng->id.
+                    '",partName:"'.$eng->partName.'"},';
+                $partName .= '{label:"'.$eng->partName.
+                    '",bomId:"'.$eng->id.
+                    '",partNo:"'.$eng->partNo.'"},';
+            }
+        }
+        $partNo = rtrim($partNo, ',');
+        $partName = rtrim($partName, ',');
         if($this->request->is('post')){
             $supItems = TableRegistry::get('SupplierItems');
             $items = array();
@@ -84,6 +107,8 @@ class SupplierController extends AppController
         }
 
         $this->set(compact('supplier'));
+        $this->set('part_nos', $partNo);
+        $this->set('part_names', $partName);
     }
 
     /**
@@ -113,6 +138,30 @@ class SupplierController extends AppController
      */
     public function add()
     {
+        $partNo = $partName = '';
+        $urlToEng = 'http://engmodule.acumenits.com/api/all-bom-parts';
+
+        $optionsForEng = [
+            'http' => [
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'GET'
+            ]
+        ];
+        $contextForEng  = stream_context_create($optionsForEng);
+        $resultFromEng = file_get_contents($urlToEng, false, $contextForEng);
+        if($resultFromEng !== FALSE){
+            $dataFromEng = json_decode($resultFromEng);
+            foreach($dataFromEng as $eng){
+                $partNo .= '{label:"'.$eng->partNo.
+                    '",bomId:"'.$eng->id.
+                    '",partName:"'.$eng->partName.'"},';
+                $partName .= '{label:"'.$eng->partName.
+                    '",bomId:"'.$eng->id.
+                    '",partNo:"'.$eng->partNo.'"},';
+            }
+        }
+        $partNo = rtrim($partNo, ',');
+        $partName = rtrim($partName, ',');
         $supplier = $this->Supplier->newEntity();
         if ($this->request->is('post')) {
             $supplier = $this->Supplier->patchEntity($supplier, $this->request->getData());
@@ -157,6 +206,8 @@ class SupplierController extends AppController
             $this->Flash->error(__('The supplier could not be saved. Please, try again.'));
         }
         $this->set(compact('supplier'));
+        $this->set('part_nos', $partNo);
+        $this->set('part_names', $partName);
     }
 
     /**
@@ -192,9 +243,15 @@ class SupplierController extends AppController
      */
     public function delete($id = null)
     {
+        $this->loadModel('SupplierItems');
         $this->request->allowMethod(['post', 'delete']);
         $supplier = $this->Supplier->get($id);
+        $items = $this->SupplierItems->find('all')
+            ->where(['supplier_id' => $id]);
         if ($this->Supplier->delete($supplier)) {
+            foreach($items as $i){
+                $this->SupplierItems->delete($i);
+            }
             $this->Flash->success(__('The supplier has been deleted.'));
         } else {
             $this->Flash->error(__('The supplier could not be deleted. Please, try again.'));

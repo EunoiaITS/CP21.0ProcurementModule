@@ -435,8 +435,8 @@
             e.preventDefault();
             count++;
             var html_create ='<tr>'+
-                '<td><input type="text" name="partno'+count+'" class="form-control from-qr" id="pr-item-name"></td>'+
-                '<td><input type="text" name="partname'+count+'" class="form-control from-qr" id="pr-item-name"></td>'+
+                '<td><input type="text" name="partno'+count+'" rel="'+count+'" class="form-control from-qr part-no" id="part-no-'+count+'"></td>'+
+                '<td><input type="text" name="partname'+count+'" rel="'+count+'" class="form-control from-qr part-name" id="part-name-'+count+'"></td>'+
                 '<td><input type="text" name="uom'+count+'" class="form-control from-qr" id="pr-item-code"></td>'+
                 '<td><input type="number" name="unitprice'+count+'" class="form-control from-qr" id="pr-quantity"></td>'+
                 '<td><input type="text" name="capamonth'+count+'" class="form-control from-qr" id="pr-quantity"></td>'+
@@ -462,6 +462,31 @@
                 '<tr>'+
                 '<input type="hidden" name="total" value="'+count+'">';
             $('#add-item-supplier').append(html_create);
+        });
+        var part_nos = [<?php echo $part_nos; ?>];
+        var part_names = [<?php echo $part_names; ?>];
+        var part_no_options = {
+            source: part_nos,
+            minLength: 0
+        };
+        var part_name_options = {
+            source: part_names,
+            minLength: 0
+        };
+        var partRel = '';
+        $(document).on('keydown.autocomplete', '.part-no', function(){
+            $(this).autocomplete(part_no_options);
+        });
+        $(document).on('autocompleteselect', '.part-no', function(e, ui){
+            partRel = $(this).attr('rel');
+            $('#part-name-'+partRel).val(ui.item.partName);
+        });
+        $(document).on('keydown.autocomplete', '.part-name', function(){
+            $(this).autocomplete(part_name_options);
+        });
+        $(document).on('autocompleteselect', '.part-name', function(e, ui){
+            partRel = $(this).attr('rel');
+            $('#part-no-'+partRel).val(ui.item.partNo);
         });
     });
 </script>
