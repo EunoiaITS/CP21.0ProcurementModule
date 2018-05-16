@@ -46,7 +46,7 @@
                             <td><?= $s->tax_code ?></td>
                             <td><?= $s->tax_id ?></td>
                             <td>
-                                <a href="#"><i class="fa fa-pencil-square-o fa-2x"></i></a>
+                                <a href="<?php echo $this->Url->build(['controller' => 'Supplier', 'action' => 'edit', $s->id]); ?>"><i class="fa fa-pencil-square-o fa-2x"></i></a>
                                 <a href="#" data-toggle="modal" data-target="#myModalDel<?= $s->id ?>"><i class="fa fa-trash fa-2x"></i></a>
                             </td>
                         </tr>

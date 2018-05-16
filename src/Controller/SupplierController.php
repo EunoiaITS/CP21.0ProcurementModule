@@ -219,9 +219,36 @@ class SupplierController extends AppController
      */
     public function edit($id = null)
     {
+        $this->loadModel('SupplierItems');
+        $partNo = $partName = '';
+        $urlToEng = 'http://engmodule.acumenits.com/api/all-bom-parts';
+
+        $optionsForEng = [
+            'http' => [
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'GET'
+            ]
+        ];
+        $contextForEng  = stream_context_create($optionsForEng);
+        $resultFromEng = file_get_contents($urlToEng, false, $contextForEng);
+        if($resultFromEng !== FALSE){
+            $dataFromEng = json_decode($resultFromEng);
+            foreach($dataFromEng as $eng){
+                $partNo .= '{label:"'.$eng->partNo.
+                    '",bomId:"'.$eng->id.
+                    '",partName:"'.$eng->partName.'"},';
+                $partName .= '{label:"'.$eng->partName.
+                    '",bomId:"'.$eng->id.
+                    '",partNo:"'.$eng->partNo.'"},';
+            }
+        }
+        $partNo = rtrim($partNo, ',');
+        $partName = rtrim($partName, ',');
         $supplier = $this->Supplier->get($id, [
             'contain' => []
         ]);
+        $items = $this->SupplierItems->find('all')
+            ->where(['supplier_id' => $supplier->id]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $supplier = $this->Supplier->patchEntity($supplier, $this->request->getData());
             if ($this->Supplier->save($supplier)) {
@@ -232,6 +259,9 @@ class SupplierController extends AppController
             $this->Flash->error(__('The supplier could not be saved. Please, try again.'));
         }
         $this->set(compact('supplier'));
+        $this->set('items', $items);
+        $this->set('part_nos', $partNo);
+        $this->set('part_names', $partName);
     }
 
     /**
