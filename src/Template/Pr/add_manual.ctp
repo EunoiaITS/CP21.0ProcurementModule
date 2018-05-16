@@ -174,6 +174,10 @@
             if(parts.length !== 0){
                 $.each(parts, function(i, e){
                     counter++;
+                    var order_qty = e.reqQuantity - e.stockAvailable;
+                    if(order_qty < 0){
+                        order_qty = 0;
+                    }
                     html_table += '<tr>'+
                     '<td>'+counter+'<input type="hidden" name="bom-id-'+counter+'" value="'+ e.bomId+'"></td>'+
                     '<td>'+ e.partNo+'<input type="hidden" name="part-no-'+counter+'" value="'+ e.partNo+'"></td>'+
@@ -188,12 +192,12 @@
                     '<td>'+ e.category+'<input type="hidden" name="category-'+counter+'" value="'+ e.category+'"></td>'+
                     '<td>'+ e.reqQuantity+'<input type="hidden" name="req-quantity-'+counter+'" value="'+ e.reqQuantity+'"></td>'+
                     '<td>'+ e.stockAvailable+'<input type="hidden" name="stock-'+counter+'" value="'+ e.stockAvailable+'"></td>'+
-                    '<td><input type="number" class="form-control qty-order" id="qty'+counter+'" rel="'+counter+'" name="qty_order'+counter+'" value="'+Math.abs(e.reqQuantity - e.stockAvailable)+'"></td>'+
+                    '<td><input type="number" class="form-control qty-order" id="qty'+counter+'" rel="'+counter+'" name="qty_order'+counter+'" value="'+order_qty+'"></td>'+
                     '<td><select class="form-control all-supp" id="supp'+counter+'" rel="'+counter+'" name="supplier'+counter+'"><option value="1">Supplier 1</option><option value="2">Supplier 2</option><option value="3">Supplier 3</option></select></td>'+
-                    '<td><p id="sub-total-text'+counter+'">'+(Math.abs(e.reqQuantity - e.stockAvailable) * e.price1)+'</p><input type="hidden" name="subtotal'+counter+'" id="subtotal'+counter+'" value="'+(Math.abs(e.reqQuantity - e.stockAvailable) * e.price1)+'"></td>'+
+                    '<td><p id="sub-total-text'+counter+'">'+(order_qty * e.price1)+'</p><input type="hidden" name="subtotal'+counter+'" id="subtotal'+counter+'" value="'+(order_qty * e.price1)+'"></td>'+
                     '<td><input type="number" class="form-control gst" id="gst'+counter+'" rel="'+counter+'" name="gst'+counter+'" value="6"></td>'+
-                    '<td><p id="gst-amount'+counter+'">'+((Math.abs(e.reqQuantity - e.stockAvailable) * e.price1) * 6)/100 +'</p></td>'+
-                    '<td><p id="total-text'+counter+'">'+(((Math.abs(e.reqQuantity - e.stockAvailable) * e.price1) * 6)/100 + (Math.abs(e.reqQuantity - e.stockAvailable) * e.price1))+'</p><input type="hidden" name="total'+counter+'" id="total'+counter+'" value="'+(((Math.abs(e.reqQuantity - e.stockAvailable) * e.price1) * 6)/100 + (Math.abs(e.reqQuantity - e.stockAvailable) * e.price1))+'"></td>'+
+                    '<td><p id="gst-amount'+counter+'">'+((order_qty * e.price1) * 6)/100 +'</p></td>'+
+                    '<td><p id="total-text'+counter+'">'+(((order_qty * e.price1) * 6)/100 + (order_qty * e.price1))+'</p><input type="hidden" name="total'+counter+'" id="total'+counter+'" value="'+(((order_qty * e.price1) * 6)/100 + (order_qty * e.price1))+'"></td>'+
                     '<td><a href="#">View</a></td>'+
                     '<td></td>'+
                     '</tr>';
@@ -438,6 +442,10 @@
             $(this).autocomplete(part_no_options);
         });
         $(document).on('autocompleteselect', '.part-no', function(e, ui){
+            var order_qty = ui.item.reqQuantity - ui.item.stockAvailable;
+            if(order_qty < 0){
+                order_qty = 0;
+            }
             $('#bom-id-'+partRel).val(ui.item.bomId);
             $('#part-names'+partRel).val(ui.item.partName);
             $('#supplier-1-'+partRel).val(ui.item.supplier1id);
@@ -463,12 +471,12 @@
             $('#uom-'+partRel).text(ui.item.uom);
             $('#stock-'+partRel).text(ui.item.stockAvailable);
             $('#qty-req-'+partRel).text(ui.item.reqQuantity);
-            $('#qty'+partRel).val(Math.abs(ui.item.reqQuantity-ui.item.stockAvailable));
-            $('#subtotal'+partRel).val(ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable));
-            $('#total'+partRel).val((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))+(((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))*6)/100));
-            $('#sub-total-text'+partRel).text(ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable));
-            $('#gst-amount'+partRel).text((((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))*6)/100));
-            $('#total-text'+partRel).text((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))+(((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))*6)/100));
+            $('#qty'+partRel).val(order_qty);
+            $('#subtotal'+partRel).val(ui.item.price1*order_qty);
+            $('#total'+partRel).val((ui.item.price1*order_qty)+(((ui.item.price1*order_qty)*6)/100));
+            $('#sub-total-text'+partRel).text(ui.item.price1*order_qty);
+            $('#gst-amount'+partRel).text((((ui.item.price1*order_qty)*6)/100));
+            $('#total-text'+partRel).text((ui.item.price1*order_qty)+(((ui.item.price1*order_qty)*6)/100));
             var finalTotal = 0;
             for(k = 1; k <= counter; k++){
                 finalTotal += parseInt($('#total-text'+k).text());
@@ -480,6 +488,10 @@
             $(this).autocomplete(part_name_options);
         });
         $(document).on('autocompleteselect', '.part-name', function(e, ui){
+            var order_qty = ui.item.reqQuantity - ui.item.stockAvailable;
+            if(order_qty < 0){
+                order_qty = 0;
+            }
             $('#bom-id-'+partRel).val(ui.item.bomId);
             $('#part-nos'+partRel).val(ui.item.partNo);
             $('#supplier-1-'+partRel).val(ui.item.supplier1id);
@@ -501,12 +513,12 @@
             $('#uom-'+partRel).text(ui.item.uom);
             $('#stock-'+partRel).text(ui.item.stockAvailable);
             $('#qty-req-'+partRel).text(ui.item.reqQuantity);
-            $('#qty'+partRel).val(Math.abs(ui.item.reqQuantity-ui.item.stockAvailable));
-            $('#subtotal'+partRel).val(ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable));
-            $('#total'+partRel).val((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))+(((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))*6)/100));
-            $('#sub-total-text'+partRel).text(ui.item.price1*Math.abs(ui.item.reqUantity-ui.item.stockAvailable));
-            $('#gst-amount'+partRel).text((((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))*6)/100));
-            $('#total-text'+partRel).text((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))+(((ui.item.price1*Math.abs(ui.item.reqQuantity-ui.item.stockAvailable))*6)/100));
+            $('#qty'+partRel).val(order_qty);
+            $('#subtotal'+partRel).val(ui.item.price1*order_qty);
+            $('#total'+partRel).val((ui.item.price1*order_qty)+(((ui.item.price1*order_qty)*6)/100));
+            $('#sub-total-text'+partRel).text(ui.item.price1*order_qty);
+            $('#gst-amount'+partRel).text((((ui.item.price1*order_qty)*6)/100));
+            $('#total-text'+partRel).text((ui.item.price1*order_qty)+(((ui.item.price1*order_qty)*6)/100));
             var finalTotal = 0;
             for(k = 1; k <= counter; k++){
                 finalTotal += parseInt($('#total-text'+k).text());
