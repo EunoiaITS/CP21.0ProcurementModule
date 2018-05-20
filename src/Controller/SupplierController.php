@@ -251,6 +251,47 @@ class SupplierController extends AppController
             ->where(['supplier_id' => $supplier->id]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $supplier = $this->Supplier->patchEntity($supplier, $this->request->getData());
+            foreach($items as $item){
+                $item->part_no = $this->request->getData('part-no-'.$item->id);
+                $item->part_name = $this->request->getData('part-name-'.$item->id);
+                $item->uom = $this->request->getData('uom-'.$item->id);
+                $item->unit_price = $this->request->getData('unit-price-'.$item->id);
+                $item->capability_m = $this->request->getData('capa-'.$item->id);
+                $item->ranking = $this->request->getData('ranking-'.$item->id);
+                $this->SupplierItems->save($item);
+            }
+            if($this->request->getData('total') != null){
+                $supItems = TableRegistry::get('SupplierItems');
+                $items = array();
+                for($i = 1; $i <= $this->request->getData('total'); $i++){
+                    $items[$i]['supplier_id'] = $id;
+                    $items[$i]['part_no'] = $this->request->getData('partno'.$i);
+                    $items[$i]['part_name'] = $this->request->getData('partname'.$i);
+                    $items[$i]['uom'] = $this->request->getData('uom'.$i);
+                    $items[$i]['unit_price'] = $this->request->getData('unitprice'.$i);
+                    $items[$i]['capability_m'] = $this->request->getData('capamonth'.$i);
+                    $items[$i]['ranking'] = $this->request->getData('ranking'.$i);
+                    if ($this->request->getData('file'.$i) != '') {
+                        $fileName = $this->request->getData('file'.$i);
+                        $ext = substr(strtolower(strrchr($fileName['name'], '.')), 1);
+                        $arr_ext = array('jpg', 'jpeg', 'gif', 'png');
+                        $setNewFileName = $this->generateRandomString();
+                        $imageFileName = $setNewFileName . '.' . $ext;
+                        $uploadPath = WWW_ROOT . 'uploads/suppliers/' . $this->request->getData('supplier_id') . '/';
+                        if (!file_exists($uploadPath)) {
+                            mkdir($uploadPath);
+                        }
+                        $uploadFile = $uploadPath.$imageFileName;
+                        if (move_uploaded_file($fileName['tmp_name'], $uploadFile)) {
+                            $items[$i]['doc_file'] = 'uploads/suppliers/'.$this->request->getData('supplier_id').'/'.$imageFileName;
+                        }
+                    }
+                }
+                $allItems = $supItems->newEntities($items);
+                foreach($allItems as $item){
+                    $supItems->save($item);
+                }
+            }
             if ($this->Supplier->save($supplier)) {
                 $this->Flash->success(__('The supplier has been saved.'));
 
@@ -285,6 +326,20 @@ class SupplierController extends AppController
             $this->Flash->success(__('The supplier has been deleted.'));
         } else {
             $this->Flash->error(__('The supplier could not be deleted. Please, try again.'));
+        }
+
+        return $this->redirect(['action' => 'index']);
+    }
+
+    public function deleteItem($id = null)
+    {
+        $this->loadModel('SupplierItems');
+        $this->request->allowMethod(['post', 'delete']);
+        $supplier = $this->SupplierItems->get($id);
+        if ($this->SupplierItems->delete($supplier)) {
+            $this->Flash->success(__('The supplier item has been deleted.'));
+        } else {
+            $this->Flash->error(__('The supplier item could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);
@@ -333,7 +388,7 @@ class SupplierController extends AppController
         return $randomString;
     }
     public function isAuthorized($user){
-        if ($this->request->getParam('action') === 'index' || $this->request->getParam('action') === 'add' || $this->request->getParam('action') === 'view' || $this->request->getParam('action') === 'edit' || $this->request->getParam('action') === 'delete' || $this->request->getParam('action') === 'generateRandomString' || $this->request->getParam('action') === 'testReq'){
+        if(in_array($this->request->action, ['index', 'add', 'edit', 'delete', 'view', 'deleteItem'])){
             return true;
         }
         return parent::isAuthorized($user);

@@ -145,18 +145,6 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-3 col-xs-6 padding-left-0">
-                                    <label  for="contact-address" class="planner-year">Address <span class="planner-fright">:</span></label>
-                                </div>
-                                <div class="col-sm-8 col-xs-6">
-                                    <select name="caddress" required="required" id="contact-address" class="form-control">
-                                        <option value="">Please Select</option>
-                                        <option value="same">Same as above</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-3 col-xs-6 padding-left-0">
                                     <label  for="contact-phone" class="planner-year">Phone <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="col-sm-8 col-xs-6">
@@ -183,7 +171,54 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="clearfix" id="con-add"></div>
+                        <div class="clearfix" id="con-add">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <div class="col-sm-3 col-xs-6 padding-left-0">
+                                        <label  for="contact_supplier-addressz" class="planner-year">Address <span class="planner-fright">:</span></label>
+                                        </div>
+                                    <div class="col-sm-9 col-xs-6">
+                                        <input type="text" name="contact_address" class="form-control" id="contact_supplier-addressz" value="<?= $supplier->contact_address ?>">
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="col-sm-3 col-xs-6 padding-left-0">
+                                        <label  for="contact_supplier-post-code" class="planner-year">Post Code <span class="planner-fright">:</span></label>
+                                        </div>
+                                    <div class="col-sm-8 col-xs-6">
+                                        <input type="text" name="contact_postcode" class="form-control" id="contact_supplier-post-code" value="<?= $supplier->contact_postcode ?>">
+                                        </div>
+                                    </div>
+                                <div class="form-group">
+                                    <div class="col-sm-3 col-xs-6 padding-left-0">
+                                        <label  for="contact_supplier-post-city" class="planner-year">City <span class="planner-fright">:</span></label>
+                                        </div>
+                                    <div class="col-sm-8 col-xs-6">
+                                        <input type="text" name="contact_city" class="form-control" id="contact_supplier-post-city" value="<?= $supplier->contact_city ?>">
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="col-sm-3 col-xs-6 padding-left-0">
+                                        <label  for="contact_supplier-state" class="planner-year">State <span class="planner-fright">:</span></label>
+                                        </div>
+                                    <div class="col-sm-9 col-xs-6">
+                                        <input type="text" name="contact_state" class="form-control" id="contact_supplier-state" value="<?= $supplier->contact_state ?>">
+                                        </div>
+                                    </div>
+                                <div class="form-group">
+                                    <div class="col-sm-3 col-xs-6 padding-left-0">
+                                        <label  for="contact_supplier-country" class="planner-year">Country <span class="planner-fright">:</span></label>
+                                        </div>
+                                    <div class="col-sm-9 col-xs-6">
+                                        <input type="text" name="contact_country" class="form-control" id="contact_supplier-country" value="<?= $supplier->contact_country ?>">
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
                     </div>
                     <div class="clearfix"></div>
 
@@ -296,18 +331,26 @@
                                     <th>Capability Monthly</th>
                                     <th>Picture</th>
                                     <th>Order/Ranking</th>
+                                    <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody id="add-item-supplier">
-                                <?php foreach($items as $item): ?>
+                                <?php $count = 0; foreach($items as $item): $count++; ?>
                                     <tr>
-                                        <td><?= $item->part_no ?></td>
-                                        <td><?= $item->part_name ?></td>
-                                        <td><?= $item->uom ?></td>
-                                        <td><?= $item->unit_price ?></td>
-                                        <td><?= $item->capability_m ?></td>
-                                        <td><img src="<?php echo $this->request->webroot.$item->doc_file; ?>" alt=""></td>
-                                        <td><?= $item->ranking ?></td>
+                                        <td><input class="form-control part-no" rel="<?= $count ?>" id="part-no-<?= $count ?>" type="text" name="part-no-<?= $item->id ?>" value="<?= $item->part_no ?>"></td>
+                                        <td><input class="form-control part-name" rel="<?= $count ?>" id="part-name-<?= $count ?>" type="text" name="part-name-<?= $item->id ?>" value="<?= $item->part_name ?>"></td>
+                                        <td><input class="form-control" type="text" name="uom-<?= $item->id ?>" value="<?= $item->uom ?>"></td>
+                                        <td><input class="form-control" type="number" name="unit-price-<?= $item->id ?>" value="<?= $item->unit_price ?>"></td>
+                                        <td><input class="form-control" type="text" name="capa-<?= $item->id ?>" value="<?= $item->capability_m ?>"></td>
+                                        <td><img src="<?php echo $this->request->webroot.$item->doc_file; ?>" alt="" style="max-width: 150px;"></td>
+                                        <td>
+                                            <select class="form-control" name="ranking-<?= $item->id ?>">
+                                                <?php for($i = 1; $i <= 10; $i++): ?>
+                                                    <option value="<?= $i ?>" <?php if($item->ranking == $i){echo 'selected';} ?>><?= $i ?></option>
+                                                <?php endfor; ?>
+                                            </select>
+                                        </td>
+                                        <td><a href="#" data-toggle="modal" data-target="#myModalDel<?= $item->id ?>"><i class="fa fa-trash fa-2x"></i></a></td>
                                     </tr>
                                 <?php endforeach; ?>
                                 </tbody>
@@ -323,6 +366,7 @@
 
         <div class="clearfix"></div>
         <div class="col-sm-4 col-xs-12">
+            <input type="hidden" name="add-count" value="0">
             <button type="submit" class="button btn btn-info supplier-item-submit" form="sup-form">Submit</button>
         </div>
     </div>
@@ -331,120 +375,36 @@
 <!--================
         add item
         ========================-->
+
+<?php foreach($items as $ii): ?>
+    <div class="modal fade" id="myModalDel<?= $ii->id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title text-center" id="myModalLabel">Delete Confirmation</h4>
+                </div>
+                <div class="modal-body supplier-modal-body">
+                    <p class="text-center">Are you sure you want to delete this item?</p>
+                </div>
+                <div class="clearfix"></div>
+                <div class="modal-footer">
+                    <form action="<?php echo $this->Url->build(['controller' => 'Supplier', 'action' => 'deleteItem', $ii->id]); ?>" method="post">
+                        <button type="submit" class="btn btn-primary">Yes</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">No</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>
 <script>
     $(document).ready(function(){
-        $('#contact-address').on('change', function(e){
-            e.preventDefault();
-            var html_address = '';
-            if($(this).val() === 'same'){
-                var sup_address = $('#supplier-addressz').val();
-                var sup_postcode = $('#supplier-post-code').val();
-                var sup_city = $('#supplier-post-city').val();
-                var sup_state = $('#supplier-state').val();
-                var sup_country = $('#supplier-country').val();
-                html_address = '<div class="col-sm-12">'+
-                '<div class="form-group">'+
-                '<div class="col-sm-3 col-xs-6 padding-left-0">'+
-                '<label  for="contact_supplier-addressz" class="planner-year">Address <span class="planner-fright">:</span></label>'+
-                '</div>'+
-                '<div class="col-sm-9 col-xs-6">'+
-                sup_address+'<input type="hidden" name="contact_address" value="'+sup_address+'" class="form-control" id="contact_supplier-addressz" required="required">'+
-                '</div>'+
-                '</div>'+
-                '</div>'+
-                '<div class="col-sm-6">'+
-                '<div class="form-group">'+
-                '<div class="col-sm-3 col-xs-6 padding-left-0">'+
-                '<label  for="contact_supplier-post-code" class="planner-year">Post Code <span class="planner-fright">:</span></label>'+
-                '</div>'+
-                '<div class="col-sm-8 col-xs-6">'+
-                sup_postcode+'<input type="hidden" name="contact_postcode" value="'+sup_postcode+'" class="form-control" id="contact_supplier-post-code" required="required">'+
-                '</div>'+
-                '</div>'+
-                '<div class="form-group">'+
-                '<div class="col-sm-3 col-xs-6 padding-left-0">'+
-                '<label  for="contact_supplier-post-city" class="planner-year">City <span class="planner-fright">:</span></label>'+
-                '</div>'+
-                '<div class="col-sm-8 col-xs-6">'+
-                sup_city+'<input type="hidden" name="contact_city" value="'+sup_city+'" class="form-control" id="contact_supplier-post-city" required="required">'+
-                '</div>'+
-                '</div>'+
-                '</div>'+
-                '<div class="col-sm-6">'+
-                '<div class="form-group">'+
-                '<div class="col-sm-3 col-xs-6 padding-left-0">'+
-                '<label  for="contact_supplier-state" class="planner-year">State <span class="planner-fright">:</span></label>'+
-                '</div>'+
-                '<div class="col-sm-9 col-xs-6">'+
-                sup_state+'<input type="hidden" name="contact_state" value="'+sup_state+'" class="form-control" id="contact_supplier-state" required="required">'+
-                '</div>'+
-                '</div>'+
-                '<div class="form-group">'+
-                '<div class="col-sm-3 col-xs-6 padding-left-0">'+
-                '<label  for="contact_supplier-country" class="planner-year">Country <span class="planner-fright">:</span></label>'+
-                '</div>'+
-                '<div class="col-sm-9 col-xs-6">'+
-                sup_country+'<input type="hidden" name="contact_country" value="'+sup_country+'" class="form-control" id="contact_supplier-country" required="required">'+
-                '</div>'+
-                '</div>'+
-                '</div>';
-            }else if($(this).val() === 'other'){
-                html_address = '<div class="col-sm-12">'+
-                '<div class="form-group">'+
-                '<div class="col-sm-3 col-xs-6 padding-left-0">'+
-                '<label  for="contact_supplier-addressz" class="planner-year">Address <span class="planner-fright">:</span></label>'+
-                '</div>'+
-                '<div class="col-sm-9 col-xs-6">'+
-                '<input type="text" name="contact_address" class="form-control" id="contact_supplier-addressz" required="required">'+
-                '</div>'+
-                '</div>'+
-                '</div>'+
-                '<div class="col-sm-6">'+
-                '<div class="form-group">'+
-                '<div class="col-sm-3 col-xs-6 padding-left-0">'+
-                '<label  for="contact_supplier-post-code" class="planner-year">Post Code <span class="planner-fright">:</span></label>'+
-                '</div>'+
-                '<div class="col-sm-8 col-xs-6">'+
-                '<input type="text" name="contact_postcode" class="form-control" id="contact_supplier-post-code" required="required">'+
-                '</div>'+
-                '</div>'+
-                '<div class="form-group">'+
-                '<div class="col-sm-3 col-xs-6 padding-left-0">'+
-                '<label  for="contact_supplier-post-city" class="planner-year">City <span class="planner-fright">:</span></label>'+
-                '</div>'+
-                '<div class="col-sm-8 col-xs-6">'+
-                '<input type="text" name="contact_city" class="form-control" id="contact_supplier-post-city" required="required">'+
-                '</div>'+
-                '</div>'+
-                '</div>'+
-                '<div class="col-sm-6">'+
-                '<div class="form-group">'+
-                '<div class="col-sm-3 col-xs-6 padding-left-0">'+
-                '<label  for="contact_supplier-state" class="planner-year">State <span class="planner-fright">:</span></label>'+
-                '</div>'+
-                '<div class="col-sm-9 col-xs-6">'+
-                '<input type="text" name="contact_state" class="form-control" id="contact_supplier-state" required="required">'+
-                '</div>'+
-                '</div>'+
-                '<div class="form-group">'+
-                '<div class="col-sm-3 col-xs-6 padding-left-0">'+
-                '<label  for="contact_supplier-country" class="planner-year">Country <span class="planner-fright">:</span></label>'+
-                '</div>'+
-                '<div class="col-sm-9 col-xs-6">'+
-                '<input type="text" name="contact_country" class="form-control" id="contact_supplier-country" required="required">'+
-                '</div>'+
-                '</div>'+
-                '</div>';
-            }else{
-                html_address = '';
-            }
-            $('#con-add').html(html_address);
-        });
-        var count = 0;
+        var count = <?= $items->count() ?>;
         $('#item-add').on('click', function(e){
             e.preventDefault();
             count++;
-            var html_create ='<tr>'+
+            var html_create ='<tr id="tr'+count+'">'+
                 '<td><input type="text" name="partno'+count+'" rel="'+count+'" class="form-control from-qr part-no" id="part-no-'+count+'"></td>'+
                 '<td><input type="text" name="partname'+count+'" rel="'+count+'" class="form-control from-qr part-name" id="part-name-'+count+'"></td>'+
                 '<td><input type="text" name="uom'+count+'" class="form-control from-qr" id="pr-item-code"></td>'+
@@ -469,9 +429,15 @@
                 '<option value="10">10</option>'+
                 '</select>'+
                 '</td>'+
+                '<td><a href="#" class="del-tr" rel="'+count+'"><i class="fa fa-trash fa-2x"></i></a></td>'+
                 '<tr>'+
                 '<input type="hidden" name="total" value="'+count+'">';
             $('#add-item-supplier').append(html_create);
+            $('.del-tr').on('click', function(e){
+                e.preventDefault();
+                var cc = $(this).attr('rel');
+                $('#tr'+cc).remove();
+            });
         });
         var part_nos = [<?php echo $part_nos; ?>];
         var part_names = [<?php echo $part_names; ?>];
