@@ -901,21 +901,47 @@ tr>th.simple-color {
 #ui-id-1 li{
     float: none;
 }
+.ui-front {
+    z-index: 10000;
+}
+.ui-menu .ui-menu-item{
+    float:none;
+}
+
 .click-button{
     font-weight: bold;
     cursor:pointer;
 }
-
+.address-form-lavel{
+    width:11%;
+    float:left;
+}
+.address-form {
+    width: 85.56%;
+    float: left;
+    margin-left: 2.2%;
+}
 
 /*--===============
 Responsive css
 ===================*/
 
+@media (min-width: 1600px){
+    .address-form-lavel {
+        width: 11.5%;
+        float: left;
+    }
+    .address-form {
+        width: 85.956%;
+        float: left;
+        margin-left: 1.8%;
+    }
+}
+
 @media (min-width: 1024px){
     .login-title{
         font-size: 21px;
         margin-top: 10px;
-
     }
     .print-icon-right{
         float: right;
@@ -964,6 +990,15 @@ Responsive css
 }
 
 @media (max-width:767px){
+    .address-form-lavel{
+        width:50%;
+        float:left;
+    }
+    .address-form {
+        width: 45%;
+        float: left;
+        margin-left: 4.2%;
+    }
     #sidebar-btn{
         right: 46px;
     }

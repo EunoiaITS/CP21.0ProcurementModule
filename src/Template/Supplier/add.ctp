@@ -84,10 +84,10 @@
                         <div class="clearfix"></div>
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <div class="col-sm-3 col-xs-6 padding-left-0">
+                                <div class="address-form-lavel">
                                     <label  for="supplier-addressz" class="planner-year">Address <span class="planner-fright">:</span></label>
                                 </div>
-                                <div class="col-sm-9 col-xs-6">
+                                <div class="address-form">
                                     <input type="text" name="address" class="form-control" id="supplier-addressz" required="required">
                                 </div>
                             </div>
