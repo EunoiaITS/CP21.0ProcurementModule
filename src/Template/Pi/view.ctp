@@ -7,7 +7,7 @@ Create serial number form page
             <div class="col-sm-12 col-sm-12">
                 <div class="part-title-planner text-uppercase text-center"><b>Procurement Department Part Information</b></div>
                 <?php foreach($all_data as $ad):?>
-                <div class="col-sm-6">
+                    <div class="col-sm-6">
                         <div class="form-group">
                             <div class="col-sm-3 col-xs-6">
                                 <p class="planner-year">Part No <span class="planner-fright">:</span></p>
@@ -64,6 +64,7 @@ Create serial number form page
                                 <p class="normal-text"><?php if(isset($min_stk)){echo $min_stk;}  ?></p>
                             </div>
                         </div>
+                        <hr/>
                     </div>
                 <?php endforeach;?>
             </div>
@@ -88,15 +89,15 @@ Create serial number form page
                     <tbody class="csn-text-up">
                     <?php $count = 0;foreach ($all_data as $adt): ?>
                         <?php foreach ($adt->sup_data as $s): $count++ ?>
-                    <tr>
-                        <td><?= $count ?></td>
-                        <td><?= $s->name ?></td>
-                        <td><?= $s->contact_name ?></td>
-                        <td><?= $s->contact_phone ?></td>
-                        <td><?= $adt->unit_price?></td>
-                        <td></td>
-                    </tr>
-                    <?php endforeach;endforeach;?>
+                            <tr>
+                                <td><?= $count ?></td>
+                                <td><?= $s->name ?></td>
+                                <td><?= $s->contact_name ?></td>
+                                <td><?= $s->contact_phone ?></td>
+                                <td><?= $adt->unit_price?></td>
+                                <td></td>
+                            </tr>
+                        <?php endforeach;endforeach;?>
                     </tbody>
                 </table>
 
@@ -114,14 +115,14 @@ Create serial number form page
                     </thead>
                     <tbody class="csn-text-up">
                     <?php $count=0;foreach ($model as $m): $count++;?>
-                    <tr>
-                        <td><?= $count ?></td>
-                        <td><?= $m->model ?></td>
-                        <td>1000kva</td>
-                        <td></td>
-                        <td><?= $m->zzt + $m->zzz + $m->zztt +$m->zzzt +$m->zzztt ?></td>
-                        <td></td>
-                    </tr>
+                        <tr>
+                            <td><?= $count ?></td>
+                            <td><?= $m->model ?></td>
+                            <td>1000kva</td>
+                            <td></td>
+                            <td><?= $m->zzt + $m->zzz + $m->zztt +$m->zzzt +$m->zzztt ?></td>
+                            <td></td>
+                        </tr>
                     <?php endforeach;?>
                     </tbody>
                 </table>
