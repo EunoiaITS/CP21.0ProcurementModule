@@ -921,6 +921,9 @@ tr>th.simple-color {
     float: left;
     margin-left: 2.2%;
 }
+.table-responsive input{
+    width: 90px;
+}
 
 /*--===============
 Responsive css
