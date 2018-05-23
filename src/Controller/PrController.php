@@ -55,6 +55,29 @@ class PrController extends AppController
                 $approved_by = $this->Users->get($p->approved_by);
                 $p->approved_by = $approved_by;
             }
+            $urlToSales = 'http://salesmodule.acumenits.com/api/so-data?so='.rawurlencode($p->so_no);
+
+            $optionsForSales = [
+                'http' => [
+                    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method'  => 'GET'
+                ]
+            ];
+            $contextForSales  = stream_context_create($optionsForSales);
+            $resultFromSales = file_get_contents($urlToSales, false, $contextForSales);
+            if ($resultFromSales !== FALSE) {
+                $dataFromSales = json_decode($resultFromSales);
+                foreach($dataFromSales as $s){
+                    $p->del_date = $s->delivery_date;
+                    $p->date = $s->date;
+                    $p->customer = $s->cus->name;
+                    foreach ($s->soi as $smv){
+                        $p->model = $smv->model;
+                        $p->version = $smv->version;
+                        $p->quantity = $smv->quantity;
+                    }
+                }
+            }
             $p->created_by = $created_by;
         }
         $this->set('pr', $pr);
@@ -1441,31 +1464,60 @@ class PrController extends AppController
         $this->set('pr',$pr);
     }
     public function statReport(){
+        $month = $this->request->getQuery('month');
+        $year = $this->request->getQuery('year');
+        if($month == null){
+            $month = date('m');
+        }
+        if($year == null){
+            $year = date('Y');
+        }
         $this->loadModel('PrItems');
+
         $total = $this->Pr->find('all');
         $approve = $this->Pr->find('all')
             ->Where(['status'=>'approved']);
         $request = $this->Pr->find('all')
-            ->Where(['status'=>'requested']);
+            ->Where(['status'=>'requested'])
+            ->orWhere(['status'=>'verified']);
         $reject = $this->Pr->find('all')
             ->Where(['status'=>'rejected']);
         $am = $this->Pr->find('all');
-        $amount = 0;
-        foreach ($am as $a){
-            $items = $this->PrItems->find('all')
-                ->Where(['pr_id',$a->id]);
-            foreach ($items as $i){
-                $amount += $i->total;
+        $total_count = $approve_count = $request_count = $reject_count = $am_count = 0;
+        foreach ($total as $t) {
+            if (date('Y-m', strtotime($t->date)) == $year . '-' . $month){
+                $total_count++;
+                $items = $this->PrItems->find('all')
+                    ->Where(['pr_id',$t->id]);
+                foreach ($items as $i){
+                    $am_count += $i->total;
+                }
             }
         }
-        $am->amount = $amount;
+        foreach ($approve as $a) {
+            if (date('Y-m', strtotime($a->date)) == $year . '-' . $month){
+                $approve_count++;
+            }
+        }
+        foreach ($request as $r) {
+            if (date('Y-m', strtotime($r->date)) == $year . '-' . $month){
+                $request_count++;
+            }
+        }
+        foreach ($reject as $re) {
+            if (date('Y-m', strtotime($re->date)) == $year . '-' . $month){
+                $reject_count++;
+            }
+        }
 
 
-        $this->set('total',$total->count());
-        $this->set('approve',$approve->count());
-        $this->set('request',$request->count());
-        $this->set('reject',$reject->count());
-        $this->set('am',$am);
+        $this->set('total',$total_count);
+        $this->set('approve',$approve_count);
+        $this->set('request',$request_count);
+        $this->set('reject',$reject_count);
+        $this->set('amount',$am_count);
+        $this->set('month', $month);
+        $this->set('year', $year);
     }
 
     public function isAuthorized($user){
