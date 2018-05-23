@@ -13,6 +13,7 @@
                         <thead>
                         <tr>
                             <th>Serial</th>
+                            <th>SO No</th>
                             <th>Delivery Date</th>
                             <th>PR No</th>
                             <th>PO Date</th>
@@ -37,28 +38,29 @@
                         </tr>
                         </thead>
                         <tbody class="csn-text-up">
-                        <?php $count = 0;foreach ($po as $p): foreach ($p->items as $i): $count++;?>
+                        <?php $count = 0;foreach ($po as $p): $itemCount = 0; foreach ($p->items as $i): $count++; $itemCount++; ?>
                         <tr>
                             <td><?= $count ?></td>
-                            <td><?= date('Y-m-d',strtotime($p->del_date)) ?></td>
-                            <td>PR<?= $p->pr_id ?></td>
-                            <td><?= date('Y-m-d',strtotime($p->date)) ?></td>
-                            <td>PO<?= $p->id ?></td>
+                            <td><?php if($itemCount == 1){ echo $p->pr->so_no; } ?></td>
+                            <td><?php if($itemCount == 1){ echo date('Y-m-d',strtotime($p->del_date)); } ?></td>
+                            <td><?php if($itemCount == 1){ echo 'PR'.$p->pr_id; } ?></td>
+                            <td><?php if($itemCount == 1){ echo date('Y-m-d',strtotime($p->date)); } ?></td>
+                            <td><?php if($itemCount == 1){ echo 'PO'.$p->id; } ?></td>
                             <td><?= $i->eng->partNo ?></td>
                             <td><?= $i->eng->partName ?></td>
                             <td><?php if(isset($i->supplier_name->name)) echo $i->supplier_name->name; ?></td>
                             <td><?= $i->eng->quality ?></td>
                             <td>$ <?=$i->total ?></td>
-                            <td><?= $p->created_by->name ?></td>
-                            <td>Procurement</td>
-                            <td class="<?php if($p->status == 'requested' || $p->status == 'rejected'){echo "colored-red";}elseif($p->status == 'verified' || $p->status == 'approved1' || $p->status == 'approved2' || $p->status == 'approved3'){echo "colored-csn";}?>"><?php if($p->status == 'requested'){echo "Pending";}elseif($p->status == 'rejected'){echo "Reject";}elseif($p->status == 'verified' || $p->status == 'approved1' || $p->status == 'approved2' || $p->status == 'approved3'){echo "Verify";}?></td>
-                            <td><?php if(isset($p->verified_by->name)){echo $p->verified_by->name;}?></td>
-                            <td class="<?php if($p->status == 'verified'){echo "colored-red";}elseif($p->status == 'approved1' || $p->status == 'approved2' || $p->status == 'approved3'){echo "colored-csn";}?>"><?php if($p->status == 'verified'){echo "Pending";}elseif($p->status == 'approved1' || $p->status == 'approved2' || $p->status == 'approved3'){echo "Approve";}?></td>
-                            <td><?php if(isset($p->approve1_by->name)){echo $p->approve1_by->name;}?></td>
-                            <td class="<?php if($p->status == 'approved1'){echo "colored-red";}elseif($p->status == 'approved1' || $p->status == 'approved2' || $p->status == 'approved3'){echo "colored-csn";}?>"><?php if($p->status == 'approved1'){echo "Pending";}elseif($p->status == 'approved1' || $p->status == 'approved2' || $p->status == 'approved3'){echo "Approve";}?></td>
-                            <td><?php if(isset($p->approve2_by->name)){echo $p->approve2_by->name;}?></td>
-                            <td class="<?php if($p->status == 'approved2'){echo "colored-red";}elseif($p->status == 'approved3'){echo "colored-csn";}?>"><?php if($p->status == 'approved2'){echo "Pending";}elseif($p->status == 'approved3'){echo "Approve";}?></td>
-                            <td><?php if(isset($p->approve3_by->name)){echo $p->approve3_by->name;}?></td>
+                            <td><?php if($itemCount == 1){ echo $p->created_by->name; } ?></td>
+                            <td><?php if($itemCount == 1) echo 'Procurement'; ?></td>
+                            <td class="<?php if($itemCount == 1) if($p->status == 'requested' || $p->status == 'rejected'){echo "colored-red";}elseif($p->status == 'verified' || $p->status == 'approved1' || $p->status == 'approved2' || $p->status == 'approved3'){echo "colored-csn";}?>"><?php if($itemCount == 1) if($p->status == 'requested'){echo "Pending";}elseif($p->status == 'rejected'){echo "Reject";}elseif($p->status == 'verified' || $p->status == 'approved1' || $p->status == 'approved2' || $p->status == 'approved3'){echo "Verify";}?></td>
+                            <td><?php if($itemCount == 1) if(isset($p->verified_by->name)){echo $p->verified_by->name;}?></td>
+                            <td class="<?php if($itemCount == 1) if($p->status == 'verified'){echo "colored-red";}elseif($p->status == 'approved1' || $p->status == 'approved2' || $p->status == 'approved3'){echo "colored-csn";}?>"><?php if($itemCount == 1) if($p->status == 'verified'){echo "Pending";}elseif($p->status == 'approved1' || $p->status == 'approved2' || $p->status == 'approved3'){echo "Approve";}?></td>
+                            <td><?php if($itemCount == 1) if(isset($p->approve1_by->name)){echo $p->approve1_by->name;}?></td>
+                            <td class="<?php if($itemCount == 1) if($p->status == 'approved1'){echo "colored-red";}elseif($p->status == 'approved1' || $p->status == 'approved2' || $p->status == 'approved3'){echo "colored-csn";}?>"><?php if($itemCount == 1) if($p->status == 'approved1'){echo "Pending";}elseif($p->status == 'approved1' || $p->status == 'approved2' || $p->status == 'approved3'){echo "Approve";}?></td>
+                            <td><?php if($itemCount == 1) if(isset($p->approve2_by->name)){echo $p->approve2_by->name;}?></td>
+                            <td class="<?php if($itemCount == 1) if($p->status == 'approved2'){echo "colored-red";}elseif($p->status == 'approved3'){echo "colored-csn";}?>"><?php if($itemCount == 1) if($p->status == 'approved2'){echo "Pending";}elseif($p->status == 'approved3'){echo "Approve";}?></td>
+                            <td><?php if($itemCount == 1) if(isset($p->approve3_by->name)){echo $p->approve3_by->name;}?></td>
                             <td><a href="#">View</a></td>
                             <td></td>
                         </tr>

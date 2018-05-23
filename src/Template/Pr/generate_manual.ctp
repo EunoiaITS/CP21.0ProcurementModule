@@ -111,7 +111,7 @@
                     </tr>
                     </thead>
                     <tbody class="csn-text-up">
-                    <?php $count = 0; for($i = 1; $i <= sizeof($allData->parts); $i++): $count++; ?>
+                    <?php $count = $total = 0; for($i = 1; $i <= sizeof($allData->parts); $i++): $count++; ?>
                     <tr>
                         <td><?= $count ?><input type="hidden" name="bom-id<?php echo $count; ?>" value="<?= $allData->parts[$i]['bom_id'] ?>"></td>
                         <td><?= $allData->parts[$i]['part_no'] ?></td>
@@ -129,10 +129,10 @@
                         <td><a href="#">View</a></td>
                         <td><input type="hidden" name="sup-item-id<?php echo $count; ?>" value="<?= $allData->parts[$i]['sup_item_id'] ?>"></td>
                     </tr>
-                    <?php endfor; ?>
+                    <?php $total += $allData->parts[$i]['total']; endfor; ?>
                     <tr>
                         <td colspan="12"></td>
-                        <td>265</td>
+                        <td><?= $total ?></td>
                         <td colspan="2"></td>
                     </tr>
                     </tbody>
