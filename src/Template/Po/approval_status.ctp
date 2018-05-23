@@ -13,6 +13,7 @@
                         <thead>
                         <tr>
                             <th>Serial</th>
+                            <th>SO No</th>
                             <th>Delivery Date</th>
                             <th>PR No</th>
                             <th>PO Date</th>
@@ -40,6 +41,7 @@
                         <?php $count = 0;foreach ($po as $p): foreach ($p->items as $i): $count++;?>
                         <tr>
                             <td><?= $count ?></td>
+                            <td><?= $p->pr->so_no ?></td>
                             <td><?= date('Y-m-d',strtotime($p->del_date)) ?></td>
                             <td>PR<?= $p->pr_id ?></td>
                             <td><?= date('Y-m-d',strtotime($p->date)) ?></td>

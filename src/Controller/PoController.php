@@ -413,15 +413,18 @@ class PoController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
     public function report(){
         $this->loadModel('Pr');
         $this->loadModel('PrItems');
         $this->loadModel('Supplier');
+        $this->loadModel('Users');
         $po = $this->Po->find('all');
         foreach ($po as $p){
             $pr = $this->Pr->get($p->pr_id, [
                 'contain' => []
             ]);
+            $p->pr = $pr;
             $urlToSales = 'http://salesmodule.acumenits.com/api/so-data?so='.rawurlencode($pr->so_no);
 
             $optionsForSales = [
@@ -492,6 +495,7 @@ class PoController extends AppController
                 }
             }
             $p->items = $items;
+            $p->requester = $this->Users->get($p->created_by);
         }
         $this->set('po',$po);
 
@@ -507,6 +511,7 @@ class PoController extends AppController
             $pr = $this->Pr->get($p->pr_id, [
                 'contain' => []
             ]);
+            $p->pr = $pr;
             $created_by = $this->Users->get($p->created_by);
             if($p->verified_by != null){
                 $verified_by = $this->Users->get($p->verified_by);
