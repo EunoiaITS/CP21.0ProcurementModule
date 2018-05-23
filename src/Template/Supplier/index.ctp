@@ -303,25 +303,16 @@
                                 <th>UOM</th>
                                 <th>Unit Price</th>
                                 <th>Capability Monthly</th>
-                                <th>Picture</th>
                                 <th>Ranking</th>
                             </tr>
                             </thead>
                             <tbody id="add-item-supplier<?= $s->id ?>">
                             <tr>
-                                <td><input type="text" class="form-control from-qr part-no" rel="<?= $count ?>" id="part-no-<?= $count ?>" name="partno<?= $count ?>"></td>
-                                <td><input type="text" class="form-control from-qr part-name" rel="<?= $count ?>" id="part-name-<?= $count ?>" name="partname<?= $count ?>"></td>
+                                <td><input type="text" class="form-control from-qr part-no" rel="<?= $count ?>" id="part-no-<?= $count ?>" name="partno1"></td>
+                                <td><input type="text" class="form-control from-qr part-name" rel="<?= $count ?>" id="part-name-<?= $count ?>" name="partname1"></td>
                                 <td><input type="text" class="form-control from-qr" id="pr-item-code" name="uom1"></td>
                                 <td><input type="number" class="form-control from-qr" id="pr-quantity" name="unitprice1"></td>
                                 <td><input type="text" class="form-control from-qr" id="pr-quantity" name="capamonth1"></td>
-                                <td><div class="file btn btn-sm btn-primary">
-                                        <div class="upload-icon">
-                                            <i class="fa fa-cloud-upload" aria-hidden="true"></i>
-                                        </div>
-                                        <span>Upload Picture</span>
-                                        <input type="file" class="input-upload" name="file1">
-                                    </div>
-                                </td>
                                 <td>
                                     <select class="form-control form-qr" name="ranking1">
                                         <option value="1">1</option>
