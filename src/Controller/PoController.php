@@ -606,38 +606,61 @@ class PoController extends AppController
 
 
     public function statReport(){
-        $this->loadModel('Pr');
+        $month = $this->request->getQuery('month');
+        $year = $this->request->getQuery('year');
+        if($month == null){
+            $month = date('m');
+        }
+        if($year == null){
+            $year = date('Y');
+        }
         $this->loadModel('PrItems');
-        $po_total = $this->Po->find('all');
-        $po_approve = $this->Po->find('all')
+        $this->loadModel('Pr');
+        $total = $this->Po->find('all');
+        $approve = $this->Po->find('all')
             ->Where(['status'=>'approved3']);
-        $po_reject = $this->Po->find('all')
-            ->Where(['status'=>'rejected']);
-        $po_request = $this->Po->find('all')
+        $request = $this->Po->find('all')
             ->Where(['status'=>'requested'])
             ->orWhere(['status'=>'verified'])
             ->orWhere(['status'=>'approved1'])
             ->orWhere(['status'=>'approved2']);
-
-        $po = $this->Po->find('all');
-        $total = 0;
-        foreach ($po as $p){
-            $pr = $this->Pr->get($p->pr_id,[
-                'contatin' => []
-            ]);
-            $pri = $this->PrItems->find('all')
-                ->Where(['pr_id'=> $pr->id]);
-            foreach ($pri as $i){
-                $total += $i->total;
+        $reject = $this->Po->find('all')
+            ->Where(['status'=>'rejected']);
+        $total_count = $approve_count = $request_count = $reject_count = $am_count = 0;
+        foreach ($total as $t) {
+            if (date('Y-m', strtotime($t->date)) == $year . '-' . $month){
+                $total_count++;
+                $items = $this->PrItems->find('all')
+                    ->Where(['pr_id',$t->pr_id]);
+                foreach ($items as $i){
+                    $am_count += $i->total;
+                }
             }
         }
-        $po->total = $total;
+        foreach ($approve as $a) {
+            if (date('Y-m', strtotime($a->date)) == $year . '-' . $month){
+                $approve_count++;
+            }
+        }
+        foreach ($request as $r) {
+            if (date('Y-m', strtotime($r->date)) == $year . '-' . $month){
+                $request_count++;
+            }
+        }
+        foreach ($reject as $re) {
+            if (date('Y-m', strtotime($re->date)) == $year . '-' . $month){
+                $reject_count++;
+            }
+        }
 
-        $this->set('po',$po);
-        $this->set('total',$po_total->count());
-        $this->set('approve',$po_approve->count());
-        $this->set('reject',$po_reject->count());
-        $this->set('request',$po_request->count());
+
+        $this->set('total',$total_count);
+        $this->set('approve',$approve_count);
+        $this->set('request',$request_count);
+        $this->set('reject',$reject_count);
+        $this->set('amount',$am_count);
+        $this->set('month', $month);
+        $this->set('year', $year);
     }
 
 

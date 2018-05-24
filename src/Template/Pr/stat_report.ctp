@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-sm-12">
-                <div class="part-title-planner text-uppercase text-center"><b>PR Statistic Report</b></div>
+                <div class="part-title-planner text-uppercase text-center"><b>PR Statistic Report <?php if($month == '01'){echo 'January-' . $year ;}elseif(($month == '02')){echo 'February-' . $year ;}elseif(($month == '03')){echo 'March-' . $year ;}elseif(($month == '04')){echo 'April-' . $year ;}elseif(($month == '05')){echo 'May-' . $year ;}elseif(($month == '06')){echo 'June-' . $year ;}elseif(($month == '07')){echo 'July-' . $year ;}elseif(($month == '08')){echo 'August-' . $year ;}elseif(($month == '09')){echo 'September-' . $year ;}elseif(($month == '10')){echo 'October-' . $year ;}elseif(($month == '11')){echo 'November-' . $year ;}elseif(($month == '12')){echo 'December-' . $year ;} ?></b></div>
             </div>
 
             <div class="clearfix"></div>
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="pre col-sm-8">
-                <a href="<?php echo $this->url->build(['controller' => 'Pr', 'action' => 'statReport']).'?month='.$month.'&year='.$year; ?>" class="button btn btn-info" id="btn-generate">Generate</a>
+                <a href="<?php echo $this->Url->build(['controller' => 'Pr', 'action' => 'statReport']).'?month='.$month.'&year='.$year; ?>" class="button btn btn-info" id="btn-generate">Generate</a>
             </div>
             <div class="clearfix"></div>
             <!--============== Add drawing table area ===================-->
