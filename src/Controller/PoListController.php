@@ -31,14 +31,32 @@ class PoListController extends AppController
         $this->loadModel('Mds');
         $this->loadModel('PrItems');
         $this->loadModel('Supplier');
+        $this->loadModel('Users');
         $pol = $this->paginate($this->Po);
         foreach($pol as $po){
+            $po->req = $this->Users->get($po->created_by);
             $pr = $this->Pr->get($po->pr_id, [
                 'contain' => []
             ]);
             $po->pr = $pr;
             $pr_items = $this->PrItems->find('all')
                 ->where(['pr_id' => $pr->id]);
+            $urlToSales = 'http://salesmodule.acumenits.com/api/so-data?so='.rawurlencode($pr->so_no);
+
+            $optionsForSales = [
+                'http' => [
+                    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method'  => 'GET'
+                ]
+            ];
+            $contextForSales  = stream_context_create($optionsForSales);
+            $resultFromSales = file_get_contents($urlToSales, false, $contextForSales);
+            if($resultFromSales !== FALSE){
+                $dataFromSales = json_decode($resultFromSales);
+                foreach($dataFromSales as $ds){
+                    $po->del_date = $ds->delivery_date;
+                }
+            }
             foreach($pr_items as $i){
                 $mds = $this->Mds->find('all')
                     ->where(['pr_item_id' => $i->id]);
@@ -174,6 +192,19 @@ class PoListController extends AppController
 
             if($this->request->is('post')){
                 if($this->request->getData('action') != null){
+                    if($this->request->getData('addeds') != 0){
+                        $mdsDetails = TableRegistry::get('MdsDetails');
+                        $mds_itm = array();
+                        for ($i = 1; $i <= $this->request->getData('addeds'); $i++){
+                            $mds_itm[$i]['mds_id'] = $this->request->getQuery('id');
+                            $mds_itm[$i]['del_date'] = date('Y-m-d H:i:s', strtotime($this->request->getData('add-del-date-'.$i)));
+                            $mds_itm[$i]['del_qty'] = $this->request->getData('add-del-qty-'.$i);
+                        }
+                        $mdss = $mdsDetails->newEntities($mds_itm);
+                        foreach ($mdss as $p){
+                            $mdsDetails->save($p);
+                        }
+                    }
                     for($j = 1; $j <= $this->request->getData('total-edit'); $j++){
                         $del_id = $this->request->getData('del-'.$j);
                         $mds_del = $this->MdsDetails->get($del_id, [
@@ -250,6 +281,19 @@ class PoListController extends AppController
 
             return $this->redirect(['action' => 'index']);
         }
+    }
+
+    public function delete($id = null){
+        $this->loadModel('MdsDetails');
+        $this->request->allowMethod(['post', 'delete']);
+        $po = $this->MdsDetails->get($id);
+        if ($this->MdsDetails->delete($po)) {
+            $this->Flash->success(__('The MDS item has been deleted.'));
+        } else {
+            $this->Flash->error(__('The MDS item could not be deleted. Please, try again.'));
+        }
+
+        return $this->redirect(['action' => 'mds?id='.$this->request->getQuery('mds').'&type=plan']);
     }
 
     public function report(){
@@ -488,7 +532,7 @@ class PoListController extends AppController
     }
 
     public function isAuthorized($user){
-        if(in_array($this->request->action, ['index', 'mds', 'report', 'search', 'partDetails'])){
+        if(in_array($this->request->action, ['index', 'mds', 'report', 'search', 'partDetails', 'delete'])){
             return true;
         }
         return parent::isAuthorized($user);

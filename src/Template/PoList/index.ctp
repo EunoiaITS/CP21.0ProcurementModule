@@ -12,7 +12,10 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr>
+                            <th>SO No</th>
+                            <th>Delivery Date</th>
                             <th>PR No</th>
+                            <th>PR Date</th>
                             <th>PO Date</th>
                             <th>PO No</th>
                             <th>Part No</th>
@@ -31,19 +34,23 @@
                         </tr>
                         </thead>
                         <tbody class="csn-text-up">
-                        <?php foreach($pol as $po): foreach($po->pr_items as $item): ?>
+                        <?php foreach($pol as $po): ?>
+                            <?php $count = 0; foreach($po->pr_items as $item): $count++; ?>
                         <tr>
-                            <td>PR<?= $po->pr->id ?></td>
-                            <td><?= date('Y-m-d', strtotime($po->date)) ?></td>
-                            <td>PO<?= $po->id ?></td>
+                            <td><?php if($count == 1){echo $po->pr->so_no;} ?></td>
+                            <td><?php if($count == 1){echo date('Y-m-d', strtotime($po->del_date));} ?></td>
+                            <td><?php if($count == 1){echo 'PR'.$po->pr->id;} ?></td>
+                            <td><?php if($count == 1){echo date('Y-m-d', strtotime($po->pr->date));} ?></td>
+                            <td><?php if($count == 1){echo date('Y-m-d', strtotime($po->date));} ?></td>
+                            <td><?php if($count == 1){echo 'PO'.$po->id;} ?></td>
                             <td><?= $item->eng->partNo ?></td>
                             <td><?= $item->eng->partName ?></td>
                             <td><?php if(isset($item->supplier_name->name)) echo $item->supplier_name->name; ?></td>
                             <td><?= $item->eng->quality ?></td>
                             <td><?= $item->eng->quality+(($item->eng->quality*10)/100) ?></td>
                             <td><?= $item->total ?></td>
-                            <td><?= $po->created_by ?></td>
-                            <td>Procurement</td>
+                            <td><?php if($count == 1){echo $po->req->name;} ?></td>
+                            <td><?php if($count == 1){echo 'Procurement';} ?></td>
                             <td><?= $po->status ?></td>
                             <td>Yes</td>
                             <td>
@@ -52,7 +59,9 @@
                                     <option value="Plan" <?php if(isset($item->mds)){if($item->mds->del_type == 'Plan'){echo 'selected';}} ?>>Plan</option>
                                     <option value="Complete" <?php if(isset($item->mds)){if($item->mds->del_type == 'Complete'){echo 'selected disabled';}} ?>>Complete</option>
                                 </select>
-                                <div class="clearfix" id="mds<?= $item->id ?>"></div>
+                                <div class="clearfix" id="mds<?= $item->id ?>">
+                                    <?php if(isset($item->mds)){if($item->mds->del_type == 'Plan'){echo '<a href="'.$this->Url->build(['controller' => 'PoList', 'action' => 'mds']).'?id='.$item->id.'&type=plan">Plan</a>';}} ?>
+                                </div>
                             </td>
                             <td><a href="#">View</a></td>
                             <td></td>
