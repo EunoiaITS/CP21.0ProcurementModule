@@ -10,7 +10,7 @@
                                 <p class="planner-year">Part No <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text"><?= $result->part_no ?></p>
+                                <p class="normal-text"><?php if(isset($result->part_no)){echo $result->part_no;}else{echo "No Data Found !";}  ?></p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -18,7 +18,7 @@
                                 <p class="planner-year">Part Name <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text"><?= $result->part_name ?></p>
+                                <p class="normal-text"><?php if(isset($result->part_name)){echo $result->part_name;}else{echo "No Data Found !";}  ?></p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -26,7 +26,7 @@
                                 <p class="planner-year">UOM <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text"><?= $result->supplier_item->uom ?></p>
+                                <p class="normal-text"><?php if(isset($result->supplier_item->uom)) {echo $result->supplier_item->uom;} else {echo "No Data Found !";}  ?></p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -34,7 +34,7 @@
                                 <p class="planner-year">Price<span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text"><?= $result->supplier_item->unit_price ?></p>
+                                <p class="normal-text"><?php if(isset($result->supplier_item->unit_price)){echo $result->supplier_item->unit_price;}else{echo "No Data Found !";}  ?></p>
                             </div>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                                 <p class="planner-year">Supplier <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text"><?= $result->supplier->name ?></p>
+                                <p class="normal-text"><?php if(isset($result->supplier->name)){echo $result->supplier->name;}else{echo "No Data Found !";}  ?></p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -52,7 +52,7 @@
                                 <p class="planner-year">Supplier Address <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text"><?= $result->supplier->address ?></p>
+                                <p class="normal-text"><?php if(isset($result->supplier->address)){echo $result->supplier->address;}else{echo "No Data Found !";}  ?></p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -60,7 +60,7 @@
                                 <p class="planner-year">Contact Name <span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text"><?= $result->supplier->contact_name ?></p>
+                                <p class="normal-text"><?php if(isset($result->supplier->contact_name)){echo $result->supplier->contact_name;}else{echo "No Data Found !";}  ?></p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -68,7 +68,7 @@
                                 <p class="planner-year">Contact No<span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <p class="normal-text"><?= $result->supplier->contact_phone ?></p>
+                                <p class="normal-text"><?php if(isset($result->supplier->contact_phone)){echo $result->supplier->contact_phone;}else{echo "No Data Found !";}  ?></p>
                             </div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                         <td><?php if($s->order_qty !== 0 && $s->sub_total !== 0){ echo $s->sub_total/$s->order_qty; }else{ echo 0; } ?></td>
                         <td></td>
                         <td><?= $s->total ?></td>
-                        <td>Azlin</td>
+                        <td></td>
                         <td>Procurement</td>
                     </tr>
                     <?php endif; endforeach; ?>
