@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="pre col-sm-8">
-                <a href="<?php echo $this->url->build(['controller' => 'Po', 'action' => 'statReport']).'?month='.$month.'&year='.$year; ?>" class="button btn btn-info" id="btn-generate">Generate</a>
+                <a href="<?php echo $this->Url->build(['controller' => 'Po', 'action' => 'statReport']).'?month='.$month.'&year='.$year; ?>" class="button btn btn-info" id="btn-generate">Generate</a>
             </div>
             <div class="clearfix"></div>
             <!--============== Add drawing table area ===================-->
