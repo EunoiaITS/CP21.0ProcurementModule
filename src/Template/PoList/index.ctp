@@ -52,7 +52,7 @@
                             <td><?php if($count == 1){echo $po->req->name;} ?></td>
                             <td><?php if($count == 1){echo 'Procurement';} ?></td>
                             <td><?= $po->status ?></td>
-                            <td>Yes</td>
+                            <td>No</td>
                             <td>
                                 <select class="form-control del-type" name="del-type" rel="<?= $item->id ?>" id="del-type<?= $item->id ?>">
                                     <option>Please select...</option>
