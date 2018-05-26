@@ -166,9 +166,9 @@
                         <td><p id="total-text<?= $counter ?>"><?php if(((((($e->quality - $e->stockAvailable) * isset($e->price1)) * 6) / 100) + ($e->quality - $e->stockAvailable) * isset($e->price1)) < 0){echo 0;}else{echo ((((($e->quality - $e->stockAvailable) * isset($e->price1)) * 6) / 100) + ($e->quality - $e->stockAvailable) * isset($e->price1));}?></p><input type="hidden" name="total<?= $counter ?>" id="total<?= $counter ?>" value="<?php if(((((($e->quality - $e->stockAvailable) * isset($e->price1)) * 6) / 100) + ($e->quality - $e->stockAvailable) * isset($e->price1)) < 0){echo 0;}else{echo ((((($e->quality - $e->stockAvailable) * isset($e->price1)) * 6) / 100) + ($e->quality - $e->stockAvailable) * isset($e->price1));}?>">
                         <td><a href="#">View</a></td>
                         <td></td>
-                        <input id="count" type="hidden" name="counter" value="<?= $counter ?>">
                         </tr>
                     <?php endforeach;endforeach;endforeach;?>
+                    <input id="count" type="hidden" name="counter" value="<?= $counter ?>">
                     <tr>
                         <td colspan="19"></td>
                         <td id="final-total"></td>
@@ -190,13 +190,6 @@
 </div>
 <script>
     $(document).ready(function() {
-        var finalTotal = 0;
-        for(k = 1; k <= $('#count').val(); k++){
-            finalTotal += parseInt($('#total-text'+k).text());
-        }
-        $('#final-total').text(finalTotal);
-
-
             $('.all-supp').on('change', function(e){
                 e.preventDefault();
                 var relate = $(this).attr('rel');
