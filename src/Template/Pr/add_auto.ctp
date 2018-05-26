@@ -4,7 +4,7 @@
 
 <div class="planner-from">
     <div class="container-fluid">
-        <form action="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'generateAuto',$so_no])?>" method="post" class="planner-relative">
+        <form action="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'generateAuto'])?>" method="post" class="planner-relative">
         <div class="row">
             <div class="col-sm-12 col-sm-12">
                 <div class="part-title-planner text-uppercase text-center"><b>PR 1 Generate (auto)</b></div>
