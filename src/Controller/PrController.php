@@ -25,6 +25,26 @@ class PrController extends AppController
      *
      * @return \Cake\Http\Response|void
      */
+
+    public function autoOneRequests()
+    {
+        $dataFromSales = '';
+        $this->loadModel('Users');
+        $urlToSales = 'http://salesmodule.acumenits.com/api/all-data';
+        $optionsForSales = [
+            'http' => [
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'GET'
+            ]
+        ];
+        $contextForSales  = stream_context_create($optionsForSales);
+        $resultFromSales = file_get_contents($urlToSales, false, $contextForSales);
+        if ($resultFromSales !== FALSE) {
+            $dataFromSales = json_decode($resultFromSales);
+        }
+        $this->set('pr', $dataFromSales);
+    }
+
     public function autoRequests()
     {
         $pr = null;
@@ -489,11 +509,12 @@ class PrController extends AppController
         $this->set('pr', $pr);
     }
 
-    public function addAuto()
+    public function addAuto($id = null)
     {
+        $data = new \stdClass();
         $this->loadModel('Supplier');
         $this->loadModel('SupplierItems');
-        $urlToSales = 'http://salesmodule.acumenits.com/api/all-data';
+        $urlToSales = 'http://salesmodule.acumenits.com/api/so-id?so='.$id;
 
         $optionsForSales = [
             'http' => [
@@ -508,9 +529,10 @@ class PrController extends AppController
         }
         $dataFromSales = json_decode($resultFromSales);
 
-        $so_no = $customer = $model = $version = null;
         foreach ($dataFromSales as $d){
-            $parts = '';
+            $data->so = $d->salesorder_no;
+            $data->date = $d->date;
+            $data->del_date = $d->delivery_date;
             foreach($d->soi as $item){
                 $urlToEng = 'http://engmodule.acumenits.com/api/bom-parts';
                 $sendToEng = [
@@ -531,9 +553,8 @@ class PrController extends AppController
                     $item->eng_data = $dataFromEng;
                     foreach($dataFromEng as $eng){
                         $supplierId1 = $supplierId2 = $supplierId3 = '';
-                        $uom = $supplier1 = $supplier2 = $supplier3 = '';
+                        $supplier1 = $supplier2 = $supplier3 = '';
                         $price1 = $price2 = $price3 = 0;
-                        $supItemId1 = $supItemId2 = $supItemId3 = '';
                         $items = $this->SupplierItems->find('all', [
                             'order' => 'SupplierItems.unit_price'
                         ])
@@ -552,7 +573,19 @@ class PrController extends AppController
                                 ${'price'.$count} = $ii->unit_price;
                                 ${'supItemId'.$count} = $ii->id;
                             }
-                            $uom = $ii->uom;
+                            $eng->supplier1 = $supplier1;
+                            $eng->supplier2 = $supplier2;
+                            $eng->supplier3 = $supplier3;
+                            $eng->supplierId1 = $supplierId1;
+                            $eng->supplierId2 = $supplierId2;
+                            $eng->supplierId3 = $supplierId3;
+                            $eng->price1 = $price1;
+                            $eng->price2 = $price2;
+                            $eng->price3 = $price3;
+                            $eng->supplier_item1 = $supplierId1;
+                            $eng->supplier_item2 = $supplierId2;
+                            $eng->supplier_item3 = $supplierId3;
+                            $eng->uom = $ii->uom;
                         }
                         $stockAvailable = 0;
                         $urlToStore = 'http://storemodule.acumenits.com/in-stock-code/stock-available';
@@ -573,54 +606,38 @@ class PrController extends AppController
                         $resultFromStore = file_get_contents($urlToStore, false, $contextForStore);
                         if($resultFromStore != FALSE){
                             $dataFromStore = json_decode($resultFromStore);
-                            $stockAvailable = abs($dataFromStore->stock_available);
+                            $eng->stockAvailable = abs($dataFromStore->stock_available);
                         }
-                        $parts .= '{partNo:"'.$eng->partNo.
-                            '",bomId:"'.$eng->id.
-                            '",partName:"'.$eng->partName.
-                            '",reqQuantity:"'.$eng->quality.
-                            '",category:"'.$eng->category.
-                            '",stockAvailable:"'.$stockAvailable.
-                            '",supplier1id:"'.$supplierId1.
-                            '",supplier2id:"'.$supplierId2.
-                            '",supplier3id:"'.$supplierId3.
-                            '",supplier1:"'.$supplier1.
-                            '",supplier2:"'.$supplier2.
-                            '",supplier3:"'.$supplier3.
-                            '",supItemId1:"'.$supItemId1.
-                            '",supItemId2:"'.$supItemId2.
-                            '",supItemId3:"'.$supItemId3.
-                            '",price1:"'.$price1.
-                            '",price2:"'.$price2.
-                            '",price3:"'.$price3.
-                            '",uom:"'.$uom.'"},';
+
                     }
                 }
             }
-            $parts = rtrim($parts, ',');
             foreach ($d->soi as $s){
-                $model = $s->model;
-                $version = $s->version;
+                $data->model = $s->model;
+                $data->version = $s->version;
             }
-            foreach($d->cus as $cus){
-                $customer = $cus->name;
+            $data->customer = $d->cus->name;
             }
-            $so_no .= '{label:"'.$d->salesorder_no.'",del_date:"'.date('Y-m-d', strtotime($d->delivery_date)).'",cus_name:"'.$customer.'",model:"'.$model.'",version:"'.$version.'",parts:['.$parts.']},';
-        }
-        $so_no = rtrim($so_no, ',');
         $last_pr = $this->Pr->find('all',['fields'=>'id'])->last();
 
-        $this->set('so_no',$so_no);
+        $this->set('so',$dataFromSales);
+        $this->set('so_no',$id);
+        $this->set('data',$data);
         $this->set('pr_id', (isset($last_pr->id) ? ($last_pr->id + 1) : 1));
     }
 
     public function generateAuto()
     {
+//        $this->autoRender = false;
         $this->loadModel('Supplier');
         $last_pr = $this->Pr->find('all')->last();
         $allData = [];
         $showData = null;
         if ($this->request->is('post')) {
+//            echo "<pre>";
+//            print_r($this->request);
+//            echo "</pre>";
+//            die();
             $allData['so_no'] = $this->request->getData('so_no');
             $allData['date'] = $this->request->getData('date');
             $allData['del_date'] = $this->request->getData('delivery_date');
@@ -634,17 +651,17 @@ class PrController extends AppController
                         $allData['parts'][$i]['bom_part_id'] = $this->request->getData('bom_part_id' . $i);
                         $allData['parts'][$i]['part_no'] = $this->request->getData('part_no' . $i);
                         $allData['parts'][$i]['part_name'] = $this->request->getData('part_name' . $i);
-                        if ($this->request->getData('supplier' . $i) == 2) {
-                            if ($this->request->getData('supplier-2-' . $i) != null) {
-                                $allData['parts'][$i]['supplier_det'] = $this->Supplier->get($this->request->getData('supplier-2-' . $i), [
+                        if ($this->request->getData('supplier'.$i) == 2) {
+                            if ($this->request->getData('supplier-2-'.$i) != null) {
+                                $allData['parts'][$i]['supplier_det'] = $this->Supplier->get($this->request->getData('supplier-2-'.$i), [
                                     'contain' => []
                                 ]);
                             }
-                            $allData['parts'][$i]['supplier_id'] = $this->request->getData('supplier-2-' . $i);
+                            $allData['parts'][$i]['supplier_id'] = $this->request->getData('supplier-2-'.$i);
                             $allData['parts'][$i]['price'] = $this->request->getData('price-2-' . $i);
-                            $allData['parts'][$i]['sup_item_id'] = $this->request->getData('sup-item-2-' . $i);
-                        } elseif ($this->request->getData('supplier' . $i) == 3) {
-                            if ($this->request->getData('supplier-3-' . $i) != null) {
+                            $allData['parts'][$i]['sup_item_id'] = $this->request->getData('sup-item-2-'.$i);
+                        } elseif ($this->request->getData('supplier'.$i) == 3) {
+                            if ($this->request->getData('supplier-3-'.$i) != null) {
                                 $allData['parts'][$i]['supplier_det'] = $this->Supplier->get($this->request->getData('supplier-3-' . $i), [
                                     'contain' => []
                                 ]);
@@ -653,8 +670,8 @@ class PrController extends AppController
                             $allData['parts'][$i]['price'] = $this->request->getData('price-3-' . $i);
                             $allData['parts'][$i]['sup_item_id'] = $this->request->getData('sup-item-3-' . $i);
                         } else {
-                            if ($this->request->getData('supplier-1-' . $i) != null) {
-                                $allData['parts'][$i]['supplier_det'] = $this->Supplier->get($this->request->getData('supplier-1-' . $i), [
+                            if ($this->request->getData('supplier-1-'.$i) != null) {
+                                $allData['parts'][$i]['supplier_det'] = $this->Supplier->get($this->request->getData('supplier-1-'.$i), [
                                     'contain' => []
                                 ]);
                             }
@@ -1521,11 +1538,11 @@ class PrController extends AppController
     }
 
     public function isAuthorized($user){
-        if ($this->request->getParam('action') === 'autoRequests' || $this->request->getParam('action') === 'autoTwoRequests' || $this->request->getParam('action') === 'manualRequests' || $this->request->getParam('action') === 'addAuto' || $this->request->getParam('action') === 'addTwoAuto' || $this->request->getParam('action') === 'addManual' || $this->request->getParam('action') === 'generateAuto' || $this->request->getParam('action') === 'generateTwoAuto' || $this->request->getParam('action') === 'generateManual' || $this->request->getParam('action') === 'submitAuto' || $this->request->getParam('action') === 'submitTwoAuto' || $this->request->getParam('action') === 'submitManual' || $this->request->getParam('action') === 'edit' || $this->request->getParam('action') === 'delete' || $this->request->getParam('action') === 'viewAuto' || $this->request->getParam('action') === 'viewTwoAuto' || $this->request->getParam('action') === 'viewManual' || $this->request->getParam('action') === 'report' || $this->request->getParam('action') === 'approvalStatus' || $this->request->getParam('action') === 'statReport') {
+        if ($this->request->getParam('action') === 'autoRequests' || $this->request->getParam('action') === 'autoTwoRequests' || $this->request->getParam('action') === 'manualRequests' || $this->request->getParam('action') === 'addAuto' || $this->request->getParam('action') === 'addTwoAuto' || $this->request->getParam('action') === 'addManual' || $this->request->getParam('action') === 'generateAuto' || $this->request->getParam('action') === 'generateTwoAuto' || $this->request->getParam('action') === 'generateManual' || $this->request->getParam('action') === 'submitAuto' || $this->request->getParam('action') === 'submitTwoAuto' || $this->request->getParam('action') === 'submitManual' || $this->request->getParam('action') === 'edit' || $this->request->getParam('action') === 'delete' || $this->request->getParam('action') === 'viewAuto' || $this->request->getParam('action') === 'viewTwoAuto' || $this->request->getParam('action') === 'viewManual' || $this->request->getParam('action') === 'report' || $this->request->getParam('action') === 'approvalStatus' || $this->request->getParam('action') === 'statReport' || $this->request->getParam('action') === 'autoOneRequests') {
             return true;
         }
         if(isset($user['role']) && $user['role'] === 'requester'){
-            if(in_array($this->request->action, ['autoRequests','autoTwoRequests','manualRequests','autoView','autoTwoView','manualView','addAuto','addTwoAuto','addManual','generateAuto','generateTwoAuto','generateManual','submitAuto','submitTwoAuto','submitManual','report','approvalStatus','statReport'])){
+            if(in_array($this->request->action, ['autoRequests','autoOneRequests','autoTwoRequests','manualRequests','autoView','autoTwoView','manualView','addAuto','addTwoAuto','addManual','generateAuto','generateTwoAuto','generateManual','submitAuto','submitTwoAuto','submitManual','report','approvalStatus','statReport'])){
                 return true;
             }
         }
