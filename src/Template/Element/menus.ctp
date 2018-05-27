@@ -55,8 +55,8 @@
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Po','action'=>'requests'])?>">PO Request List</a></li>
-                <?php if($role == 'requester'): ?><li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Po','action'=>'index'])?>">PO Form Create</a></li><?php endif;?>
+                <?php if($role != 'requester'): ?><li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Po','action'=>'requests'])?>">PO Request List</a></li><?php endif;?>
+                <?php if($role == 'requester'): ?><li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Po','action'=>'index'])?>">PO Request List</a></li><?php endif;?>
                 <li class="color-hsh2"><a href="<?php echo $this->Url->build(['controller'=>'Po','action'=>'approvalStatus'])?>">PO Approval Status</a></li>
                 <li class="color-hsh2"><a href="<?php echo $this->Url->build(['controller'=>'Po','action'=>'report'])?>">PO Report</a></li>
                 <li class="color-hsh2"><a href="<?php echo $this->Url->build(['controller'=>'Po','action'=>'statReport'])?>">PO Statistic Report</a></li>
