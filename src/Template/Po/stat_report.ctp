@@ -7,10 +7,10 @@
 
             <div class="clearfix"></div>
             <div class="form-group">
-                <div class="col-sm-3 col-xs-6">
+                <div class="col-sm-2 col-xs-6">
                     <label for="model-planer" class="ps-month">Month <span class="planner-fright">:</span></label>
                 </div>
-                <div class="col-sm-5 col-xs-6">
+                <div class="col-sm-2 col-xs-6">
                     <select class="form-control" name="month" id="po-month">
                         <option value="01" <?php if($month == '01'){echo 'selected';} ?>>January</option>
                         <option value="02" <?php if($month == '02'){echo 'selected';} ?>>February</option>
@@ -28,10 +28,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-sm-3 col-xs-6">
+                <div class="col-sm-2 col-xs-6">
                     <label for="model-planer" class="ps-month">Year <span class="planner-fright">:</span></label>
                 </div>
-                <div class="col-sm-5 col-xs-6">
+                <div class="col-sm-2 col-xs-6">
                     <select class="form-control" name="year" id="po-year">
                         <?php for($i = 1990; $i <= date('Y'); $i++){ ?>
                             <option value="<?php echo $i ?>" <?php if($year == $i){echo 'selected';} ?>><?php echo $i ?></option>
