@@ -27,9 +27,9 @@
                             </div>
                             <div class="col-sm-5 col-xs-6">
                                 <select class="form-control" name="supplier">
-                                    <option value="1">Supplier 1</option>
-                                    <option value="2">Supplier 2</option>
-                                    <option value="3">Supplier 3</option>
+                                    <?php foreach($supplier as $sp): ?>
+                                        <option value="<?= $sp->id ?>"><?= $sp->name ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>
@@ -43,9 +43,6 @@
         <div class="col-sm-offset-8 col-sm-4 col-xs-12">
             <div class="prepareted-by-csn">
                 <input type="hidden" name="bom-part-id" id="part-id">
-                <input type="hidden" name="supplier-id1" id="supp-id1">
-                <input type="hidden" name="supplier-id2" id="supp-id2">
-                <input type="hidden" name="supplier-id3" id="supp-id3">
                 <button type="submit" class="button btn btn-info">Search</button>
             </div>
         </div>
@@ -71,9 +68,6 @@
         $(document).on('autocompleteselect', '.part-no', function(e, ui){
             $('.part-name').val(ui.item.partName);
             $('#part-id').val(ui.item.bomId);
-            $('#supp-id1').val(ui.item.supItemId1);
-            $('#supp-id2').val(ui.item.supItemId2);
-            $('#supp-id3').val(ui.item.supItemId3);
         });
         $(document).on('keydown.autocomplete', '.part-name', function(){
             $(this).autocomplete(part_name_options);
@@ -81,9 +75,6 @@
         $(document).on('autocompleteselect', '.part-name', function(e, ui){
             $('.part-no').val(ui.item.partNo);
             $('#part-id').val(ui.item.bomId);
-            $('#supp-id1').val(ui.item.supItemId1);
-            $('#supp-id2').val(ui.item.supItemId2);
-            $('#supp-id3').val(ui.item.supItemId3);
         });
     });
 </script>

@@ -361,107 +361,44 @@ class PoListController extends AppController
     public function search(){
         $this->loadModel('Supplier');
         $this->loadModel('SupplierItems');
+        $this->loadModel('Mds');
+        $this->loadModel('PrItems');
         $part_nos = $part_names = '';
-        $urlToEngBom = 'http://engmodule.acumenits.com/api/all-bom-parts';
+        $mds = $this->Mds->find('all');
+        $bomParts = array();
+        $suppliers = array();
+        foreach($mds as $md){
+            $pr_item = $this->PrItems->get($md->pr_item_id);
+            $bomParts[] = $pr_item->bom_part_id;
+            $suppliers[] = $pr_item->supplier_id;
+        }
+        $bomParts = array_unique($bomParts);
+        $suppliers = array_unique($suppliers);
+        $supplier = $this->Supplier->find()
+            ->where(['id IN' => $suppliers]);
+        foreach($bomParts as $bom){
+            $urlToEng = 'http://engmodule.acumenits.com/api/bom-part/'.$bom;
 
-
-        $optionsForEngBom = [
-            'http' => [
-                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-                'method'  => 'GET'
-            ]
-        ];
-        $contextForEngBom  = stream_context_create($optionsForEngBom);
-        $resultFromEngBom = file_get_contents($urlToEngBom, false, $contextForEngBom);
-        if ($resultFromEngBom !== FALSE) {
-            $dataFromEngBom = json_decode($resultFromEngBom);
-            foreach($dataFromEngBom as $engBom){
-                $bomSupplierId1 = $bomSupplierId2 = $bomSupplierId3 = '';
-                $bomUom = $bomSupplier1 = $bomSupplier2 = $bomSupplier3 = '';
-                $bomPrice1 = $bomPrice2 = $bomPrice3 = 0;
-                $bomSupItemId1 = $bomSupItemId2 = $bomSupItemId3 = '';
-                $bomItems = $this->SupplierItems->find('all', [
-                    'order' => 'SupplierItems.unit_price'
-                ])
-                    ->where(['part_no' => $engBom->partNo])
-                    ->where(['part_name' => $engBom->partName]);
-                $countBom = 0;
-                foreach($bomItems as $bi){
-                    $bomSupplier = $this->Supplier->get($bi->supplier_id, [
-                        'contain' => []
-                    ]);
-                    $countBom++;
-                    if($countBom < 4){
-                        ${'bomSupplierId'.$countBom} = $bomSupplier->id;
-                        ${'bomSupplier'.$countBom} = $bomSupplier->name;
-                        ${'bomPrice'.$countBom} = $bi->unit_price;
-                        ${'bomSupItemId'.$countBom} = $bi->id;
-                    }
-                    $bomUom = $bi->uom;
-                }
-                $bomStockAvailable = 0;
-                $urlToStoreBom = 'http://storemodule.acumenits.com/in-stock-code/stock-available';
-                $sendToStoreBom = [
-                    'part_no' => $engBom->partNo,
-                    'part_name' => $engBom->partName
-                ];
-
-
-                $optionsForStoreBom = [
-                    'http' => [
-                        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-                        'method'  => 'POST',
-                        'content' => http_build_query($sendToStoreBom)
-                    ]
-                ];
-                $contextForStoreBom = stream_context_create($optionsForStoreBom);
-                $resultFromStoreBom = file_get_contents($urlToStoreBom, false, $contextForStoreBom);
-                if($resultFromStoreBom !== FALSE){
-                    $dataFromStoreBom = json_decode($resultFromStoreBom);
-                    $bomStockAvailable = abs($dataFromStoreBom->stock_available);
-                }
-                $part_nos .= '{label:"'.$engBom->partNo.
-                    '",bomId:"'.$engBom->id.
-                    '",partName:"'.$engBom->partName.
-                    '",reqQuantity:"'.$engBom->quality.
-                    '",category:"'.$engBom->category.
-                    '",stockAvailable:"'.$bomStockAvailable.
-                    '",supplier1id:"'.$bomSupplierId1.
-                    '",supplier2id:"'.$bomSupplierId2.
-                    '",supplier3id:"'.$bomSupplierId3.
-                    '",supplier1:"'.$bomSupplier1.
-                    '",supplier2:"'.$bomSupplier2.
-                    '",supplier3:"'.$bomSupplier3.
-                    '",supItemId1:"'.$bomSupItemId1.
-                    '",supItemId2:"'.$bomSupItemId2.
-                    '",supItemId3:"'.$bomSupItemId3.
-                    '",price1:"'.$bomPrice1.
-                    '",price2:"'.$bomPrice2.
-                    '",price3:"'.$bomPrice3.
-                    '",uom:"'.$bomUom.'"},';
-                $part_names .= '{label:"'.$engBom->partName.
-                    '",bomId:"'.$engBom->id.
-                    '",partNo:"'.$engBom->partNo.
-                    '",reqQuantity:"'.$engBom->quality.
-                    '",category:"'.$engBom->category.
-                    '",stockAvailable:"'.$bomStockAvailable.
-                    '",supplier1id:"'.$bomSupplierId1.
-                    '",supplier2id:"'.$bomSupplierId2.
-                    '",supplier3id:"'.$bomSupplierId3.
-                    '",supplier1:"'.$bomSupplier1.
-                    '",supplier2:"'.$bomSupplier2.
-                    '",supplier3:"'.$bomSupplier3.
-                    '",supItemId1:"'.$bomSupItemId1.
-                    '",supItemId2:"'.$bomSupItemId2.
-                    '",supItemId3:"'.$bomSupItemId3.
-                    '",price1:"'.$bomPrice1.
-                    '",price2:"'.$bomPrice2.
-                    '",price3:"'.$bomPrice3.
-                    '",uom:"'.$bomUom.'"},';
+            $optionsForEng = [
+                'http' => [
+                    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method'  => 'GET'
+                ]
+            ];
+            $contextForEng  = stream_context_create($optionsForEng);
+            $resultFromEng = file_get_contents($urlToEng, false, $contextForEng);
+            if ($resultFromEng !== FALSE) {
+                $dataFromEng = json_decode($resultFromEng);
+                $part_nos .= '{label:"'.$dataFromEng->partNo.'",partName:"'.$dataFromEng->partName.'",bomId:"'.$dataFromEng->id.'"},';
+                $part_nos .= '{label:"'.$dataFromEng->partName.'",partNo:"'.$dataFromEng->partNo.'",bomId:"'.$dataFromEng->id.'"},';
             }
         }
+        $part_nos = rtrim($part_nos, ',');
+        $part_names = rtrim($part_names, ',');
         $this->set('part_nos', $part_nos);
         $this->set('part_names', $part_names);
+        $this->set('suppliers', $suppliers);
+        $this->set('supplier', $supplier);
     }
 
     public function partDetails(){
@@ -521,6 +458,9 @@ class PoListController extends AppController
                         }
                     }
                 }
+            }
+            if($this->request->getData('supplier') != null){
+                $result->supplier = $this->Supplier->get($this->request->getData('supplier'));
             }
             $this->set('items', $items);
             $this->set('result', $result);
