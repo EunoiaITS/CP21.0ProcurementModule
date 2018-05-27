@@ -410,6 +410,7 @@ class PoListController extends AppController
             $this->loadModel('PrItems');
             $this->loadModel('Supplier');
             $this->loadModel('SupplierItems');
+            $this->loadModel('Users');
             $result = new \stdClass;
             $result->part_no = $this->request->getData('part-no');
             $result->part_name = $this->request->getData('part-name');
@@ -424,22 +425,9 @@ class PoListController extends AppController
                     $po = $this->Po->find('all')
                         ->where(['pr_id' => $item->pr_id]);
                     foreach($po as $p){
+                        $p->req = $this->Users->get($p->created_by);
                         $item->po = $p;
                     }
-                    $supplier = '';
-                    if($item->supplier_id !== null){
-                        $supplier = $this->Supplier->get($item->supplier_id, [
-                            'contain' => []
-                        ]);
-                    }
-                    $supplier_item = '';
-                    if($item->supplier_item_id !== null){
-                        $supplier_item = $this->SupplierItems->get($item->supplier_item_id, [
-                            'contain' => []
-                        ]);
-                    }
-                    $result->supplier_item = $supplier_item;
-                    $result->supplier = $supplier;
                     $urlToSales = 'http://salesmodule.acumenits.com/api/so-data?so='.rawurlencode($pr->so_no);
 
                     $optionsForSales = [
@@ -461,6 +449,11 @@ class PoListController extends AppController
             }
             if($this->request->getData('supplier') != null){
                 $result->supplier = $this->Supplier->get($this->request->getData('supplier'));
+                $supplier_item = $this->SupplierItems->find()
+                    ->where(['part_no' => $this->request->getData('part-no')])
+                    ->where(['part_name' => $this->request->getData('part-name')])
+                    ->where(['supplier_id' => $this->request->getData('supplier')]);
+                $result->supplier_item = $supplier_item->first();
             }
             $this->set('items', $items);
             $this->set('result', $result);

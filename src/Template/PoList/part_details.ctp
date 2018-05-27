@@ -112,7 +112,7 @@
                         <td><?php if($s->order_qty !== 0 && $s->sub_total !== 0){ echo $s->sub_total/$s->order_qty; }else{ echo 0; } ?></td>
                         <td></td>
                         <td><?= $s->total ?></td>
-                        <td></td>
+                        <td><?= $s->po->req->name ?></td>
                         <td>Procurement</td>
                     </tr>
                     <?php endif; endforeach; ?>
