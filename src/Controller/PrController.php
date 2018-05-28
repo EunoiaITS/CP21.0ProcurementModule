@@ -1208,6 +1208,10 @@ class PrController extends AppController
      */
     public function submitManual(){
         if($this->request->is('post')){
+            echo '<pre>';
+            print_r($this->request->getData());
+            echo '</pre>';
+            die();
             $pr = $this->Pr->newEntity();
             $pr->date = $this->request->getData('date');
             $pr->so_no = $this->request->getData('so_no');
@@ -1223,6 +1227,7 @@ class PrController extends AppController
                     for ($i=1;$i <= $this->request->getData('count');$i++){
                         $pr_itm[$i]['pr_id'] = $pr_id['id'];
                         $pr_itm[$i]['bom_part_id'] = $this->request->getData('bom-id'.$i);
+                        $pr_itm[$i]['req_qty'] = $this->request->getData('req-qty'.$i);
                         $pr_itm[$i]['order_qty'] = $this->request->getData('order-qty'.$i);
                         $pr_itm[$i]['supplier_id'] = $this->request->getData('supplier' . $i);
                         $pr_itm[$i]['sub_total'] = $this->request->getData('subtotal' . $i);

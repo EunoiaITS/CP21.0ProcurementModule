@@ -120,7 +120,7 @@
                         <td><?= $allData->parts[$i]['uom'] ?></td>
                         <td>$ <p class="text-right"><?= $allData->parts[$i]['price'] ?></p></td>
                         <td><?= $allData->parts[$i]['category'] ?></td>
-                        <td><?= $allData->parts[$i]['req_quantity'] ?></td>
+                        <td><?= $allData->parts[$i]['req_quantity'] ?><input type="hidden" name="req-qty<?php echo $count; ?>" value="<?= $allData->parts[$i]['req_quantity'] ?>"></td>
                         <td><?= $allData->parts[$i]['stock'] ?></td>
                         <td><?= $allData->parts[$i]['qty_order'] ?><input type="hidden" name="order-qty<?php echo $count; ?>" value="<?= $allData->parts[$i]['qty_order'] ?>"></td>
                         <td><?= $allData->parts[$i]['subtotal'] ?><input type="hidden" name="subtotal<?php echo $count; ?>" value="<?= $allData->parts[$i]['subtotal'] ?>"></td>

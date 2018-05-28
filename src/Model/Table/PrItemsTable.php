@@ -62,6 +62,10 @@ class PrItemsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->integer('req_qty')
+            ->allowEmpty('req_qty');
+
+        $validator
             ->integer('order_qty')
             ->requirePresence('order_qty', 'create')
             ->notEmpty('order_qty');

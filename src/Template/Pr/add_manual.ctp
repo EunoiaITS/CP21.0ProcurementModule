@@ -327,7 +327,7 @@
                 '<td><span id="uom-'+counter+'"></span><input type="hidden" name="uom-'+counter+'" id="uom-in-'+counter+'"></td>'+
                 '<td>$ <p class="text-right" id="price-3'+counter+'"></p><input type="hidden" name="price-3-'+counter+'" id="price-3-'+counter+'"></td>'+
                 '<td><span id="cat-'+counter+'"></span><input type="hidden" name="category-'+counter+'" id="cat-in-'+counter+'"></td>'+
-                '<td><span id="qty-req-'+counter+'"></span><input type="hidden" name="req-quantity-'+counter+'" id="qty-req-in-'+counter+'"></td>'+
+                '<td><span class="hidden" id="qty-req-'+counter+'"></span><input type="number" class="form-control" name="req-quantity-'+counter+'" id="qty-req-in-'+counter+'"></td>'+
                 '<td><span id="stock-'+counter+'"></span><input type="hidden" name="stock-'+counter+'" id="stock-in-'+counter+'"></td>'+
                 '<td><input type="number" class="form-control qty-order" id="qty'+counter+'" name="qty_order'+counter+'" rel="'+counter+'" value=""></td>'+
                 '<td><select class="form-control all-supp" id="supp'+counter+'" rel="'+counter+'" name="supplier'+counter+'"><option value="1">Supplier 1</option><option value="2">Supplier 2</option><option value="3">Supplier 3</option></select></td>'+
