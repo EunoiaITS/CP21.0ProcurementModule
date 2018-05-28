@@ -34,8 +34,8 @@
                                 <td><input type="hidden" name="delivery_date<?= $count?>" value="<?= date('Y-m-d',strtotime($p->del_date))?>"><?= date('Y-m-d',strtotime($p->del_date))?></td>
                                 <td><input type="hidden" name="date<?= $count?>" value="<?= date('Y-m-d',strtotime($p->date))?>"><?= date('Y-m-d',strtotime($p->date))?></td>
                                 <td id="popup"><input type="hidden" name="pr_no<?= $count?>" value="<?= $p->id ?>"><span class="click-button" data-toggle="modal" data-target="#myModal<?= $count?>">PR <?= $p->id?></span></td>
-                                <td></td>
-                                <td></td>
+                                <td><?= $p->req->name ?></td>
+                                <td>Procurement</td>
                                 <td><input type="radio" name="radio_btn" value="<?= $count?>"  class="form-check-input" id="exampleCheck1"></td>
                             </tr>
                             <input type="hidden" name="description<?= $count?>" value="<?= $p->model .' (' . $p->version .') '?>">

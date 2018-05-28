@@ -66,10 +66,12 @@ class PoController extends AppController
         $this->loadModel('Pr');
         $this->loadModel('PrItems');
         $this->loadModel('Supplier');
+        $this->loadModel('Users');
         $pr = $this->Pr->find('all')
             ->Where(['status' => 'approved']);
         $count = 0;
         foreach ($pr as $pa){
+            $pa->req = $this->Users->get($pa->created_by);
             $po = $this->Po->find('all')
                 ->Where(['pr_id'=>$pa->id]);
             if(!$po->isEmpty()){
