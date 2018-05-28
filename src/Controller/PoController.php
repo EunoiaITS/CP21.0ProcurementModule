@@ -371,7 +371,7 @@ class PoController extends AppController
             $po->created_by = $this->request->getData('created_by');
             if($this->Po->save($po)){
                 $this->Flash->success(__('The Po has been saved.'));
-                return $this->redirect(['action' => 'requests']);
+                return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The Po could not be saved. Please, try again.'));
         }
