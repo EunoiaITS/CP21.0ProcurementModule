@@ -390,7 +390,7 @@ class PoListController extends AppController
             if ($resultFromEng !== FALSE) {
                 $dataFromEng = json_decode($resultFromEng);
                 $part_nos .= '{label:"'.$dataFromEng->partNo.'",partName:"'.$dataFromEng->partName.'",bomId:"'.$dataFromEng->id.'"},';
-                $part_nos .= '{label:"'.$dataFromEng->partName.'",partNo:"'.$dataFromEng->partNo.'",bomId:"'.$dataFromEng->id.'"},';
+                $part_names .= '{label:"'.$dataFromEng->partName.'",partNo:"'.$dataFromEng->partNo.'",bomId:"'.$dataFromEng->id.'"},';
             }
         }
         $part_nos = rtrim($part_nos, ',');

@@ -628,16 +628,11 @@ class PrController extends AppController
 
     public function generateAuto()
     {
-//        $this->autoRender = false;
         $this->loadModel('Supplier');
         $last_pr = $this->Pr->find('all')->last();
         $allData = [];
         $showData = null;
         if ($this->request->is('post')) {
-//            echo "<pre>";
-//            print_r($this->request);
-//            echo "</pre>";
-//            die();
             $allData['so_no'] = $this->request->getData('so_no');
             $allData['date'] = $this->request->getData('date');
             $allData['del_date'] = $this->request->getData('delivery_date');
