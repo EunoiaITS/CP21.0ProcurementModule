@@ -27,11 +27,13 @@
                             <th>Total</th>
                             <th>Create By</th>
                             <th>Department</th>
+                            <th>Delivery Type</th>
+                            <th>No of Delivery</th>
+                            <th>Delivery Date</th>
+                            <th>Delivery Quantity</th>
                             <th>DO Date</th>
                             <th>DO No</th>
                             <th>GRN No</th>
-                            <th>Delivery Date</th>
-                            <th>Delivery Quantity</th>
                             <th>QTY Recive</th>
                             <th>Document</th>
                             <th>Remark</th>
@@ -57,11 +59,12 @@
                                 <td><?= $p->pr_item->total ?></td>
                                 <td><?= $p->requester->name ?></td>
                                 <td>*Procurement</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
                                 <td>Complete</td>
-                                <td>Complete</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -86,11 +89,13 @@
                                 <td><?php if($item_count <= 1){ echo $p->pr_item->total ;}?></td>
                                 <td><?php if($item_count <= 1){ echo $p->requester->name ;}?></td>
                                 <td><?php if($item_count <= 1){ echo "Procurement";}?></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><?php if($item_count <= 1){ echo "Plan";}?></td>
+                                <td><?php if($item_count <= 1){ echo $p->no_del;} ?></td>
                                 <td><?= date('Y-m-d', strtotime($del->del_date)) ?></td>
                                 <td><?= $del->del_qty ?></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
