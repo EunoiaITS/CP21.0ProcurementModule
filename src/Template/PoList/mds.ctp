@@ -26,7 +26,7 @@
                                 <p class="planner-year">No Of  Delivery<span class="planner-fright">:</span></p>
                             </div>
                             <div class="col-sm-5 col-xs-6">
-                                <input class="form-control" name="del-no" type="number" id="del-no" min="<?php if(isset($item->mds)){echo $item->dels->count();}else{echo 1;} ?>" max="20" <?php if(isset($item->mds)){echo 'value="'.$item->dels->count().'"';} ?>>
+                                <input class="form-control" name="del-no" type="number" id="del-no" min="<?php if(isset($item->mds)){echo $item->dels->count();}else{echo 0;} ?>" max="20" <?php if(isset($item->mds)){echo 'value="'.$item->dels->count().'"';} ?>>
                             </div>
                         </div>
                     </div>

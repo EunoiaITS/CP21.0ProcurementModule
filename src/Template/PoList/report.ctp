@@ -28,6 +28,9 @@
                             <th>Create By</th>
                             <th>Department</th>
                             <th>Delivery Type</th>
+                            <th>No of Delivery</th>
+                            <th>Delivery Date</th>
+                            <th>Delivery Quantity</th>
                             <th>DO Date</th>
                             <th>DO No</th>
                             <th>GRN No</th>
@@ -37,32 +40,67 @@
                         </tr>
                         </thead>
                         <tbody class="csn-text-up">
-                        <?php $count = 0; foreach($pol as $p): $count++; ?>
-                        <tr>
-                            <td><?= $count ?></td>
-                            <td>SO<?= $p->pr->so_no ?></td>
-                            <td><?= date('Y-m-d', strtotime($p->del_date)) ?></td>
-                            <td><?= date('Y-m-d', strtotime($p->pr->date)) ?></td>
-                            <td>PR<?= $p->pr->id ?></td>
-                            <td><?= date('Y-m-d', strtotime($p->po->date)) ?></td>
-                            <td>PO<?= $p->po->id ?></td>
-                            <td><?= $p->pr_item->eng->partNo ?></td>
-                            <td><?= $p->pr_item->eng->partName ?></td>
-                            <td><?= $p->pr_item->supplier_name->name ?></td>
-                            <td><?= $p->pr_item->eng->quality ?></td>
-                            <td></td>
-                            <td><?= $p->pr_item->total ?></td>
-                            <td><?= $p->requester->name ?></td>
-                            <td>*Procurement</td>
-                            <td><?php if($p->del_type == 'Plan'): ?><a href="#" data-toggle="modal" data-target="#myModal<?= $count ?>"><?= $p->del_type ?><?php else: echo 'Complete'; endif; ?></a></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <?php endforeach; ?>
+                        <?php $count = 0; foreach($pol as $p) {
+                            $count++;
+                            if($p->del_type == 'Complete'){  ?>
+                            <tr>
+                                <td><?= $count ?></td>
+                                <td>SO<?= $p->pr->so_no ?></td>
+                                <td><?= date('Y-m-d', strtotime($p->del_date)) ?></td>
+                                <td><?= date('Y-m-d', strtotime($p->pr->date)) ?></td>
+                                <td>PR<?= $p->pr->id ?></td>
+                                <td><?= date('Y-m-d', strtotime($p->po->date)) ?></td>
+                                <td>PO<?= $p->po->id ?></td>
+                                <td><?= $p->pr_item->eng->partNo ?></td>
+                                <td><?= $p->pr_item->eng->partName ?></td>
+                                <td><?php if(isset($p->pr_item->supplier_name->name)){echo $p->pr_item->supplier_name->name;} ?></td>
+                                <td><?= $p->pr_item->eng->quality ?></td>
+                                <td></td>
+                                <td><?= $p->pr_item->total ?></td>
+                                <td><?= $p->requester->name ?></td>
+                                <td>*Procurement</td>
+                                <td>Complete</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <?php }?>
+                            <?php if(isset($p->mds_dels)){ ?>
+                                <?php if($p->del_type == 'Plan'){ ?>
+                                    <?php $item_count = 0; foreach($p->mds_dels as $del){ $item_count++;?>
+                            <tr>
+                                <td><?php if($item_count <= 1){ echo $count;}  ?></td>
+                                <td><?php if($item_count <= 1){ echo 'SO' . $p->pr->so_no;}?></td>
+                                <td><?php if($item_count <= 1){ echo date('Y-m-d', strtotime($p->del_date));} ?></td>
+                                <td><?php if($item_count <= 1){ echo date('Y-m-d', strtotime($p->pr->date)) ;}?></td>
+                                <td><?php if($item_count <= 1){ echo 'PR' .$p->pr->id ;}?></td>
+                                <td><?php if($item_count <= 1){ echo date('Y-m-d', strtotime($p->po->date)) ;}?></td>
+                                <td><?php if($item_count <= 1){ echo 'PO' . $p->po->id ;}?></td>
+                                <td><?php if($item_count <= 1){ echo $p->pr_item->eng->partNo ;}?></td>
+                                <td><?php if($item_count <= 1){ echo $p->pr_item->eng->partName ;}?></td>
+                                <td><?php if(isset($p->pr_item->supplier_name->name)){if($item_count <= 1){echo $p->pr_item->supplier_name->name;}} ?></td>
+                                <td><?php if($item_count <= 1){ echo $p->pr_item->eng->quality ;}?></td>
+                                <td></td>
+                                <td><?php if($item_count <= 1){ echo $p->pr_item->total ;}?></td>
+                                <td><?php if($item_count <= 1){ echo $p->requester->name ;}?></td>
+                                <td><?php if($item_count <= 1){ echo "Procurement";}?></td>
+                                <td><?php if($item_count <= 1){ echo "Plan";}?></td>
+                                <td><?php if($item_count <= 1){ echo $p->no_del;} ?></td>
+                                <td><?= date('Y-m-d', strtotime($del->del_date)) ?></td>
+                                <td><?= $del->del_qty ?></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        <?php }}}}?>
                         </tbody>
                     </table>
                 </div>
@@ -70,35 +108,3 @@
         </div>
     </div>
 </div>
-
-<?php $count = 0; foreach($pol as $p): if(isset($p->mds_dels)): $count++; ?>
-<div class="modal fade" id="myModal<?= $count ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title text-center" id="myModalLabel">Material Delivery Scheduler</h4>
-            </div>
-            <div class="modal-body supplier-modal-body table-responsive">
-                <table class="table table-bordered ">
-                    <thead>
-                    <tr>
-                        <th>Delivery Date</th>
-                        <th>Delivery Quantity</th>
-                    </tr>
-                    </thead>
-                    <tbody class="csn-text-up">
-                    <?php foreach($p->mds_dels as $del): ?>
-                    <tr>
-                        <td><?= date('Y-m-d', strtotime($del->del_date)) ?></td>
-                        <td><?= $del->del_qty ?></td>
-                    </tr>
-                    <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-</div>
-<?php endif; endforeach; ?>
