@@ -327,7 +327,7 @@
                 '<td><span id="uom-'+counter+'"></span><input type="hidden" name="uom-'+counter+'" id="uom-in-'+counter+'"></td>'+
                 '<td>$ <p class="text-right" id="price-3'+counter+'"></p><input type="hidden" name="price-3-'+counter+'" id="price-3-'+counter+'"></td>'+
                 '<td><span id="cat-'+counter+'"></span><input type="hidden" name="category-'+counter+'" id="cat-in-'+counter+'"></td>'+
-                '<td><span class="hidden" id="qty-req-'+counter+'"></span><input type="number" class="form-control req-quantity" name="req-quantity-'+counter+'" id="qty-req-in-'+counter+'" rel="'+counter+'"></td>'+
+                '<td><span class="hidden" id="qty-req-'+counter+'"></span><input type="number" class="form-control req-quantity" rel="'+counter+'" name="req-quantity-'+counter+'" id="qty-req-in-'+counter+'" rel="'+counter+'"></td>'+
                 '<td><span id="stock-'+counter+'"></span><input type="hidden" name="stock-'+counter+'" id="stock-in-'+counter+'"></td>'+
                 '<td><input type="number" class="form-control qty-order" id="qty'+counter+'" name="qty_order'+counter+'" rel="'+counter+'" value=""></td>'+
                 '<td><select class="form-control all-supp" id="supp'+counter+'" rel="'+counter+'" name="supplier'+counter+'"><option value="1">Supplier 1</option><option value="2">Supplier 2</option><option value="3">Supplier 3</option></select></td>'+
@@ -365,6 +365,38 @@
                 });
             }
             $('#total-items').val(counter);
+            $('.req-quantity').on('change', function(e){
+                e.preventDefault();
+                var relate = $(this).attr('rel');
+                var price = 0;
+                var selectedSup = $('#supp'+relate+' :selected').val();
+                if(selectedSup === '2'){
+                    price = $('#price-2'+relate).text();
+                }else if(selectedSup === '3'){
+                    price = $('#price-3'+relate).text();
+                }else{
+                    price = $('#price-1'+relate).text();
+                }
+                var stockIn = $('#stock-in-'+relate).val();
+                var qty_order = 0;
+                if(($(this).val() - stockIn) <= 0){
+                    qty_order = 0;
+                }else{
+                    qty_order = $(this).val() - stockIn;
+                }
+                $('#qty'+relate).val(qty_order);
+                var gst = $('#gst'+relate).val();
+                $('#subtotal'+relate).val(price*qty_order);
+                $('#total'+relate).val((price*qty_order)+(((price*qty_order)*gst)/100));
+                $('#sub-total-text'+relate).text(price*qty_order);
+                $('#gst-amount'+relate).text(((price*qty_order)*gst)/100);
+                $('#total-text'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
+                var finalTotal = 0;
+                for(k = 1; k <= counter; k++){
+                    finalTotal += parseInt($('#total-text'+k).text());
+                }
+                $('#final-total').text(finalTotal);
+            });
             $('.all-supp').on('change', function(e){
                 e.preventDefault();
                 var relate = $(this).attr('rel');
@@ -416,31 +448,6 @@
                 $('#final-total').text(finalTotal);
             });
             $('.gst').on('change', function(e){
-                e.preventDefault();
-                var relate = $(this).attr('rel');
-                var price = 0;
-                var selectedSup = $('#supp'+relate+' :selected').val();
-                if(selectedSup === '2'){
-                    price = $('#price-2'+relate).text();
-                }else if(selectedSup === '3'){
-                    price = $('#price-3'+relate).text();
-                }else{
-                    price = $('#price-1'+relate).text();
-                }
-                var qty_order = $('#qty'+relate).val();
-                var gst = $('#gst'+relate).val();
-                $('#subtotal'+relate).val(price*qty_order);
-                $('#total'+relate).val((price*qty_order)+(((price*qty_order)*gst)/100));
-                $('#sub-total-text'+relate).text(price*qty_order);
-                $('#gst-amount'+relate).text(((price*qty_order)*gst)/100);
-                $('#total-text'+relate).text((price*qty_order)+(((price*qty_order)*gst)/100));
-                var finalTotal = 0;
-                for(k = 1; k <= counter; k++){
-                    finalTotal += parseInt($('#total-text'+k).text());
-                }
-                $('#final-total').text(finalTotal);
-            });
-            $('.req-quantity').on('change', function(e){
                 e.preventDefault();
                 var relate = $(this).attr('rel');
                 var price = 0;
