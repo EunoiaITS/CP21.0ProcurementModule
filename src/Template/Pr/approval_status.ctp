@@ -81,7 +81,7 @@
                                     <td><?= $i->eng->partNo ?></td>
                                     <td><?= $i->eng->partName ?></td>
                                     <td><?php if(isset($i->supplier_name->name)) echo $i->supplier_name->name; ?></td>
-                                    <td><?= $i->eng->quality ?></td>
+                                    <td><?php if($p->section == 'manual'){echo $i->req_qty;}else{echo $i->eng->quality;} ?></td>
                                     <td>$<?= $i->total ?></td>
                                 </tr>
                             <?php endforeach;?>

@@ -1208,10 +1208,6 @@ class PrController extends AppController
      */
     public function submitManual(){
         if($this->request->is('post')){
-            echo '<pre>';
-            print_r($this->request->getData());
-            echo '</pre>';
-            die();
             $pr = $this->Pr->newEntity();
             $pr->date = $this->request->getData('date');
             $pr->so_no = $this->request->getData('so_no');
