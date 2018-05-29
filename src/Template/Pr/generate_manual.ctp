@@ -97,7 +97,7 @@
                         <th>Part No</th>
                         <th>Description</th>
                         <th>Supplier 3</th>
-                        <th>OUM</th>
+                        <th>UOM</th>
                         <th>Price (RM)</th>
                         <th>Category</th>
                         <th>QTY Request</th>

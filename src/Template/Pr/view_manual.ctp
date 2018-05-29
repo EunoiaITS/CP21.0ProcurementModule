@@ -124,7 +124,7 @@
                         <td><?= $item->eng->category ?></td>
                         <td><?php if(isset($item->supplier_item->uom)) echo $item->supplier_item->uom; ?></td>
                         <td><?php if($item->order_qty !== 0 && $item->sub_total !== 0){ echo $item->sub_total/$item->order_qty; }else{ echo 0; } ?></td>
-                        <td><?= $item->eng->quality ?></td>
+                        <td><?= $item->req_qty ?></td>
                         <td><?= $item->stock ?></td>
                         <td><?= $item->order_qty ?></td>
                         <td><?= $item->sub_total ?></td>
