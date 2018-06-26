@@ -57,40 +57,7 @@ class Supplier extends Entity
      * @var array
      */
     protected $_accessible = [
-        'name' => true,
-        'reg_no' => true,
-        'card_status' => true,
-        'email' => true,
-        'website' => true,
-        'contact_no_1' => true,
-        'contact_no_2' => true,
-        'fax' => true,
-        'address' => true,
-        'postcode' => true,
-        'state' => true,
-        'city' => true,
-        'country' => true,
-        'contact_name' => true,
-        'contact_address' => true,
-        'contact_postcode' => true,
-        'contact_state' => true,
-        'contact_city' => true,
-        'contact_country' => true,
-        'contact_phone' => true,
-        'contact_email' => true,
-        'contact_fax' => true,
-        'bank_name' => true,
-        'ac_name' => true,
-        'ac_no' => true,
-        'bank_tel_no' => true,
-        'bank_fax_no' => true,
-        'payment_term' => true,
-        'currency' => true,
-        'tax_code' => true,
-        'tax_id' => true,
-        'created' => true,
-        'modified' => true,
-        'tax' => true,
-        'supplier_items' => true
+        '*' => true,
+        'id' => false
     ];
 }

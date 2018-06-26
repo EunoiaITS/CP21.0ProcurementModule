@@ -33,16 +33,7 @@ class SupplierItem extends Entity
      * @var array
      */
     protected $_accessible = [
-        'supplier_id' => true,
-        'part_no' => true,
-        'part_name' => true,
-        'uom' => true,
-        'unit_price' => true,
-        'capability_m' => true,
-        'doc_file' => true,
-        'ranking' => true,
-        'created' => true,
-        'modified' => true,
-        'supplier' => true
+        '*' => true,
+        'id' => false
     ];
 }

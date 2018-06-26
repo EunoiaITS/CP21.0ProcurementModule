@@ -89,6 +89,7 @@
                         <tr>
                             <th>Month</th>
                             <th>Plan</th>
+                            <th>Actual</th>
                         </tr>
                         </thead>
                         <tbody id="table-data">
@@ -123,6 +124,7 @@
                 html_table += '<tr>'+
                               '<td>'+$('#month-no-'+id+i).text()+'</td>'+
                               '<td>'+(qty/months)+'</td>'+
+                              '<td>'+exVal+'</td>'+
                               '<input type="hidden" name="plan" value="'+(qty/months)+'"><input type="hidden" name="month-year-'+i+'" value="'+$('#month-no-'+id+i).text()+'"><input type="hidden" name="item-id" value="'+itemId+'"><input type="hidden" name="action" value="'+act+'"></th>'+
                               '</tr>';
                 }

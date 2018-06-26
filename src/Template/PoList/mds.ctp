@@ -32,7 +32,6 @@
                     </div>
             </div>
         </div>
-
         <div class="clearfix"></div>
         <!--============== Add drawing table area ===================-->
         <div class="planner-table table-responsive clearfix">

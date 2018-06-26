@@ -46,20 +46,55 @@ class AppController extends Controller
         $this->loadComponent('Auth', [
             'authorize' => ['Controller'],
             'loginRedirect' => [
-                'controller' => 'Ps'
+                'controller' => 'Dashboard',
+                'action' => 'index'
             ],
             'logoutRedirect' => [
                 'controller' => 'Users',
                 'action' => 'login'
             ],
             'unauthorizedRedirect' => [
-                'controller' => 'Po',
+                'controller' => 'Dashboard',
+                'action' => 'index',
                 'prefix' => false
             ]
         ]);
     }
     public function beforeRender(Event $event)
     {
+        $this->loadModel('Pr');
+        $this->loadModel('Po');
+        $pr_manual_req = $this->Pr->find('all')
+            ->Where(['section'=>'manual','status'=>'requested'])
+            ->count();
+        $pr_manual_ver = $this->Pr->find('all')
+            ->Where(['section'=>'manual','status'=>'verified'])
+            ->count();
+        $pr_auto1_req = $this->Pr->find('all')
+            ->Where(['section'=>'auto-1','status'=>'requested'])
+            ->count();
+        $pr_auto1_ver = $this->Pr->find('all')
+            ->Where(['section'=>'auto-1','status'=>'verified'])
+            ->count();
+        $pr_auto2_req = $this->Pr->find('all')
+            ->Where(['section'=>'auto-2','status'=>'requested'])
+            ->count();
+        $pr_auto2_ver = $this->Pr->find('all')
+            ->Where(['section'=>'auto-2','status'=>'verified'])
+            ->count();
+        $po_req = $this->Po->find('all')
+            ->Where(['status'=>'requested'])
+            ->count();
+        $po_ver = $this->Po->find('all')
+            ->Where(['status'=>'verified'])
+            ->count();
+        $po_apr1 = $this->Po->find('all')
+            ->Where(['status'=>'approved1'])
+            ->count();
+        $po_apr2 = $this->Po->find('all')
+            ->Where(['status'=>'approved2'])
+            ->count();
+
         $this->loadComponent('Auth');
         if (!array_key_exists('_serialize', $this->viewVars) &&
             in_array($this->response->type(), ['application/json', 'application/xml'])
@@ -69,6 +104,16 @@ class AppController extends Controller
         $this->set('role', $this->Auth->user('role'));
         $this->set('user_pic', $this->Auth->user('name'));
         $this->set('user_id', $this->Auth->user('id'));
+        $this->set('manual', $pr_manual_req);
+        $this->set('auto1', $pr_auto1_req);
+        $this->set('auto2', $pr_auto2_req);
+        $this->set('manual_v', $pr_manual_ver);
+        $this->set('auto1_v', $pr_auto1_ver);
+        $this->set('auto2_v', $pr_auto2_ver);
+        $this->set('po_req', $po_req);
+        $this->set('po_ver', $po_ver);
+        $this->set('po_apr1', $po_apr1);
+        $this->set('po_apr2', $po_apr2);
     }
     public function beforeFilter(Event $event)
     {

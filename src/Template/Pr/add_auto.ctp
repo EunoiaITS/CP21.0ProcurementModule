@@ -161,9 +161,9 @@
                         <td><input type="number" class="form-control qty-order" id="qty<?= $counter ?>" rel="<?= $counter ?>" name="order_qty<?= $counter ?>" value="<?php if(($e->quality - $e->stockAvailable) < 0){echo 0;}else{echo ($e->quality - $e->stockAvailable);}?>"></td>
                         <td><select class="form-control all-supp" id="supp<?= $counter ?>" rel="<?= $counter ?>" name="supplier<?= $counter ?>"><option value="1">Supplier 1</option><option value="2">Supplier 2</option><option value="3">Supplier 3</option></select></td>
                         <td><p id="sub-total-text<?= $counter ?>"><?php if(($e->quality - $e->stockAvailable) * isset($e->price1) < 0 ){echo 0 ;}else{echo ($e->quality - $e->stockAvailable) * isset($e->price1);}?></p><input type="hidden" name="sub_total<?= $counter ?>" id="subtotal<?= $counter ?>" value="<?php if(($e->quality - $e->stockAvailable) * isset($e->price1) < 0 ){echo 0 ;}else{echo ($e->quality - $e->stockAvailable) * isset($e->price1);}?>"></td>
-                        <td><input type="number" class="form-control gst" id="gst<?= $counter ?>" rel="<?= $counter ?>" name="gst<?= $counter ?>" value="6"></td>
-                        <td><p id="gst-amount<?= $counter ?>"><?php if(((($e->quality - $e->stockAvailable) * isset($e->price1)) * 6) / 100 < 0){echo 0;}else{echo ((($e->quality - $e->stockAvailable) * isset($e->price1)) * 6) / 100;}  ?></p></td>
-                        <td><p id="total-text<?= $counter ?>"><?php if(((((($e->quality - $e->stockAvailable) * isset($e->price1)) * 6) / 100) + ($e->quality - $e->stockAvailable) * isset($e->price1)) < 0){echo 0;}else{echo ((((($e->quality - $e->stockAvailable) * isset($e->price1)) * 6) / 100) + ($e->quality - $e->stockAvailable) * isset($e->price1));}?></p><input type="hidden" name="total<?= $counter ?>" id="total<?= $counter ?>" value="<?php if(((((($e->quality - $e->stockAvailable) * isset($e->price1)) * 6) / 100) + ($e->quality - $e->stockAvailable) * isset($e->price1)) < 0){echo 0;}else{echo ((((($e->quality - $e->stockAvailable) * isset($e->price1)) * 6) / 100) + ($e->quality - $e->stockAvailable) * isset($e->price1));}?>">
+                        <td><input type="number" class="form-control gst" id="gst<?= $counter ?>" rel="<?= $counter ?>" name="gst<?= $counter ?>" value="'+def_gst+'"></td>
+                        <td><p id="gst-amount<?= $counter ?>"><?php if(((($e->quality - $e->stockAvailable) * isset($e->price1)) * def_gst) / 100 < 0){echo 0;}else{echo ((($e->quality - $e->stockAvailable) * isset($e->price1)) * def_gst) / 100;}  ?></p></td>
+                        <td><p id="total-text<?= $counter ?>"><?php if(((((($e->quality - $e->stockAvailable) * isset($e->price1)) * def_gst) / 100) + ($e->quality - $e->stockAvailable) * isset($e->price1)) < 0){echo 0;}else{echo ((((($e->quality - $e->stockAvailable) * isset($e->price1)) * def_gst) / 100) + ($e->quality - $e->stockAvailable) * isset($e->price1));}?></p><input type="hidden" name="total<?= $counter ?>" id="total<?= $counter ?>" value="<?php if(((((($e->quality - $e->stockAvailable) * isset($e->price1)) * def_gst) / 100) + ($e->quality - $e->stockAvailable) * isset($e->price1)) < 0){echo 0;}else{echo ((((($e->quality - $e->stockAvailable) * isset($e->price1)) * def_gst) / 100) + ($e->quality - $e->stockAvailable) * isset($e->price1));}?>">
                         <td><a href="#">View</a></td>
                         <td></td>
                         </tr>
@@ -190,6 +190,7 @@
 </div>
 <script>
     $(document).ready(function() {
+        var def_gst = 0;
             $('.all-supp').on('change', function(e){
                 e.preventDefault();
                 var relate = $(this).attr('rel');

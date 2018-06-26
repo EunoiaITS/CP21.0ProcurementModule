@@ -139,6 +139,7 @@
 </div>
 <script>
     $(document).ready(function() {
+        var def_gst = 0;
         var counter = 0;
         var so_no = 'input#so-no';
         var data = [<?php echo $so_no; ?>];
@@ -184,9 +185,9 @@
                         '<td><input type="number" class="form-control qty-order" id="qty'+counter+'" rel="'+counter+'" name="order_qty'+counter+'" value="'+order_qty+'"></td>'+
                         '<td><select class="form-control all-supp" id="supp'+counter+'" rel="'+counter+'" name="supplier'+counter+'"><option value="1">Supplier 1</option><option value="2">Supplier 2</option><option value="3">Supplier 3</option></select></td>'+
                         '<td><p id="sub-total-text'+counter+'">'+(order_qty * e.price1)+'</p><input type="hidden" name="sub_total'+counter+'" id="subtotal'+counter+'" value="'+(order_qty * e.price1)+'"></td>'+
-                        '<td><input type="number" class="form-control gst" id="gst'+counter+'" rel="'+counter+'" name="gst'+counter+'" value="6"></td>'+
-                        '<td><p id="gst-amount'+counter+'">'+((order_qty * e.price1) * 6)/100 +'</p></td>'+
-                        '<td><p id="total-text'+counter+'">'+(((order_qty * e.price1) * 6)/100 + (order_qty * e.price1))+'</p><input type="hidden" name="total'+counter+'" id="total'+counter+'" value="'+(((order_qty * e.price1) * 6)/100 + (order_qty * e.price1))+'"></td>'+
+                        '<td><input type="number" class="form-control gst" id="gst'+counter+'" rel="'+counter+'" name="gst'+counter+'" value="'+def_gst+'"></td>'+
+                        '<td><p id="gst-amount'+counter+'">'+((order_qty * e.price1) * def_gst)/100 +'</p></td>'+
+                        '<td><p id="total-text'+counter+'">'+(((order_qty * e.price1) * def_gst)/100 + (order_qty * e.price1))+'</p><input type="hidden" name="total'+counter+'" id="total'+counter+'" value="'+(((order_qty * e.price1) * def_gst)/100 + (order_qty * e.price1))+'"></td>'+
                         '<td><a href="#">View</a></td>'+
                         '<td></td>'+
                         '<input type="hidden" name="counter" value="'+counter+'">'+

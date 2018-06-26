@@ -38,7 +38,6 @@
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'manualRequests'])?>">PR Request List (manual)</a></li>
                 <?php if($role == 'requester'): ?><li class="color-hsh2"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'addManual'])?>">PR Generate (manual)</a></li><?php endif;?>
-                <?php if($role != 'requester'): ?><li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'autoRequests'])?>">PR 1 Request List (auto)</a></li><?php endif;?>
                 <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'autoOneRequests'])?>">PR 1 Request List (auto)</a></li>
 <!--                <li class="color-hsh"><a href="#">Customization Item</a></li>-->
                 <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'autoTwoRequests'])?>">PR 2 Request List (auto)</a></li>
@@ -107,7 +106,9 @@
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <?php if($role == 'requester'): ?>
                 <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller' => 'Supplier', 'action' => 'add']); ?>">Supplier Create</a></li>
+                <?php endif; ?>
                 <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller' => 'Supplier', 'action' => 'index']); ?>">Supplier List</a></li>
             </ul>
         </div>

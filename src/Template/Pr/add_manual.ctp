@@ -51,9 +51,9 @@
                             <div class="col-sm-5 col-xs-6">
                                 <select class="form-control" name="purchase_type">
                                     <option value="">Please select...</option>
-                                    <option value="1">TYPE 1</option>
-                                    <option value="2">TYPE 2</option>
-                                    <option value="3">TYPE 3</option>
+                                    <option value="1">Production</option>
+                                    <option value="2">Engineering</option>
+                                    <option value="3">Others</option>
                                 </select>
                             </div>
                         </div>
@@ -152,6 +152,7 @@
 
 <script>
     $(document).ready(function(){
+        var def_gst = 0;
         var counter = 0;
         var so_no = 'input#so-no';
         var data = [<?php echo $so_no; ?>];
@@ -195,9 +196,9 @@
                     '<td><input type="number" class="form-control qty-order" id="qty'+counter+'" rel="'+counter+'" name="qty_order'+counter+'" value="'+order_qty+'"></td>'+
                     '<td><select class="form-control all-supp" id="supp'+counter+'" rel="'+counter+'" name="supplier'+counter+'"><option value="1">Supplier 1</option><option value="2">Supplier 2</option><option value="3">Supplier 3</option></select></td>'+
                     '<td><p id="sub-total-text'+counter+'">'+(order_qty * e.price1)+'</p><input type="hidden" name="subtotal'+counter+'" id="subtotal'+counter+'" value="'+(order_qty * e.price1)+'"></td>'+
-                    '<td><input type="number" class="form-control gst" id="gst'+counter+'" rel="'+counter+'" name="gst'+counter+'" value="6"></td>'+
-                    '<td><p id="gst-amount'+counter+'">'+((order_qty * e.price1) * 6)/100 +'</p></td>'+
-                    '<td><p id="total-text'+counter+'">'+(((order_qty * e.price1) * 6)/100 + (order_qty * e.price1))+'</p><input type="hidden" name="total'+counter+'" id="total'+counter+'" value="'+(((order_qty * e.price1) * 6)/100 + (order_qty * e.price1))+'"></td>'+
+                    '<td><input type="number" class="form-control gst" id="gst'+counter+'" rel="'+counter+'" name="gst'+counter+'" value="'+def_gst+'"></td>'+
+                    '<td><p id="gst-amount'+counter+'">'+((order_qty * e.price1) * def_gst)/100 +'</p></td>'+
+                    '<td><p id="total-text'+counter+'">'+(((order_qty * e.price1) * def_gst)/100 + (order_qty * e.price1))+'</p><input type="hidden" name="total'+counter+'" id="total'+counter+'" value="'+(((order_qty * e.price1) * def_gst)/100 + (order_qty * e.price1))+'"></td>'+
                     '<td><a href="#">View</a></td>'+
                     '<td></td>'+
                     '</tr>';
@@ -332,7 +333,7 @@
                 '<td><input type="number" class="form-control qty-order" id="qty'+counter+'" name="qty_order'+counter+'" rel="'+counter+'" value=""></td>'+
                 '<td><select class="form-control all-supp" id="supp'+counter+'" rel="'+counter+'" name="supplier'+counter+'"><option value="1">Supplier 1</option><option value="2">Supplier 2</option><option value="3">Supplier 3</option></select></td>'+
                 '<td><p id="sub-total-text'+counter+'"></p><input type="hidden" name="subtotal'+counter+'" id="subtotal'+counter+'"></td>'+
-                '<td><input type="number" class="form-control gst" id="gst'+counter+'" name="gst'+counter+'" rel="'+counter+'" value="6"></td>'+
+                '<td><input type="number" class="form-control gst" id="gst'+counter+'" name="gst'+counter+'" rel="'+counter+'" value="'+def_gst+'"></td>'+
                 '<td><p id="gst-amount'+counter+'"></p></td>'+
                 '<td><p id="total-text'+counter+'"></p><input type="hidden" name="total'+counter+'" id="total'+counter+'"></td>'+
                 '<td><a href="#">View</a></td>'+
@@ -509,10 +510,10 @@
             $('#qty-req-'+partRel).text(ui.item.reqQuantity);
             $('#qty'+partRel).val(order_qty);
             $('#subtotal'+partRel).val(ui.item.price1*order_qty);
-            $('#total'+partRel).val((ui.item.price1*order_qty)+(((ui.item.price1*order_qty)*6)/100));
+            $('#total'+partRel).val((ui.item.price1*order_qty)+(((ui.item.price1*order_qty)*def_gst)/100));
             $('#sub-total-text'+partRel).text(ui.item.price1*order_qty);
-            $('#gst-amount'+partRel).text((((ui.item.price1*order_qty)*6)/100));
-            $('#total-text'+partRel).text((ui.item.price1*order_qty)+(((ui.item.price1*order_qty)*6)/100));
+            $('#gst-amount'+partRel).text((((ui.item.price1*order_qty)*def_gst)/100));
+            $('#total-text'+partRel).text((ui.item.price1*order_qty)+(((ui.item.price1*order_qty)*def_gst)/100));
             var finalTotal = 0;
             for(k = 1; k <= counter; k++){
                 finalTotal += parseInt($('#total-text'+k).text());
@@ -551,10 +552,10 @@
             $('#qty-req-'+partRel).text(ui.item.reqQuantity);
             $('#qty'+partRel).val(order_qty);
             $('#subtotal'+partRel).val(ui.item.price1*order_qty);
-            $('#total'+partRel).val((ui.item.price1*order_qty)+(((ui.item.price1*order_qty)*6)/100));
+            $('#total'+partRel).val((ui.item.price1*order_qty)+(((ui.item.price1*order_qty)*def_gst)/100));
             $('#sub-total-text'+partRel).text(ui.item.price1*order_qty);
-            $('#gst-amount'+partRel).text((((ui.item.price1*order_qty)*6)/100));
-            $('#total-text'+partRel).text((ui.item.price1*order_qty)+(((ui.item.price1*order_qty)*6)/100));
+            $('#gst-amount'+partRel).text((((ui.item.price1*order_qty)*def_gst)/100));
+            $('#total-text'+partRel).text((ui.item.price1*order_qty)+(((ui.item.price1*order_qty)*def_gst)/100));
             var finalTotal = 0;
             for(k = 1; k <= counter; k++){
                 finalTotal += parseInt($('#total-text'+k).text());

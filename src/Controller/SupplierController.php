@@ -164,6 +164,7 @@ class SupplierController extends AppController
         $partName = rtrim($partName, ',');
         $supplier = $this->Supplier->newEntity();
         if ($this->request->is('post')) {
+
             $supplier = $this->Supplier->patchEntity($supplier, $this->request->getData());
             if ($this->Supplier->save($supplier)) {
                 $sup_no = $this->Supplier->find('all', ['fields' => 'id'])->last();

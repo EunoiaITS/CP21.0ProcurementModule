@@ -21,13 +21,13 @@
                                     <label  for="supplier-registration" class="planner-year">Registration No <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="col-sm-8 col-xs-6">
-                                    <input type="text" name="reg_no" class="form-control" id="supplier-registration" required="required">
+                                    <input type="text" name="reg_no" class="form-control" id="supplier-registration">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="card-status">Card Status</label>
                                 <div class="radio">
-                                    <label><input type="radio" name="card_status" value="Active">Active</label>
+                                    <label><input type="radio" name="card_status" value="Active" required>Active</label>
                                 </div>
                                 <div class="radio">
                                     <label><input type="radio" name="card_status" value="Inactive">Inactive</label>
@@ -48,7 +48,7 @@
                                     <label  for="supplier-website" class="planner-year">Website <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="col-sm-9 col-xs-6">
-                                    <input type="text" name="website" class="form-control" id="supplier-website" required="required">
+                                    <input type="text" name="website" class="form-control" id="supplier-website">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -56,7 +56,7 @@
                                     <label  for="supplier-contact" class="planner-year">Contact 1 <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="col-sm-9 col-xs-6">
-                                    <input type="text" name="contact_no_1" class="form-control" id="supplier-contact" required="required">
+                                    <input type="text" name="contact_no_1" class="form-control" id="supplier-contact">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -88,7 +88,7 @@
                                     <label  for="supplier-addressz" class="planner-year">Address <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="address-form">
-                                    <input type="text" name="address" class="form-control" id="supplier-addressz" required="required">
+                                    <input type="text" name="address" class="form-control" id="supplier-addressz">
                                 </div>
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                                     <label  for="supplier-post-code" class="planner-year">Post Code <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="col-sm-8 col-xs-6">
-                                    <input type="text" name="postcode" class="form-control" id="supplier-post-code" required="required">
+                                    <input type="text" name="postcode" class="form-control" id="supplier-post-code">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -106,7 +106,7 @@
                                     <label  for="supplier-post-city" class="planner-year">City <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="col-sm-8 col-xs-6">
-                                    <input type="text" name="city" class="form-control" id="supplier-post-city" required="required">
+                                    <input type="text" name="city" class="form-control" id="supplier-post-city">
                                 </div>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
                                     <label  for="supplier-state" class="planner-year">State <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="col-sm-9 col-xs-6">
-                                    <input type="text" name="state" class="form-control" id="supplier-state" required="required">
+                                    <input type="text" name="state" class="form-control" id="supplier-state">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -124,7 +124,7 @@
                                     <label  for="supplier-country" class="planner-year">Country <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="col-sm-9 col-xs-6">
-                                    <input type="text" name="country" class="form-control" id="supplier-country" required="required">
+                                    <input type="text" name="country" class="form-control" id="supplier-country">
                                 </div>
                             </div>
                         </div>
@@ -140,7 +140,7 @@
                                     <label  for="contact-name" class="planner-year">Name <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="col-sm-8 col-xs-6">
-                                    <input type="text" name="contact_name" class="form-control" id="contact-name" required="required">
+                                    <input type="text" name="contact_name" class="form-control" id="contact-name">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -148,7 +148,7 @@
                                     <label  for="contact-address" class="planner-year">Address <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="col-sm-8 col-xs-6">
-                                    <select name="caddress" required="required" id="contact-address" class="form-control">
+                                    <select name="caddress" id="contact-address" class="form-control">
                                         <option value="">Please Select</option>
                                         <option value="same">Same as above</option>
                                         <option value="other">Other</option>
@@ -160,7 +160,7 @@
                                     <label  for="contact-phone" class="planner-year">Phone <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="col-sm-8 col-xs-6">
-                                    <input type="number" name="contact_phone" class="form-control" id="contact-phone" required="required">
+                                    <input type="number" name="contact_phone" class="form-control" id="contact-phone">
                                 </div>
                             </div>
 
@@ -171,7 +171,7 @@
                                     <label  for="contact-email" class="planner-year">Email <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="col-sm-9 col-xs-6">
-                                    <input type="email" name="contact_email" class="form-control" id="contact-email" required="required">
+                                    <input type="email" name="contact_email" class="form-control" id="contact-email">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -179,7 +179,7 @@
                                     <label  for="contact-fax" class="planner-year">Fax <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="col-sm-9 col-xs-6">
-                                    <input type="text" name="contact_fax" class="form-control" id="contact-fax" required="required">
+                                    <input type="text" name="contact_fax" class="form-control" id="contact-fax">
                                 </div>
                             </div>
                         </div>
@@ -197,7 +197,7 @@
                                     <label  for="bank-name" class="planner-year">Name of Bank <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="col-sm-8 col-xs-6">
-                                    <input type="text" name="bank_name" class="form-control" id="bank-name" required="required">
+                                    <input type="text" name="bank_name" class="form-control" id="bank-name">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -205,7 +205,7 @@
                                     <label  for="account-name" class="planner-year">Name of Account <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="col-sm-8 col-xs-6">
-                                    <input type="text" name="ac_name" class="form-control" id="account-name" required="required">
+                                    <input type="text" name="ac_name" class="form-control" id="account-name">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -213,7 +213,7 @@
                                     <label  for="account-no" class="planner-year">Account No <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="col-sm-8 col-xs-6">
-                                    <input type="number" name="ac_no" class="form-control" id="account-no" required="required">
+                                    <input type="number" name="ac_no" class="form-control" id="account-no">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -221,7 +221,7 @@
                                     <label  for="account-tel-no" class="planner-year">Bank Tel No <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="col-sm-8 col-xs-6">
-                                    <input type="number" name="bank_tel_no" class="form-control" id="account-tel-no" required="required">
+                                    <input type="number" name="bank_tel_no" class="form-control" id="account-tel-no">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -229,7 +229,7 @@
                                     <label  for="account-fax-no" class="planner-year">Bank Fax No <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="col-sm-8 col-xs-6">
-                                    <input type="number" name="bank_fax_no" class="form-control" id="account-fax-no" required="required">
+                                    <input type="number" name="bank_fax_no" class="form-control" id="account-fax-no">
                                 </div>
                             </div>
 
@@ -240,7 +240,7 @@
                                     <label  for="contact-terms" class="planner-year">Payment Terms <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="col-sm-9 col-xs-6">
-                                    <select name="payment_term" required="required" id="contact-terms" class="form-control">
+                                    <select name="payment_term" id="contact-terms" class="form-control">
                                         <option value="">Please Select</option>
                                         <option value="30days">30 days</option>
                                         <option value="fob">F.O.B</option>
@@ -254,7 +254,7 @@
                                     <label  for="contact-currency" class="planner-year">Currency <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="col-sm-9 col-xs-6">
-                                    <input type="text" name="currency" class="form-control" id="contact-currency" required="required">
+                                    <input type="text" name="currency" class="form-control" id="contact-currency" >
                                 </div>
                             </div>
                             <div class="form-group">
@@ -262,7 +262,7 @@
                                     <label  for="contact-currency" class="planner-year">Tax Code <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="col-sm-9 col-xs-6">
-                                    <select name="tax_code" required="required" id="contact-terms" class="form-control">
+                                    <select name="tax_code" id="contact-terms" class="form-control">
                                         <option value="">Please Select</option>
                                         <option value="notext">No tax</option>
                                         <option value="jst">GST</option>
@@ -275,7 +275,7 @@
                                     <label  for="contact-tax-id-no" class="planner-year">Tax ID No <span class="planner-fright">:</span></label>
                                 </div>
                                 <div class="col-sm-9 col-xs-6">
-                                    <input type="text" name="tax_id" class="form-control" id="contact-tax-id-no" required="required">
+                                    <input type="text" name="tax_id" class="form-control" id="contact-tax-id-no">
                                 </div>
                             </div>
                         </div>
