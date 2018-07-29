@@ -36,10 +36,6 @@ class PoController extends AppController
             $po = $this->Po->find('all')
                 ->where(['status' => 'approved1']);
         }
-        if($this->Auth->user('role') == 'approver-3'){
-            $po = $this->Po->find('all')
-                ->where(['status' => 'approved2']);
-        }
         $this->loadModel('Users');
         foreach ($po as $p){
             $created_by = $this->Users->get($p->created_by);
@@ -182,10 +178,6 @@ class PoController extends AppController
         if($po->approve2_by != null ){
             $approve2_by = $this->Users->get($po->approve2_by);
             $po->approve2_by = $approve2_by;
-        }
-        if($po->approve3_by != null ){
-            $approve3_by = $this->Users->get($po->approve3_by);
-            $po->approve3_by = $approve3_by;
         }
 
         $po->created_by = $created_by;
@@ -527,10 +519,6 @@ class PoController extends AppController
                 $approve2_by = $this->Users->get($p->approve2_by);
                 $p->approve2_by = $approve2_by;
             }
-            if($p->approve3_by != null){
-                $approve3_by = $this->Users->get($p->approve3_by);
-                $p->approve3_by = $approve3_by;
-            }
             $p->created_by = $created_by;
             $urlToSales = 'http://salesmodule.acumenits.com/api/so-data?so='.rawurlencode($pr->so_no);
 
@@ -620,12 +608,11 @@ class PoController extends AppController
         $this->loadModel('Pr');
         $total = $this->Po->find('all');
         $approve = $this->Po->find('all')
-            ->Where(['status'=>'approved3']);
+            ->Where(['status'=>'approved2']);
         $request = $this->Po->find('all')
             ->Where(['status'=>'requested'])
             ->orWhere(['status'=>'verified'])
-            ->orWhere(['status'=>'approved1'])
-            ->orWhere(['status'=>'approved2']);
+            ->orWhere(['status'=>'approved1']);
         $reject = $this->Po->find('all')
             ->Where(['status'=>'rejected']);
         $total_count = $approve_count = $request_count = $reject_count = $am_count = 0;
@@ -686,11 +673,6 @@ class PoController extends AppController
             }
         }
         if(isset($user['role']) && $user['role'] === 'approver-2'){
-            if(in_array($this->request->action, ['requests','requestsView','edit','delete','report','approvalStatus','statReport'])){
-                return true;
-            }
-        }
-        if(isset($user['role']) && $user['role'] === 'approver-3'){
             if(in_array($this->request->action, ['requests','requestsView','edit','delete','report','approvalStatus','statReport'])){
                 return true;
             }

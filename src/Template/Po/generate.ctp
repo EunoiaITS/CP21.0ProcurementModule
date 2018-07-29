@@ -116,7 +116,7 @@
                         <td><?php if(isset($i->supplier_name->name)) echo $i->supplier_name->name; ?></td>
                         <td><?= $i->eng->category ?></td>
                         <td>PCS</td>
-                        <td><?= $i->sub_total/ $i->order_qty ?></td>
+                        <td><?php if($i->order_qty != 0){echo $i->sub_total/ $i->order_qty;}else{ echo 0;}  ?></td>
                         <td><?= $i->eng->quality ?></td>
                         <td><?= $i->stock ?></td>
                         <td><?= $i->order_qty ?></td>

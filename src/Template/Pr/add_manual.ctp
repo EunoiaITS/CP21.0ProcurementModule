@@ -184,12 +184,12 @@
                     '<td>'+ e.partNo+'<input type="hidden" name="part-no-'+counter+'" value="'+ e.partNo+'"></td>'+
                     '<td>'+ e.partName+'<input type="hidden" name="part-name-'+counter+'" value="'+ e.partName+'"></td>'+
                     '<td>'+ e.supplier1+'<input type="hidden" name="supplier-1-'+counter+'" value="'+ e.supplier1id+'"><input type="hidden" name="sup-item-1-'+counter+'" value="'+ e.supItemId1+'"></td>'+
-                    '<td>$ <p class="text-right" id="price-1'+counter+'">'+ e.price1+'</p><input type="hidden" name="price-1-'+counter+'" value="'+ e.price1+'"></td>'+
+                    '<td><p class="text-right" id="price-1'+counter+'">'+ e.price1+'</p><input type="hidden" name="price-1-'+counter+'" value="'+ e.price1+'"></td>'+
                     '<td>'+ e.supplier2+'<input type="hidden" name="supplier-2-'+counter+'" value="'+ e.supplier2id+'"><input type="hidden" name="sup-item-2-'+counter+'" value="'+ e.supItemId2+'"></td>'+
-                    '<td>$ <p class="text-right" id="price-2'+counter+'">'+ e.price2+'</p><input type="hidden" name="price-2-'+counter+'" value="'+ e.price2+'"></td>'+
+                    '<td><p class="text-right" id="price-2'+counter+'">'+ e.price2+'</p><input type="hidden" name="price-2-'+counter+'" value="'+ e.price2+'"></td>'+
                     '<td>'+ e.supplier3+'<input type="hidden" name="supplier-3-'+counter+'" value="'+ e.supplier3id+'"><input type="hidden" name="sup-item-3-'+counter+'" value="'+ e.supItemId3+'"></td>'+
                     '<td>'+ e.uom+'<input type="hidden" name="uom-'+counter+'" value="'+ e.uom+'"></td>'+
-                    '<td>$ <p class="text-right" id="price-3'+counter+'">'+ e.price3+'</p><input type="hidden" name="price-3-'+counter+'" value="'+ e.price3+'"></td>'+
+                    '<td><p class="text-right" id="price-3'+counter+'">'+ e.price3+'</p><input type="hidden" name="price-3-'+counter+'" value="'+ e.price3+'"></td>'+
                     '<td>'+ e.category+'<input type="hidden" name="category-'+counter+'" value="'+ e.category+'"></td>'+
                     '<td>'+ e.reqQuantity+'<input type="hidden" name="req-quantity-'+counter+'" value="'+ e.reqQuantity+'"></td>'+
                     '<td>'+ e.stockAvailable+'<input type="hidden" name="stock-'+counter+'" value="'+ e.stockAvailable+'"></td>'+
@@ -321,12 +321,12 @@
                 '<td><input type="text" rel="'+counter+'" class="form-control part-no" id="part-nos'+counter+'" name="part-no-'+counter+'"></td>'+
                 '<td><input type="text" rel="'+counter+'" class="form-control part-name" id="part-names'+counter+'" name="part-name-'+counter+'"></td>'+
                 '<td><span id="supp-1-'+counter+'"></span><input type="hidden" name="supplier-1-'+counter+'" id="supplier-1-'+counter+'"><input type="hidden" name="sup-item-1-'+counter+'" id="sup-item-1-'+counter+'"></td>'+
-                '<td>$ <p class="text-right" id="price-1'+counter+'"></p><input type="hidden" name="price-1-'+counter+'" id="price-1-'+counter+'"></td>'+
+                '<td><p class="text-right" id="price-1'+counter+'"></p><input type="hidden" name="price-1-'+counter+'" id="price-1-'+counter+'"></td>'+
                 '<td><span id="supp-2-'+counter+'"></span><input type="hidden" name="supplier-2-'+counter+'" id="supplier-2-'+counter+'"><input type="hidden" name="sup-item-2-'+counter+'" id="sup-item-2-'+counter+'"></td>'+
-                '<td>$ <p class="text-right" id="price-2'+counter+'"></p><input type="hidden" name="price-2-'+counter+'" id="price-2-'+counter+'"></td>'+
+                '<td><p class="text-right" id="price-2'+counter+'"></p><input type="hidden" name="price-2-'+counter+'" id="price-2-'+counter+'"></td>'+
                 '<td><span id="supp-3-'+counter+'"></span><input type="hidden" name="supplier-3-'+counter+'" id="supplier-3-'+counter+'"><input type="hidden" name="sup-item-3-'+counter+'" id="sup-item-3-'+counter+'"></td>'+
                 '<td><span id="uom-'+counter+'"></span><input type="hidden" name="uom-'+counter+'" id="uom-in-'+counter+'"></td>'+
-                '<td>$ <p class="text-right" id="price-3'+counter+'"></p><input type="hidden" name="price-3-'+counter+'" id="price-3-'+counter+'"></td>'+
+                '<td><p class="text-right" id="price-3'+counter+'"></p><input type="hidden" name="price-3-'+counter+'" id="price-3-'+counter+'"></td>'+
                 '<td><span id="cat-'+counter+'"></span><input type="hidden" name="category-'+counter+'" id="cat-in-'+counter+'"></td>'+
                 '<td><span class="hidden" id="qty-req-'+counter+'"></span><input type="number" class="form-control req-quantity" rel="'+counter+'" name="req-quantity-'+counter+'" id="qty-req-in-'+counter+'" rel="'+counter+'"></td>'+
                 '<td><span id="stock-'+counter+'"></span><input type="hidden" name="stock-'+counter+'" id="stock-in-'+counter+'"></td>'+

@@ -102,14 +102,6 @@
                             <p class="normal-text"><?php if($role == 'approver-2'){echo $user_pic;}else{if(isset($pr->approve2_by->name)){echo $pr->approve2_by->name;}} ?></p>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-sm-3 col-xs-6">
-                            <p class="planner-year">Approve-3 By<span class="planner-fright">:</span></p>
-                        </div>
-                        <div class="col-sm-5 col-xs-6">
-                            <p class="normal-text"><?php if($role == 'approver-3'){echo $user_pic;}else{if(isset($pr->approve3_by->name)){echo $pr->approve3_by->name;}} ?></p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -173,11 +165,11 @@
         <div class="col-sm-offset-8 col-sm-4 col-xs-12">
             <form action="<?php echo $this->Url->build(['controller'=>'Po','action'=>'edit',$pr->id])?>" method="post">
                 <div class="prepareted-by-csn">
-                    <input type="hidden" name="status" value="<?php if($role == "verifier"){echo "verified";}elseif($role == "approver-1"){echo "approved1";}elseif($role == "approver-2"){echo "approved2";}elseif($role == "approver-3"){echo "approved3";}?>">
-                    <input type="hidden" name="<?php if($role == "verifier"){echo "verified_by";}elseif($role == "approver-1"){echo "approve1_by";}elseif($role == "approver-2"){echo "approve2_by";}elseif($role == "approver-3"){echo "approve3_by";}?>" value="<?= $pic ?>">
+                    <input type="hidden" name="status" value="<?php if($role == "verifier"){echo "verified";}elseif($role == "approver-1"){echo "approved1";}elseif($role == "approver-2"){echo "approved2";}?>">
+                    <input type="hidden" name="<?php if($role == "verifier"){echo "verified_by";}elseif($role == "approver-1"){echo "approve1_by";}elseif($role == "approver-2"){echo "approve2_by";}?>" value="<?= $pic ?>">
                     <?php if($role != 'requester'): ?>
                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Reject</button>
-                        <button type="submit" class="button btn btn-info"><?php if($role == "verifier"){echo "Verify";}elseif($role == "approver-1"){echo "Approve";}elseif($role == "approver-2"){echo "Approve";}elseif($role == "approver-3"){echo "Approve";}?></button>
+                        <button type="submit" class="button btn btn-info"><?php if($role == "verifier"){echo "Verify";}elseif($role == "approver-1"){echo "Approve";}elseif($role == "approver-2"){echo "Approve";}?></button>
                     <?php endif;?>
                 </div>
             </form>

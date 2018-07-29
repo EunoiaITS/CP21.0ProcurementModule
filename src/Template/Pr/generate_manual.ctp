@@ -118,7 +118,7 @@
                         <td><?= $allData->parts[$i]['part_name'] ?></td>
                         <td><?php if(isset($allData->parts[$i]['supplier_det']->name)) echo $allData->parts[$i]['supplier_det']->name; ?><input type="hidden" name="supplier<?php echo $count; ?>" value="<?= $allData->parts[$i]['supplier_id'] ?>"></td>
                         <td><?= $allData->parts[$i]['uom'] ?></td>
-                        <td>$ <p class="text-right"><?= $allData->parts[$i]['price'] ?></p></td>
+                        <td><p class="text-right"><?= $allData->parts[$i]['price'] ?></p></td>
                         <td><?= $allData->parts[$i]['category'] ?></td>
                         <td><?= $allData->parts[$i]['req_quantity'] ?><input type="hidden" name="req-qty<?php echo $count; ?>" value="<?= $allData->parts[$i]['req_quantity'] ?>"></td>
                         <td><?= $allData->parts[$i]['stock'] ?></td>

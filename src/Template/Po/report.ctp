@@ -44,10 +44,10 @@
                             <td><?= $i->eng->partName ?></td>
                             <td><?php if(isset($i->supplier_name->name)) echo $i->supplier_name->name; ?></td>
                             <td><?= $i->eng->quality?></td>
-                            <td>$<?= $i->total ?></td>
+                            <td><?= $i->total ?></td>
                             <td><?php if($itemCount == 1){ echo $p->requester->name; } ?></td>
                             <td><?php if($itemCount == 1) echo 'Procurement'; ?></td>
-                            <td class="<?php if($itemCount == 1) if($p->status == 'approved3'){echo 'colored-csn';}elseif($p->status == 'rejected'){echo 'colored-red';}else{echo 'colored-red';}?>"><?php if($itemCount == 1) if($p->status == 'approved3'){echo 'Approved';}elseif ($p->status == 'rejected'){echo 'Reject';}else{echo 'Pending';}?></td>
+                            <td class="<?php if($itemCount == 1) if($p->status == 'approved2'){echo 'colored-csn';}elseif($p->status == 'rejected'){echo 'colored-red';}else{echo 'colored-red';}?>"><?php if($itemCount == 1) if($p->status == 'approved2'){echo 'Approved';}elseif ($p->status == 'rejected'){echo 'Reject';}else{echo 'Pending';}?></td>
                             <td><a href="#">View</a></td>
                             <td></td>
                             <td><a href="#">Email</a></td>

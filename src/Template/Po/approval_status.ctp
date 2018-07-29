@@ -32,7 +32,6 @@
                             <th>Status</th>
                             <th>Approve By</th>
                             <th>Status</th>
-                            <th>Approve By</th>
                             <th>Document</th>
                             <th>Remark</th>
                         </tr>
@@ -50,17 +49,16 @@
                             <td><?= $i->eng->partName ?></td>
                             <td><?php if(isset($i->supplier_name->name)) echo $i->supplier_name->name; ?></td>
                             <td><?= $i->eng->quality ?></td>
-                            <td>$ <?=$i->total ?></td>
+                            <td><?=$i->total ?></td>
                             <td><?php if($itemCount == 1){ echo $p->created_by->name; } ?></td>
                             <td><?php if($itemCount == 1) echo 'Procurement'; ?></td>
-                            <td class="<?php if($itemCount == 1) if($p->status == 'requested' || $p->status == 'rejected'){echo "colored-red";}elseif($p->status == 'verified' || $p->status == 'approved1' || $p->status == 'approved2' || $p->status == 'approved3'){echo "colored-csn";}?>"><?php if($itemCount == 1) if($p->status == 'requested'){echo "Pending";}elseif($p->status == 'rejected'){echo "Reject";}elseif($p->status == 'verified' || $p->status == 'approved1' || $p->status == 'approved2' || $p->status == 'approved3'){echo "Verify";}?></td>
+                            <td class="<?php if($itemCount == 1) if($p->status == 'requested' || $p->status == 'rejected'){echo "colored-red";}elseif($p->status == 'verified' || $p->status == 'approved1' || $p->status == 'approved2'){echo "colored-csn";}?>"><?php if($itemCount == 1) if($p->status == 'requested'){echo "Pending";}elseif($p->status == 'rejected'){echo "Reject";}elseif($p->status == 'verified' || $p->status == 'approved1' || $p->status == 'approved2'){echo "Verify";}?></td>
                             <td><?php if($itemCount == 1) if(isset($p->verified_by->name)){echo $p->verified_by->name;}?></td>
-                            <td class="<?php if($itemCount == 1) if($p->status == 'verified'){echo "colored-red";}elseif($p->status == 'approved1' || $p->status == 'approved2' || $p->status == 'approved3'){echo "colored-csn";}?>"><?php if($itemCount == 1) if($p->status == 'verified'){echo "Pending";}elseif($p->status == 'approved1' || $p->status == 'approved2' || $p->status == 'approved3'){echo "Approve";}?></td>
+                            <td class="<?php if($itemCount == 1) if($p->status == 'verified'){echo "colored-red";}elseif($p->status == 'approved1' || $p->status == 'approved2'){echo "colored-csn";}?>"><?php if($itemCount == 1) if($p->status == 'verified'){echo "Pending";}elseif($p->status == 'approved1' || $p->status == 'approved2'){echo "Approve";}?></td>
                             <td><?php if($itemCount == 1) if(isset($p->approve1_by->name)){echo $p->approve1_by->name;}?></td>
-                            <td class="<?php if($itemCount == 1) if($p->status == 'approved1'){echo "colored-red";}elseif($p->status == 'approved1' || $p->status == 'approved2' || $p->status == 'approved3'){echo "colored-csn";}?>"><?php if($itemCount == 1) if($p->status == 'approved1'){echo "Pending";}elseif($p->status == 'approved1' || $p->status == 'approved2' || $p->status == 'approved3'){echo "Approve";}?></td>
+                            <td class="<?php if($itemCount == 1) if($p->status == 'approved1'){echo "colored-red";}elseif($p->status == 'approved1' || $p->status == 'approved2'){echo "colored-csn";}?>"><?php if($itemCount == 1) if($p->status == 'approved1'){echo "Pending";}elseif($p->status == 'approved1' || $p->status == 'approved2'){echo "Approve";}?></td>
                             <td><?php if($itemCount == 1) if(isset($p->approve2_by->name)){echo $p->approve2_by->name;}?></td>
-                            <td class="<?php if($itemCount == 1) if($p->status == 'approved2'){echo "colored-red";}elseif($p->status == 'approved3'){echo "colored-csn";}?>"><?php if($itemCount == 1) if($p->status == 'approved2'){echo "Pending";}elseif($p->status == 'approved3'){echo "Approve";}?></td>
-                            <td><?php if($itemCount == 1) if(isset($p->approve3_by->name)){echo $p->approve3_by->name;}?></td>
+                            <td class="<?php if($itemCount == 1) if($p->status == 'approved2'){echo "colored-csn";}?>"><?php if($itemCount == 1) if($p->status == 'approved2'){echo "Approve";}?></td>
                             <td><a href="#">View</a></td>
                             <td></td>
                         </tr>

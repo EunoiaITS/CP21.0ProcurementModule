@@ -173,12 +173,12 @@
                         '<td>'+ e.partNo+'<input type="hidden" name="part_no'+counter+'" value="'+ e.partNo+'"></td>'+
                         '<td>'+ e.partName+'<input type="hidden" name="part_name'+counter+'" value="'+ e.partName+'"></td>'+
                         '<td>'+ e.supplier1+'<input type="hidden" name="supplier1'+counter+'" value="'+ e.supplier1id+'"></td>'+
-                        '<td>$ <p class="text-right" id="price-1'+counter+'">'+ e.price1+'</p><input type="hidden" name="price1'+counter+'" value="'+ e.price1+'"></td>'+
+                        '<td><p class="text-right" id="price-1'+counter+'">'+ e.price1+'</p><input type="hidden" name="price1'+counter+'" value="'+ e.price1+'"></td>'+
                         '<td>'+ e.supplier2+'<input type="hidden" name="supplier2'+counter+'" value="'+ e.supplier2id+'"></td>'+
-                        '<td>$ <p class="text-right" id="price-2'+counter+'">'+ e.price2+'</p><input type="hidden" name="price2'+counter+'" value="'+ e.price2+'"></td>'+
+                        '<td><p class="text-right" id="price-2'+counter+'">'+ e.price2+'</p><input type="hidden" name="price2'+counter+'" value="'+ e.price2+'"></td>'+
                         '<td>'+ e.supplier3+'<input type="hidden" name="supplier-3-'+counter+'" value="'+ e.supplier3id+'"></td>'+
                         '<td>'+ e.uom+'<input type="hidden" name="uom'+counter+'" value="'+ e.uom+'"></td>'+
-                        '<td>$ <p class="text-right" id="price-3'+counter+'">'+ e.price3+'</p><input type="hidden" name="price3'+counter+'" value="'+ e.price3+'"></td>'+
+                        '<td><p class="text-right" id="price-3'+counter+'">'+ e.price3+'</p><input type="hidden" name="price3'+counter+'" value="'+ e.price3+'"></td>'+
                         '<td>'+ e.category+'<input type="hidden" name="category'+counter+'" value="'+ e.category+'"></td>'+
                         '<td>'+ e.reqQuantity+'<input type="hidden" name="reqQuantity'+counter+'" value="'+ e.reqQuantity+'"></td>'+
                         '<td>'+ e.stockAvailable+'<input type="hidden" name="stockAvailable'+counter+'" value="'+ e.stockAvailable+'"></td>'+

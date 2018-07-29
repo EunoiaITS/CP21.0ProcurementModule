@@ -64,10 +64,10 @@
                             <tr>
                                 <td>4</td>
                                 <td>Purchase Order</td>
-                                <td><b><?php if($role == 'verifier'){echo $po_req;}elseif($role == 'approver-1'){echo $po_ver;}elseif($role == 'approver-2'){echo $po_apr1;}elseif($role =='approver-3'){echo $po_apr2;}?></b></td>
+                                <td><b><?php if($role == 'verifier'){echo $po_req;}elseif($role == 'approver-1'){echo $po_ver;}elseif($role == 'approver-2'){echo $po_apr1;}?></b></td>
                                 <td><?= $user_pic ?></td>
                                 <td><?= date('Y-m-d') ?></td>
-                                <td><?php if($role == 'verifier'){echo 'Requested';}elseif($role == 'approver-1'){echo 'Verified';}elseif($role == 'approver-2'){echo 'Approved 1';}elseif($role == 'approver-3'){echo 'Approved 2';}?></td>
+                                <td><?php if($role == 'verifier'){echo 'Requested';}elseif($role == 'approver-1'){echo 'Verified';}elseif($role == 'approver-2'){echo 'Approved 1';}?></td>
                                 <td><a href="<?php echo $this->Url->build(['controller'=>'Po', 'action'=>'requests']);?>"><?php if($role != 'requester'): ?><span class="btn btn-primary"><?php if($role == 'verifier'){ echo 'Verify';}else{echo 'Approve';} ?></span><?php endif; ?></a></td>
                             </tr>
                         </tbody>

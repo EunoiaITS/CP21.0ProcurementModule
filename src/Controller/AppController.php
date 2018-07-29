@@ -91,9 +91,6 @@ class AppController extends Controller
         $po_apr1 = $this->Po->find('all')
             ->Where(['status'=>'approved1'])
             ->count();
-        $po_apr2 = $this->Po->find('all')
-            ->Where(['status'=>'approved2'])
-            ->count();
 
         $this->loadComponent('Auth');
         if (!array_key_exists('_serialize', $this->viewVars) &&
@@ -113,7 +110,6 @@ class AppController extends Controller
         $this->set('po_req', $po_req);
         $this->set('po_ver', $po_ver);
         $this->set('po_apr1', $po_apr1);
-        $this->set('po_apr2', $po_apr2);
     }
     public function beforeFilter(Event $event)
     {
