@@ -924,6 +924,9 @@ tr>th.simple-color {
 .table.table-bordered input{
     width: 90px;
 }
+.table.table-bordered select{
+    width: 120px;
+}
 
 /*--===============
 Responsive css
