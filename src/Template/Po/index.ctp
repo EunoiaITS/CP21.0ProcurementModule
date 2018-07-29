@@ -44,7 +44,7 @@
                                         <td><input type="hidden" name="part_name-<?= $count?>-<?= $item_count ?>" value="<?= $i->eng->partName ?>"><?= $i->eng->partName ?></td>
                                         <td><input type="hidden" name="supplier-<?= $count?>-<?= $item_count ?>" value="<?php if(isset($i->supplier_name->name)) echo $i->supplier_name->name; ?>"><?php if(isset($i->supplier_name->name)) echo $i->supplier_name->name; ?></td>
                                         <td><input type="hidden" name="order_qty-<?= $count?>-<?= $item_count ?>" value="<?= $i->order_qty ?>"><?= $i->order_qty ?></td>
-                                        <td><input type="hidden" name="total-<?= $count?>-<?= $item_count ?>" value="<?= $i->total ?>">$ <?= $i->total ?></td>
+                                        <td><input type="hidden" name="total-<?= $count?>-<?= $item_count ?>" value="<?= $i->total ?>"><?= $i->total ?></td>
                                         <td><?= $p->req->name ?></td>
                                         <td>Procurement</td>
                                         <td><?php if($item_count == 1): ?><input type="radio" name="radio_btn" value="<?= $count?>"  class="form-check-input" id="exampleCheck1"><?php endif;?></td>
