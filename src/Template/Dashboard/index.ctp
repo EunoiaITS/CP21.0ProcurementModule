@@ -46,7 +46,7 @@
                                 <td><?= $user_pic ?></td>
                                 <td><?= date('Y-m-d') ?></td>
                                 <td><?php if($role == 'verifier'){ echo 'Requested';}elseif($role == 'approver-1'){echo 'Verified';} ?></td>
-                                <td><a href="<?php echo $this->Url->build(['controller'=>'Pr', 'action'=>'autoOneRequests']);?>"><?php if($role == 'verifier' || $role == 'approver-1'): ?><span class="btn btn-primary"><?php if($role == 'verifier'){ echo 'Verify';}elseif($role == 'approver-1'){echo 'Approve';} ?></span><?php endif;?></a></td>
+                                <td><a href="<?php echo $this->Url->build(['controller'=>'Pr', 'action'=>'autoRequests']);?>"><?php if($role == 'verifier' || $role == 'approver-1'): ?><span class="btn btn-primary"><?php if($role == 'verifier'){ echo 'Verify';}elseif($role == 'approver-1'){echo 'Approve';} ?></span><?php endif;?></a></td>
                             </tr>
                             <tr>
                                 <td>3</td>

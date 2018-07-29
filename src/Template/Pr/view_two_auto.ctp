@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-sm-12">
-                <div class="part-title-planner text-uppercase text-center"><b>PR 1 Verify (auto)</b></div>
+                <div class="part-title-planner text-uppercase text-center"><b>PR 1 View (Auto 2)</b></div>
                 <form action="#" class="planner-relative">
                     <div class="col-sm-6">
                         <div class="form-group">
