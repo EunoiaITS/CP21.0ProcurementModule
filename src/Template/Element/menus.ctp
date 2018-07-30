@@ -37,18 +37,19 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <?php if($role == 'requester'): ?><li class="color-hsh2"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'addManual'])?>">Purchase Requisition Form Manual</a></li><?php endif;?>
-                <?php if($role == 'requester'): ?><li class="color-hsh2"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'addTwoAuto'])?>">Purchase Requisition</a></li><?php endif;?>
-                <?php if($role != 'approver-2'): ?>
-                    <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'manualRequests'])?>">PR Request List (manual)</a></li>
-                <?php endif;?>
                 <?php if($role == 'requester'): ?>
-                <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'autoOneRequests'])?>">PR Request List (auto)</a></li>
+                <li class="color-hsh2"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'autoOneRequests'])?>">PR Request List (auto)</a></li>
+                <?php endif;?>
+				
+                <?php if($role == 'requester'): ?><li class="color-hsh2"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'addTwoAuto'])?>">Purchase Requisition Submit Auto</a></li><?php endif;?>
+				<?php if($role == 'approver-1' || $role == 'verifier'): ?>
+                    <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'manualRequests'])?>">PR Request List (manual)</a></li>
                 <?php endif;?>
                 <?php if($role == 'verifier' || $role == 'approver-1'): ?>
                     <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'autoRequests'])?>">PR Request List (auto)</a></li>
                 <?php endif;?>
                 <!--                <li class="color-hsh"><a href="#">Customization Item</a></li>-->
-                <?php if($role != 'approver-2'): ?>
+                <?php if($role == 'approver-1' || $role == 'verifier'): ?>
                 <li class="color-hsh"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'autoTwoRequests'])?>">PR Request List (auto)</a></li>
                 <?php endif;?>
                 <li class="color-hsh3"><a href="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'approvalStatus'])?>">PR Approval Status</a></li>
