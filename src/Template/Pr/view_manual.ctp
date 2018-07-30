@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-sm-12">
-                <div class="part-title-planner text-uppercase text-center"><b>Purchase Order Form</b></div>
+                <div class="part-title-planner text-uppercase text-center"><b>Purchase Requisition <?php if($role == 'requester'){echo "View";}elseif($role == 'verifier'){echo "Verify";}elseif ($role == 'approver-1'){echo "Approve";}?></b></div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="col-sm-3 col-xs-6">

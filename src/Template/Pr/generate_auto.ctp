@@ -3,7 +3,7 @@
         <form action="<?php echo $this->Url->build(['controller'=>'pr','action'=>'submitAuto'])?>" method="post" class="planner-relative">
         <div class="row">
             <div class="col-sm-12 col-sm-12">
-                <div class="part-title-planner text-uppercase text-center"><b>PR 1 Submit (auto)</b></div>
+                <div class="part-title-planner text-uppercase text-center"><b>Purchase Requisition Form</b></div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="col-sm-3 col-xs-6">

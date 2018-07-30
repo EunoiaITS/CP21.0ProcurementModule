@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-sm-12">
-                <div class="part-title-planner text-uppercase text-center"><b>PR 1 View (Auto 1)</b></div>
+                <div class="part-title-planner text-uppercase text-center"><b>Purchase Requisition <?php if($role == 'requester'){echo "View";}elseif($role == 'verifier'){echo "Verify";}elseif ($role == 'approver-1'){echo "Approve";}?></b></div>
                 <form action="#" class="planner-relative">
                     <div class="col-sm-6">
                         <div class="form-group">

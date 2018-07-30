@@ -4,10 +4,10 @@
 
 <div class="planner-from">
     <div class="container-fluid">
-        <form action="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'generateAuto'])?>" method="post" class="planner-relative">
+        <form id="pr-form" action="<?php echo $this->Url->build(['controller'=>'Pr','action'=>'generateAuto'])?>" method="post" class="planner-relative">
         <div class="row">
             <div class="col-sm-12 col-sm-12">
-                <div class="part-title-planner text-uppercase text-center"><b>PR 1 Generate (auto)</b></div>
+                <div class="part-title-planner text-uppercase text-center"><b>Purchase Requisition Form</b></div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="col-sm-3 col-xs-6">
@@ -190,6 +190,13 @@
 </div>
 <script>
     $(document).ready(function() {
+        $("#pr-form").submit(function(){
+            var checked = $("#pr-form input:checked").length > 0;
+            if (!checked){
+                alert("Please check at least one Item !!");
+                return false;
+            }
+        });
         var def_gst = 0;
             $('.all-supp').on('change', function(e){
                 e.preventDefault();

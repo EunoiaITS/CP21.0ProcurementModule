@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-sm-12">
-                <div class="part-title-planner text-uppercase text-center"><b>PR 1 REQUEST LIST (AUTO)</b></div>
+                <div class="part-title-planner text-uppercase text-center"><b>Purchase Requisition Request List</b></div>
             </div>
 
             <div class="clearfix"></div>
