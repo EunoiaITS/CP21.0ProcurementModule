@@ -22,7 +22,7 @@
                             <th>Part No</th>
                             <th>Description</th>
                             <th>Supplier</th>
-                            <th>QTY Request</th>
+                            <th>Quantity Request</th>
                             <th>Extra 10%</th>
                             <th>Total</th>
                             <th>Create By</th>
@@ -34,7 +34,7 @@
                             <th>DO Date</th>
                             <th>DO No</th>
                             <th>GRN No</th>
-                            <th>QTY Recive</th>
+                            <th>Quantity Receive</th>
                             <th>Document</th>
                             <th>Remark</th>
                         </tr>

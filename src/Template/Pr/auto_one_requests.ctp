@@ -18,7 +18,7 @@
                             <th>Delivery Date</th>
                             <th>Description</th>
                             <th>Customer Name</th>
-                            <th>QTY</th>
+                            <th>Quantity</th>
                             <th>Category</th>
                             <th>Remark</th>
                             <th>Action</th>
